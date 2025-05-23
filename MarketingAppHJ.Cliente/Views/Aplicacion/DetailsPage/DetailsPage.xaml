@@ -1,23 +1,46 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.DetailsPage.DetailsPage"
-             xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel"
-             Title="DetailsPage">
-    <ContentPage.BindingContext>
-        <vm:DetallesProductoPageViewModel />
-    </ContentPage.BindingContext>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+           x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.DetailsPage.DetailsPage"  
+           xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel"  
+           Title="DetailsPage">  
+  <ContentPage.BindingContext>  
+      <vm:DetallesProductoPageViewModel />  
+  </ContentPage.BindingContext>  
 
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="10">
-            <Label Text="{Binding Producto.Nombre, TargetNullValue='Cargando…'}" 
-             FontSize="24" FontAttributes="Bold"/>
-            <Image Source="{Binding Producto.ImagenUrl}" 
-             HeightRequest="250" Aspect="AspectFill"/>
-            <Label Text="{Binding Producto.Descripcion, TargetNullValue=''}"/>
-            <Label Text="{Binding Producto.Precio, StringFormat='Precio: {0:C}'}"/>
-            <Button Text="Añadir al carrito" 
-              Command="{Binding AddToCartCommand}"/>
-        </VerticalStackLayout>
-    </ScrollView>
+  <Grid RowDefinitions="Auto,*,Auto">  
+      <!-- AppBar (mismo que en catálogo) -->  
+      <Grid Grid.Row="0" HeightRequest="50" Padding="10" ColumnDefinitions="Auto,*,Auto">  
+          <ImageButton Source="avatar.png" BackgroundColor="Transparent"/>  
+          <ImageButton Source="logo.png" Grid.Column="1" HorizontalOptions="Center" BackgroundColor="Transparent"/>  
+          <ImageButton Source="settings.png" Grid.Column="2" BackgroundColor="Transparent"/>  
+      </Grid>  
+
+      <!-- Contenido del detalle -->  
+      <ScrollView Grid.Row="1" Padding="20">  
+          <Border BackgroundColor="#8C8CEB" StrokeThickness="0" StrokeShape="RoundRectangle 10">  
+              <StackLayout Spacing="15" Padding="20">  
+                  <Image Source="{Binding Producto.ImagenUrl}" HeightRequest="200" Aspect="AspectFill"/>  
+                  <Label Text="{Binding Producto.Nombre}" TextColor="White" FontSize="24" FontAttributes="Bold"/>  
+                  <Label Text="{Binding Producto.Descripcion}" TextColor="#E0E0E0" FontSize="14"/>  
+                  <Label Text="{Binding Producto.Precio, StringFormat='Precio: {0:C}'}" TextColor="White" FontSize="20" FontAttributes="Bold"/>  
+                  <Button Text="Añadir al carrito"  
+                          Command="{Binding AddToCartAsyncCommand}"  
+                          BackgroundColor="White"  
+                          TextColor="#757DF2"  
+                          CornerRadius="20"  
+                          HeightRequest="40"/>  
+              </StackLayout>  
+          </Border>  
+      </ScrollView>  
+
+      <!-- Bottom Sheet para ir al carrito -->  
+      <Border Grid.Row="2" BackgroundColor="White" Padding="10,0" StrokeShape="RoundRectangle 20,20,0,0" StrokeThickness="0">  
+          <Button Text="Ver carrito"  
+                  ImageSource="icon_cart.png"  
+                  ContentLayout="Left,10"  
+                  BackgroundColor="Transparent"  
+                  TextColor="#757DF2"/>  
+      </Border>  
+  </Grid>  
 </ContentPage>

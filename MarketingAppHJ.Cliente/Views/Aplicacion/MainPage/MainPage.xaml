@@ -1,121 +1,145 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
-        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
-        xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.MainPageViewModel"  
-        x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.MainPage.MainPage"  
-        Title="Catálogo Básico">
-   <ContentPage.BindingContext>
-       <vm:MainPageViewModel />
-   </ContentPage.BindingContext>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+    xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.MainPageViewModel"  
+    x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.MainPage.MainPage"  
+    Title="Catálogo Básico">
 
-   <Grid RowDefinitions="Auto,Auto,*,Auto">
-       <!-- ── 1. AppBar ────────────────────────────────────────────────────────── -->
-       <Grid Grid.Row="0" HeightRequest="50" Padding="10" ColumnDefinitions="Auto,*,Auto">
-           <ImageButton
-       Source="avatar.png"
-       BackgroundColor="Transparent"
-       Clicked="OnAvatarClicked"/>
-           <ImageButton
-       Source="logo.png"
-       Grid.Column="1"
-       HorizontalOptions="Center"
-       BackgroundColor="Transparent"/>
-           <ImageButton
-       Source="settings.png"
-       Grid.Column="2"
-       BackgroundColor="Transparent"
-       Clicked="OnSettingsClicked"/>
-       </Grid>
+    <!-- Alias de la fuente de Material Icons -->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <FileImageSource x:Key="Icons" File="Fonts/MaterialIcons-Regular.ttf#Material Icons"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
-       <!-- ── 2. SearchBar ─────────────────────────────────────────────────────── -->
-       <Border
-     Grid.Row="1"
-     Margin="20,10"
-     StrokeShape="RoundRectangle 25"
-     Padding="0"
-     BackgroundColor="White">
-           <Grid ColumnDefinitions="Auto,*">
-               <Image
-         Source="icon_search.png"
-         WidthRequest="20"
-         HeightRequest="20"
-         Margin="10"
-         VerticalOptions="Center"/>
-               <Entry
-         Placeholder="Busca lo que necesites"
-         Grid.Column="1"
-         Margin="0,0,10,0"
-         BackgroundColor="Transparent"
-         VerticalOptions="Center"/>
-           </Grid>
-       </Border>
+    <!-- ViewModel -->
+    <ContentPage.BindingContext>
+        <vm:MainPageViewModel />
+    </ContentPage.BindingContext>
 
-       <!-- ── 3. Lista de Productos ───────────────────────────────────────────── -->
-       <CollectionView
-     Grid.Row="2"
-     x:Name="ProductosCollectionView"
-     ItemsSource="{Binding Productos}"
-     Margin="20,0"
-     SelectionMode="None">
-           <CollectionView.ItemTemplate>
-               <DataTemplate>
-                   <Border
-           BackgroundColor="#8C8CEB"
-           StrokeShape="RoundRectangle 10"
-           Padding="10"
-           Margin="0,0,0,10">
-                       <Border.GestureRecognizers>
-                           <TapGestureRecognizer
-               Tapped="OnItemTapped"
-               NumberOfTapsRequired="1"/>
-                       </Border.GestureRecognizers>
+    <Grid RowDefinitions="Auto,Auto,Auto,*,Auto" BackgroundColor="#757DF2">
 
-                       <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto">
-                           <Image
-               Source="{Binding ImagenUrl}"
-               WidthRequest="60"
-               HeightRequest="60"
-               Aspect="AspectFill"/>
-                           <StackLayout
-               Grid.Column="1"
-               Spacing="2"
-               Padding="10,0">
-                               <Label
-                 Text="{Binding Nombre}"
-                 TextColor="White"
-                 FontAttributes="Bold"
-                 FontSize="16"/>
-                               <Label
-                 Text="{Binding Descripcion}"
-                 TextColor="#E0E0E0"
-                 FontSize="12"
-                 LineBreakMode="TailTruncation"/>
-                           </StackLayout>
-                           <Label
-               Grid.Column="2"
-               Text="{Binding Precio, StringFormat='{0:C}'}"
-               TextColor="White"
-               VerticalOptions="Center"
-               FontAttributes="Bold"/>
-                       </Grid>
-                   </Border>
-               </DataTemplate>
-           </CollectionView.ItemTemplate>
-       </CollectionView>
+        <!--Cabezera-->
+        <Grid Grid.Row="0"
+          HeightRequest="50"
+          Padding="10"
+          ColumnDefinitions="Auto,*,Auto">
 
-       <!-- ── 4. Bottom Sheet “Carrito” ───────────────────────────────────────── -->
-       <Border
-     Grid.Row="3"
-     StrokeShape="RoundRectangle 20,20,0,0"
-     BackgroundColor="White"
-     Padding="10,0">
-           <Button
-       Text="Despliega tu carrito"
-       ImageSource="icon_cart.png"
-       ContentLayout="Left,10"
-       BackgroundColor="Transparent"
-       TextColor="#757DF2"
-       Clicked="OnCartClicked"/>
-       </Border>
-   </Grid>
+            <!-- Avatar -->
+            <ImageButton Background="Transparent"
+                         Clicked="OnAvatarClicked">
+                <ImageButton.Source>
+                    <FontImageSource Glyph="&#xE853;"
+                                     FontFamily="{StaticResource Icons}"
+                                     Size="24"
+                                     Color="Black"/>
+                </ImageButton.Source>
+            </ImageButton>
+
+            <!-- Logo  -->
+            <Label Grid.Column="1"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   FontFamily="{StaticResource Icons}"
+                   FontSize="24"
+                   Text="&#xE88A;"/>
+
+            <!-- Settings -->
+            <ImageButton Grid.Column="2"
+                   BackgroundColor="Transparent"
+                   Clicked="OnSettingsClicked">
+                <ImageButton.Source>
+                    <FontImageSource Glyph="&#xE8B8;"
+                                     FontFamily="{StaticResource Icons}"
+                                     Size="24"
+                                     Color="Black"/>
+                </ImageButton.Source>
+            </ImageButton>
+        </Grid>
+
+        <!-- Búsqueda-->
+        <Border Grid.Row="1"
+                Margin="20,10"
+                StrokeShape="RoundRectangle 25"
+                BackgroundColor="White"
+                StrokeThickness="0">
+            <Grid ColumnDefinitions="Auto,*">
+                <Label Text="&#xE8B6;" 
+                           FontFamily="{StaticResource Icons}"
+                           FontSize="20"
+                           VerticalOptions="Center"
+                           Margin="10"/>
+                <Entry Grid.Column="1"
+                           Placeholder="Busca lo que necesites"
+                           Margin="0,0,10,0"
+                           BackgroundColor="Transparent"
+                           VerticalOptions="Center"/>
+            </Grid>
+        </Border>
+
+        <!-- Vista Prouctos-->
+        <CollectionView Grid.Row="3"
+                        x:Name="ProductosCollectionView"
+                        ItemsSource="{Binding Productos}"
+                        Margin="20,0"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border BackgroundColor="#8C8CEB"
+                            StrokeShape="RoundRectangle 10"
+                            StrokeThickness="0"
+                            Padding="10"
+                            Margin="0,0,0,10">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="OnItemTapped"
+                                NumberOfTapsRequired="1"/>
+                        </Border.GestureRecognizers>
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+                            <Image Source="{Binding ImagenUrl}"
+                                   WidthRequest="50"
+                                   HeightRequest="50"
+                                   Aspect="AspectFill"/>
+                            <StackLayout Grid.Column="1"
+                                         Spacing="2"
+                                         Padding="10,0">
+                                <Label Text="{Binding Nombre}"
+                                       TextColor="White"
+                                       FontAttributes="Bold"
+                                       FontSize="16"/>
+                                <Label Text="{Binding Descripcion}"
+                                       TextColor="#E0E0E0"
+                                       FontSize="12"
+                                       LineBreakMode="TailTruncation"/>
+                            </StackLayout>
+                            <Label Grid.Column="2"
+                                   Text="{Binding Precio, StringFormat='{0:C}'}"
+                                   TextColor="White"
+                                   VerticalOptions="Center"
+                                   FontAttributes="Bold"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- 5. Bottom Sheet “Carrito” (fila 4) -->
+        <Border Grid.Row="4"
+            StrokeShape="RoundRectangle 20,20,0,0"
+            BackgroundColor="White"
+            Padding="10,0">
+                <Button BackgroundColor="Transparent"
+                        TextColor="#757DF2"
+                        Clicked="OnCartClicked">
+                <Button.ImageSource>
+                    <FontImageSource Glyph="&#xE8CC;"
+                                         FontFamily="{StaticResource Icons}"
+                                         Size="24"
+                                         Color="#757DF2"/>
+                </Button.ImageSource>
+            </Button>
+        </Border>
+
+    </Grid>
 </ContentPage>
