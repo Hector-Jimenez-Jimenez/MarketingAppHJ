@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+        xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.MainPageViewModel"  
+        x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.MainPage.MainPage"  
+        Title="Catálogo Básico">
+   <ContentPage.BindingContext>
+       <vm:MainPageViewModel />
+   </ContentPage.BindingContext>
+
+   <Grid RowDefinitions="Auto,Auto,*,Auto">
+       <!-- ── 1. AppBar ────────────────────────────────────────────────────────── -->
+       <Grid Grid.Row="0" HeightRequest="50" Padding="10" ColumnDefinitions="Auto,*,Auto">
+           <ImageButton
+       Source="avatar.png"
+       BackgroundColor="Transparent"
+       Clicked="OnAvatarClicked"/>
+           <ImageButton
+       Source="logo.png"
+       Grid.Column="1"
+       HorizontalOptions="Center"
+       BackgroundColor="Transparent"/>
+           <ImageButton
+       Source="settings.png"
+       Grid.Column="2"
+       BackgroundColor="Transparent"
+       Clicked="OnSettingsClicked"/>
+       </Grid>
+
+       <!-- ── 2. SearchBar ─────────────────────────────────────────────────────── -->
+       <Border
+     Grid.Row="1"
+     Margin="20,10"
+     StrokeShape="RoundRectangle 25"
+     Padding="0"
+     BackgroundColor="White">
+           <Grid ColumnDefinitions="Auto,*">
+               <Image
+         Source="icon_search.png"
+         WidthRequest="20"
+         HeightRequest="20"
+         Margin="10"
+         VerticalOptions="Center"/>
+               <Entry
+         Placeholder="Busca lo que necesites"
+         Grid.Column="1"
+         Margin="0,0,10,0"
+         BackgroundColor="Transparent"
+         VerticalOptions="Center"/>
+           </Grid>
+       </Border>
+
+       <!-- ── 3. Lista de Productos ───────────────────────────────────────────── -->
+       <CollectionView
+     Grid.Row="2"
+     x:Name="ProductosCollectionView"
+     ItemsSource="{Binding Productos}"
+     Margin="20,0"
+     SelectionMode="None">
+           <CollectionView.ItemTemplate>
+               <DataTemplate>
+                   <Border
+           BackgroundColor="#8C8CEB"
+           StrokeShape="RoundRectangle 10"
+           Padding="10"
+           Margin="0,0,0,10">
+                       <Border.GestureRecognizers>
+                           <TapGestureRecognizer
+               Tapped="OnItemTapped"
+               NumberOfTapsRequired="1"/>
+                       </Border.GestureRecognizers>
+
+                       <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto">
+                           <Image
+               Source="{Binding ImagenUrl}"
+               WidthRequest="60"
+               HeightRequest="60"
+               Aspect="AspectFill"/>
+                           <StackLayout
+               Grid.Column="1"
+               Spacing="2"
+               Padding="10,0">
+                               <Label
+                 Text="{Binding Nombre}"
+                 TextColor="White"
+                 FontAttributes="Bold"
+                 FontSize="16"/>
+                               <Label
+                 Text="{Binding Descripcion}"
+                 TextColor="#E0E0E0"
+                 FontSize="12"
+                 LineBreakMode="TailTruncation"/>
+                           </StackLayout>
+                           <Label
+               Grid.Column="2"
+               Text="{Binding Precio, StringFormat='{0:C}'}"
+               TextColor="White"
+               VerticalOptions="Center"
+               FontAttributes="Bold"/>
+                       </Grid>
+                   </Border>
+               </DataTemplate>
+           </CollectionView.ItemTemplate>
+       </CollectionView>
+
+       <!-- ── 4. Bottom Sheet “Carrito” ───────────────────────────────────────── -->
+       <Border
+     Grid.Row="3"
+     StrokeShape="RoundRectangle 20,20,0,0"
+     BackgroundColor="White"
+     Padding="10,0">
+           <Button
+       Text="Despliega tu carrito"
+       ImageSource="icon_cart.png"
+       ContentLayout="Left,10"
+       BackgroundColor="Transparent"
+       TextColor="#757DF2"
+       Clicked="OnCartClicked"/>
+       </Border>
+   </Grid>
+</ContentPage>

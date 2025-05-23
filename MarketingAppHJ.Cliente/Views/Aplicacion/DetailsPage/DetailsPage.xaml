@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.DetailsPage.DetailsPage"
+             xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel"
+             Title="DetailsPage">
+    <ContentPage.BindingContext>
+        <vm:DetallesProductoPageViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
+            <Label Text="{Binding Producto.Nombre, TargetNullValue='Cargando…'}" 
+             FontSize="24" FontAttributes="Bold"/>
+            <Image Source="{Binding Producto.ImagenUrl}" 
+             HeightRequest="250" Aspect="AspectFill"/>
+            <Label Text="{Binding Producto.Descripcion, TargetNullValue=''}"/>
+            <Label Text="{Binding Producto.Precio, StringFormat='Precio: {0:C}'}"/>
+            <Button Text="Añadir al carrito" 
+              Command="{Binding AddToCartCommand}"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
