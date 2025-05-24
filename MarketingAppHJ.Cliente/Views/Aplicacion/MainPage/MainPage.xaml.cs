@@ -1,58 +1,78 @@
+using System;
 using MarketingAppHJ.Aplicacion.Dtos;
 using MarketingAppHJ.Cliente.ViewModels.MainPageViewModel;
+using Microsoft.Maui.Controls;
 
 namespace MarketingAppHJ.Cliente.Views.Aplicacion.MainPage
 {
     /// <summary>
-    /// Representa la página de catálogo en la aplicación.
+    /// Representa la página de catálogo con paginación infinita
+    /// y un botón para desplegar el carrito.
     /// </summary>
     public partial class MainPage : ContentPage
     {
         readonly MainPageViewModel _viewModel;
+
         public MainPage()
         {
             InitializeComponent();
-            _viewModel = IPlatformApplication.Current?.Services?.GetService<MainPageViewModel>();
-            if (_viewModel == null)
-            {
-                throw new InvalidOperationException("No se pudo obtener el servicio MainPageViewModel.");
-            }
+
+            _viewModel = IPlatformApplication.Current
+                            .Services
+                            .GetService<MainPageViewModel>()
+                        ?? throw new InvalidOperationException("MainPageViewModel no disponible.");
+
             BindingContext = _viewModel;
         }
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-            (_viewModel as IDisposable)?.Dispose();
-        }
+
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            // Solución para CS8602: Verificar que _viewModel no sea nulo antes de usarlo
-            if (_viewModel != null)
-            {
-                await _viewModel.CargarProductosAsync();
-            }
+            // Carga inicial: página 1
+            _viewModel.LoadNextPage();
         }
+
+        /// <summary>
+        /// Se dispara cuando quedan 2 ítems por visualizar,
+        /// para cargar la siguiente página.
+        /// </summary>
+        private void OnRemainingItemsThresholdReached(object sender, EventArgs e)
+            => _viewModel.LoadNextPage();
+
+        /// <summary>
+        /// Navega a la página de detalle del producto seleccionado.
+        /// </summary>
         private async void OnItemTapped(object sender, EventArgs e)
         {
-            if (sender is Border border
-                && border.BindingContext is ProductoDto prod)
+            if ((sender as Border)?.BindingContext is ProductoDto prod)
             {
-                Console.WriteLine($"[CATALOGO] Frame tapped: {prod.Id}");
                 await Shell.Current.GoToAsync($"///detalles?productoId={prod.Id}");
             }
         }
+
+        /// <summary>
+        /// Handler del botón “Despliega tu carrito”
+        /// (aún implementa la navegación a la página de carrito).
+        /// </summary>
+        private async void OnCartClicked(object sender, EventArgs e)
+        {
+            // Por ejemplo, si tu ruta de carrito es “carrito”:
+            await Shell.Current.GoToAsync("///carrito");
+        }
+
         void OnAvatarClicked(object sender, EventArgs e)
         {
-            // Navegar o abrir menú perfil
+            // Navegar a perfil...
         }
+
+        void OnLogoClicked(object sender, EventArgs e)
+        {
+            // Ir al home...
+        }
+
         void OnSettingsClicked(object sender, EventArgs e)
         {
-            // Navegar a ajustes
-        }
-        private void OnCartClicked(object sender, EventArgs e)
-        {
-            // Mostrar/ocultar carrito
+            // Ir a ajustes...
         }
     }
 }

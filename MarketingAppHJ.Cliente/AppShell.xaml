@@ -4,17 +4,12 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:main="clr-namespace:MarketingAppHJ.Cliente.Views.Aplicacion.MainPage"
-    xmlns:details="clr-namespace:MarketingAppHJ.Cliente.Views.Aplicacion.DetailsPage"
-    Shell.FlyoutBehavior="Flyout"
+    Shell.FlyoutBehavior="Disabled"
     Title="MarketingAppHJ.Cliente">
-
-    <ShellContent
-        Title="Catalogo"
-        ContentTemplate="{DataTemplate main:MainPage}"
-        Route="Catalogo" />
-    <ShellContent 
-        Title="Detalle"
-        Route="detalles"
-        ContentTemplate="{DataTemplate details:DetailsPage}" />
-
+    
+    <TabBar>
+        <Tab Icon="dotnet_bot.png">
+            <ShellContent Route="Catalogo" ContentTemplate="{DataTemplate main:MainPage}" />
+        </Tab>
+    </TabBar>
 </Shell>
