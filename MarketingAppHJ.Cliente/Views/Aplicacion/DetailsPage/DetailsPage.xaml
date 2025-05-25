@@ -2,45 +2,116 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
            x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.DetailsPage.DetailsPage"  
-           xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel"  
-           Title="DetailsPage">  
-  <ContentPage.BindingContext>  
-      <vm:DetallesProductoPageViewModel />  
-  </ContentPage.BindingContext>  
+           xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel">
+    <ContentPage.BindingContext>
+        <vm:DetallesProductoPageViewModel />
+    </ContentPage.BindingContext>
 
-  <Grid RowDefinitions="Auto,*,Auto">  
-      <!-- AppBar (mismo que en catálogo) -->  
-      <Grid Grid.Row="0" HeightRequest="50" Padding="10" ColumnDefinitions="Auto,*,Auto">  
-          <ImageButton Source="avatar.png" BackgroundColor="Transparent"/>  
-          <ImageButton Source="logo.png" Grid.Column="1" HorizontalOptions="Center" BackgroundColor="Transparent"/>  
-          <ImageButton Source="settings.png" Grid.Column="2" BackgroundColor="Transparent"/>  
-      </Grid>  
+    <ScrollView>
+        <VerticalStackLayout Spacing="0">
 
-      <!-- Contenido del detalle -->  
-      <ScrollView Grid.Row="1" Padding="20">  
-          <Border BackgroundColor="#8C8CEB" StrokeThickness="0" StrokeShape="RoundRectangle 10">  
-              <StackLayout Spacing="15" Padding="20">  
-                  <Image Source="{Binding Producto.ImagenUrl}" HeightRequest="200" Aspect="AspectFill"/>  
-                  <Label Text="{Binding Producto.Nombre}" TextColor="White" FontSize="24" FontAttributes="Bold"/>  
-                  <Label Text="{Binding Producto.Descripcion}" TextColor="#E0E0E0" FontSize="14"/>  
-                  <Label Text="{Binding Producto.Precio, StringFormat='Precio: {0:C}'}" TextColor="White" FontSize="20" FontAttributes="Bold"/>  
-                  <Button Text="Añadir al carrito"  
-                          Command="{Binding AddToCartAsyncCommand}"  
-                          BackgroundColor="White"  
-                          TextColor="#757DF2"  
-                          CornerRadius="20"  
-                          HeightRequest="40"/>  
-              </StackLayout>  
-          </Border>  
-      </ScrollView>  
+            <!-- 1 Banner con imagen completa y título -->
+            <Grid HeightRequest="300">
+                <Image Source="{Binding ImagenUrl}"
+                       Aspect="AspectFit"
+                       HorizontalOptions="Fill"
+                       VerticalOptions="Fill" />
 
-      <!-- Bottom Sheet para ir al carrito -->  
-      <Border Grid.Row="2" BackgroundColor="White" Padding="10,0" StrokeShape="RoundRectangle 20,20,0,0" StrokeThickness="0">  
-          <Button Text="Ver carrito"  
-                  ImageSource="icon_cart.png"  
-                  ContentLayout="Left,10"  
-                  BackgroundColor="Transparent"  
-                  TextColor="#757DF2"/>  
-      </Border>  
-  </Grid>  
+                <!-- Título sobre la imagen, con fondo semitransparente solo detrás del texto -->
+                <Label Text="{Binding Nombre}"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalOptions="Center"
+                       VerticalOptions="End"
+                       Margin="20"
+                       BackgroundColor="Black"
+                       Opacity="0.6"
+                       Padding="10,5"/>
+            </Grid>
+
+            <!-- 2 Contenedor de detalles -->
+            <VerticalStackLayout Padding="20" Spacing="18" BackgroundColor="AliceBlue">
+
+                <!-- 2.1 Precio y categoría -->
+                <HorizontalStackLayout Spacing="12">
+                    <Label Text="{Binding Precio, StringFormat='{}{0:C}'}"
+                           FontSize="28"
+                           FontAttributes="Bold"/>
+                    <Label Text="{Binding Categoria}"
+                           FontSize="16"
+                           VerticalOptions="Center"
+                           TextColor="Gray"/>
+                </HorizontalStackLayout>
+
+                <!-- 2.2 Estado de stock -->
+                <Label x:Name="StockLabel"
+                       Text="{Binding Stock, StringFormat='Stock disponible: {0}'}"
+                       FontSize="16">
+                    <Label.Triggers>
+                        <DataTrigger TargetType="Label"
+                                     Binding="{Binding Stock}"
+                                     Value="0">
+                            <Setter Property="Text" 
+                                    Value="Agotado"/>
+                            <Setter Property="TextColor" 
+                                    Value="Red"/>
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+
+                <!-- 2.3 Descripción -->
+                <Label Text="Descripción"
+                       FontSize="20"
+                       FontAttributes="Bold"/>
+                <Label Text="{Binding Descripcion}"
+                       FontSize="16"
+                       LineBreakMode="WordWrap"/>
+
+                <!-- 2.4 Selector de cantidad -->
+                <HorizontalStackLayout Spacing="20"
+                                       Padding="0,10"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center">
+                    <Button Text="−"
+                            Command="{Binding DecrementarCommand}"
+                            FontSize="24"
+                            WidthRequest="48"
+                            HeightRequest="48"
+                            CornerRadius="24"
+                            BackgroundColor="#E0E0E0"
+                            TextColor="#333333"/>
+                    <Label Text="{Binding Cantidad}"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+
+                    <Button Text="+"
+                            Command="{Binding IncrementarCommand}"
+                            FontSize="24"
+                            WidthRequest="48"
+                            HeightRequest="48"
+                            CornerRadius="24"
+                            BackgroundColor="#E0E0E0"
+                            TextColor="#333333"/>
+                </HorizontalStackLayout>
+
+                <!-- 3) Botones de acción -->
+                <Button Text="Añadir al carrito"
+                        Command="{Binding AgregarAlCarritoCommand}"
+                        CornerRadius="25"
+                        HeightRequest="50"
+                        BackgroundColor="#757DF2"
+                        TextColor="White"/>
+
+                <Button Text="Comprar ahora"
+                        Command="{Binding ComprarAhoraCommand}"
+                        CornerRadius="25"
+                        HeightRequest="50"
+                        BackgroundColor="#FF4081"
+                        TextColor="White"/>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

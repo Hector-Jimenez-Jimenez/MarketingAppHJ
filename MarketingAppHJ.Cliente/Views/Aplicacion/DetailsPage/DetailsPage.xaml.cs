@@ -7,27 +7,22 @@ namespace MarketingAppHJ.Cliente.Views.Aplicacion.DetailsPage;
 /// Represents the details page in the application.
 /// </summary>
 /// 
-public partial class DetailsPage : ContentPage,IQueryAttributable
+[QueryProperty(nameof(ProductoId), "productoId")]
+public partial class DetailsPage : ContentPage
 {
-    private readonly DetallesProductoPageViewModel _vm;
-
-    public DetailsPage()
+    public string ProductoId
     {
-        InitializeComponent();
-        _vm = IPlatformApplication
-              .Current
-              .Services
-              .GetRequiredService<DetallesProductoPageViewModel>();
-        BindingContext = _vm;
-    }
-
-    public void ApplyQueryAttributes(IDictionary<string, object> query)
-    {
-        if (query.TryGetValue("productoId", out var idObj)
-            && idObj is string id)
+        set
         {
-            Console.WriteLine($"[DETAIL PAGE] productoId = {id}");
-            _ = _vm.LoadProductAsync(id);
+            if (BindingContext is DetallesProductoPageViewModel vm)
+                vm.LoadProductById(value);
         }
     }
+
+    public DetailsPage(DetallesProductoPageViewModel viewModel)
+    {
+        InitializeComponent();
+        BindingContext = viewModel;
+    }
 }
+

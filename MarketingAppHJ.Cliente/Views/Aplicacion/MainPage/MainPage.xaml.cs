@@ -46,7 +46,7 @@ namespace MarketingAppHJ.Cliente.Views.Aplicacion.MainPage
         {
             if ((sender as Border)?.BindingContext is ProductoDto prod)
             {
-                await Shell.Current.GoToAsync($"///detalles?productoId={prod.Id}");
+                await Shell.Current.GoToAsync($"detalles?productoId={prod.Id}");
             }
         }
 
