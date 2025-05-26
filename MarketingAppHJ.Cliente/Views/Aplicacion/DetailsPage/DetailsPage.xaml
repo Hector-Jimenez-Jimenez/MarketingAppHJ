@@ -31,17 +31,17 @@
             </Grid>
 
             <!-- 2 Contenedor de detalles -->
-            <VerticalStackLayout Padding="20" Spacing="18" BackgroundColor="AliceBlue">
+            <VerticalStackLayout Padding="20" Spacing="18" BackgroundColor="{StaticResource Primary}">
 
                 <!-- 2.1 Precio y categoría -->
                 <HorizontalStackLayout Spacing="12">
                     <Label Text="{Binding Precio, StringFormat='{}{0:C}'}"
                            FontSize="28"
                            FontAttributes="Bold"/>
-                    <Label Text="{Binding Categoria}"
+                    <Label Text="{Binding NombreCategoria}"
                            FontSize="16"
                            VerticalOptions="Center"
-                           TextColor="Gray"/>
+                           TextColor="{StaticResource Quintiary}"/>
                 </HorizontalStackLayout>
 
                 <!-- 2.2 Estado de stock -->
@@ -55,7 +55,7 @@
                             <Setter Property="Text" 
                                     Value="Agotado"/>
                             <Setter Property="TextColor" 
-                                    Value="Red"/>
+                                    Value="{StaticResource Forninary}"/>
                         </DataTrigger>
                     </Label.Triggers>
                 </Label>
@@ -79,8 +79,8 @@
                             WidthRequest="48"
                             HeightRequest="48"
                             CornerRadius="24"
-                            BackgroundColor="#E0E0E0"
-                            TextColor="#333333"/>
+                            BackgroundColor="{StaticResource Primary}"
+                            TextColor="{StaticResource Secondary}"/>
                     <Label Text="{Binding Cantidad}"
                            FontSize="20"
                            FontAttributes="Bold"
@@ -93,8 +93,8 @@
                             WidthRequest="48"
                             HeightRequest="48"
                             CornerRadius="24"
-                            BackgroundColor="#E0E0E0"
-                            TextColor="#333333"/>
+                            BackgroundColor="{StaticResource Primary}"
+                            TextColor="{StaticResource Secondary}"/>
                 </HorizontalStackLayout>
 
                 <!-- 3) Botones de acción -->
@@ -102,14 +102,14 @@
                         Command="{Binding AgregarAlCarritoCommand}"
                         CornerRadius="25"
                         HeightRequest="50"
-                        BackgroundColor="#757DF2"
+                        BackgroundColor="{StaticResource Tertiary}"
                         TextColor="White"/>
 
                 <Button Text="Comprar ahora"
                         Command="{Binding ComprarAhoraCommand}"
                         CornerRadius="25"
                         HeightRequest="50"
-                        BackgroundColor="#FF4081"
+                        BackgroundColor="{StaticResource Forninary}"
                         TextColor="White"/>
             </VerticalStackLayout>
         </VerticalStackLayout>

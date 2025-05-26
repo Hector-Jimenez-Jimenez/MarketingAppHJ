@@ -9,7 +9,7 @@ namespace MarketingAppHJ.Aplicacion.Dtos
     /// <summary>
     /// Representa un item dentro del carrito de compras.
     /// </summary>
-    public class CarritoItemDto
+    public partial class CarritoItemDto
     {
         /// <summary>
         /// Identificador único del producto.

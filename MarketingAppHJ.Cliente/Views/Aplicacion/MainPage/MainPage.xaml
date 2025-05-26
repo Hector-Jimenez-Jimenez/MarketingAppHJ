@@ -102,8 +102,8 @@
                 StrokeThickness="1"
                 BackgroundColor="White"
                 Padding="10,0">
-            <Button Text="Despliega tu carrito"
-                    ImageSource="icon_cart.png"
+            <Button Text="Accede a tu carrito"
+                    ImageSource="carritocompra.png"
                     ContentLayout="Left,10"
                     BackgroundColor="Transparent"
                     TextColor="#757DF2"

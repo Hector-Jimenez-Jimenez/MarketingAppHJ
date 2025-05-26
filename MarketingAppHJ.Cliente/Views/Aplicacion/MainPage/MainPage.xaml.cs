@@ -57,7 +57,7 @@ namespace MarketingAppHJ.Cliente.Views.Aplicacion.MainPage
         private async void OnCartClicked(object sender, EventArgs e)
         {
             // Por ejemplo, si tu ruta de carrito es “carrito”:
-            await Shell.Current.GoToAsync("///carrito");
+            await Shell.Current.GoToAsync("carrito");
         }
 
         void OnAvatarClicked(object sender, EventArgs e)

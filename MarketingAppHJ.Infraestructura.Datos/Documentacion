@@ -4,18 +4,18 @@
         <name>MarketingAppHJ.Infraestructura.Datos</name>
     </assembly>
     <members>
-        <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.AgregarProductoAlCarrito.AgregarProdcutoAlCarrito">
+        <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.AgregarProductoAlCarrito.AgregarProdcutoAlCarrito">
             <summary>
             Clase que implementa la funcionalidad para agregar productos al carrito de un usuario.
             </summary>
         </member>
-        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.AgregarProductoAlCarrito.AgregarProdcutoAlCarrito.#ctor(Firebase.Database.FirebaseClient)">
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.AgregarProductoAlCarrito.AgregarProdcutoAlCarrito.#ctor(Firebase.Database.FirebaseClient)">
             <summary>
-            Constructor de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.AgregarProductoAlCarrito.AgregarProdcutoAlCarrito"/>.
+            Constructor de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.AgregarProductoAlCarrito.AgregarProdcutoAlCarrito"/>.
             </summary>
             <param name="firebaseClient">Instancia de <see cref="T:Firebase.Database.FirebaseClient"/> para interactuar con la base de datos Firebase.</param>
         </member>
-        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.AgregarProductoAlCarrito.AgregarProdcutoAlCarrito.AgregarAlCarritoAsync(System.String,MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto)">
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.AgregarProductoAlCarrito.AgregarProdcutoAlCarrito.AgregarAlCarritoAsync(System.String,MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto)">
             <summary>
             Agrega un producto al carrito de un usuario y devuelve la lista actualizada de productos en el carrito.
             </summary>
@@ -23,25 +23,62 @@
             <param name="item">El producto a agregar al carrito.</param>
             <returns>Una tarea que representa la operación asincrónica. El resultado contiene la lista de productos en el carrito.</returns>
         </member>
-        <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.ObtenerProductoPorId.ObtenerProductoPorId">
+        <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ObtenerProductosCarrito.ObtenerProductosCarrito">
+            <summary>
+            Clase que implementa la interfaz IObtenerCarrito para obtener los productos del carrito desde Firebase.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ObtenerProductosCarrito.ObtenerProductosCarrito.#ctor(Firebase.Database.FirebaseClient)">
+            <summary>
+            Constructor de la clase ObtenerProductosCarrito.
+            </summary>
+            <param name="firebaseClient">Instancia de FirebaseClient para interactuar con la base de datos.</param>
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ObtenerProductosCarrito.ObtenerProductosCarrito.ObtenerCarritoAsync(System.String)">
+            <summary>
+            Obtiene los productos del carrito para un usuario específico.
+            </summary>
+            <param name="id">El identificador del carrito.</param>
+            <returns>Una lista de objetos CarritoItemDto que representan los productos en el carrito.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerNombreCategoria.ObtenerNombreCategoria">
+            <summary>
+            Clase que implementa la interfaz para obtener el nombre de una categoría desde Firebase.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerNombreCategoria.ObtenerNombreCategoria.#ctor(Firebase.Database.FirebaseClient)">
+            <summary>
+            Constructor de la clase ObtenerNombreCategoria.
+            </summary>
+            <param name="firebaseClient">Instancia de FirebaseClient utilizada para interactuar con la base de datos.</param>
+            <exception cref="T:System.ArgumentNullException">Se lanza si firebaseClient es nulo.</exception>
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerNombreCategoria.ObtenerNombreCategoria.ObtenerCategoria(System.String)">
+            <summary>
+            Obtiene los datos de una categoría específica desde Firebase.
+            </summary>
+            <param name="IdCategoria">El identificador único de la categoría.</param>
+            <returns>Un objeto <see cref="T:MarketingAppHJ.Aplicacion.Dtos.CategoriaDto"/> que contiene los datos de la categoría.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductoPorId.ObtenerProductoPorId">
             <summary>
             Caso de uso para obtener un producto por su identificador.
             </summary>
         </member>
-        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.ObtenerProductoPorId.ObtenerProductoPorId.#ctor(Firebase.Database.FirebaseClient)">
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductoPorId.ObtenerProductoPorId.#ctor(Firebase.Database.FirebaseClient)">
             <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.ObtenerProductoPorId.ObtenerProductoPorId"/>.
+            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductoPorId.ObtenerProductoPorId"/>.
             </summary>
             <param name="firebase">El cliente de Firebase utilizado para acceder a los datos.</param>
         </member>
-        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.ObtenerProductoPorId.ObtenerProductoPorId.ObtenerProductoPorIdAsync(System.String)">
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductoPorId.ObtenerProductoPorId.ObtenerProductoPorIdAsync(System.String)">
             <summary>
             Obtiene un producto por su identificador de forma asíncrona.
             </summary>
             <param name="id">El identificador del producto.</param>
             <returns>Una tarea que representa la operación asíncrona. El resultado contiene el producto.</returns>
         </member>
-        <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.ObtenerProductos.ObtenerProductosCatalogo">
+        <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductos.ObtenerProductosCatalogo">
             <summary>
             Repositorio para gestionar productos en Firebase.
             </summary>

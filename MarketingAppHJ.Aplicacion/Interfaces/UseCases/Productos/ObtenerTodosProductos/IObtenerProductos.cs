@@ -1,6 +1,6 @@
 ﻿using MarketingAppHJ.Aplicacion.Dtos;
 
-namespace MarketingAppHJ.Aplicacion.Interfaces.UseCases.ObtenerTodosProductos
+namespace MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerTodosProductos
 {
     /// <summary>
     /// Define un caso de uso para obtener una lista de productos.

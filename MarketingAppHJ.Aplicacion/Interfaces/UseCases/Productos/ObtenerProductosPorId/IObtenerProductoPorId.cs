@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MarketingAppHJ.Aplicacion.Dtos;
 
-namespace MarketingAppHJ.Aplicacion.Interfaces.UseCases.ObtenerProductosPorId
+namespace MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerProductosPorId
 {
     /// <summary>
     /// Define un caso de uso para obtener un producto por su identificador único.

@@ -1,8 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MarketingAppHJ.Aplicacion.Dtos;
-using MarketingAppHJ.Aplicacion.Interfaces.UseCases.AgregarProductoAlCarrito;
-using MarketingAppHJ.Aplicacion.Interfaces.UseCases.ObtenerProductosPorId;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.AgregarProductoAlCarrito;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerNombreCategoria;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerProductosPorId;
 using TheMarketingApp.Dominio.Entidades;
 
 namespace MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel
@@ -12,8 +13,9 @@ namespace MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel
     /// </summary>
     public partial class DetallesProductoPageViewModel : ObservableObject
     {
-        private readonly IObtenerProductoPorId _usecase;
+        private readonly IObtenerProductoPorId _usecaseObtenerProductoPorId;
         private readonly IAgregarProductoAlCarrito _usecaseAgregarProductoAlCarrito;
+        private readonly IObtenerNombreCategoria _usecaseObtenerNombreCategoria;
 
         [ObservableProperty] private string id;
         [ObservableProperty] private string nombre;
@@ -21,18 +23,20 @@ namespace MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel
         [ObservableProperty] private decimal precio;
         [ObservableProperty] private string imagenUrl;
         [ObservableProperty] private int stock;
-        [ObservableProperty] private string categoria;
+        [ObservableProperty] private string categoriaId;
+        [ObservableProperty] private string nombreCategoria;
         [ObservableProperty] private int cantidad = 1;
 
-        public DetallesProductoPageViewModel(IObtenerProductoPorId usecase, IAgregarProductoAlCarrito agregarProductoAlCarrito)
+        public DetallesProductoPageViewModel(IObtenerProductoPorId usecaseObtenerProductoPorId, IAgregarProductoAlCarrito agregarProductoAlCarrito, IObtenerNombreCategoria obtenerNombreCategoria)
         {
-            _usecase = usecase;
+            _usecaseObtenerProductoPorId = usecaseObtenerProductoPorId;
             _usecaseAgregarProductoAlCarrito = agregarProductoAlCarrito;
+            _usecaseObtenerNombreCategoria = obtenerNombreCategoria;
         }
         public DetallesProductoPageViewModel() { }
         public async void LoadProductById(string id)
         {
-            var dto = await _usecase.ObtenerProductoPorIdAsync(id);
+            var dto = await _usecaseObtenerProductoPorId.ObtenerProductoPorIdAsync(id);
             if (dto != null)
             {
                 Id = dto.Id;
@@ -41,8 +45,12 @@ namespace MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel
                 Precio = dto.Precio;
                 ImagenUrl = dto.ImagenUrl;
                 Stock = dto.Stock;
-                Categoria = dto.CategoriaId;
+                CategoriaId = dto.CategoriaId;
+
+                var categoriaDto = await _usecaseObtenerNombreCategoria.ObtenerCategoria(dto.CategoriaId);
+                NombreCategoria = categoriaDto.Nombre ?? "Sin categoria";
             }
+
         }
 
         [RelayCommand]

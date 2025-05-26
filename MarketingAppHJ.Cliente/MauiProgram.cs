@@ -1,16 +1,23 @@
-﻿using Firebase.Database;
+﻿using System.Globalization;
+using Firebase.Database;
 using MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication;
 using MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase;
-using MarketingAppHJ.Aplicacion.Interfaces.UseCases.AgregarProductoAlCarrito;
-using MarketingAppHJ.Aplicacion.Interfaces.UseCases.ObtenerProductosPorId;
-using MarketingAppHJ.Aplicacion.Interfaces.UseCases.ObtenerTodosProductos;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.AgregarProductoAlCarrito;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObtenerCarrito;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerNombreCategoria;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerProductosPorId;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerTodosProductos;
+using MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.MainPageViewModel;
+using MarketingAppHJ.Cliente.Views.Aplicacion.CarritoPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.DetailsPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.MainPage;
-using MarketingAppHJ.Infraestructura.Datos.Repositorios.AgregarProductoAlCarrito;
-using MarketingAppHJ.Infraestructura.Datos.Repositorios.ObtenerProductoPorId;
-using MarketingAppHJ.Infraestructura.Datos.Repositorios.ObtenerProductos;
+using MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.AgregarProductoAlCarrito;
+using MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ObtenerProductosCarrito;
+using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerNombreCategoria;
+using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductoPorId;
+using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductos;
 using MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication;
 using MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.RealtimeDatabase;
 using Microsoft.Extensions.Logging;
@@ -41,7 +48,8 @@ namespace MarketingAppHJ.Cliente
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("es-ES");
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("es-ES");
             return builder.Build();
         }
         public static void AddServices(this IServiceCollection services)
@@ -59,7 +67,8 @@ namespace MarketingAppHJ.Cliente
             services.AddScoped<IObtenerProductos, ObtenerProductosCatalogo>();
             services.AddScoped<IObtenerProductoPorId, ObtenerProductoPorId>();
             services.AddScoped<IAgregarProductoAlCarrito, AgregarProdcutoAlCarrito>();
-            // services.AddScoped<IObtenerCarritoUsuario, ObtenerCarritoUsuarioUseCase>();
+            services.AddScoped<IObtenerCarrito, ObtenerProductosCarrito>();
+            services.AddScoped<IObtenerNombreCategoria, ObtenerNombreCategoria>();
             // services.AddScoped<IRealizarPedido, RealizarPedidoUseCase>();
             // services.AddScoped<IRegistrarUsuario, RegistrarUsuarioUseCase>();
         }
@@ -71,7 +80,7 @@ namespace MarketingAppHJ.Cliente
         {
             services.AddTransient<MainPageViewModel>();
             services.AddTransient<DetallesProductoPageViewModel>();
-            // services.AddTransient<CarritoViewModel>();
+            services.AddTransient<CarritoPageViewModel>();
             // services.AddTransient<LoginViewModel>();
         }
 
@@ -82,7 +91,7 @@ namespace MarketingAppHJ.Cliente
         {
             services.AddSingleton<MainPage>();
             services.AddSingleton<DetailsPage>();
-            // services.AddSingleton<CarritoPage>();
+            services.AddSingleton<CarritoPage>();
             // services.AddSingleton<LoginPage>();
         }
     }

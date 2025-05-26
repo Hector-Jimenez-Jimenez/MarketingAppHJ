@@ -4,7 +4,7 @@ using CommunityToolkit.Mvvm.Input;
 using Firebase.Database.Streaming;
 using Firebase.Database;
 using MarketingAppHJ.Aplicacion.Dtos;
-using MarketingAppHJ.Aplicacion.Interfaces.UseCases.ObtenerTodosProductos;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerTodosProductos;
 
 namespace MarketingAppHJ.Cliente.ViewModels.MainPageViewModel
 {

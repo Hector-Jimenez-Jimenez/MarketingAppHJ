@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+            x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.CarritoPage.CarritoPage"  
+            xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel"  
+            Title="CarritoPage">  
+   <ContentPage.BindingContext>  
+       <vm:CarritoPageViewModel />  
+   </ContentPage.BindingContext>  
+
+   <Grid RowDefinitions="Auto,*,Auto" Padding="20">  
+
+       <!-- 1) Encabezado -->  
+       <Label  
+     Text="Tu Carrito"  
+     FontSize="24"  
+     FontAttributes="Bold"  
+     HorizontalOptions="Center" />  
+
+       <!-- 2) Lista de items -->  
+       <CollectionView Grid.Row="1"  
+                       ItemsSource="{Binding Items}"  
+                       SelectionMode="None" 
+                       BackgroundColor="{StaticResource Primary}"
+                       Margin="0,10">  
+
+           <CollectionView.ItemTemplate>  
+               <DataTemplate>  
+                   <Grid ColumnDefinitions="Auto,*,Auto"   
+                         RowDefinitions="Auto,Auto"   
+                         Padding="10"   
+                         Margin="0,0,0,10">  
+
+                       <Image Source="{Binding ImagenUrl}"  
+                              Aspect="AspectFit"  
+                              WidthRequest="80"  
+                              HeightRequest="80"/>  
+
+                       <VerticalStackLayout Grid.Column="1"   
+                                            Spacing="4"   
+                                            Padding="10,0">  
+
+                           <Label Text="{Binding Nombre}"  
+                                  FontSize="18"  
+                                  FontAttributes="Bold"/>  
+
+                           <Label Text="{Binding Precio, StringFormat='{}{0:C}'}"  
+                                  TextColor="{StaticResource Quintiary}"  
+                                  FontSize="16"/>  
+
+                           <HorizontalStackLayout Spacing="8">  
+                               <Label Text="Cantidad:"   
+                                      VerticalOptions="Center"/>  
+
+                               <Label Text="{Binding Cantidad}"  
+                                      FontAttributes="Bold"  
+                                      VerticalOptions="Center"/>  
+
+                               <Button Text="X"  
+                                       Command="{Binding Source={RelativeSource AncestorType={x:Type vm:CarritoPageViewModel}}, Path=RemoveItemCommand}"  
+                                       CommandParameter="{Binding ProductoId}"  
+                                       BackgroundColor="Transparent"  
+                                       TextColor="{StaticResource Forninary}"  
+                                       FontSize="16"  
+                                       WidthRequest="32"  
+                                       HeightRequest="32"  
+                                       CornerRadius="16"/>  
+                           </HorizontalStackLayout>  
+                       </VerticalStackLayout>  
+
+                       <!-- Total de línea -->  
+                       <Label Grid.Column="2"  
+                              Grid.RowSpan="2"  
+                              Text="{Binding Total, StringFormat='{}{0:C}'}"  
+                              FontAttributes="Bold"  
+                              VerticalOptions="Center"/>  
+
+                   </Grid>  
+               </DataTemplate>  
+           </CollectionView.ItemTemplate>  
+       </CollectionView>  
+
+       <!-- 3) Pie con total y botones -->  
+       <VerticalStackLayout Grid.Row="2"   
+                            Spacing="12">  
+
+           <!-- Línea separadora -->  
+           <BoxView HeightRequest="1"   
+                    Color="{StaticResource Quintiary}"/>  
+
+           <!-- Total -->  
+           <Grid ColumnDefinitions="Auto,Auto"  
+                 HorizontalOptions="End">  
+               <Label Text="Total:"   
+                      FontSize="20"   
+                      FontAttributes="Bold"  
+                      Grid.Column="0"/>  
+
+               <Label Text="{Binding TotalPrice, StringFormat='{}{0:C}'}"  
+                      FontSize="20"  
+                      FontAttributes="Bold"  
+                      Grid.Column="1"/>  
+           </Grid>  
+
+           <!-- Botones de acción -->  
+           <Grid ColumnDefinitions="*,*"  
+                 ColumnSpacing="12">  
+               <Button Text="Vaciar carrito"  
+                       Command="{Binding ClearCartCommand}"  
+                       BackgroundColor="{StaticResource Secondary}"  
+                       TextColor="White"  
+                       CornerRadius="25"  
+                       HeightRequest="50"  
+                       Grid.Column="0"/>  
+
+               <Button  
+         Text="Pagar"  
+         Command="{Binding CheckoutCommand}"  
+         BackgroundColor="#FF4081"  
+         TextColor="White"  
+         CornerRadius="25"  
+         HeightRequest="50"  
+         Grid.Column="1"/>  
+           </Grid>  
+
+       </VerticalStackLayout>  
+   </Grid>  
+</ContentPage>

@@ -1,8 +1,8 @@
 ﻿using Firebase.Database;
 using MarketingAppHJ.Aplicacion.Dtos;
-using MarketingAppHJ.Aplicacion.Interfaces.UseCases.ObtenerProductosPorId;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerProductosPorId;
 
-namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.ObtenerProductoPorId
+namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductoPorId
 {
     /// <summary>
     /// Caso de uso para obtener un producto por su identificador.

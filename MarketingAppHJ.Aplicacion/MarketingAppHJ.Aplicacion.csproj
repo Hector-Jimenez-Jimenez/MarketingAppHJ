@@ -6,10 +6,6 @@
     <Nullable>enable</Nullable>
 	<DocumentationFile>Documentacion</DocumentationFile>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Dtos\" />
-  </ItemGroup>
 	
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />

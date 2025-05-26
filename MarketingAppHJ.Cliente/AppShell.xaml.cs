@@ -1,4 +1,5 @@
-﻿using MarketingAppHJ.Cliente.Views.Aplicacion.DetailsPage;
+﻿using MarketingAppHJ.Cliente.Views.Aplicacion.CarritoPage;
+using MarketingAppHJ.Cliente.Views.Aplicacion.DetailsPage;
 
 namespace MarketingAppHJ.Cliente
 {
@@ -8,6 +9,7 @@ namespace MarketingAppHJ.Cliente
         {
             InitializeComponent();
             Routing.RegisterRoute("detalles", typeof(DetailsPage));
+            Routing.RegisterRoute("carrito", typeof(CarritoPage));
         }
     }
 }

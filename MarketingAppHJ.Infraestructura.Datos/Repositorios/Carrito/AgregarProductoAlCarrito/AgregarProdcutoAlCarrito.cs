@@ -7,9 +7,9 @@ using Firebase.Auth;
 using Firebase.Database;
 using Firebase.Database.Query;
 using MarketingAppHJ.Aplicacion.Dtos;
-using MarketingAppHJ.Aplicacion.Interfaces.UseCases.AgregarProductoAlCarrito;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.AgregarProductoAlCarrito;
 
-namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.AgregarProductoAlCarrito
+namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.AgregarProductoAlCarrito
 {
     /// <summary>
     /// Clase que implementa la funcionalidad para agregar productos al carrito de un usuario.

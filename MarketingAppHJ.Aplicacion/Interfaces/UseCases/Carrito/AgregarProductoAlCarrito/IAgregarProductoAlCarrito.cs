@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MarketingAppHJ.Aplicacion.Dtos;
 
-namespace MarketingAppHJ.Aplicacion.Interfaces.UseCases.AgregarProductoAlCarrito
+namespace MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.AgregarProductoAlCarrito
 {
     /// <summary>
     /// Define un caso de uso para agregar un producto al carrito de compras de un usuario.
