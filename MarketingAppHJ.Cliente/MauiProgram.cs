@@ -1,12 +1,14 @@
 ﻿using Firebase.Database;
 using MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication;
 using MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.AgregarProductoAlCarrito;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.ObtenerProductosPorId;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.ObtenerTodosProductos;
 using MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.MainPageViewModel;
 using MarketingAppHJ.Cliente.Views.Aplicacion.DetailsPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.MainPage;
+using MarketingAppHJ.Infraestructura.Datos.Repositorios.AgregarProductoAlCarrito;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.ObtenerProductoPorId;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.ObtenerProductos;
 using MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication;
@@ -56,7 +58,7 @@ namespace MarketingAppHJ.Cliente
         {
             services.AddScoped<IObtenerProductos, ObtenerProductosCatalogo>();
             services.AddScoped<IObtenerProductoPorId, ObtenerProductoPorId>();
-            // services.AddScoped<IAgregarProductoAlCarrito, AgregarProductoAlCarritoUseCase>();
+            services.AddScoped<IAgregarProductoAlCarrito, AgregarProdcutoAlCarrito>();
             // services.AddScoped<IObtenerCarritoUsuario, ObtenerCarritoUsuarioUseCase>();
             // services.AddScoped<IRealizarPedido, RealizarPedidoUseCase>();
             // services.AddScoped<IRegistrarUsuario, RegistrarUsuarioUseCase>();

@@ -9,19 +9,34 @@
             Representa un item dentro del carrito de compras.
             </summary>
         </member>
-        <member name="P:MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto.Id_Carrito">
-            <summary>
-            Identificador único del item del carrito.
-            </summary>
-        </member>
         <member name="P:MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto.ProductoId">
             <summary>
             Identificador único del producto.
             </summary>
         </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto.Nombre">
+            <summary>
+            Nombre del producto.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto.ImagenUrl">
+            <summary>
+            URL de la imagen del producto.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto.Precio">
+            <summary>
+            Precio unitario del producto.
+            </summary>
+        </member>
         <member name="P:MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto.Cantidad">
             <summary>
             Cantidad del producto en el carrito.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto.Total">
+            <summary>
+            Total calculado como el precio unitario multiplicado por la cantidad.
             </summary>
         </member>
         <member name="T:MarketingAppHJ.Aplicacion.Dtos.ProductoDto">
@@ -111,14 +126,13 @@
             Define un caso de uso para agregar un producto al carrito de compras de un usuario.
             </summary>
         </member>
-        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.AgregarProductoAlCarrito.IAgregarProductoAlCarrito.AgregarAlCarritoAsync(System.String,System.String,System.Int32)">
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.AgregarProductoAlCarrito.IAgregarProductoAlCarrito.AgregarAlCarritoAsync(System.String,MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto)">
             <summary>
             Agrega un producto al carrito de compras de un usuario.
             </summary>
-            <param name="usuarioId">El identificador del usuario.</param>
-            <param name="productoId">El identificador del producto.</param>
-            <param name="cantidad">La cantidad del producto a agregar.</param>
-            <returns>Un objeto <see cref="T:MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto"/> que representa el producto agregado al carrito.</returns>
+            <param name="usuarioId">El identificador único del usuario.</param>
+            <param name="item">El producto que se desea agregar al carrito.</param>
+            <returns>Una lista de elementos actualizada en el carrito del usuario.</returns>
         </member>
         <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.ObtenerProductosPorId.IObtenerProductoPorId">
             <summary>

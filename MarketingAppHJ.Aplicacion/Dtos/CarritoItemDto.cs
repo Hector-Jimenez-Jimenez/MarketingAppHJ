@@ -12,18 +12,33 @@ namespace MarketingAppHJ.Aplicacion.Dtos
     public class CarritoItemDto
     {
         /// <summary>
-        /// Identificador único del item del carrito.
-        /// </summary>
-        public string Id_Carrito { get; set; } = string.Empty;
-
-        /// <summary>
         /// Identificador único del producto.
         /// </summary>
         public string ProductoId { get; set; } = string.Empty;
 
         /// <summary>
+        /// Nombre del producto.
+        /// </summary>
+        public string Nombre { get; set; } = string.Empty;
+
+        /// <summary>
+        /// URL de la imagen del producto.
+        /// </summary>
+        public string ImagenUrl { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Precio unitario del producto.
+        /// </summary>
+        public decimal Precio { get; set; }
+
+        /// <summary>
         /// Cantidad del producto en el carrito.
         /// </summary>
         public int Cantidad { get; set; }
+
+        /// <summary>
+        /// Total calculado como el precio unitario multiplicado por la cantidad.
+        /// </summary>
+        public decimal Total => Precio * Cantidad;
     }
 }

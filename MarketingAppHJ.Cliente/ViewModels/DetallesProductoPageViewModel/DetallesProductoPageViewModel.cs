@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MarketingAppHJ.Aplicacion.Dtos;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.AgregarProductoAlCarrito;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.ObtenerProductosPorId;
 using TheMarketingApp.Dominio.Entidades;
 
@@ -12,6 +13,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel
     public partial class DetallesProductoPageViewModel : ObservableObject
     {
         private readonly IObtenerProductoPorId _usecase;
+        private readonly IAgregarProductoAlCarrito _usecaseAgregarProductoAlCarrito;
 
         [ObservableProperty] private string id;
         [ObservableProperty] private string nombre;
@@ -22,9 +24,10 @@ namespace MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel
         [ObservableProperty] private string categoria;
         [ObservableProperty] private int cantidad = 1;
 
-        public DetallesProductoPageViewModel(IObtenerProductoPorId usecase)
+        public DetallesProductoPageViewModel(IObtenerProductoPorId usecase, IAgregarProductoAlCarrito agregarProductoAlCarrito)
         {
             _usecase = usecase;
+            _usecaseAgregarProductoAlCarrito = agregarProductoAlCarrito;
         }
         public DetallesProductoPageViewModel() { }
         public async void LoadProductById(string id)
@@ -45,7 +48,20 @@ namespace MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel
         [RelayCommand]
         public async Task AgregarAlCarritoAsync()
         {
-            // Lógica para añadir al carrito
+            var userId = "user1"; 
+
+            var item = new CarritoItemDto
+            {
+                ProductoId = Id,
+                Nombre = Nombre,
+                Precio = Precio,
+                Cantidad = Cantidad,
+                ImagenUrl = ImagenUrl
+            };
+
+            await _usecaseAgregarProductoAlCarrito.AgregarAlCarritoAsync(userId, item);
+
+            await Shell.Current.DisplayAlert("Éxito", "Producto agregado al carrito", "OK");
         }
 
         [RelayCommand]

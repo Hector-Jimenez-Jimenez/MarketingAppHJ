@@ -15,10 +15,9 @@ namespace MarketingAppHJ.Aplicacion.Interfaces.UseCases.AgregarProductoAlCarrito
         /// <summary>
         /// Agrega un producto al carrito de compras de un usuario.
         /// </summary>
-        /// <param name="usuarioId">El identificador del usuario.</param>
-        /// <param name="productoId">El identificador del producto.</param>
-        /// <param name="cantidad">La cantidad del producto a agregar.</param>
-        /// <returns>Un objeto <see cref="CarritoItemDto"/> que representa el producto agregado al carrito.</returns>
-        Task<CarritoItemDto> AgregarAlCarritoAsync(string usuarioId, string productoId, int cantidad);
+        /// <param name="usuarioId">El identificador único del usuario.</param>
+        /// <param name="item">El producto que se desea agregar al carrito.</param>
+        /// <returns>Una lista de elementos actualizada en el carrito del usuario.</returns>
+        Task<IEnumerable<CarritoItemDto>> AgregarAlCarritoAsync(string usuarioId, CarritoItemDto item);
     }
 }
