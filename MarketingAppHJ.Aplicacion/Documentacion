@@ -1,0 +1,201 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MarketingAppHJ.Aplicacion</name>
+    </assembly>
+    <members>
+        <member name="T:MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto">
+            <summary>
+            Representa un item dentro del carrito de compras.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto.Id_Carrito">
+            <summary>
+            Identificador único del item del carrito.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto.ProductoId">
+            <summary>
+            Identificador único del producto.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto.Cantidad">
+            <summary>
+            Cantidad del producto en el carrito.
+            </summary>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Dtos.ProductoDto">
+            <summary>
+            Representa un producto con sus propiedades principales.
+            </summary>
+            <inheritdoc/>
+        </member>
+        <member name="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.id">
+            <summary>
+            Identificador único del producto.
+            </summary>
+        </member>
+        <member name="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.nombre">
+            <summary>
+            Nombre del producto.
+            </summary>
+        </member>
+        <member name="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.descripcion">
+            <summary>
+            Descripción del producto.
+            </summary>
+        </member>
+        <member name="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.precio">
+            <summary>
+            Precio del producto.
+            </summary>
+        </member>
+        <member name="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.imagenUrl">
+            <summary>
+            URL de la imagen del producto.
+            </summary>
+        </member>
+        <member name="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.stock">
+            <summary>
+            Cantidad de producto disponible en stock.
+            </summary>
+        </member>
+        <member name="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.categoriaId">
+            <summary>
+            Identificador de la categoría a la que pertenece el producto.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.Id">
+            <inheritdoc cref="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.id"/>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.Nombre">
+            <inheritdoc cref="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.nombre"/>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.Descripcion">
+            <inheritdoc cref="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.descripcion"/>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.Precio">
+            <inheritdoc cref="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.precio"/>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.ImagenUrl">
+            <inheritdoc cref="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.imagenUrl"/>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.Stock">
+            <inheritdoc cref="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.stock"/>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.CategoriaId">
+            <inheritdoc cref="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.categoriaId"/>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication">
+            <summary>
+            Interfaz para la autenticación de Firebase.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication.Instance">
+            <summary>
+            Obtiene el cliente de autenticación de Firebase.
+            </summary>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase.IFirebaseRealtimeDatabase">
+            <summary>  
+            Interface para interactuar con la base de datos en tiempo real de Firebase.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase.IFirebaseRealtimeDatabase.Instance">
+            <summary>  
+            Obtiene la instancia del cliente de Firebase.  
+            </summary>  
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.AgregarProductoAlCarrito.IAgregarProductoAlCarrito">
+            <summary>
+            Define un caso de uso para agregar un producto al carrito de compras de un usuario.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.AgregarProductoAlCarrito.IAgregarProductoAlCarrito.AgregarAlCarritoAsync(System.String,System.String,System.Int32)">
+            <summary>
+            Agrega un producto al carrito de compras de un usuario.
+            </summary>
+            <param name="usuarioId">El identificador del usuario.</param>
+            <param name="productoId">El identificador del producto.</param>
+            <param name="cantidad">La cantidad del producto a agregar.</param>
+            <returns>Un objeto <see cref="T:MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto"/> que representa el producto agregado al carrito.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.ObtenerProductosPorId.IObtenerProductoPorId">
+            <summary>
+            Define un caso de uso para obtener un producto por su identificador único.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.ObtenerProductosPorId.IObtenerProductoPorId.ObtenerProductoPorIdAsync(System.String)">
+            <summary>
+            Obtiene un producto por su identificador único.
+            </summary>
+            <param name="id">El identificador único del producto.</param>
+            <returns>Un objeto <see cref="T:MarketingAppHJ.Aplicacion.Dtos.ProductoDto"/> que representa el producto.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.ObtenerTodosProductos.IObtenerProductos">
+            <summary>
+            Define un caso de uso para obtener una lista de productos.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.ObtenerTodosProductos.IObtenerProductos.ObtenerProductosAsync">
+            <summary>
+            Obtiene una lista de productos de forma asíncrona.
+            </summary>
+            <returns>Una tarea que representa la operación asíncrona. El resultado contiene una colección de objetos <see cref="T:MarketingAppHJ.Aplicacion.Dtos.ProductoDto"/>.</returns>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Id">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Id" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Nombre">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Nombre" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Descripcion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Descripcion" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Precio">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Precio" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ImagenUrl">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ImagenUrl" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Stock">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Stock" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CategoriaId">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CategoriaId" generated properties.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Id">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Id" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Nombre">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Nombre" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Descripcion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Descripcion" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Precio">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Precio" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ImagenUrl">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ImagenUrl" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Stock">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Stock" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CategoriaId">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CategoriaId" generated properties.</summary>
+        </member>
+    </members>
+</doc>

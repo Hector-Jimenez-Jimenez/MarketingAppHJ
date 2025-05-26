@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MarketingAppHJ.Infraestructura.Negocio</name>
+    </assembly>
+    <members>
+        <member name="T:TheMarketingApp.Infraestructura.Negocio.Servicios.DependencyInjection">
+            <summary>
+            Proporciona métodos de extensión para registrar servicios de infraestructura de negocio en el contenedor de dependencias.
+            </summary>
+        </member>
+        <member name="M:TheMarketingApp.Infraestructura.Negocio.Servicios.DependencyInjection.AddInfraestructuraBusiness(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Agrega los servicios de infraestructura de negocio al contenedor de dependencias.
+            </summary>
+            <param name="services">El contenedor de dependencias <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
+        </member>
+        <member name="T:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication.FirebaseAuthentication">
+            <summary>
+            Proporciona autenticación utilizando Firebase.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication.FirebaseAuthentication.Instance">
+            <summary>
+            Obtiene la instancia del cliente de autenticación de Firebase.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication.FirebaseAuthentication.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication.FirebaseAuthentication"/> con la configuración predeterminada.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication.FirebaseAuthentication.#ctor(System.String,System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication.FirebaseAuthentication"/> con una clave API y un dominio de autenticación específicos.
+            </summary>
+            <param name="apiKey">La clave API de Firebase.</param>
+            <param name="authDomain">El dominio de autenticación de Firebase.</param>
+        </member>
+        <member name="T:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.RealtimeDatabase.FirebaseRealTimeDatabase">
+            <summary>
+            Proporciona una implementación para interactuar con Firebase Realtime Database.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.RealtimeDatabase.FirebaseRealTimeDatabase.Instance">
+            <summary>
+            Obtiene la instancia del cliente de Firebase.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.RealtimeDatabase.FirebaseRealTimeDatabase.Create(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.RealtimeDatabase.FirebaseRealTimeDatabase"/>.
+            </summary>
+        </member>
+    </members>
+</doc>

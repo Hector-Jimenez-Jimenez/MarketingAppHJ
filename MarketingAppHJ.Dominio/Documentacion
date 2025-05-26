@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MarketingAppHJ.Dominio</name>
+    </assembly>
+    <members>
+        <member name="T:TheMarketingApp.Dominio.Entidades.Categoria">
+            <summary>
+            Representa una categoría en el sistema.
+            </summary>
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.Categoria.Id_Categoria">
+            <summary>
+            Identificador único de la categoría.
+            </summary>
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.Categoria.Nombre">
+            <summary>
+            Nombre de la categoría.
+            </summary>
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.Categoria.Descripcion">
+            <summary>
+            Descripción de la categoría.
+            </summary>
+        </member>
+        <member name="M:TheMarketingApp.Dominio.Entidades.Categoria.Equals(TheMarketingApp.Dominio.Entidades.Categoria)">
+            <summary>
+            Determina si la instancia actual es igual a otra instancia de <see cref="T:TheMarketingApp.Dominio.Entidades.Categoria"/>.
+            </summary>
+            <param name="other">La otra instancia de <see cref="T:TheMarketingApp.Dominio.Entidades.Categoria"/> a comparar.</param>
+            <returns><c>true</c> si las instancias son iguales; de lo contrario, <c>false</c>.</returns>
+        </member>
+        <member name="M:TheMarketingApp.Dominio.Entidades.Categoria.Equals(System.Object)">
+            <summary>
+            Determina si la instancia actual es igual a otro objeto.
+            </summary>
+            <param name="obj">El objeto a comparar.</param>
+            <returns><c>true</c> si el objeto es igual a la instancia actual; de lo contrario, <c>false</c>.</returns>
+        </member>
+        <member name="M:TheMarketingApp.Dominio.Entidades.Categoria.GetHashCode">
+            <summary>
+            Devuelve un código hash para la instancia actual.
+            </summary>
+            <returns>Un código hash para la instancia actual.</returns>
+        </member>
+        <member name="T:TheMarketingApp.Dominio.Entidades.DetallePedido">
+            <summary>  
+            Representa el detalle de un pedido, incluyendo información sobre el producto, cantidad y precio.  
+            </summary>  
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.DetallePedido.Id_Detalle">
+            <summary>  
+            Identificador único del detalle del pedido.  
+            </summary>  
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.DetallePedido.PedidoId">
+            <summary>  
+            Identificador único del pedido al que pertenece este detalle.  
+            </summary>  
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.DetallePedido.ProductoId">
+            <summary>  
+            Identificador único del producto.  
+            </summary>  
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.DetallePedido.Cantidad">
+            <summary>  
+            Cantidad del producto en el pedido.  
+            </summary>  
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.DetallePedido.PrecioUnitario">
+            <summary>  
+            Precio unitario del producto.  
+            </summary>  
+        </member>
+        <member name="T:TheMarketingApp.Dominio.Entidades.ItemCarrito">
+            <summary>
+            Representa un ítem dentro del carrito de compras.
+            </summary>
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.ItemCarrito.Id_Carrito">
+            <summary>
+            Identificador único del item del carrito.
+            </summary>
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.ItemCarrito.ProductoId">
+            <summary>
+            Identificador único del producto.
+            </summary>
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.ItemCarrito.Cantidad">
+            <summary>
+            Cantidad del producto en el carrito.
+            </summary>
+        </member>
+        <member name="T:TheMarketingApp.Dominio.Entidades.Pedido">
+            <summary>
+            Representa un pedido realizado por un usuario.
+            </summary>
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.Pedido.Id_Pedido">
+            <summary>
+            Identificador único del pedido.
+            </summary>
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.Pedido.UsuarioId">
+            <summary>
+            Identificador del usuario que realizó el pedido.
+            </summary>
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.Pedido.Fecha">
+            <summary>
+            Fecha en la que se realizó el pedido.
+            </summary>
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.Pedido.Total">
+            <summary>
+            Total del pedido.
+            </summary>
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.Pedido.Estado">
+            <summary>
+            Estado actual del pedido.
+            </summary>
+        </member>
+        <member name="M:TheMarketingApp.Dominio.Entidades.Pedido.Equals(TheMarketingApp.Dominio.Entidades.Pedido)">
+            <summary>
+            Determina si el pedido actual es igual a otro pedido.
+            </summary>
+            <param name="other">El pedido a comparar.</param>
+            <returns>True si los pedidos son iguales; de lo contrario, false.</returns>
+        </member>
+        <member name="M:TheMarketingApp.Dominio.Entidades.Pedido.Equals(System.Object)">
+            <summary>
+            Sobrescribe el método Equals para comparar objetos.
+            </summary>
+            <param name="obj">El objeto a comparar.</param>
+            <returns>True si los objetos son iguales; de lo contrario, false.</returns>
+        </member>
+        <member name="M:TheMarketingApp.Dominio.Entidades.Pedido.GetHashCode">
+            <summary>
+            Genera un código hash para el pedido.
+            </summary>
+            <returns>El código hash del pedido.</returns>
+        </member>
+        <member name="T:TheMarketingApp.Dominio.Entidades.Producto">
+            <summary>
+            Representa un producto en el sistema.
+            </summary>
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.Producto.Id_Producto">
+            <summary>
+            Identificador único del producto.
+            </summary>
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.Producto.Nombre">
+            <summary>
+            Nombre del producto.
+            </summary>
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.Producto.Descripcion">
+            <summary>
+            Descripción del producto.
+            </summary>
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.Producto.Precio">
+            <summary>
+            Precio del producto.
+            </summary>
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.Producto.ImagenUrl">
+            <summary>
+            URL de la imagen del producto.
+            </summary>
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.Producto.Stock">
+            <summary>
+            Cantidad de producto disponible en stock.
+            </summary>
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.Producto.CategoriaId">
+            <summary>
+            Identificador de la categoría a la que pertenece el producto.
+            </summary>
+        </member>
+        <member name="M:TheMarketingApp.Dominio.Entidades.Producto.Equals(TheMarketingApp.Dominio.Entidades.Producto)">
+            <summary>
+            Determina si el objeto actual es igual a otro objeto del mismo tipo.
+            </summary>
+            <param name="other">El objeto Producto a comparar.</param>
+            <returns>true si los objetos son iguales; de lo contrario, false.</returns>
+        </member>
+        <member name="M:TheMarketingApp.Dominio.Entidades.Producto.Equals(System.Object)">
+            <summary>
+            Determina si el objeto actual es igual a otro objeto.
+            </summary>
+            <param name="obj">El objeto a comparar.</param>
+            <returns>true si los objetos son iguales; de lo contrario, false.</returns>
+        </member>
+        <member name="M:TheMarketingApp.Dominio.Entidades.Producto.GetHashCode">
+            <summary>
+            Devuelve un código hash para el objeto actual.
+            </summary>
+            <returns>Código hash del objeto.</returns>
+        </member>
+        <member name="T:TheMarketingApp.Dominio.Entidades.Usuario">
+            <summary>
+            Representa un usuario en el sistema.
+            </summary>
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.Usuario.Id_Usuario">
+            <summary>
+            Identificador único del usuario.
+            </summary>
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.Usuario.Nombre">
+            <summary>
+            Nombre del usuario.
+            </summary>
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.Usuario.Email">
+            <summary>
+            Correo electrónico del usuario.
+            </summary>
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.Usuario.AvatarUrl">
+            <summary>
+            URL del avatar del usuario.
+            </summary>
+        </member>
+        <member name="M:TheMarketingApp.Dominio.Entidades.Usuario.Equals(TheMarketingApp.Dominio.Entidades.Usuario)">
+            <summary>
+            Determina si el objeto actual es igual a otro objeto del mismo tipo.
+            </summary>
+            <param name="other">El objeto a comparar con este objeto.</param>
+            <returns>true si los objetos son iguales; de lo contrario, false.</returns>
+        </member>
+        <member name="M:TheMarketingApp.Dominio.Entidades.Usuario.Equals(System.Object)">
+            <summary>
+            Determina si el objeto actual es igual a otro objeto.
+            </summary>
+            <param name="obj">El objeto a comparar con este objeto.</param>
+            <returns>true si los objetos son iguales; de lo contrario, false.</returns>
+        </member>
+        <member name="M:TheMarketingApp.Dominio.Entidades.Usuario.GetHashCode">
+            <summary>
+            Devuelve un código hash para el objeto actual.
+            </summary>
+            <returns>Código hash del objeto.</returns>
+        </member>
+    </members>
+</doc>

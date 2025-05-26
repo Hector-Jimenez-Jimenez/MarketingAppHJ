@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MarketingAppHJ.Infraestructura.Datos</name>
+    </assembly>
+    <members>
+        <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.ObtenerProductoPorId.ObtenerProductoPorId">
+            <summary>
+            Caso de uso para obtener un producto por su identificador.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.ObtenerProductoPorId.ObtenerProductoPorId.#ctor(Firebase.Database.FirebaseClient)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.ObtenerProductoPorId.ObtenerProductoPorId"/>.
+            </summary>
+            <param name="firebase">El cliente de Firebase utilizado para acceder a los datos.</param>
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.ObtenerProductoPorId.ObtenerProductoPorId.ObtenerProductoPorIdAsync(System.String)">
+            <summary>
+            Obtiene un producto por su identificador de forma asíncrona.
+            </summary>
+            <param name="id">El identificador del producto.</param>
+            <returns>Una tarea que representa la operación asíncrona. El resultado contiene el producto.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.ObtenerProductos.ObtenerProductosCatalogo">
+            <summary>
+            Repositorio para gestionar productos en Firebase.
+            </summary>
+        </member>
+    </members>
+</doc>
