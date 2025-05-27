@@ -42,7 +42,6 @@ namespace MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel
             _ucObservar = observarCambiosCarrito;
             _ucBorrarItem = borrarProductoCarrito;
             _ucBorrarTodos = borrarProductosCarrito;
-            _ucModificar = modificarCantidadCarrito;
             // Suscribimos en tiempo real a Insert / Update / Delete
             var sub = _ucObservar
                 .ObservarCambios(UserId)

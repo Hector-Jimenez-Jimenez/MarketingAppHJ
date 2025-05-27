@@ -26,7 +26,6 @@ namespace MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel
         [ObservableProperty] private string categoriaId;
         [ObservableProperty] private string nombreCategoria;
         [ObservableProperty] private int cantidad = 1;
-
         public DetallesProductoPageViewModel(IObtenerProductoPorId usecaseObtenerProductoPorId, IAgregarProductoAlCarrito agregarProductoAlCarrito, IObtenerNombreCategoria obtenerNombreCategoria)
         {
             _usecaseObtenerProductoPorId = usecaseObtenerProductoPorId;
@@ -70,6 +69,8 @@ namespace MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel
             await _usecaseAgregarProductoAlCarrito.AgregarAlCarritoAsync(userId, item);
 
             await Shell.Current.DisplayAlert("Éxito", "Producto agregado al carrito", "OK");
+            Cantidad = 1;
+            await Shell.Current.GoToAsync("//Catalogo"); // Volver a la página anterior
         }
 
         [RelayCommand]
