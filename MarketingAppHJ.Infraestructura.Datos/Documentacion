@@ -23,6 +23,64 @@
             <param name="item">El producto a agregar al carrito.</param>
             <returns>Una tarea que representa la operación asincrónica. El resultado contiene la lista de productos en el carrito.</returns>
         </member>
+        <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.BorrarProductosCarrito.BorrarProductosCarrito">
+            <summary>
+            Clase responsable de borrar los productos del carrito de un usuario en la base de datos Firebase.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.BorrarProductosCarrito.BorrarProductosCarrito.#ctor(Firebase.Database.FirebaseClient)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.BorrarProductosCarrito.BorrarProductosCarrito"/>.
+            </summary>
+            <param name="firebaseClient">Cliente de Firebase utilizado para interactuar con la base de datos.</param>
+            <exception cref="T:System.ArgumentNullException">Se lanza si <paramref name="firebaseClient"/> es nulo.</exception>
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.BorrarProductosCarrito.BorrarProductosCarrito.BorrarProductosCarritoAsync(System.String)">
+            <summary>
+            Borra todos los productos del carrito de un usuario específico.
+            </summary>
+            <param name="userId">El identificador del usuario cuyo carrito será borrado.</param>
+            <returns>Una tarea que representa la operación asincrónica.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ModificarCantidadCarrito.ModificarCantidadCarrito">
+            <summary>
+            Clase que implementa la funcionalidad para modificar la cantidad de un producto en el carrito.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ModificarCantidadCarrito.ModificarCantidadCarrito.#ctor(MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObtenerCarrito.IObtenerCarrito,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.AgregarProductoAlCarrito.IAgregarProductoAlCarrito)">
+            <summary>
+            Constructor de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ModificarCantidadCarrito.ModificarCantidadCarrito"/>.
+            </summary>
+            <param name="obtenerProductosCarrito">Servicio para obtener los productos del carrito.</param>
+            <param name="agregarProductoAlCarrito">Servicio para agregar productos al carrito.</param>
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ModificarCantidadCarrito.ModificarCantidadCarrito.ModificarCantidadCarritoAsync(System.String,System.String,System.Int32)">
+            <summary>
+            Modifica la cantidad de un producto en el carrito del usuario.
+            </summary>
+            <param name="userId">Identificador del usuario.</param>
+            <param name="productId">Identificador del producto.</param>
+            <param name="cantidad">Nueva cantidad del producto.</param>
+            <returns>Una tarea que representa la operación asincrónica.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ObservarCambiosCarrito.ObservarCambiosCarrito">
+            <summary>
+            Clase que implementa la observación de cambios en el carrito de un usuario.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ObservarCambiosCarrito.ObservarCambiosCarrito.#ctor(Firebase.Database.FirebaseClient)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ObservarCambiosCarrito.ObservarCambiosCarrito"/>.
+            </summary>
+            <param name="client">Cliente de Firebase utilizado para interactuar con la base de datos.</param>
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ObservarCambiosCarrito.ObservarCambiosCarrito.ObservarCambios(System.String)">
+            <summary>
+            Observa los cambios en los elementos del carrito de un usuario específico.
+            </summary>
+            <param name="userId">El identificador del usuario cuyo carrito se va a observar.</param>
+            <returns>Un observable que emite eventos de Firebase relacionados con los elementos del carrito.</returns>
+        </member>
         <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ObtenerProductosCarrito.ObtenerProductosCarrito">
             <summary>
             Clase que implementa la interfaz IObtenerCarrito para obtener los productos del carrito desde Firebase.

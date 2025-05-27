@@ -149,6 +149,57 @@
             <param name="item">El producto que se desea agregar al carrito.</param>
             <returns>Una lista de elementos actualizada en el carrito del usuario.</returns>
         </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.BorrarProductoCarrito.IBorrarProductoCarrito">
+            <summary>
+            Define la funcionalidad para eliminar un producto del carrito de un usuario.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.BorrarProductoCarrito.IBorrarProductoCarrito.BorrarProductoCarritoAsync(System.String,System.String)">
+            <summary>
+            Elimina un producto del carrito de un usuario.
+            </summary>
+            <param name="userId">El identificador del usuario.</param>
+            <param name="IdProducto">El identificador del producto a eliminar.</param>
+            <returns>Una tarea que representa la operación asincrónica.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.BorrarProductosCarrito.IBorrarProductosCarrito">
+            <summary>
+            Define la funcionalidad para eliminar todos los productos del carrito de un usuario.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.BorrarProductosCarrito.IBorrarProductosCarrito.BorrarProductosCarritoAsync(System.String)">
+            <summary>
+            Elimina todos los productos del carrito de un usuario.
+            </summary>
+            <param name="userId">El identificador del usuario.</param>
+            <returns>Una tarea que representa la operación asincrónica.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ModificarCantidadCarrito.IModificarCantidadCarrito">
+            <summary>
+            Define un contrato para modificar la cantidad de un producto en el carrito de un usuario.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ModificarCantidadCarrito.IModificarCantidadCarrito.ModificarCantidadCarritoAsync(System.String,System.String,System.Int32)">
+            <summary>
+            Modifica la cantidad de un producto en el carrito de un usuario.
+            </summary>
+            <param name="userId">El identificador del usuario.</param>
+            <param name="productId">El identificador del producto.</param>
+            <param name="cantidad">La nueva cantidad del producto.</param>
+            <returns>Una tarea que representa la operación asincrónica.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObservarCambiosCarrito.IObservarCambiosCarrito">
+            <summary>
+            Interfaz para observar los cambios en el carrito de un usuario.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObservarCambiosCarrito.IObservarCambiosCarrito.ObservarCambios(System.String)">
+            <summary>
+            Observa los cambios en el carrito de un usuario específico.
+            </summary>
+            <param name="userId">El identificador único del usuario.</param>
+            <returns>Un observable que emite eventos de Firebase relacionados con los cambios en el carrito.</returns>
+        </member>
         <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerNombreCategoria.IObtenerNombreCategoria">
             <summary>
             Interfaz para obtener el nombre de una categoría basada en su identificador.

@@ -24,45 +24,44 @@
                          Background="Transparent"
                          Clicked="OnAvatarClicked"/>
             <ImageButton Grid.Column="1"
-                   Source="home.png"
-                   Background="Transparent"
-                   Clicked="OnLogoClicked"/>
+                         Source="home.png"
+                         Background="Transparent"
+                         Clicked="OnLogoClicked"/>
             <ImageButton Grid.Column="2"
-                   Source="ruedaajustes.png"
-                   Background="Transparent"
-                   Clicked="OnSettingsClicked"/>
+                         Source="ruedaajustes.png"
+                         Background="Transparent"
+                         Clicked="OnSettingsClicked"/>
         </Grid>
 
         <!-- 1.2 Barra de búsqueda (fila 1) -->
         <Border Grid.Row="1"
-            Margin="20,10"
-            StrokeShape="RoundRectangle 25"
-            BackgroundColor="Gainsboro"
-            StrokeThickness="0">
+                Margin="20,10"
+                StrokeShape="RoundRectangle 25"
+                BackgroundColor="Gainsboro"
+                StrokeThickness="0">
             <Grid ColumnDefinitions="Auto,*">
                 <Image Source="lupabusqueda.png"
-               WidthRequest="24"
-               HeightRequest="24"
-               Margin="10,0"
-               VerticalOptions="Center"/>
+                       WidthRequest="24"
+                       HeightRequest="24"
+                       Margin="10,0"
+                       VerticalOptions="Center"/>
                 <Entry Grid.Column="1"
-               Placeholder="Busca lo que necesites"
-               Margin="0,0,10,0"
-               BackgroundColor="Transparent"
-               VerticalOptions="Center"/>
+                       Placeholder="Busca lo que necesites"
+                       Margin="0,0,10,0"
+                       BackgroundColor="Transparent"
+                       VerticalOptions="Center"/>
             </Grid>
         </Border>
 
         <!-- 1.3 Grid de productos con paginación infinita (fila 2) -->
-        <CollectionView
-      Grid.Row="2"
-      x:Name="ProductosCollectionView"
-      ItemsSource="{Binding Productos}"
-      Margin="20,0"
-      SelectionMode="None"
-      ItemsLayout="VerticalGrid,2"
-      RemainingItemsThreshold="2"
-      RemainingItemsThresholdReached="OnRemainingItemsThresholdReached">
+        <CollectionView Grid.Row="2"
+                        x:Name="ProductosCollectionView"
+                        ItemsSource="{Binding Productos}"
+                        Margin="20,0"
+                        SelectionMode="None"
+                        ItemsLayout="VerticalGrid,2"
+                        RemainingItemsThreshold="2"
+                        RemainingItemsThresholdReached="OnRemainingItemsThresholdReached">
 
             <CollectionView.ItemTemplate>
                 <DataTemplate>
