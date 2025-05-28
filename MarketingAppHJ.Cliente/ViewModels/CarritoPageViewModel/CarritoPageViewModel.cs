@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Reactive.Disposables;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -12,11 +11,10 @@ using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.BorrarProductosCarri
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ModificarCantidadCarrito;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObservarCambiosCarrito;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObtenerCarrito;
-using Microsoft.Maui.Dispatching;
 
 namespace MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel
 {
-    public partial class CarritoPageViewModel : ObservableObject, IDisposable
+    public partial class CarritoPageViewModel : ObservableObject
     {
         const string UserId = "user1";
 
@@ -24,7 +22,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel
         readonly IObservarCambiosCarrito _ucObservar;
         readonly IBorrarProductoCarrito _ucBorrarItem;
         readonly IBorrarProductosCarrito _ucBorrarTodos;
-        readonly CompositeDisposable _subs = new();
+        readonly IModificarCantidadCarrito _ucModificar;
 
         [ObservableProperty]
         ObservableCollection<CarritoItemDto> items = new();
@@ -32,26 +30,23 @@ namespace MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel
         [ObservableProperty]
         decimal totalPrice;
 
+        public CarritoPageViewModel() { }
         public CarritoPageViewModel(
             IObtenerCarrito obtenerCarrito,
             IObservarCambiosCarrito observarCambiosCarrito,
             IBorrarProductoCarrito borrarProductoCarrito,
-            IBorrarProductosCarrito borrarProductosCarrito)
+            IBorrarProductosCarrito borrarProductosCarrito,
+            IModificarCantidadCarrito modificarCantidadCarrito)
         {
             _ucObtener = obtenerCarrito;
             _ucObservar = observarCambiosCarrito;
             _ucBorrarItem = borrarProductoCarrito;
             _ucBorrarTodos = borrarProductosCarrito;
-            // Suscribimos en tiempo real a Insert / Update / Delete
-            var sub = _ucObservar
-                .ObservarCambios(UserId)
-                .Subscribe(AlCambiarCarrito);
-            _subs.Add(sub);
+            _ucModificar = modificarCantidadCarrito;
         }
 
-        public CarritoPageViewModel() { }
         /// <summary>
-        /// Carga inicial del carrito.
+        /// Carga de una sola vez el estado actual del carrito.
         /// </summary>
         public async Task CargarCarritoAsync()
         {
@@ -59,44 +54,27 @@ namespace MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel
             Items.Clear();
             foreach (var dto in lista)
                 Items.Add(dto);
+
             TotalPrice = Items.Sum(i => i.Total);
         }
 
-        void AlCambiarCarrito(FirebaseEvent<CarritoItemDto> evt)
+        /// <summary>
+        /// Expone el observable de cambios en tiempo real.
+        /// </summary>
+        public IObservable<FirebaseEvent<CarritoItemDto>> ObservarCambios() =>
+            _ucObservar.ObservarCambios(UserId);
+
+        [RelayCommand]
+        public async Task IncrementarCantidadAsync(CarritoItemDto item)
+            => await _ucModificar.ModificarCantidadCarritoAsync(UserId, item.ProductoId, item.Cantidad + 1);
+
+        [RelayCommand]
+        public async Task DecrementarCantidadAsync(CarritoItemDto item)
         {
-            // Ejecutamos en el hilo de UI
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                var key = evt.Key;
-                var dto = evt.Object;
-                if (string.IsNullOrEmpty(key) || dto is null)
-                    return;
-
-                dto.ProductoId = key;
-                switch (evt.EventType)
-                {
-                    case FirebaseEventType.InsertOrUpdate:
-                        var existente = Items.FirstOrDefault(i => i.ProductoId == key);
-                        if (existente != null)
-                        {
-                            var idx = Items.IndexOf(existente);
-                            Items[idx] = dto;
-                        }
-                        else
-                        {
-                            Items.Add(dto);
-                        }
-                        break;
-
-                    case FirebaseEventType.Delete:
-                        var eliminado = Items.FirstOrDefault(i => i.ProductoId == key);
-                        if (eliminado != null)
-                            Items.Remove(eliminado);
-                        break;
-                }
-
-                TotalPrice = Items.Sum(i => i.Total);
-            });
+            if (item.Cantidad > 1)
+                await _ucModificar.ModificarCantidadCarritoAsync(UserId, item.ProductoId, item.Cantidad - 1);
+            else
+                await _ucBorrarItem.BorrarProductoCarritoAsync(UserId, item.ProductoId);
         }
 
         [RelayCommand]
@@ -106,7 +84,5 @@ namespace MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel
         [RelayCommand]
         public async Task VaciarCarritoAsync()
             => await _ucBorrarTodos.BorrarProductosCarritoAsync(UserId);
-
-        public void Dispose() => _subs.Dispose();
     }
 }

@@ -54,6 +54,71 @@
             Descripción de la categoría.
             </summary>
         </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Dtos.ItemPedidoDto">
+            <summary>
+            Representa un elemento de un pedido, incluyendo información del producto, cantidad y precio.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.ItemPedidoDto.ProductoId">
+            <summary>
+            Identificador único del producto.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.ItemPedidoDto.Nombre">
+            <summary>
+            Nombre del producto.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.ItemPedidoDto.Precio">
+            <summary>
+            Precio unitario del producto.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.ItemPedidoDto.Cantidad">
+            <summary>
+            Cantidad del producto solicitada.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.ItemPedidoDto.Total">
+            <summary>
+            Total calculado como el producto del precio y la cantidad.
+            </summary>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Dtos.PedidoDto">
+            <summary>
+            Representa un pedido realizado por un usuario.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.PedidoDto.OrderId">
+            <summary>
+            Identificador único del pedido.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.PedidoDto.UserId">
+            <summary>
+            Identificador único del usuario que realizó el pedido.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.PedidoDto.Fecha">
+            <summary>
+            Fecha en la que se realizó el pedido.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.PedidoDto.DireccionEnvio">
+            <summary>
+            Dirección de envío del pedido.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.PedidoDto.MetodoPago">
+            <summary>
+            Método de pago utilizado para el pedido.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.PedidoDto.Items">
+            <summary>
+            Lista de los ítems incluidos en el pedido.
+            </summary>
+        </member>
         <member name="T:MarketingAppHJ.Aplicacion.Dtos.ProductoDto">
             <summary>
             Representa un producto con sus propiedades principales.
@@ -199,6 +264,32 @@
             </summary>
             <param name="userId">El identificador único del usuario.</param>
             <returns>Un observable que emite eventos de Firebase relacionados con los cambios en el carrito.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Checkout.CrearPedido.ICrearPedido">
+            <summary>
+            Define la operación para crear un pedido.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Checkout.CrearPedido.ICrearPedido.RealizarPedido(System.String,System.String,System.String)">
+            <summary>
+            Crea un pedido para un usuario específico.
+            </summary>
+            <param name="userId">El identificador del usuario que realiza el pedido.</param>
+            <param name="direccionEnvio">La dirección de envío del pedido.</param>
+            <param name="metodoPago">El método de pago utilizado para el pedido.</param>
+            <returns>Un objeto <see cref="T:MarketingAppHJ.Aplicacion.Dtos.PedidoDto"/> que representa el pedido creado.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Checkout.GuardarPedido.IGuardarPedido">
+            <summary>
+            Define la funcionalidad para guardar un pedido en el sistema.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Checkout.GuardarPedido.IGuardarPedido.GuardarPedidoAsync(MarketingAppHJ.Aplicacion.Dtos.PedidoDto)">
+            <summary>
+            Guarda un pedido de forma asíncrona.
+            </summary>
+            <param name="pedido">El objeto <see cref="T:MarketingAppHJ.Aplicacion.Dtos.PedidoDto"/> que contiene los detalles del pedido a guardar.</param>
+            <returns>Una tarea que representa la operación asíncrona.</returns>
         </member>
         <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerNombreCategoria.IObtenerNombreCategoria">
             <summary>

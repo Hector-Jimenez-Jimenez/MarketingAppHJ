@@ -8,13 +8,18 @@ using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.BorrarProductosCarri
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ModificarCantidadCarrito;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObservarCambiosCarrito;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObtenerCarrito;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Checkout.CrearPedido;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Checkout.GuardarPedido;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerNombreCategoria;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerProductosPorId;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerTodosProductos;
 using MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel;
+using MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.MainPageViewModel;
+using MarketingAppHJ.Cliente.Views.Aplicacion;
 using MarketingAppHJ.Cliente.Views.Aplicacion.CarritoPage;
+using MarketingAppHJ.Cliente.Views.Aplicacion.CheckOutPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.DetailsPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.MainPage;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.AgregarProductoAlCarrito;
@@ -23,6 +28,8 @@ using MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.BorrarProductosC
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ModificarCantidadCarrito;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ObservarCambiosCarrito;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ObtenerProductosCarrito;
+using MarketingAppHJ.Infraestructura.Datos.Repositorios.Checkout.CrearPedido;
+using MarketingAppHJ.Infraestructura.Datos.Repositorios.Checkout.GuardarPedido;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerNombreCategoria;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductoPorId;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductos;
@@ -80,8 +87,9 @@ namespace MarketingAppHJ.Cliente
             services.AddScoped<IBorrarProductoCarrito,  BorrarProductoCarrito>();
             services.AddScoped<IBorrarProductosCarrito, BorrarProductosCarrito>();
             services.AddScoped<IObservarCambiosCarrito, ObservarCambiosCarrito>();
-            // services.AddScoped<IRealizarPedido, RealizarPedidoUseCase>();
-            // services.AddScoped<IRegistrarUsuario, RegistrarUsuarioUseCase>();
+            services.AddScoped<IModificarCantidadCarrito, ModificarCantidadCarrito>();
+            services.AddScoped<ICrearPedido, CrearPedido>();
+            services.AddScoped<IGuardarPedido, GuardarPedido>();
         }
 
         /// <summary>
@@ -92,7 +100,7 @@ namespace MarketingAppHJ.Cliente
             services.AddTransient<MainPageViewModel>();
             services.AddTransient<DetallesProductoPageViewModel>();
             services.AddTransient<CarritoPageViewModel>();
-            // services.AddTransient<LoginViewModel>();
+            services.AddTransient<CheckOutPageViewModel>();
         }
 
         /// <summary>
@@ -103,7 +111,7 @@ namespace MarketingAppHJ.Cliente
             services.AddSingleton<MainPage>();
             services.AddSingleton<DetailsPage>();
             services.AddSingleton<CarritoPage>();
-            // services.AddSingleton<LoginPage>();
+            services.AddSingleton<CheckOutPage>();
         }
     }
 }

@@ -99,6 +99,49 @@
             <param name="id">El identificador del carrito.</param>
             <returns>Una lista de objetos CarritoItemDto que representan los productos en el carrito.</returns>
         </member>
+        <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Checkout.CrearPedido.CrearPedido">
+            <summary>
+            Clase que implementa la lógica para crear un pedido.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Checkout.CrearPedido.CrearPedido.#ctor(MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObtenerCarrito.IObtenerCarrito,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.BorrarProductosCarrito.IBorrarProductosCarrito,Firebase.Database.FirebaseClient,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Checkout.GuardarPedido.IGuardarPedido)">
+            <summary>
+            Constructor de la clase CrearPedido.
+            </summary>
+            <param name="obtenerCarrito">Servicio para obtener el carrito del usuario.</param>
+            <param name="borrarProductosCarrito">Servicio para borrar los productos del carrito.</param>
+            <param name="firebaseClient">Cliente de Firebase para operaciones de base de datos.</param>
+            <param name="guardarPedido">Servicio para guardar el pedido.</param>
+            <exception cref="T:System.ArgumentNullException">Se lanza si algún parámetro es nulo.</exception>
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Checkout.CrearPedido.CrearPedido.RealizarPedido(System.String,System.String,System.String)">
+            <summary>
+            Realiza un pedido basado en el carrito del usuario.
+            </summary>
+            <param name="userId">ID del usuario que realiza el pedido.</param>
+            <param name="direccionEnvio">Dirección de envío del pedido.</param>
+            <param name="metodoPago">Método de pago seleccionado.</param>
+            <returns>Un objeto <see cref="T:MarketingAppHJ.Aplicacion.Dtos.PedidoDto"/> que representa el pedido creado.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Checkout.GuardarPedido.GuardarPedido">
+            <summary>
+            Clase que implementa la funcionalidad para guardar pedidos en Firebase.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Checkout.GuardarPedido.GuardarPedido.#ctor(Firebase.Database.FirebaseClient)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Checkout.GuardarPedido.GuardarPedido"/>.
+            </summary>
+            <param name="firebaseClient">Cliente de Firebase utilizado para interactuar con la base de datos.</param>
+            <exception cref="T:System.ArgumentNullException">Se lanza si <paramref name="firebaseClient"/> es nulo.</exception>
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Checkout.GuardarPedido.GuardarPedido.GuardarPedidoAsync(MarketingAppHJ.Aplicacion.Dtos.PedidoDto)">
+            <summary>
+            Guarda un pedido en la base de datos de Firebase.
+            </summary>
+            <param name="pedido">El pedido que se va a guardar.</param>
+            <returns>Una tarea que representa la operación asincrónica.</returns>
+        </member>
         <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerNombreCategoria.ObtenerNombreCategoria">
             <summary>
             Clase que implementa la interfaz para obtener el nombre de una categoría desde Firebase.
