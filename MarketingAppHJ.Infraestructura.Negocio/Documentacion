@@ -20,22 +20,16 @@
             Proporciona autenticación utilizando Firebase.
             </summary>
         </member>
-        <member name="P:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication.FirebaseAuthentication.Instance">
+        <member name="F:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication.FirebaseAuthentication.Instance">
             <summary>
             Obtiene la instancia del cliente de autenticación de Firebase.
             </summary>
         </member>
-        <member name="M:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication.FirebaseAuthentication.#ctor">
+        <member name="M:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication.FirebaseAuthentication.GetInstance">
             <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication.FirebaseAuthentication"/> con la configuración predeterminada.
+            Devuelve la instancia del cliente de autenticación de Firebase.
             </summary>
-        </member>
-        <member name="M:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication.FirebaseAuthentication.#ctor(System.String,System.String)">
-            <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication.FirebaseAuthentication"/> con una clave API y un dominio de autenticación específicos.
-            </summary>
-            <param name="apiKey">La clave API de Firebase.</param>
-            <param name="authDomain">El dominio de autenticación de Firebase.</param>
+            <returns>Instancia de <see cref="T:Firebase.Auth.FirebaseAuthClient"/>.</returns>
         </member>
         <member name="T:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.RealtimeDatabase.FirebaseRealTimeDatabase">
             <summary>

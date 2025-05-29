@@ -1,4 +1,6 @@
-﻿namespace MarketingAppHJ.Cliente
+﻿using MarketingAppHJ.Cliente.Views.Login.LoginPage;
+
+namespace MarketingAppHJ.Cliente
 {
     /// <summary>
     /// Representa la clase principal de la aplicación.

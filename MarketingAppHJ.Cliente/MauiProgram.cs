@@ -10,18 +10,27 @@ using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObservarCambiosCarri
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObtenerCarrito;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Checkout.CrearPedido;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Checkout.GuardarPedido;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.IniciarSesion;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.LogOut;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.Registro;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.ResetConstraseña;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerNombreCategoria;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerProductosPorId;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerTodosProductos;
 using MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel;
+using MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.MainPageViewModel;
+using MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel;
+using MarketingAppHJ.Cliente.ViewModels.ResetPageViewModel;
 using MarketingAppHJ.Cliente.Views.Aplicacion;
 using MarketingAppHJ.Cliente.Views.Aplicacion.CarritoPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.CheckOutPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.DetailsPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.MainPage;
+using MarketingAppHJ.Cliente.Views.Login.LoginPage;
+using MarketingAppHJ.Cliente.Views.Login.RegisterPage;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.AgregarProductoAlCarrito;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.BorrarProductoCarrito;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.BorrarProductosCarrito;
@@ -30,6 +39,10 @@ using MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ObservarCambiosC
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ObtenerProductosCarrito;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Checkout.CrearPedido;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Checkout.GuardarPedido;
+using MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.IniciarSesion;
+using MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.LogOut;
+using MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.Registro;
+using MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.ResetearContrasena;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerNombreCategoria;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductoPorId;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductos;
@@ -92,6 +105,10 @@ namespace MarketingAppHJ.Cliente
             services.AddScoped<IModificarCantidadCarrito, ModificarCantidadCarrito>();
             services.AddScoped<ICrearPedido, CrearPedido>();
             services.AddScoped<IGuardarPedido, GuardarPedido>();
+            services.AddScoped<IResetContrasena, ResetearContrasena>();
+            services.AddScoped<ILogOut, LogOut>();
+            services.AddScoped<IIniciarSesion, IniciarSesion>();
+            services.AddScoped<IRegistro, Registro>();
         }
 
         /// <summary>
@@ -103,6 +120,9 @@ namespace MarketingAppHJ.Cliente
             services.AddTransient<DetallesProductoPageViewModel>();
             services.AddTransient<CarritoPageViewModel>();
             services.AddTransient<CheckOutPageViewModel>();
+            services.AddTransient<RegisterPageViewModel>();
+            services.AddTransient<LoginPageViewModel>();
+            services.AddTransient<ResetPageViewModel>();
         }
 
         /// <summary>
@@ -114,6 +134,9 @@ namespace MarketingAppHJ.Cliente
             services.AddSingleton<DetailsPage>();
             services.AddSingleton<CarritoPage>();
             services.AddSingleton<CheckOutPage>();
+            services.AddSingleton<RegisterPage>();
+            services.AddSingleton<LoginPage>();
+            services.AddSingleton<RegisterPage>();
         }
     }
 }

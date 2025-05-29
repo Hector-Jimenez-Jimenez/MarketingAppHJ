@@ -141,6 +141,84 @@
             <param name="pedido">El pedido que se va a guardar.</param>
             <returns>Una tarea que representa la operación asincrónica.</returns>
         </member>
+        <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.IniciarSesion.IniciarSesion">
+            <summary>  
+            Clase que implementa la funcionalidad para iniciar sesión utilizando Firebase Authentication.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.IniciarSesion.IniciarSesion.#ctor(MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication)">
+            <summary>  
+            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.IniciarSesion.IniciarSesion"/>.  
+            </summary>  
+            <param name="firebaseAuthentication">Instancia de autenticación de Firebase.</param>  
+            <exception cref="T:System.ArgumentNullException">Se lanza si <paramref name="firebaseAuthentication"/> es nulo.</exception>  
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.IniciarSesion.IniciarSesion.IniciarSesionAsync(System.String,System.String)">
+            <summary>  
+            Inicia sesión con las credenciales proporcionadas.  
+            </summary>  
+            <param name="email">Correo electrónico del usuario.</param>  
+            <param name="password">Contraseña del usuario.</param>  
+            <returns>Una tarea que representa la operación asincrónica.</returns>  
+            <exception cref="T:System.Exception">Se lanza si ocurre un error durante el inicio de sesión.</exception>  
+        </member>
+        <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.LogOut.LogOut">
+            <summary>  
+            Proporciona la funcionalidad para cerrar la sesión del usuario actual.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.LogOut.LogOut.#ctor(MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication)">
+            <summary>  
+            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.LogOut.LogOut"/>.  
+            </summary>  
+            <param name="firebaseAuthentication">Instancia de autenticación de Firebase.</param>  
+            <exception cref="T:System.ArgumentNullException">Se lanza si <paramref name="firebaseAuthentication"/> es nulo.</exception>  
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.LogOut.LogOut.CerrarSesionAsync">
+            <summary>  
+            Cierra la sesión del usuario actual.  
+            </summary>  
+            <returns>Una tarea que representa la operación asincrónica.</returns>  
+        </member>
+        <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.Registro.Registro">
+            <summary>  
+            Clase que implementa la funcionalidad de registro de usuarios utilizando Firebase Authentication.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.Registro.Registro.#ctor(MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication)">
+            <summary>  
+            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.Registro.Registro"/> con una dependencia de autenticación Firebase.  
+            </summary>  
+            <param name="firebaseAuthentication">Instancia de <see cref="T:MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication"/> para manejar la autenticación.</param>  
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.Registro.Registro.RegistrarUsuarioAsync(System.String,System.String)">
+            <summary>  
+            Registra un nuevo usuario en Firebase Authentication con el correo electrónico y la contraseña proporcionados.  
+            </summary>  
+            <param name="email">Correo electrónico del usuario.</param>  
+            <param name="password">Contraseña del usuario.</param>  
+            <returns>Una tarea que representa la operación asincrónica de registro.</returns>  
+        </member>
+        <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.ResetearContrasena.ResetearContrasena">
+            <summary>  
+            Clase que implementa la funcionalidad para restablecer la contraseña de un usuario.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.ResetearContrasena.ResetearContrasena.#ctor(MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication)">
+            <summary>  
+            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.ResetearContrasena.ResetearContrasena"/>.  
+            </summary>  
+            <param name="firebaseAuthentication">Instancia de autenticación de Firebase.</param>  
+            <exception cref="T:System.ArgumentNullException">Se lanza si <paramref name="firebaseAuthentication"/> es nulo.</exception>  
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.ResetearContrasena.ResetearContrasena.ResetearContrasenaAsync(System.String)">
+            <summary>  
+            Envía un correo electrónico para restablecer la contraseña del usuario.  
+            </summary>  
+            <param name="email">Correo electrónico del usuario.</param>  
+            <returns>Una tarea que representa la operación asincrónica.</returns>  
+            <exception cref="T:System.Exception">Se lanza si ocurre un error al enviar el correo de restablecimiento.</exception>  
+        </member>
         <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerNombreCategoria.ObtenerNombreCategoria">
             <summary>
             Clase que implementa la interfaz para obtener el nombre de una categoría desde Firebase.

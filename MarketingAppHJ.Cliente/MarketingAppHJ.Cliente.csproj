@@ -75,10 +75,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Views\Login\NewFolder\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <Compile Update="Views\Aplicacion\MainPage\MainPage.xaml.cs">
 	    <DependentUpon>MainPage.xaml</DependentUpon>
 	  </Compile>
@@ -101,6 +97,15 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Aplicacion\MainPage\MainPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Login\LoginPage\LoginPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Login\RegisterPage\RegisterPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Login\ResetPage\ResetPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

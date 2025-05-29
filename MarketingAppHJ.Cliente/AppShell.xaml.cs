@@ -1,6 +1,9 @@
 ﻿using MarketingAppHJ.Cliente.Views.Aplicacion.CarritoPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.CheckOutPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.DetailsPage;
+using MarketingAppHJ.Cliente.Views.Aplicacion.MainPage;
+using MarketingAppHJ.Cliente.Views.Login.LoginPage;
+using MarketingAppHJ.Cliente.Views.Login.RegisterPage;
 
 namespace MarketingAppHJ.Cliente
 {
@@ -9,9 +12,12 @@ namespace MarketingAppHJ.Cliente
         public AppShell()
         {
             InitializeComponent();
+            Routing.RegisterRoute("login", typeof(LoginPage));
             Routing.RegisterRoute("detalles", typeof(DetailsPage));
             Routing.RegisterRoute("carrito", typeof(CarritoPage));
             Routing.RegisterRoute("checkout", typeof(CheckOutPage));
+            Routing.RegisterRoute("main", typeof(MainPage));
+            Routing.RegisterRoute("register", typeof(RegisterPage));
         }
     }
 }

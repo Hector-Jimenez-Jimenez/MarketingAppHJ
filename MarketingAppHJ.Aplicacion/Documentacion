@@ -186,7 +186,7 @@
             Interfaz para la autenticación de Firebase.
             </summary>
         </member>
-        <member name="P:MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication.Instance">
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication.GetInstance">
             <summary>
             Obtiene el cliente de autenticación de Firebase.
             </summary>
@@ -290,6 +290,50 @@
             </summary>
             <param name="pedido">El objeto <see cref="T:MarketingAppHJ.Aplicacion.Dtos.PedidoDto"/> que contiene los detalles del pedido a guardar.</param>
             <returns>Una tarea que representa la operación asíncrona.</returns>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.IniciarSesion.IIniciarSesion.IniciarSesionAsync(System.String,System.String)">
+            <summary>
+            Inicia sesión con el correo electrónico y la contraseña proporcionados.
+            </summary>
+            <param name="email">El correo electrónico del usuario.</param>
+            <param name="password">La contraseña del usuario.</param>
+            <returns>Un token de autenticación si el inicio de sesión es exitoso; de lo contrario, un mensaje de error.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.LogOut.ILogOut">
+            <summary>  
+            Define una interfaz para cerrar la sesión del usuario actual.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.LogOut.ILogOut.CerrarSesionAsync">
+            <summary>  
+            Cierra la sesión del usuario actual.  
+            </summary>  
+            <returns>Una tarea que representa la operación asincrónica.</returns>  
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.Registro.IRegistro">
+            <summary>  
+            Interface para el registro de usuarios.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.Registro.IRegistro.RegistrarUsuarioAsync(System.String,System.String)">
+            <summary>  
+            Registra un nuevo usuario en el sistema.  
+            </summary>  
+            <param name="email">Correo electrónico del usuario.</param>  
+            <param name="password">Contraseña del usuario.</param>
+            <returns>Una tarea que representa la operación asincrónica.</returns>  
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.ResetConstraseña.IResetContrasena">
+            <summary>  
+            Interfaz para el caso de uso de restablecimiento de contraseña.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.ResetConstraseña.IResetContrasena.ResetearContrasenaAsync(System.String)">
+            <summary>  
+            Envía un correo electrónico para restablecer la contraseña del usuario.  
+            </summary>  
+            <param name="email">El correo electrónico del usuario.</param>  
+            <returns>Una tarea que representa la operación asíncrona.</returns>  
         </member>
         <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerNombreCategoria.IObtenerNombreCategoria">
             <summary>

@@ -9,42 +9,32 @@ namespace MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authenticati
     /// </summary>
     public class FirebaseAuthentication : IFirebaseAuthentication
     {
+        private const string _ApiKey = "AIzaSyB8LYJu_vfyaC4zsJXpnXgTVYKU685AMow";
+        private const string _AuthDomain = "themarketingapp-15895.firebaseapp.com";
+
         /// <summary>
         /// Obtiene la instancia del cliente de autenticación de Firebase.
         /// </summary>
-        public FirebaseAuthClient Instance { get; } = new(new FirebaseAuthConfig()
-        {
-            ApiKey = "AIzaSyB8LYJu_vfyaC4zsJXpnXgTVYKU685AMow",
-            AuthDomain = "https://themarketingapp-15895-default-rtdb.firebaseio.com/",
-            Providers = new FirebaseAuthProvider[]
-            {
-                    new EmailProvider()
-            },
-        });
-
-        /// <summary>
-        /// Inicializa una nueva instancia de la clase <see cref="FirebaseAuthentication"/> con la configuración predeterminada.
-        /// </summary>
-        public FirebaseAuthentication()
-        {
-        }
-
-        /// <summary>
-        /// Inicializa una nueva instancia de la clase <see cref="FirebaseAuthentication"/> con una clave API y un dominio de autenticación específicos.
-        /// </summary>
-        /// <param name="apiKey">La clave API de Firebase.</param>
-        /// <param name="authDomain">El dominio de autenticación de Firebase.</param>
-        public FirebaseAuthentication(string apiKey, string authDomain)
-        {
-            Instance = new FirebaseAuthClient(new FirebaseAuthConfig()
-            {
-                ApiKey = apiKey,
-                AuthDomain = authDomain,
-                Providers = new FirebaseAuthProvider[]
+        private readonly FirebaseAuthClient Instance = new
+            (
+                new FirebaseAuthConfig()
                 {
-                        new EmailProvider()
+                    ApiKey = _ApiKey,
+                    AuthDomain = _AuthDomain,
+                    Providers = new FirebaseAuthProvider[]
+                    {
+                           new EmailProvider()
+                    }
                 }
-            });
+            );
+
+        /// <summary>
+        /// Devuelve la instancia del cliente de autenticación de Firebase.
+        /// </summary>
+        /// <returns>Instancia de <see cref="FirebaseAuthClient"/>.</returns>
+        public FirebaseAuthClient GetInstance()
+        {
+            return Instance;
         }
     }
 }

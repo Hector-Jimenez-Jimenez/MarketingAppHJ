@@ -10,6 +10,6 @@ namespace MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication
         /// <summary>
         /// Obtiene el cliente de autenticación de Firebase.
         /// </summary>
-        public FirebaseAuthClient Instance { get; }
+        public FirebaseAuthClient GetInstance();
     }
 }
