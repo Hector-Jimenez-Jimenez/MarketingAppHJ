@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Firebase.Database;
+﻿
 using MarketingAppHJ.Aplicacion.Dtos;
+using MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerNombreCategoria;
-using TheMarketingApp.Dominio.Entidades;
 
 namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerNombreCategoria
 {
@@ -15,14 +10,14 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerNom
     /// </summary>
     public class ObtenerNombreCategoria : IObtenerNombreCategoria
     {
-        private readonly FirebaseClient _firebaseClient;
+        private readonly IFirebaseRealtimeDatabase _firebaseClient;
 
         /// <summary>
         /// Constructor de la clase ObtenerNombreCategoria.
         /// </summary>
         /// <param name="firebaseClient">Instancia de FirebaseClient utilizada para interactuar con la base de datos.</param>
         /// <exception cref="ArgumentNullException">Se lanza si firebaseClient es nulo.</exception>
-        public ObtenerNombreCategoria(FirebaseClient firebaseClient)
+        public ObtenerNombreCategoria(IFirebaseRealtimeDatabase firebaseClient)
         {
             _firebaseClient = firebaseClient ?? throw new ArgumentNullException(nameof(firebaseClient));
         }
@@ -30,7 +25,7 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerNom
         /// <summary>
         /// Obtiene los datos de una categoría específica desde Firebase.
         /// </summary>
-        /// <param name="IdCategoria">El identificador único de la categoría.</param>
+        /// <param name="categoryId">El identificador único de la categoría.</param>
         /// <returns>Un objeto <see cref="CategoriaDto"/> que contiene los datos de la categoría.</returns>
         public async Task<CategoriaDto> ObtenerCategoria(string categoryId)
         {
@@ -39,7 +34,7 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerNom
 
             try
             {
-                var dto = await _firebaseClient
+                var dto = await _firebaseClient.Instance
                     .Child($"categorias/{categoryId}")
                     .OnceSingleAsync<CategoriaDto>();
 

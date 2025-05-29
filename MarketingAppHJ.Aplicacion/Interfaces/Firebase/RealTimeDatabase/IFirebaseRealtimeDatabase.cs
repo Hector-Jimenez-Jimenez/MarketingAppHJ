@@ -16,5 +16,6 @@ namespace MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase
         /// Obtiene la instancia del cliente de Firebase.  
         /// </summary>  
         FirebaseClient Instance { get; }
+
     }
 }

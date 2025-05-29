@@ -5,6 +5,8 @@ using Firebase.Database.Streaming;
 using Firebase.Database;
 using MarketingAppHJ.Aplicacion.Dtos;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerTodosProductos;
+using MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase;
+using MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.RealtimeDatabase;
 
 namespace MarketingAppHJ.Cliente.ViewModels.MainPageViewModel
 {
@@ -19,7 +21,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.MainPageViewModel
         #endregion
 
         #region Interfaces y Firbase
-        private readonly FirebaseClient _firebaseClient = new("https://marketingapphj-default-rtdb.firebaseio.com/");
+        private readonly IFirebaseRealtimeDatabase _firebaseClient;
         private IDisposable _subscription;
         private readonly IObtenerProductos _usecase;
         private readonly List<ProductoDto> _allProductos = new ();
@@ -36,7 +38,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.MainPageViewModel
         /// Constructor de la clase MainPageViewModel.
         /// </summary>
         /// <param name="usecase">Caso de uso para obtener productos.</param>
-        public MainPageViewModel(IObtenerProductos usecase,FirebaseClient firebase)
+        public MainPageViewModel(IObtenerProductos usecase,IFirebaseRealtimeDatabase firebase)
         {
             _usecase = usecase;
             _firebaseClient = firebase;
@@ -56,7 +58,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.MainPageViewModel
         public void Dispose()
         {
             _subscription?.Dispose();
-            _firebaseClient.Dispose();
+            _firebaseClient.Instance.Dispose();
             GC.SuppressFinalize(this);
         }
 
@@ -101,7 +103,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.MainPageViewModel
         /// </summary>
         private void SubscribeToRealtimeUpdates()
         {
-            _subscription = _firebaseClient
+            _subscription = _firebaseClient.Instance
                 .Child("productos")
                 .AsObservable<ProductoDto>()
                 .Subscribe(e =>

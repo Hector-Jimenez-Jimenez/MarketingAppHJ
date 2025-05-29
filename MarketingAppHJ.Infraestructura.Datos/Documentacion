@@ -9,11 +9,11 @@
             Clase que implementa la funcionalidad para agregar productos al carrito de un usuario.
             </summary>
         </member>
-        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.AgregarProductoAlCarrito.AgregarProdcutoAlCarrito.#ctor(Firebase.Database.FirebaseClient)">
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.AgregarProductoAlCarrito.AgregarProdcutoAlCarrito.#ctor(MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase.IFirebaseRealtimeDatabase)">
             <summary>
             Constructor de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.AgregarProductoAlCarrito.AgregarProdcutoAlCarrito"/>.
             </summary>
-            <param name="firebaseClient">Instancia de <see cref="T:Firebase.Database.FirebaseClient"/> para interactuar con la base de datos Firebase.</param>
+            <param name="firebaseClient">Instancia de <see cref="!:FirebaseClient"/> para interactuar con la base de datos Firebase.</param>
         </member>
         <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.AgregarProductoAlCarrito.AgregarProdcutoAlCarrito.AgregarAlCarritoAsync(System.String,MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto)">
             <summary>
@@ -28,7 +28,7 @@
             Clase responsable de borrar los productos del carrito de un usuario en la base de datos Firebase.
             </summary>
         </member>
-        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.BorrarProductosCarrito.BorrarProductosCarrito.#ctor(Firebase.Database.FirebaseClient)">
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.BorrarProductosCarrito.BorrarProductosCarrito.#ctor(MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase.IFirebaseRealtimeDatabase)">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.BorrarProductosCarrito.BorrarProductosCarrito"/>.
             </summary>
@@ -68,7 +68,7 @@
             Clase que implementa la observación de cambios en el carrito de un usuario.
             </summary>
         </member>
-        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ObservarCambiosCarrito.ObservarCambiosCarrito.#ctor(Firebase.Database.FirebaseClient)">
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ObservarCambiosCarrito.ObservarCambiosCarrito.#ctor(MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase.IFirebaseRealtimeDatabase)">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ObservarCambiosCarrito.ObservarCambiosCarrito"/>.
             </summary>
@@ -86,7 +86,7 @@
             Clase que implementa la interfaz IObtenerCarrito para obtener los productos del carrito desde Firebase.
             </summary>
         </member>
-        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ObtenerProductosCarrito.ObtenerProductosCarrito.#ctor(Firebase.Database.FirebaseClient)">
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ObtenerProductosCarrito.ObtenerProductosCarrito.#ctor(MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase.IFirebaseRealtimeDatabase)">
             <summary>
             Constructor de la clase ObtenerProductosCarrito.
             </summary>
@@ -104,13 +104,12 @@
             Clase que implementa la lógica para crear un pedido.
             </summary>
         </member>
-        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Checkout.CrearPedido.CrearPedido.#ctor(MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObtenerCarrito.IObtenerCarrito,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.BorrarProductosCarrito.IBorrarProductosCarrito,Firebase.Database.FirebaseClient,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Checkout.GuardarPedido.IGuardarPedido)">
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Checkout.CrearPedido.CrearPedido.#ctor(MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObtenerCarrito.IObtenerCarrito,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.BorrarProductosCarrito.IBorrarProductosCarrito,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Checkout.GuardarPedido.IGuardarPedido)">
             <summary>
             Constructor de la clase CrearPedido.
             </summary>
             <param name="obtenerCarrito">Servicio para obtener el carrito del usuario.</param>
             <param name="borrarProductosCarrito">Servicio para borrar los productos del carrito.</param>
-            <param name="firebaseClient">Cliente de Firebase para operaciones de base de datos.</param>
             <param name="guardarPedido">Servicio para guardar el pedido.</param>
             <exception cref="T:System.ArgumentNullException">Se lanza si algún parámetro es nulo.</exception>
         </member>
@@ -128,7 +127,7 @@
             Clase que implementa la funcionalidad para guardar pedidos en Firebase.
             </summary>
         </member>
-        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Checkout.GuardarPedido.GuardarPedido.#ctor(Firebase.Database.FirebaseClient)">
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Checkout.GuardarPedido.GuardarPedido.#ctor(MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase.IFirebaseRealtimeDatabase)">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Checkout.GuardarPedido.GuardarPedido"/>.
             </summary>
@@ -147,7 +146,7 @@
             Clase que implementa la interfaz para obtener el nombre de una categoría desde Firebase.
             </summary>
         </member>
-        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerNombreCategoria.ObtenerNombreCategoria.#ctor(Firebase.Database.FirebaseClient)">
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerNombreCategoria.ObtenerNombreCategoria.#ctor(MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase.IFirebaseRealtimeDatabase)">
             <summary>
             Constructor de la clase ObtenerNombreCategoria.
             </summary>
@@ -158,7 +157,7 @@
             <summary>
             Obtiene los datos de una categoría específica desde Firebase.
             </summary>
-            <param name="IdCategoria">El identificador único de la categoría.</param>
+            <param name="categoryId">El identificador único de la categoría.</param>
             <returns>Un objeto <see cref="T:MarketingAppHJ.Aplicacion.Dtos.CategoriaDto"/> que contiene los datos de la categoría.</returns>
         </member>
         <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductoPorId.ObtenerProductoPorId">
@@ -166,7 +165,7 @@
             Caso de uso para obtener un producto por su identificador.
             </summary>
         </member>
-        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductoPorId.ObtenerProductoPorId.#ctor(Firebase.Database.FirebaseClient)">
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductoPorId.ObtenerProductoPorId.#ctor(MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase.IFirebaseRealtimeDatabase)">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductoPorId.ObtenerProductoPorId"/>.
             </summary>

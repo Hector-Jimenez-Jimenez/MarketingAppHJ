@@ -1,5 +1,5 @@
-﻿using Firebase.Database;
-using MarketingAppHJ.Aplicacion.Dtos;
+﻿using MarketingAppHJ.Aplicacion.Dtos;
+using MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerProductosPorId;
 
 namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductoPorId
@@ -9,13 +9,13 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerPro
     /// </summary>
     public class ObtenerProductoPorId : IObtenerProductoPorId
     {
-        private readonly FirebaseClient _client;
+        private readonly IFirebaseRealtimeDatabase _client;
 
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="ObtenerProductoPorId"/>.
         /// </summary>
         /// <param name="firebase">El cliente de Firebase utilizado para acceder a los datos.</param>
-        public ObtenerProductoPorId(FirebaseClient firebase)
+        public ObtenerProductoPorId(IFirebaseRealtimeDatabase firebase)
         {
             _client = firebase;
         }
@@ -27,7 +27,7 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerPro
         /// <returns>Una tarea que representa la operación asíncrona. El resultado contiene el producto.</returns>
         public async Task<ProductoDto> ObtenerProductoPorIdAsync(string id)
         {
-            var productos = await _client
+            var productos = await _client.Instance
                 .Child("productos")
                 .OnceAsync<ProductoDto>();
 

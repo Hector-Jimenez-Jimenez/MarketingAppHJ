@@ -36,6 +36,7 @@ using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProduct
 using MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication;
 using MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.RealtimeDatabase;
 using Microsoft.Extensions.Logging;
+using TheMarketingApp.Infraestructura.Negocio.Servicios;
 
 namespace MarketingAppHJ.Cliente
 {
@@ -48,6 +49,7 @@ namespace MarketingAppHJ.Cliente
                 new FirebaseClient(
                     "https://themarketingapp-15895-default-rtdb.firebaseio.com/")
                 );
+            builder.Services.AddInfraestructuraBusiness();
             builder.Services.AddSingleton<AppShell>();
             builder.Services.AddUseCases();
             builder.Services.AddViewModels();  

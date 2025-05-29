@@ -51,7 +51,9 @@ namespace MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel
                     ProductoId = i.ProductoId,
                     Nombre = i.Nombre,
                     Precio = i.Precio,
-                    Cantidad = i.Cantidad
+                    Cantidad = i.Cantidad,
+                    ImagenUrl = i.ImagenUrl
+                    
                 }));
             Total = Items.Sum(i => i.Total);
         }
@@ -84,7 +86,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel
             {
                 await confirmationPage.DisplayAlert(
                     "Pedido realizado",
-                    $"Tu pedido {order.OrderId} se ha creado correctamente.\nTotal: {order.Total:C}",
+                    $"Tu pedido con id: {order.OrderId} se ha creado correctamente.\nTotal: {order.Total:C}",
                     "OK");
             }
 

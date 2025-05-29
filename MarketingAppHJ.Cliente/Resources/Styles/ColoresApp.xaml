@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- Paleta estática -->
+    <Color x:Key="Primary">#757DF2</Color>
+    <Color x:Key="PrimaryDark">#5A5BD3</Color>
+    <Color x:Key="PrimaryLight">#A29BF8</Color>
+
+    <Color x:Key="Secondary">#FFFFFF</Color>
+    <Color x:Key="SecondaryDark">#F5F5F5</Color>
+    <Color x:Key="Tertiary">#E0E0E0</Color>
+
+    <Color x:Key="TextPrimary">#333333</Color>
+    <Color x:Key="TextSecondary">#666666</Color>
+
+    <Color x:Key="Quintiary">#666666</Color>
+    <Color x:Key="Forninary">#75BBF2</Color>
+
+</ResourceDictionary>

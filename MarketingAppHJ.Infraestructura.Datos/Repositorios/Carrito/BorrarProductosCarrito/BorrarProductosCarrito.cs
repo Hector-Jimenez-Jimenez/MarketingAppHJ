@@ -1,5 +1,4 @@
-﻿using Firebase.Database;
-using MarketingAppHJ.Aplicacion.Dtos;
+﻿using MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.BorrarProductosCarrito;
 
 namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.BorrarProductosCarrito
@@ -9,14 +8,14 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.BorrarProduc
     /// </summary>
     public class BorrarProductosCarrito : IBorrarProductosCarrito
     {
-        private readonly FirebaseClient _firebaseClient;
+        private readonly IFirebaseRealtimeDatabase _firebaseClient;
 
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="BorrarProductosCarrito"/>.
         /// </summary>
         /// <param name="firebaseClient">Cliente de Firebase utilizado para interactuar con la base de datos.</param>
         /// <exception cref="ArgumentNullException">Se lanza si <paramref name="firebaseClient"/> es nulo.</exception>
-        public BorrarProductosCarrito(FirebaseClient firebaseClient)
+        public BorrarProductosCarrito(IFirebaseRealtimeDatabase firebaseClient)
         {
             _firebaseClient = firebaseClient ?? throw new ArgumentNullException(nameof(firebaseClient));
         }
@@ -28,7 +27,7 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.BorrarProduc
         /// <returns>Una tarea que representa la operación asincrónica.</returns>
         public async Task BorrarProductosCarritoAsync(string userId)
         {
-            await _firebaseClient
+            await _firebaseClient.Instance
                 .Child($"carritos/{userId}/items")
                 .DeleteAsync();
         }

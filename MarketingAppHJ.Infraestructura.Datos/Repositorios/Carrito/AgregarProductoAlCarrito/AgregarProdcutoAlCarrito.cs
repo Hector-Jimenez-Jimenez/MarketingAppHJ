@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Firebase.Auth;
-using Firebase.Database;
-using Firebase.Database.Query;
+﻿using Firebase.Database.Query;
 using MarketingAppHJ.Aplicacion.Dtos;
+using MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.AgregarProductoAlCarrito;
 
 namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.AgregarProductoAlCarrito
@@ -16,13 +10,13 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.AgregarProdu
     /// </summary>
     public class AgregarProdcutoAlCarrito : IAgregarProductoAlCarrito
     {
-        private readonly FirebaseClient _firebaseClient;
+        private readonly IFirebaseRealtimeDatabase _firebaseClient;
 
         /// <summary>
         /// Constructor de la clase <see cref="AgregarProdcutoAlCarrito"/>.
         /// </summary>
         /// <param name="firebaseClient">Instancia de <see cref="FirebaseClient"/> para interactuar con la base de datos Firebase.</param>
-        public AgregarProdcutoAlCarrito(FirebaseClient firebaseClient)
+        public AgregarProdcutoAlCarrito(IFirebaseRealtimeDatabase firebaseClient)
         {
             _firebaseClient = firebaseClient;
         }
@@ -38,7 +32,7 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.AgregarProdu
             CarritoItemDto existente = null;
             try
             {
-                existente = await _firebaseClient
+                existente = await _firebaseClient.Instance
                     .Child($"carritos/{usuarioId}/items/{item.ProductoId}")
                     .OnceSingleAsync<CarritoItemDto>();
             }
@@ -52,11 +46,11 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.AgregarProdu
                 item.Cantidad += existente.Cantidad;
             }
 
-            await _firebaseClient
+            await _firebaseClient.Instance
                 .Child($"carritos/{usuarioId}/items/{item.ProductoId}")
                 .PutAsync(item);
 
-            var firebaseItems = await _firebaseClient
+            var firebaseItems = await _firebaseClient.Instance
                 .Child($"carritos/{usuarioId}/items")
                 .OnceAsync<CarritoItemDto>();
 

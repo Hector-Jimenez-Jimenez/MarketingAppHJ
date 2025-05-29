@@ -1,5 +1,4 @@
-﻿using Firebase.Database;
-using MarketingAppHJ.Aplicacion.Dtos;
+﻿using MarketingAppHJ.Aplicacion.Dtos;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.BorrarProductosCarrito;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObtenerCarrito;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Checkout.CrearPedido;
@@ -12,7 +11,6 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Checkout.CrearPedido
     /// </summary>
     public class CrearPedido : ICrearPedido
     {
-        private readonly FirebaseClient _firebaseClient;
         private readonly IObtenerCarrito _obtenerCarrito;
         private readonly IBorrarProductosCarrito _borrarProductosCarrito;
         private readonly IGuardarPedido _guardarPedido;
@@ -22,15 +20,13 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Checkout.CrearPedido
         /// </summary>
         /// <param name="obtenerCarrito">Servicio para obtener el carrito del usuario.</param>
         /// <param name="borrarProductosCarrito">Servicio para borrar los productos del carrito.</param>
-        /// <param name="firebaseClient">Cliente de Firebase para operaciones de base de datos.</param>
         /// <param name="guardarPedido">Servicio para guardar el pedido.</param>
         /// <exception cref="ArgumentNullException">Se lanza si algún parámetro es nulo.</exception>
-        public CrearPedido(IObtenerCarrito obtenerCarrito, IBorrarProductosCarrito borrarProductosCarrito, FirebaseClient firebaseClient, IGuardarPedido guardarPedido)
+        public CrearPedido(IObtenerCarrito obtenerCarrito, IBorrarProductosCarrito borrarProductosCarrito, IGuardarPedido guardarPedido)
         {
             _obtenerCarrito = obtenerCarrito ?? throw new ArgumentNullException(nameof(obtenerCarrito));
             _borrarProductosCarrito = borrarProductosCarrito ?? throw new ArgumentNullException(nameof(borrarProductosCarrito));
             _guardarPedido = guardarPedido ?? throw new ArgumentNullException(nameof(guardarPedido));
-            firebaseClient = firebaseClient ?? throw new ArgumentNullException(nameof(firebaseClient));
         }
 
         /// <summary>

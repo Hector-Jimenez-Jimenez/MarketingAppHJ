@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- Header bar -->
+    <Style x:Key="HeaderStyle" TargetType="Grid">
+        <Setter Property="BackgroundColor" Value="{DynamicResource Primary}"/>
+        <Setter Property="HeightRequest"   Value="40"/>
+        <Setter Property="Padding"         Value="0"/>
+        <Setter Property="ColumnSpacing"   Value="16"/>
+    </Style>
+
+    <!-- Icon buttons in header -->
+    <Style x:Key="IconButtonStyle" TargetType="ImageButton">
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="HeightRequest"   Value="24"/>
+        <Setter Property="WidthRequest"    Value="24"/>
+        <Setter Property="Margin"          Value="0,10,10,0"/>
+    </Style>
+
+    <!-- Search bar container -->
+    <Style x:Key="SearchBorderStyle" TargetType="Border">
+        <Setter Property="BackgroundColor" Value="{DynamicResource Secondary}"/>
+        <Setter Property="StrokeShape"     Value="RoundRectangle 25"/>
+        <Setter Property="StrokeThickness" Value="0"/>
+        <Setter Property="Padding"         Value="0"/>
+        <Setter Property="Margin"          Value="0,10"/>
+    </Style>
+
+    <!-- Product card -->
+    <Style x:Key="ProductCardStyle" TargetType="Border">
+        <Setter Property="BackgroundColor" Value="{DynamicResource Surface}"/>
+        <Setter Property="StrokeShape"     Value="RoundRectangle 12"/>
+        <Setter Property="StrokeThickness" Value="0"/>
+        <Setter Property="Padding"         Value="12"/>
+        <Setter Property="Margin"          Value="8"/>
+    </Style>
+
+    <!-- Product name label -->
+    <Style x:Key="ProductNameStyle" TargetType="Label">
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="TextColor"      Value="{DynamicResource PrimaryDark}"/>
+        <Setter Property="FontSize"       Value="16"/>
+    </Style>
+
+    <!-- Product cuantity label -->
+    <Style x:Key="ProductCuantStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource TextSecondary}"/>
+        <Setter Property="FontSize"  Value="12"/>
+    </Style>
+    
+    <!-- Product description label -->
+    <Style x:Key="ProductDescStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource TextSecondaryOnSurface}"/>
+        <Setter Property="FontSize"  Value="12"/>
+    </Style>
+
+    <!-- Product price label -->
+    <Style x:Key="ProductPriceStyle" TargetType="Label">
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="TextColor"      Value="{DynamicResource PrimaryLight}"/>
+        <Setter Property="FontSize"       Value="14"/>
+    </Style>
+
+</ResourceDictionary>

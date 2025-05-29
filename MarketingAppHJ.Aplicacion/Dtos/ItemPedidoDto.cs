@@ -35,5 +35,7 @@ namespace MarketingAppHJ.Aplicacion.Dtos
         /// Total calculado como el producto del precio y la cantidad.
         /// </summary>
         public decimal Total => Precio * Cantidad;
+
+        public string ImagenUrl { get; set; } = string.Empty;
     }
 }

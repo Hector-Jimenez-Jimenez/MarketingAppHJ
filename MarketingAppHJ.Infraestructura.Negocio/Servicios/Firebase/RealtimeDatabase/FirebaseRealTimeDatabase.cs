@@ -13,12 +13,12 @@ namespace MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.RealtimeData
         /// <summary>
         /// Obtiene la instancia del cliente de Firebase.
         /// </summary>
-        public FirebaseClient Instance { get; }
+        public FirebaseClient Instance { get; } = new FirebaseClient("https://themarketingapp-15895-default-rtdb.firebaseio.com/");
 
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="FirebaseRealTimeDatabase"/>.
         /// </summary>
-        
-        public static FirebaseClient Create(string url) => new FirebaseClient(url);
+
+        public FirebaseClient Create(string url) => new FirebaseClient(url);
     }
 }

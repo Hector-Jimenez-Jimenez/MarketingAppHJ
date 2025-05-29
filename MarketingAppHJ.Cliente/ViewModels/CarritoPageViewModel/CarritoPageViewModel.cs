@@ -28,6 +28,8 @@ namespace MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel
         ObservableCollection<CarritoItemDto> items = new();
 
         [ObservableProperty]
+        int cantidad;
+        [ObservableProperty]
         decimal totalPrice;
 
         public CarritoPageViewModel() { }
@@ -53,9 +55,9 @@ namespace MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel
             var lista = await _ucObtener.ObtenerCarritoAsync(UserId);
             Items.Clear();
             foreach (var dto in lista)
-                Items.Add(dto);
-
+            Items.Add(dto);
             TotalPrice = Items.Sum(i => i.Total);
+            Cantidad = Items.Sum(i => i.Cantidad);
         }
 
         /// <summary>

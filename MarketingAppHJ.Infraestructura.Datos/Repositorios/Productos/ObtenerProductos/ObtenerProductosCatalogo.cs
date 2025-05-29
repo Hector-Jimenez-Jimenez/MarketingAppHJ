@@ -1,5 +1,6 @@
 ﻿using Firebase.Database;
 using MarketingAppHJ.Aplicacion.Dtos;
+using MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerTodosProductos;
 
 namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductos
@@ -9,16 +10,16 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerPro
     /// </summary>
     public class ObtenerProductosCatalogo : IObtenerProductos
     {
-        private readonly FirebaseClient _firebaseClient;
+        private readonly IFirebaseRealtimeDatabase _firebaseClient;
 
-        public ObtenerProductosCatalogo(FirebaseClient firebaseClient)
+        public ObtenerProductosCatalogo(IFirebaseRealtimeDatabase firebaseClient)
         {
             _firebaseClient = firebaseClient;
         }
 
         public async Task<IEnumerable<ProductoDto>> ObtenerProductosAsync()
         {
-            var results = await _firebaseClient
+            var results = await _firebaseClient.Instance
                 .Child("productos")
                 .OnceAsync<ProductoDto>();
 

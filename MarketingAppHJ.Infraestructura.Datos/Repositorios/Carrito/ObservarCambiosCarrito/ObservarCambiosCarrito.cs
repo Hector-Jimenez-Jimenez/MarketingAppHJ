@@ -1,6 +1,6 @@
-﻿using Firebase.Database;
-using Firebase.Database.Streaming;
+﻿using Firebase.Database.Streaming;
 using MarketingAppHJ.Aplicacion.Dtos;
+using MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObservarCambiosCarrito;
 
 namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ObservarCambiosCarrito
@@ -10,13 +10,13 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ObservarCamb
     /// </summary>
     public class ObservarCambiosCarrito : IObservarCambiosCarrito
     {
-        private readonly FirebaseClient _client;
+        private readonly IFirebaseRealtimeDatabase _client;
 
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="ObservarCambiosCarrito"/>.
         /// </summary>
         /// <param name="client">Cliente de Firebase utilizado para interactuar con la base de datos.</param>
-        public ObservarCambiosCarrito(FirebaseClient client)
+        public ObservarCambiosCarrito(IFirebaseRealtimeDatabase client)
         {
             _client = client;
         }
@@ -28,7 +28,7 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ObservarCamb
         /// <returns>Un observable que emite eventos de Firebase relacionados con los elementos del carrito.</returns>
         public IObservable<FirebaseEvent<CarritoItemDto>> ObservarCambios(string userId)
         {
-            return _client
+            return _client.Instance
                         .Child($"carritos/{userId}/items")
                         .AsObservable<CarritoItemDto>();
         }

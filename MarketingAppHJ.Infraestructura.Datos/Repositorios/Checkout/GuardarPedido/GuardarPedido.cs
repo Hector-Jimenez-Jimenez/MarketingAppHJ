@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Firebase.Database;
-using Firebase.Database.Query;
+﻿using Firebase.Database.Query;
 using MarketingAppHJ.Aplicacion.Dtos;
+using MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Checkout.GuardarPedido;
 
 namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Checkout.GuardarPedido
@@ -15,14 +10,14 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Checkout.GuardarPedi
     /// </summary>
     public class GuardarPedido : IGuardarPedido
     {
-        private readonly FirebaseClient _firebaseClient;
+        private readonly IFirebaseRealtimeDatabase _firebaseClient;
 
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="GuardarPedido"/>.
         /// </summary>
         /// <param name="firebaseClient">Cliente de Firebase utilizado para interactuar con la base de datos.</param>
         /// <exception cref="ArgumentNullException">Se lanza si <paramref name="firebaseClient"/> es nulo.</exception>
-        public GuardarPedido(FirebaseClient firebaseClient)
+        public GuardarPedido(IFirebaseRealtimeDatabase firebaseClient)
         {
             _firebaseClient = firebaseClient ?? throw new ArgumentNullException(nameof(firebaseClient));
         }
@@ -34,7 +29,7 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Checkout.GuardarPedi
         /// <returns>Una tarea que representa la operación asincrónica.</returns>
         public async Task GuardarPedidoAsync(PedidoDto pedido)
         {
-            await _firebaseClient
+            await _firebaseClient.Instance
                 .Child($"pedidos/{pedido.UserId}/pedidos/{pedido.OrderId}")
                 .PutAsync(pedido);
         }

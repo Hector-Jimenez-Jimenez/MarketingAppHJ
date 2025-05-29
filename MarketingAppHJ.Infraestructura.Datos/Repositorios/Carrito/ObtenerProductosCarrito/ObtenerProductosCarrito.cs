@@ -1,5 +1,5 @@
-﻿using Firebase.Database;
-using MarketingAppHJ.Aplicacion.Dtos;
+﻿using MarketingAppHJ.Aplicacion.Dtos;
+using MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObtenerCarrito;
 
 namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ObtenerProductosCarrito
@@ -9,13 +9,13 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ObtenerProdu
     /// </summary>
     public class ObtenerProductosCarrito : IObtenerCarrito
     {
-        private readonly FirebaseClient _firebaseClient;
+        private readonly IFirebaseRealtimeDatabase _firebaseClient;
 
         /// <summary>
         /// Constructor de la clase ObtenerProductosCarrito.
         /// </summary>
         /// <param name="firebaseClient">Instancia de FirebaseClient para interactuar con la base de datos.</param>
-        public ObtenerProductosCarrito(FirebaseClient firebaseClient)
+        public ObtenerProductosCarrito(IFirebaseRealtimeDatabase firebaseClient)
         {
             _firebaseClient = firebaseClient;
         }
@@ -27,7 +27,7 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.ObtenerProdu
         /// <returns>Una lista de objetos CarritoItemDto que representan los productos en el carrito.</returns>
         public async Task<IEnumerable<CarritoItemDto>> ObtenerCarritoAsync(string id)
         {
-            var productos = await _firebaseClient
+            var productos = await _firebaseClient.Instance
                 .Child($"carritos/{id}/items")
                 .OnceAsync<CarritoItemDto>();
 

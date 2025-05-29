@@ -79,7 +79,7 @@ namespace MarketingAppHJ.Cliente.Views.Aplicacion.CarritoPage
                         _vm.Items.Remove(toRm);
                     break;
             }
-
+            _vm.Cantidad = _vm.Items.Sum(i => i.Cantidad);
             _vm.TotalPrice = _vm.Items.Sum(i => i.Total);
         }
 

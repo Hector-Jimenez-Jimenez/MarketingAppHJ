@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
            x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.DetailsPage.DetailsPage"  
-           xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel">
+           xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel"
+           BackgroundColor="{DynamicResource Secondary}"
+           Padding="0">
     <ContentPage.BindingContext>
         <vm:DetallesProductoPageViewModel />
     </ContentPage.BindingContext>
@@ -41,7 +43,7 @@
                     <Label Text="{Binding NombreCategoria}"
                            FontSize="16"
                            VerticalOptions="Center"
-                           TextColor="{StaticResource Quintiary}"/>
+                           TextColor="{StaticResource TextPrimary}"/>
                 </HorizontalStackLayout>
 
                 <!-- 2.2 Estado de stock -->
@@ -102,15 +104,15 @@
                         Command="{Binding AgregarAlCarritoCommand}"
                         CornerRadius="25"
                         HeightRequest="50"
-                        BackgroundColor="{StaticResource Tertiary}"
-                        TextColor="White"/>
+                        BackgroundColor="{StaticResource Forninary}"
+                        TextColor="{StaticResource TextPrimary}"/>
 
                 <Button Text="Comprar ahora"
                         Command="{Binding ComprarAhoraCommand}"
                         CornerRadius="25"
                         HeightRequest="50"
                         BackgroundColor="{StaticResource Forninary}"
-                        TextColor="White"/>
+                        TextColor="{StaticResource TextPrimary}"/>
             </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
