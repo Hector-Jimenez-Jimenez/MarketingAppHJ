@@ -7,19 +7,21 @@ using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MarketingAppHJ.Aplicacion.Dtos;
+using MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObtenerCarrito;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Checkout.CrearPedido;
+using MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication;
 
 namespace MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel
 {
     public partial class CheckOutPageViewModel : ObservableObject
     {
-        const string UserId = "user1";
-        private readonly IObtenerCarrito _obtenerCarrito;
-        private readonly ICrearPedido _crearPedido;
-
+        readonly IObtenerCarrito _obtenerCarrito;
+        readonly ICrearPedido _realizarPedido;
+        readonly IFirebaseAuthentication _authentication;
+        private string UserId => _authentication.UserId;
         [ObservableProperty]
-        private ObservableCollection<ItemPedidoDto> items;
+        ObservableCollection<CarritoItemDto> items = new();
 
         [ObservableProperty]
         private decimal total;
@@ -30,85 +32,43 @@ namespace MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel
         [ObservableProperty]
         private string metodoPago = "Tarjeta";
 
-        public CheckOutPageViewModel() { }
+        public CheckOutPageViewModel()
+        {
+            // Constructor vacío para el uso de inyección de dependencias
+        }
         public CheckOutPageViewModel(
             IObtenerCarrito obtenerCarrito,
-            ICrearPedido crearPedido)
+            ICrearPedido realizarPedido,
+            IFirebaseAuthentication authentication)
         {
-            _obtenerCarrito = obtenerCarrito;
-            _crearPedido = crearPedido;
+            _obtenerCarrito = obtenerCarrito ?? throw new ArgumentNullException(nameof(obtenerCarrito));
+            _realizarPedido = realizarPedido ?? throw new ArgumentNullException(nameof(realizarPedido));
+            _authentication = authentication ?? throw new ArgumentNullException(nameof(authentication));
         }
 
-        /// <summary>
-        /// Carga los ítems actuales del carrito para mostrarlos.
-        /// </summary>
+        [RelayCommand]
         public async Task LoadCartAsync()
         {
             var list = await _obtenerCarrito.ObtenerCarritoAsync(UserId);
-            Items = new ObservableCollection<ItemPedidoDto>(
-                list.Select(i => new ItemPedidoDto
-                {
-                    ProductoId = i.ProductoId,
-                    Nombre = i.Nombre,
-                    Precio = i.Precio,
-                    Cantidad = i.Cantidad,
-                    ImagenUrl = i.ImagenUrl
-                    
-                }));
+            Items.Clear();
+            foreach (var i in list) Items.Add(i);
             Total = Items.Sum(i => i.Total);
         }
 
         [RelayCommand]
         public async Task RealizarPedidoAsync()
         {
-            if (string.IsNullOrWhiteSpace(DireccionEnvio))
+            try
             {
-                var currentPage = GetCurrentPage();
-                if (currentPage != null)
-                {
-                    await currentPage.DisplayAlert(
-                        "Validación",
-                        "Por favor ingresa una dirección de envío.",
-                        "OK");
-                }
-                return;
+                // Ejecuta tu use case, que internamente salvará el pedido y borrará el carrito
+                await _realizarPedido.RealizarPedido(UserId,direccionEnvio, MetodoPago);
+                await Shell.Current.DisplayAlert("Éxito", "Pedido realizado", "OK");
+                await Shell.Current.GoToAsync("main");
             }
-
-            // Llamada al UseCase
-            var order = await _crearPedido.RealizarPedido(
-                UserId,
-                DireccionEnvio,
-                MetodoPago);
-
-            // Confirmación
-            var confirmationPage = GetCurrentPage();
-            if (confirmationPage != null)
+            catch (Exception ex)
             {
-                await confirmationPage.DisplayAlert(
-                    "Pedido realizado",
-                    $"Tu pedido con id: {order.OrderId} se ha creado correctamente.\nTotal: {order.Total:C}",
-                    "OK");
+                await Shell.Current.DisplayAlert("Error", ex.Message, "OK");
             }
-
-            // Volver al catálogo
-            await Shell.Current.GoToAsync("//Catalogo");
-        }
-
-        private Page? GetCurrentPage()
-        {
-            var currentApplication = Application.Current;
-            if (currentApplication == null)
-            {
-                return null;
-            }
-
-            var currentWindow = currentApplication.Windows.FirstOrDefault();
-            if (currentWindow == null)
-            {
-                return null;
-            }
-
-            return currentWindow.Page;
         }
     }
 }

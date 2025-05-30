@@ -30,7 +30,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.ResetPageViewModel
             {
                 await _resetContrasena.ResetearContrasenaAsync(Email);
                 await Shell.Current.DisplayAlert("Éxito", "Se ha enviado un correo para restablecer tu contraseña.", "OK");
-                await Shell.Current.GoToAsync("//login");
+                await Shell.Current.GoToAsync("login");
             }
             catch (Exception ex)
             {
@@ -41,7 +41,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.ResetPageViewModel
         [RelayCommand]
         public async Task CancelAsync()
         {
-            await Shell.Current.GoToAsync("//login");
+            await Shell.Current.GoToAsync("login");
 
         }
     }

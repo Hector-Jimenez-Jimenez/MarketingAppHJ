@@ -1,4 +1,6 @@
 ﻿using System.Globalization;
+using Firebase.Auth;
+using Firebase.Auth.Providers;
 using Firebase.Database;
 using MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication;
 using MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase;
@@ -12,6 +14,7 @@ using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Checkout.CrearPedido;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Checkout.GuardarPedido;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.IniciarSesion;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.LogOut;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.ObtenerUsuario;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.Registro;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.ResetConstraseña;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerNombreCategoria;
@@ -31,6 +34,7 @@ using MarketingAppHJ.Cliente.Views.Aplicacion.DetailsPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.MainPage;
 using MarketingAppHJ.Cliente.Views.Login.LoginPage;
 using MarketingAppHJ.Cliente.Views.Login.RegisterPage;
+using MarketingAppHJ.Cliente.Views.Login.ResetPage;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.AgregarProductoAlCarrito;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.BorrarProductoCarrito;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.BorrarProductosCarrito;
@@ -41,6 +45,7 @@ using MarketingAppHJ.Infraestructura.Datos.Repositorios.Checkout.CrearPedido;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Checkout.GuardarPedido;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.IniciarSesion;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.LogOut;
+using MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.ObtenerUsuario;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.Registro;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.ResetearContrasena;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerNombreCategoria;
@@ -58,15 +63,27 @@ namespace MarketingAppHJ.Cliente
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
-            builder.Services.AddSingleton(sp =>
-                new FirebaseClient(
-                    "https://themarketingapp-15895-default-rtdb.firebaseio.com/")
-                );
             builder.Services.AddInfraestructuraBusiness();
             builder.Services.AddSingleton<AppShell>();
             builder.Services.AddUseCases();
             builder.Services.AddViewModels();  
             builder.Services.AddViews();
+            builder.Services.AddSingleton(sp =>
+            {
+                var auth = sp.GetRequiredService<IFirebaseAuthentication>();
+                var firebaseUrl = "https://themarketingapp-15895-default-rtdb.firebaseio.com/";
+                return new FirebaseClient(firebaseUrl, new FirebaseOptions
+                {
+                    AuthTokenAsyncFactory = async () => await auth.GetTokenAsync()
+                });
+            });
+
+            builder.Services.AddSingleton(sp =>
+            {
+                var client = sp.GetRequiredService<FirebaseClient>();
+                return new FirebaseRealTimeDatabase(client);
+            });
+
             builder
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
@@ -109,6 +126,7 @@ namespace MarketingAppHJ.Cliente
             services.AddScoped<ILogOut, LogOut>();
             services.AddScoped<IIniciarSesion, IniciarSesion>();
             services.AddScoped<IRegistro, Registro>();
+            services.AddScoped<IObtenerUsuario, ObtenerUsuario>();
         }
 
         /// <summary>
@@ -137,6 +155,7 @@ namespace MarketingAppHJ.Cliente
             services.AddSingleton<RegisterPage>();
             services.AddSingleton<LoginPage>();
             services.AddSingleton<RegisterPage>();
+            services.AddSingleton<ResetPage>();
         }
     }
 }

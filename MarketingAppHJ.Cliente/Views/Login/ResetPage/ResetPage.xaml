@@ -21,7 +21,7 @@
 
         <Button
       Text="Enviar enlace"
-      Command="{Binding RecoverCommand}"
+      Command="{Binding ResetPasswordCommand}"
       BackgroundColor="{DynamicResource Primary}"
       TextColor="{DynamicResource Secondary}"
       CornerRadius="10"

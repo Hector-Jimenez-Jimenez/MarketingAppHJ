@@ -16,7 +16,6 @@ public partial class CheckOutPage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        // Carga los ítems del carrito para mostrar el resumen
         await _vm.LoadCartAsync();
     }
 }

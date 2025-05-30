@@ -15,7 +15,7 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.AgregarProdu
         /// <summary>
         /// Constructor de la clase <see cref="AgregarProdcutoAlCarrito"/>.
         /// </summary>
-        /// <param name="firebaseClient">Instancia de <see cref="FirebaseClient"/> para interactuar con la base de datos Firebase.</param>
+        /// <param name="firebaseClient">Instancia de <see cref="IFirebaseRealtimeDatabase"/> para interactuar con la base de datos Firebase.</param>
         public AgregarProdcutoAlCarrito(IFirebaseRealtimeDatabase firebaseClient)
         {
             _firebaseClient = firebaseClient;

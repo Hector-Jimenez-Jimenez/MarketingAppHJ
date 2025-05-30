@@ -6,21 +6,24 @@ using System.Threading.Tasks;
 
 namespace MarketingAppHJ.Aplicacion.Dtos
 {
+    /// <summary>  
+    /// Representa una categoría en el sistema.  
+    /// </summary>  
     public class CategoriaDto
     {
-        /// <summary>
-        /// Identificador único de la categoría.
-        /// </summary>
+        /// <summary>  
+        /// Identificador único de la categoría.  
+        /// </summary>  
         public string Id_Categoria { get; set; } = string.Empty;
 
-        /// <summary>
-        /// Nombre de la categoría.
-        /// </summary>
+        /// <summary>  
+        /// Nombre de la categoría.  
+        /// </summary>  
         public string Nombre { get; set; } = string.Empty;
 
-        /// <summary>
-        /// Descripción de la categoría.
-        /// </summary>
+        /// <summary>  
+        /// Descripción de la categoría.  
+        /// </summary>  
         public string Descripcion { get; set; } = string.Empty;
     }
 }

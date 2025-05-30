@@ -9,6 +9,10 @@ namespace MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel
     {
         private readonly IRegistro _registro;
         [ObservableProperty]
+        private string name = string.Empty;
+        [ObservableProperty]
+        private string apellidos = string.Empty;
+        [ObservableProperty]
         private string email = string.Empty;
         [ObservableProperty]
         private string password = string.Empty;
@@ -35,7 +39,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel
             }
             try
             {
-                await _registro.RegistrarUsuarioAsync(Email, Password);
+                await _registro.RegistrarUsuarioAsync(Email, Password,Name,Apellidos);
                 await Shell.Current.DisplayAlert("Éxito", "Registro Completado!", "OK");
                 await Shell.Current.GoToAsync("main");
             }

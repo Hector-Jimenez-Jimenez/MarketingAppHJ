@@ -36,11 +36,15 @@ namespace MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel
             {
                 await _iniciarSesion.IniciarSesionAsync(Email, Password);
                 await Shell.Current.DisplayAlert("Success", "Login successful!", "OK");
-                await Shell.Current.GoToAsync("//mainPage");
+                await Shell.Current.GoToAsync("main");
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Login failed: {ex.Message}");
+                if (ex.Message.Contains("INVALID_LOGIN_CREDENTIALS"))
+                {
+                    await Shell.Current.DisplayAlert("Error", "No se han encontrado los credenciales", "Entendido");
+                }
             }
         }
 
@@ -49,8 +53,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel
         {
             try
             {
-                await _resetContrasena.ResetearContrasenaAsync(Email);
-                await Shell.Current.DisplayAlert("Success", "Password reset email sent!", "OK");
+                await Shell.Current.GoToAsync("reset");
             }
             catch (Exception ex)
             {

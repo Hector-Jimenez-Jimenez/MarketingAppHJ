@@ -13,7 +13,7 @@
             <summary>
             Constructor de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.AgregarProductoAlCarrito.AgregarProdcutoAlCarrito"/>.
             </summary>
-            <param name="firebaseClient">Instancia de <see cref="!:FirebaseClient"/> para interactuar con la base de datos Firebase.</param>
+            <param name="firebaseClient">Instancia de <see cref="T:MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase.IFirebaseRealtimeDatabase"/> para interactuar con la base de datos Firebase.</param>
         </member>
         <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.AgregarProductoAlCarrito.AgregarProdcutoAlCarrito.AgregarAlCarritoAsync(System.String,MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto)">
             <summary>
@@ -22,6 +22,25 @@
             <param name="usuarioId">El identificador del usuario.</param>
             <param name="item">El producto a agregar al carrito.</param>
             <returns>Una tarea que representa la operación asincrónica. El resultado contiene la lista de productos en el carrito.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.BorrarProductoCarrito.BorrarProductoCarrito">
+            <summary>  
+            Clase responsable de borrar un producto del carrito de compras en la base de datos en tiempo real de Firebase.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.BorrarProductoCarrito.BorrarProductoCarrito.#ctor(MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase.IFirebaseRealtimeDatabase)">
+            <summary>  
+            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.BorrarProductoCarrito.BorrarProductoCarrito"/> con el cliente de Firebase.  
+            </summary>  
+            <param name="client">Instancia del cliente de Firebase para interactuar con la base de datos en tiempo real.</param>  
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.BorrarProductoCarrito.BorrarProductoCarrito.BorrarProductoCarritoAsync(System.String,System.String)">
+            <summary>  
+            Borra un producto específico del carrito de compras de un usuario en la base de datos en tiempo real de Firebase.  
+            </summary>  
+            <param name="userId">Identificador único del usuario.</param>  
+            <param name="IdProducto">Identificador único del producto a borrar.</param>  
+            <returns>Una tarea que representa la operación asincrónica de borrado.</returns>  
         </member>
         <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.BorrarProductosCarrito.BorrarProductosCarrito">
             <summary>
@@ -180,23 +199,53 @@
             </summary>  
             <returns>Una tarea que representa la operación asincrónica.</returns>  
         </member>
+        <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.ObtenerUsuario.ObtenerUsuario">
+            <summary>  
+            Clase que implementa la funcionalidad para obtener información de un usuario desde la base de datos en tiempo real de Firebase.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.ObtenerUsuario.ObtenerUsuario.#ctor(MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase.IFirebaseRealtimeDatabase)">
+            <summary>  
+            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.ObtenerUsuario.ObtenerUsuario"/> con la dependencia de FirebaseRealtimeDatabase.  
+            </summary>  
+            <param name="firebaseRealtimeDatabase">Instancia de la base de datos en tiempo real de Firebase.</param>  
+            <exception cref="T:System.ArgumentNullException">Se lanza si <paramref name="firebaseRealtimeDatabase"/> es nulo.</exception>  
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.ObtenerUsuario.ObtenerUsuario.ObtenerUsuarioAsync(System.String)">
+            <summary>  
+            Obtiene la información de un usuario por su ID desde la base de datos en tiempo real de Firebase.  
+            </summary>  
+            <param name="idUsuario">El identificador único del usuario.</param>  
+            <returns>Una tarea que representa la operación asincrónica. El resultado contiene la información del usuario.</returns>  
+            <exception cref="T:System.Exception">Se lanza si el usuario con el ID especificado no se encuentra.</exception>  
+        </member>
         <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.Registro.Registro">
             <summary>  
             Clase que implementa la funcionalidad de registro de usuarios utilizando Firebase Authentication.  
             </summary>  
         </member>
-        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.Registro.Registro.#ctor(MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication)">
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.Registro.Registro.#ctor(MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication,MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase.IFirebaseRealtimeDatabase)">
             <summary>  
             Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.Registro.Registro"/> con una dependencia de autenticación Firebase.  
-            </summary>  
-            <param name="firebaseAuthentication">Instancia de <see cref="T:MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication"/> para manejar la autenticación.</param>  
+            </summary>
+            <param name="firebaseAuthentication"></param>  
+            <param name="firebaseRealtimeDatabase">Instancia de <see cref="T:MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase.IFirebaseRealtimeDatabase"/> para su registro en la Base de Datos.</param>  
         </member>
-        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.Registro.Registro.RegistrarUsuarioAsync(System.String,System.String)">
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.Registro.Registro.GuardarUsuarioAsync(MarketingAppHJ.Aplicacion.Dtos.UsuarioDto)">
+            <summary>  
+            Guarda la información de un usuario en la base de datos en tiempo real de Firebase.  
+            </summary>  
+            <param name="usuario">Objeto <see cref="T:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto"/> que contiene la información del usuario.</param>  
+            <returns>Una tarea que representa la operación asincrónica de guardar el usuario.</returns>  
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.Registro.Registro.RegistrarUsuarioAsync(System.String,System.String,System.String,System.String)">
             <summary>  
             Registra un nuevo usuario en Firebase Authentication con el correo electrónico y la contraseña proporcionados.  
             </summary>  
             <param name="email">Correo electrónico del usuario.</param>  
             <param name="password">Contraseña del usuario.</param>  
+            <param name="nombre">Nombre del usuario.</param>
+            <param name="surname">Apellidos del usuario.</param>
             <returns>Una tarea que representa la operación asincrónica de registro.</returns>  
         </member>
         <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.ResetearContrasena.ResetearContrasena">

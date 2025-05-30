@@ -16,35 +16,49 @@
             <param name="services">El contenedor de dependencias <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
         </member>
         <member name="T:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication.FirebaseAuthentication">
-            <summary>
-            Proporciona autenticación utilizando Firebase.
-            </summary>
+            <summary>  
+            Proporciona autenticación utilizando Firebase.  
+            </summary>  
         </member>
         <member name="F:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication.FirebaseAuthentication.Instance">
-            <summary>
-            Obtiene la instancia del cliente de autenticación de Firebase.
-            </summary>
+            <summary>  
+            Obtiene la instancia del cliente de autenticación de Firebase.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication.FirebaseAuthentication.UserId">
+            <summary>  
+            Obtiene el identificador único del usuario autenticado.  
+            </summary>  
         </member>
         <member name="M:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication.FirebaseAuthentication.GetInstance">
-            <summary>
-            Devuelve la instancia del cliente de autenticación de Firebase.
-            </summary>
-            <returns>Instancia de <see cref="T:Firebase.Auth.FirebaseAuthClient"/>.</returns>
+            <summary>  
+            Devuelve la instancia del cliente de autenticación de Firebase.  
+            </summary>  
+            <returns>Instancia de <see cref="T:Firebase.Auth.FirebaseAuthClient"/>.</returns>  
         </member>
         <member name="T:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.RealtimeDatabase.FirebaseRealTimeDatabase">
-            <summary>
-            Proporciona una implementación para interactuar con Firebase Realtime Database.
-            </summary>
+            <summary>  
+            Proporciona una implementación para interactuar con Firebase Realtime Database.  
+            </summary>  
         </member>
         <member name="P:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.RealtimeDatabase.FirebaseRealTimeDatabase.Instance">
-            <summary>
-            Obtiene la instancia del cliente de Firebase.
-            </summary>
+            <summary>  
+            Obtiene la instancia del cliente de Firebase.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.RealtimeDatabase.FirebaseRealTimeDatabase.#ctor(Firebase.Database.FirebaseClient)">
+            <summary>  
+            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.RealtimeDatabase.FirebaseRealTimeDatabase"/>.  
+            </summary>  
+            <param name="firebaseClient">El cliente de Firebase que se utilizará para interactuar con la base de datos en tiempo real.</param>  
+            <exception cref="T:System.ArgumentNullException">Se lanza si el cliente de Firebase proporcionado es nulo.</exception>  
         </member>
         <member name="M:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.RealtimeDatabase.FirebaseRealTimeDatabase.Create(System.String)">
-            <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.RealtimeDatabase.FirebaseRealTimeDatabase"/>.
-            </summary>
+            <summary>  
+            Crea una nueva instancia del cliente de Firebase con la URL especificada.  
+            </summary>  
+            <param name="url">La URL de la base de datos en tiempo real de Firebase.</param>  
+            <returns>Una nueva instancia de <see cref="T:Firebase.Database.FirebaseClient"/>.</returns>  
         </member>
     </members>
 </doc>

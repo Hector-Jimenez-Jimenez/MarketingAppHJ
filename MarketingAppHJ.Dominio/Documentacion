@@ -205,49 +205,64 @@
             <returns>Código hash del objeto.</returns>
         </member>
         <member name="T:TheMarketingApp.Dominio.Entidades.Usuario">
-            <summary>
-            Representa un usuario en el sistema.
-            </summary>
+            <summary>  
+            Representa un usuario en el sistema.  
+            </summary>  
         </member>
         <member name="P:TheMarketingApp.Dominio.Entidades.Usuario.Id_Usuario">
-            <summary>
-            Identificador único del usuario.
-            </summary>
+            <summary>  
+            Identificador único del usuario.  
+            </summary>  
         </member>
         <member name="P:TheMarketingApp.Dominio.Entidades.Usuario.Nombre">
-            <summary>
-            Nombre del usuario.
-            </summary>
+            <summary>  
+            Nombre del usuario.  
+            </summary>  
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.Usuario.Apellidos">
+            <summary>  
+            Apellidos del usuario.  
+            </summary>  
         </member>
         <member name="P:TheMarketingApp.Dominio.Entidades.Usuario.Email">
-            <summary>
-            Correo electrónico del usuario.
-            </summary>
+            <summary>  
+            Correo electrónico del usuario.  
+            </summary>  
         </member>
         <member name="P:TheMarketingApp.Dominio.Entidades.Usuario.AvatarUrl">
-            <summary>
-            URL del avatar del usuario.
-            </summary>
+            <summary>  
+            URL del avatar del usuario.  
+            </summary>  
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.Usuario.FechaRegistro">
+            <summary>  
+            Fecha en la que el usuario se registró en el sistema.  
+            </summary>  
+        </member>
+        <member name="P:TheMarketingApp.Dominio.Entidades.Usuario.FechaNacimiento">
+            <summary>  
+            Fecha de nacimiento del usuario.  
+            </summary>  
         </member>
         <member name="M:TheMarketingApp.Dominio.Entidades.Usuario.Equals(TheMarketingApp.Dominio.Entidades.Usuario)">
-            <summary>
-            Determina si el objeto actual es igual a otro objeto del mismo tipo.
-            </summary>
-            <param name="other">El objeto a comparar con este objeto.</param>
-            <returns>true si los objetos son iguales; de lo contrario, false.</returns>
+            <summary>  
+            Determina si el objeto actual es igual a otro objeto del mismo tipo.  
+            </summary>  
+            <param name="other">El objeto a comparar con este objeto.</param>  
+            <returns>true si los objetos son iguales; de lo contrario, false.</returns>  
         </member>
         <member name="M:TheMarketingApp.Dominio.Entidades.Usuario.Equals(System.Object)">
-            <summary>
-            Determina si el objeto actual es igual a otro objeto.
-            </summary>
-            <param name="obj">El objeto a comparar con este objeto.</param>
-            <returns>true si los objetos son iguales; de lo contrario, false.</returns>
+            <summary>  
+            Determina si el objeto actual es igual a otro objeto.  
+            </summary>  
+            <param name="obj">El objeto a comparar con este objeto.</param>  
+            <returns>true si los objetos son iguales; de lo contrario, false.</returns>  
         </member>
         <member name="M:TheMarketingApp.Dominio.Entidades.Usuario.GetHashCode">
-            <summary>
-            Devuelve un código hash para el objeto actual.
-            </summary>
-            <returns>Código hash del objeto.</returns>
+            <summary>  
+            Devuelve un código hash para el objeto actual.  
+            </summary>  
+            <returns>Código hash del objeto.</returns>  
         </member>
     </members>
 </doc>

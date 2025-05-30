@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MarketingAppHJ.Aplicacion.Dtos;
+using MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.AgregarProductoAlCarrito;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerNombreCategoria;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerProductosPorId;
@@ -13,9 +14,11 @@ namespace MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel
     /// </summary>
     public partial class DetallesProductoPageViewModel : ObservableObject
     {
-        private readonly IObtenerProductoPorId _usecaseObtenerProductoPorId;
-        private readonly IAgregarProductoAlCarrito _usecaseAgregarProductoAlCarrito;
-        private readonly IObtenerNombreCategoria _usecaseObtenerNombreCategoria;
+        private readonly IObtenerProductoPorId _ObtenerProductoPorId;
+        private readonly IAgregarProductoAlCarrito _AgregarProductoAlCarrito;
+        private readonly IObtenerNombreCategoria _ObtenerNombreCategoria;
+        private readonly IFirebaseAuthentication _firebaseAuthentication;
+        private string UserId => _firebaseAuthentication.UserId;
 
         [ObservableProperty] private string id;
         [ObservableProperty] private string nombre;
@@ -26,16 +29,17 @@ namespace MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel
         [ObservableProperty] private string categoriaId;
         [ObservableProperty] private string nombreCategoria;
         [ObservableProperty] private int cantidad = 1;
-        public DetallesProductoPageViewModel(IObtenerProductoPorId usecaseObtenerProductoPorId, IAgregarProductoAlCarrito agregarProductoAlCarrito, IObtenerNombreCategoria obtenerNombreCategoria)
+        public DetallesProductoPageViewModel(IObtenerProductoPorId usecaseObtenerProductoPorId, IAgregarProductoAlCarrito agregarProductoAlCarrito, IObtenerNombreCategoria obtenerNombreCategoria, IFirebaseAuthentication firebaseAuthentication)
         {
-            _usecaseObtenerProductoPorId = usecaseObtenerProductoPorId;
-            _usecaseAgregarProductoAlCarrito = agregarProductoAlCarrito;
-            _usecaseObtenerNombreCategoria = obtenerNombreCategoria;
+            _ObtenerNombreCategoria = obtenerNombreCategoria ?? throw new ArgumentNullException(nameof(obtenerNombreCategoria));
+            _ObtenerProductoPorId = usecaseObtenerProductoPorId ?? throw new ArgumentNullException(nameof(usecaseObtenerProductoPorId));
+            _AgregarProductoAlCarrito = agregarProductoAlCarrito ?? throw new ArgumentNullException(nameof(agregarProductoAlCarrito));
+            _firebaseAuthentication = firebaseAuthentication ?? throw new ArgumentNullException(nameof(firebaseAuthentication));
         }
         public DetallesProductoPageViewModel() { }
         public async void LoadProductById(string id)
         {
-            var dto = await _usecaseObtenerProductoPorId.ObtenerProductoPorIdAsync(id);
+            var dto = await _ObtenerProductoPorId.ObtenerProductoPorIdAsync(id);
             if (dto != null)
             {
                 Id = dto.Id;
@@ -46,7 +50,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel
                 Stock = dto.Stock;
                 CategoriaId = dto.CategoriaId;
 
-                var categoriaDto = await _usecaseObtenerNombreCategoria.ObtenerCategoria(dto.CategoriaId);
+                var categoriaDto = await _ObtenerNombreCategoria.ObtenerCategoria(dto.CategoriaId);
                 NombreCategoria = categoriaDto.Nombre ?? "Sin categoria";
             }
 
@@ -54,8 +58,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel
 
         [RelayCommand]
         public async Task AgregarAlCarritoAsync()
-        {
-            var userId = "user1"; 
+        { 
 
             var item = new CarritoItemDto
             {
@@ -66,17 +69,17 @@ namespace MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel
                 ImagenUrl = ImagenUrl
             };
 
-            await _usecaseAgregarProductoAlCarrito.AgregarAlCarritoAsync(userId, item);
+            await _AgregarProductoAlCarrito.AgregarAlCarritoAsync(UserId, item);
 
             await Shell.Current.DisplayAlert("Éxito", "Producto agregado al carrito", "OK");
             Cantidad = 1;
-            await Shell.Current.GoToAsync("//Catalogo"); // Volver a la página anterior
+            await Shell.Current.GoToAsync("main");
         }
 
         [RelayCommand]
         public async Task ComprarAhoraAsync()
         {
-            // Lógica para checkout inmediato
+
         }
 
         [RelayCommand]

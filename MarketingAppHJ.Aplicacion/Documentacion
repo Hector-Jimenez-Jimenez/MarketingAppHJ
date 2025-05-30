@@ -39,20 +39,25 @@
             Total calculado como el precio unitario multiplicado por la cantidad.
             </summary>
         </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Dtos.CategoriaDto">
+            <summary>  
+            Representa una categoría en el sistema.  
+            </summary>  
+        </member>
         <member name="P:MarketingAppHJ.Aplicacion.Dtos.CategoriaDto.Id_Categoria">
-            <summary>
-            Identificador único de la categoría.
-            </summary>
+            <summary>  
+            Identificador único de la categoría.  
+            </summary>  
         </member>
         <member name="P:MarketingAppHJ.Aplicacion.Dtos.CategoriaDto.Nombre">
-            <summary>
-            Nombre de la categoría.
-            </summary>
+            <summary>  
+            Nombre de la categoría.  
+            </summary>  
         </member>
         <member name="P:MarketingAppHJ.Aplicacion.Dtos.CategoriaDto.Descripcion">
-            <summary>
-            Descripción de la categoría.
-            </summary>
+            <summary>  
+            Descripción de la categoría.  
+            </summary>  
         </member>
         <member name="T:MarketingAppHJ.Aplicacion.Dtos.ItemPedidoDto">
             <summary>
@@ -181,6 +186,46 @@
         <member name="P:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.CategoriaId">
             <inheritdoc cref="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.categoriaId"/>
         </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto">
+            <summary>  
+            Representa un usuario en el sistema.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto.Id_Usuario">
+            <summary>  
+            Identificador único del usuario.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto.Nombre">
+            <summary>  
+            Nombre del usuario.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto.Apellidos">
+            <summary>  
+            Apellidos del usuario.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto.Email">
+            <summary>  
+            Correo electrónico del usuario.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto.AvatarUrl">
+            <summary>  
+            URL del avatar del usuario.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto.FechaRegistro">
+            <summary>  
+            Fecha en la que el usuario se registró en el sistema.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto.FechaNacimiento">
+            <summary>  
+            Fecha de nacimiento del usuario.  
+            </summary>  
+        </member>
         <member name="T:MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication">
             <summary>
             Interfaz para la autenticación de Firebase.
@@ -189,6 +234,17 @@
         <member name="M:MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication.GetInstance">
             <summary>
             Obtiene el cliente de autenticación de Firebase.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication.GetTokenAsync">
+            <summary>
+            Obtiene el token de autenticación de Firebase de forma asíncrona.
+            </summary>
+            <returns>Una tarea que representa la operación asíncrona. El resultado contiene el token de autenticación.</returns>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication.UserId">
+            <summary>
+            Obtiene el identificador único del usuario autenticado.
             </summary>
         </member>
         <member name="T:MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase.IFirebaseRealtimeDatabase">
@@ -310,17 +366,38 @@
             </summary>  
             <returns>Una tarea que representa la operación asincrónica.</returns>  
         </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.ObtenerUsuario.IObtenerUsuario">
+            <summary>  
+            Interfaz para obtener información de un usuario específico.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.ObtenerUsuario.IObtenerUsuario.ObtenerUsuarioAsync(System.String)">
+            <summary>  
+            Obtiene los detalles de un usuario por su identificador.  
+            </summary>  
+            <param name="idUsuario">El identificador único del usuario.</param>  
+            <returns>Un objeto <see cref="T:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto"/> que contiene los detalles del usuario.</returns>  
+        </member>
         <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.Registro.IRegistro">
             <summary>  
             Interface para el registro de usuarios.  
             </summary>  
         </member>
-        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.Registro.IRegistro.RegistrarUsuarioAsync(System.String,System.String)">
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.Registro.IRegistro.RegistrarUsuarioAsync(System.String,System.String,System.String,System.String)">
             <summary>  
             Registra un nuevo usuario en el sistema.  
             </summary>  
             <param name="email">Correo electrónico del usuario.</param>  
-            <param name="password">Contraseña del usuario.</param>
+            <param name="password">Contraseña del usuario.</param>  
+            <param name="name">Nombre del usuario.</param>  
+            <param name="surname">Apellidos del usuario.</param>  
+            <returns>Una tarea que representa la operación asincrónica.</returns>  
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.Registro.IRegistro.GuardarUsuarioAsync(MarketingAppHJ.Aplicacion.Dtos.UsuarioDto)">
+            <summary>  
+            Guarda la información de un usuario en el sistema.  
+            </summary>  
+            <param name="usuario">Objeto que contiene los datos del usuario.</param>  
             <returns>Una tarea que representa la operación asincrónica.</returns>  
         </member>
         <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.ResetConstraseña.IResetContrasena">
