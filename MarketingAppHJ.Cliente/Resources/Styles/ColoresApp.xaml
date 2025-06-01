@@ -30,6 +30,10 @@
     <Color x:Key="ErrorColorDark">#A00015</Color>
     <Color x:Key="IconTintColorLight">#212121</Color>
     <Color x:Key="IconTintColorDark">#EEEEEE</Color>
+    
+    <!--Shell-->
+    <Color x:Key="HeaderBackgroundColor">#757DF2</Color>
+    <Color x:Key="HeaderIconColor">#FFFFFF</Color>
 
 
 </ResourceDictionary>

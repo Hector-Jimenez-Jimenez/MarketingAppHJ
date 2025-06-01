@@ -105,7 +105,11 @@ namespace MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel
 
         [RelayCommand]
         public async Task ClearCartAsync()
-            => await _borrarProductosCarrito.BorrarProductosCarritoAsync(UserId);
+        {
+            await _borrarProductosCarrito.BorrarProductosCarritoAsync(UserId);
+            Items.Clear();
+            TotalPrice = 0m;
+        }
 
         [RelayCommand]
         public async Task CheckoutAsync()

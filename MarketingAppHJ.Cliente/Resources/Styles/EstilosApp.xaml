@@ -213,4 +213,10 @@
         <Setter Property="Padding" Value="0" />
         <Setter Property="Margin" Value="0,10" />
     </Style>
+
+    <Style TargetType="Shell">
+        <Setter Property="Shell.BackgroundColor" Value="{StaticResource HeaderBackgroundColor}" />
+        <Setter Property="Shell.ForegroundColor" Value="{StaticResource HeaderIconColor}" />
+        <Setter Property="Shell.TitleColor" Value="{StaticResource HeaderIconColor}" />
+    </Style>
 </ResourceDictionary>
