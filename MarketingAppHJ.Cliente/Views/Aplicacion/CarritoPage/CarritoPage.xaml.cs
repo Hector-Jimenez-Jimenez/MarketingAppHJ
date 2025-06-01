@@ -23,5 +23,32 @@ namespace MarketingAppHJ.Cliente.Views.Aplicacion.CarritoPage
             base.OnAppearing();
             await _vm.LoadCartAsync();
         }
+        void OnBackClicked(object sender, EventArgs e)
+        {
+            Shell.Current.GoToAsync("..");
+        }
+        void OnGoToCatalogClicked(object sender, EventArgs e)
+        {
+            Shell.Current.GoToAsync("main");
+        }
+
+        async void OnRemoveClicked(object sender, EventArgs e)
+        {
+            if (sender is Button btn
+                && btn.CommandParameter is string idProducto)
+            {
+                await _vm.RemoveItemAsync(idProducto);
+            }
+        }
+
+        async void OnClearClicked(object sender, EventArgs e)
+        {
+            await _vm.ClearCartAsync();
+        }
+
+        void OnCheckoutClicked(object sender, EventArgs e)
+        {
+            Shell.Current.GoToAsync("checkout");
+        }
     }
 }

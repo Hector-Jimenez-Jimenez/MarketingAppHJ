@@ -1,66 +1,216 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ResourceDictionary
+﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-    <!-- Header bar -->
-    <Style x:Key="HeaderStyle" TargetType="Grid">
-        <Setter Property="BackgroundColor" Value="{DynamicResource Primary}"/>
-        <Setter Property="HeightRequest"   Value="40"/>
-        <Setter Property="Padding"         Value="0"/>
-        <Setter Property="ColumnSpacing"   Value="16"/>
+
+    <!-- REFERENCIA A ColoresApp -->
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="ColoresApp.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+
+    <Style x:Key="TitleLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor">
+            <Setter.Value>
+                <AppThemeBinding Light="{StaticResource TextPrimaryColorLight}"
+                         Dark="{StaticResource TextPrimaryColorDark}" />
+            </Setter.Value>
+        </Setter>
     </Style>
 
-    <!-- Icon buttons in header -->
+    <Style x:Key="SubtitleLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor">
+            <Setter.Value>
+                <AppThemeBinding Light="{StaticResource TextSecondaryColorLight}"
+                         Dark="{StaticResource TextSecondaryColorDark}" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="BodyLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="TextColor">
+            <Setter.Value>
+                <AppThemeBinding Light="{StaticResource TextPrimaryColorLight}"
+                         Dark="{StaticResource TextPrimaryColorDark}" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Entry">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="TextColor">
+            <Setter.Value>
+                <AppThemeBinding Light="{StaticResource TextPrimaryColorLight}"
+                         Dark="{StaticResource TextPrimaryColorDark}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BackgroundColor">
+            <Setter.Value>
+                <AppThemeBinding Light="{StaticResource SurfaceColorLight}"
+                         Dark="{StaticResource SurfaceColorDark}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="PlaceholderColor">
+            <Setter.Value>
+                <AppThemeBinding Light="{StaticResource TextSecondaryColorLight}"
+                         Dark="{StaticResource TextSecondaryColorDark}" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Picker">
+        <Setter Property="BackgroundColor">
+            <Setter.Value>
+                <AppThemeBinding Light="{StaticResource SurfaceColorLight}"
+                         Dark="{StaticResource SurfaceColorDark}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="TextColor">
+            <Setter.Value>
+                <AppThemeBinding Light="{StaticResource TextPrimaryColorLight}"
+                         Dark="{StaticResource TextPrimaryColorDark}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+
+    <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+        <Setter Property="CornerRadius" Value="25" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="BackgroundColor">
+            <Setter.Value>
+                <AppThemeBinding Light="{StaticResource PrimaryColorLight}"
+                         Dark="{StaticResource PrimaryColorDark}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="TextColor" Value="White" />
+    </Style>
+
+    <Style x:Key="SecondaryButtonStyle" TargetType="Button">
+        <Setter Property="CornerRadius" Value="25" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="BackgroundColor">
+            <Setter.Value>
+                <AppThemeBinding Light="{StaticResource SecondaryColorLight}"
+                         Dark="{StaticResource SecondaryColorDark}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="TextColor" Value="White" />
+    </Style>
+
+    <Style x:Key="TertiaryButtonStyle" TargetType="Button">
+        <Setter Property="CornerRadius" Value="25" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="BackgroundColor">
+            <Setter.Value>
+                <AppThemeBinding Light="{StaticResource TertiaryColorLight}"
+                         Dark="{StaticResource TertiaryColorDark}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="TextColor" Value="White" />
+    </Style>
+
+    <Style x:Key="CardBorderStyle" TargetType="Border">
+        <!-- Fondo según tema -->
+        <Setter Property="BackgroundColor">
+            <Setter.Value>
+                <AppThemeBinding 
+          Light="{StaticResource SurfaceColorLight}" 
+          Dark="{StaticResource SurfaceColorDark}" />
+            </Setter.Value>
+        </Setter>
+
+        <!-- Esquinas redondeadas -->
+        <Setter Property="StrokeShape">
+            <Setter.Value>
+                <RoundRectangle CornerRadius="10" />
+            </Setter.Value>
+        </Setter>
+
+        <!-- Borde fino según tema -->
+        <Setter Property="StrokeThickness" Value="1" />
+        <Setter Property="Stroke">
+            <Setter.Value>
+                <AppThemeBinding 
+          Light="{StaticResource BorderColorLight}" 
+          Dark="{StaticResource BorderColorDark}" />
+            </Setter.Value>
+        </Setter>
+
+        <!-- Padding interno y margen externo -->
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="Margin" Value="10" />
+
+        <!-- Sombra ligera para “elevar” -->
+        <Setter Property="Shadow">
+            <Setter.Value>
+                <Shadow 
+          Brush="Black" 
+          Opacity="0.15" 
+          Offset="2,2" 
+          Radius="4" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="SearchBarContainerStyle" TargetType="Border">
+        <Setter Property="StrokeShape">
+            <Setter.Value>
+                <RoundRectangle CornerRadius="25" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BackgroundColor">
+            <Setter.Value>
+                <AppThemeBinding Light="{StaticResource SurfaceColorLight}"
+                         Dark="{StaticResource SurfaceColorDark}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="StrokeThickness" Value="0" />
+        <Setter Property="Margin" Value="20,10" />
+        <Setter Property="Padding" Value="0" />
+    </Style>
+
+ 
+    <Style x:Key="BottomBarStyle" TargetType="Grid">
+        <Setter Property="BackgroundColor">
+            <Setter.Value>
+                <AppThemeBinding Light="{StaticResource SurfaceColorLight}"
+                         Dark="{StaticResource SurfaceColorDark}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="Margin" Value="0" />
+    </Style>
+
+
     <Style x:Key="IconButtonStyle" TargetType="ImageButton">
-        <Setter Property="BackgroundColor" Value="Transparent"/>
-        <Setter Property="HeightRequest"   Value="24"/>
-        <Setter Property="WidthRequest"    Value="24"/>
-        <Setter Property="Margin"          Value="0,10,10,0"/>
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="WidthRequest" Value="30" />
+        <Setter Property="HeightRequest" Value="30" />
     </Style>
 
-    <!-- Search bar container -->
-    <Style x:Key="SearchBorderStyle" TargetType="Border">
-        <Setter Property="BackgroundColor" Value="{DynamicResource Secondary}"/>
-        <Setter Property="StrokeShape"     Value="RoundRectangle 25"/>
-        <Setter Property="StrokeThickness" Value="0"/>
-        <Setter Property="Padding"         Value="0"/>
-        <Setter Property="Margin"          Value="0,10"/>
+    <Style x:Key="RoundedEntryContainerStyle" TargetType="Border">
+        <Setter Property="StrokeThickness" Value="0" />
+        <Setter Property="StrokeShape">
+            <Setter.Value>
+                <RoundRectangle CornerRadius="25" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BackgroundColor">
+            <Setter.Value>
+                <AppThemeBinding Light="{StaticResource SurfaceColorLight}" Dark="{StaticResource SurfaceColorDark}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Margin" Value="0,10" />
     </Style>
-
-    <!-- Product card -->
-    <Style x:Key="ProductCardStyle" TargetType="Border">
-        <Setter Property="BackgroundColor" Value="{DynamicResource Surface}"/>
-        <Setter Property="StrokeShape"     Value="RoundRectangle 12"/>
-        <Setter Property="StrokeThickness" Value="0"/>
-        <Setter Property="Padding"         Value="12"/>
-        <Setter Property="Margin"          Value="8"/>
-    </Style>
-
-    <!-- Product name label -->
-    <Style x:Key="ProductNameStyle" TargetType="Label">
-        <Setter Property="FontAttributes" Value="Bold"/>
-        <Setter Property="TextColor"      Value="{DynamicResource PrimaryDark}"/>
-        <Setter Property="FontSize"       Value="16"/>
-    </Style>
-
-    <!-- Product cuantity label -->
-    <Style x:Key="ProductCuantStyle" TargetType="Label">
-        <Setter Property="TextColor" Value="{DynamicResource TextSecondary}"/>
-        <Setter Property="FontSize"  Value="12"/>
-    </Style>
-    
-    <!-- Product description label -->
-    <Style x:Key="ProductDescStyle" TargetType="Label">
-        <Setter Property="TextColor" Value="{DynamicResource TextSecondaryOnSurface}"/>
-        <Setter Property="FontSize"  Value="12"/>
-    </Style>
-
-    <!-- Product price label -->
-    <Style x:Key="ProductPriceStyle" TargetType="Label">
-        <Setter Property="FontAttributes" Value="Bold"/>
-        <Setter Property="TextColor"      Value="{DynamicResource PrimaryLight}"/>
-        <Setter Property="FontSize"       Value="14"/>
-    </Style>
-
 </ResourceDictionary>

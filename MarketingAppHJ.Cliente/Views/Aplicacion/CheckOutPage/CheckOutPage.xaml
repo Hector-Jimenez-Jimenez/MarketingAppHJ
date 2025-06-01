@@ -5,110 +5,70 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
   xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel"  
   Title="Checkout"  
-  BackgroundColor="{DynamicResource Secondary}"  
+  BackgroundColor="{AppThemeBinding Light={StaticResource SecondaryColorLight}, Dark={StaticResource SecondaryColorDark}}"  
   Padding="20">  
 
    <ContentPage.BindingContext>  
        <vm:CheckOutPageViewModel />  
-   </ContentPage.BindingContext>  
+   </ContentPage.BindingContext>
 
-   <ScrollView>  
-       <VerticalStackLayout Spacing="16">  
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
 
-           <!-- 1) Encabezado -->  
-           <Label  
-       Text="Resumen de tu pedido"  
-       FontSize="20"  
-       FontAttributes="Bold"  
-       TextColor="{DynamicResource TextPrimaryOnSurface}" />  
+            <!-- Título -->
+            <Label Text="Resumen de tu pedido"
+             Style="{StaticResource TitleLabelStyle}" />
 
-           <!-- 2) Ítems -->  
-           <CollectionView  
-       ItemsSource="{Binding Items}"  
-       SelectionMode="None"  
-       HeightRequest="200"  
-       Margin="0,0,0,10">  
-               <CollectionView.ItemTemplate>  
-                   <DataTemplate>  
-                       <Border Style="{StaticResource ProductCardStyle}">  
-                           <Grid ColumnDefinitions="*,Auto" Padding="10">  
-                               <Label  
-                 Text="{Binding Nombre}"  
-                 TextColor="{DynamicResource TextPrimaryOnSurface}"  
-                 VerticalOptions="Center"/>  
-                               <Label  
-                 Grid.Column="1"  
-                 Text="{Binding Total, StringFormat='{}{0:C}'}"  
-                 FontAttributes="Bold"  
-                 TextColor="{DynamicResource PrimaryDark}"  
-                 VerticalOptions="Center"/>  
-                           </Grid>  
-                       </Border>  
-                   </DataTemplate>  
-               </CollectionView.ItemTemplate>  
-           </CollectionView>  
+            <!-- Lista de ítems -->
+            <CollectionView ItemsSource="{Binding Items}"
+                      SelectionMode="None"
+                      HeightRequest="200"
+                      EmptyView="No hay artículos en el pedido.">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*,Auto" Padding="5">
+                            <Label Text="{Binding Nombre}"
+                     Style="{StaticResource BodyLabelStyle}" />
 
-           <!-- 3) Total general -->  
-           <Grid Margin="0,0,0,10">  
-               <Grid.ColumnDefinitions>  
-                   <ColumnDefinition Width="Auto" />  
-                   <ColumnDefinition Width="Auto" />  
-               </Grid.ColumnDefinitions>  
-               <Label  
-         Text="Total:"  
-         FontSize="18"  
-         FontAttributes="Bold"  
-         TextColor="{DynamicResource TextPrimaryOnSurface}"  
-         Grid.Column="0"/>  
-               <Label  
-         Text="{Binding Total, StringFormat='{}{0:C}'}"  
-         FontSize="18"  
-         FontAttributes="Bold"  
-         TextColor="{DynamicResource Primary}"  
-         Grid.Column="1"/>  
-           </Grid>  
+                            <Label Grid.Column="1"
+                     Text="{Binding Total, StringFormat='{}{0:C}'}"
+                     Style="{StaticResource BodyLabelStyle}" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
-           <!-- 4) Dirección -->  
-           <Label  
-       Text="Dirección de envío"  
-       FontSize="16"  
-       FontAttributes="Bold"  
-       TextColor="{DynamicResource TextPrimaryOnSurface}"/>  
-           <Editor  
-       Text="{Binding DireccionEnvio}"  
-       HeightRequest="80"  
-       BackgroundColor="{DynamicResource Surface}"  
-       TextColor="{DynamicResource TextPrimaryOnSurface}"  
-       Margin="0,0,0,10"/>  
+            <!-- Total general -->
+            <Label Text="{Binding Total, StringFormat='Total: {0:C}'}"
+             Style="{StaticResource SubtitleLabelStyle}"
+             HorizontalOptions="End" />
 
-           <!-- 5) Pago -->  
-           <Label  
-       Text="Método de pago"  
-       FontSize="16"  
-       FontAttributes="Bold"  
-       TextColor="{DynamicResource TextPrimaryOnSurface}"/>  
-           <Picker  
-       SelectedItem="{Binding MetodoPago}"  
-       BackgroundColor="{DynamicResource Surface}"  
-       TextColor="{DynamicResource TextPrimaryOnSurface}"  
-       Margin="0,0,0,20">  
-               <Picker.Items>  
-                   <x:String>Tarjeta</x:String>  
-                   <x:String>PayPal</x:String>  
-                   <x:String>Contra Reembolso</x:String>  
-               </Picker.Items>  
-           </Picker>  
+            <!-- Dirección de envío -->
+            <Label Text="Dirección de envío"
+             Style="{StaticResource SubtitleLabelStyle}" />
+            <Editor Text="{Binding DireccionEnvio}"
+              HeightRequest="80"
+              BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceColorLight}, Dark={StaticResource SurfaceColorDark}}"
+              TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}"/>
 
-           <!-- 6) Confirmar -->  
-           <Button  
-       Text="Confirmar Pedido"  
-       Command="{Binding RealizarPedidoCommand}"  
-       BackgroundColor="{DynamicResource Primary}"  
-       TextColor="{DynamicResource Secondary}"  
-       CornerRadius="10"  
-       HeightRequest="50"  
-       HorizontalOptions="Fill"/>  
+            <!-- Método de pago -->
+            <Label Text="Método de pago"
+             Style="{StaticResource SubtitleLabelStyle}" />
+            <Picker SelectedItem="{Binding MetodoPago}"
+              BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceColorLight}, Dark={StaticResource SurfaceColorDark}}"
+              TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}">
+                <Picker.Items>
+                    <x:String>Tarjeta</x:String>
+                    <x:String>PayPal</x:String>
+                    <x:String>Contra Reembolso</x:String>
+                </Picker.Items>
+            </Picker>
 
-       </VerticalStackLayout>  
-   </ScrollView>  
+            <!-- Botón de confirmación -->
+            <Button Text="Confirmar Pedido"
+              Command="{Binding RealizarPedidoCommand}"
+              Style="{StaticResource PrimaryButtonStyle}"
+              Margin="0,10"/>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

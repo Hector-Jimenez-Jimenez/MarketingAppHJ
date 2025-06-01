@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using MarketingAppHJ.Aplicacion.Dtos;
 using MarketingAppHJ.Cliente.ViewModels.MainPageViewModel;
 using Microsoft.Maui.Controls;
@@ -56,7 +57,6 @@ namespace MarketingAppHJ.Cliente.Views.Aplicacion.MainPage
         /// </summary>
         private async void OnCartClicked(object sender, EventArgs e)
         {
-            // Por ejemplo, si tu ruta de carrito es “carrito”:
             await Shell.Current.GoToAsync("carrito");
         }
 
@@ -65,14 +65,25 @@ namespace MarketingAppHJ.Cliente.Views.Aplicacion.MainPage
             // Navegar a perfil...
         }
 
-        void OnLogoClicked(object sender, EventArgs e)
+        private async void OnLogoClicked(object sender, EventArgs e)
         {
-            // Ir al home...
+            await Shell.Current.GoToAsync("main");
         }
 
         void OnSettingsClicked(object sender, EventArgs e)
         {
             // Ir a ajustes...
+        }
+        void OnMenuClicked(object sender, EventArgs e)
+        {
+            if (Shell.Current.FlyoutBehavior != FlyoutBehavior.Disabled)
+                Shell.Current.FlyoutIsPresented = true;
+        }
+
+        void OnSearchCompleted(object sender, EventArgs e)
+        {
+            //if (_vm.BuscarCommand.CanExecute(null))
+            //    _vm.BuscarCommand.Execute(null);
         }
     }
 }

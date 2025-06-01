@@ -3,138 +3,130 @@
    x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.MainPage.MainPage"  
    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
-   xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.MainPageViewModel"   
-   BackgroundColor="{DynamicResource Background}">  
+   xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.MainPageViewModel"    
+   BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">  
 
    <!-- 0) VM -->  
    <ContentPage.BindingContext>  
        <vm:MainPageViewModel />  
-   </ContentPage.BindingContext>  
+   </ContentPage.BindingContext>
 
-   <!-- 1) Layout principal -->  
-   <Grid RowDefinitions="Auto,Auto,*,Auto">  
+    <!-- 1) Layout principal: 4 filas -->
+    <Grid RowDefinitions="Auto,Auto,*,Auto" Padding="0">
 
-       <!-- 1.1 Cabecera -->  
-       <Grid Grid.Row="0" Style="{StaticResource HeaderStyle}">  
-           <Grid.ColumnDefinitions>  
-               <ColumnDefinition Width="Auto"/>  
-               <ColumnDefinition Width="*"/>  
-               <ColumnDefinition Width="Auto"/>  
-           </Grid.ColumnDefinitions>  
+        <!-- 1.1) Cabecera (fila 0) -->
+        <Grid Grid.Row="0"
+          HeightRequest="60"
+          Padding="10"
+          ColumnDefinitions="Auto,*,Auto"
+          BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}">
 
-           <ImageButton  
-       Style="{StaticResource IconButtonStyle}"  
-       Grid.Column="0"  
-       Margin="10"
-       Source="iconousuario.png"  
-       Aspect="AspectFit"
-       Clicked="OnAvatarClicked"/>  
+            <ImageButton Grid.Column="0"
+                   Source="iconousuario.png"
+                   Background="Transparent"
+                   Clicked="OnAvatarClicked"/>
 
-           <ImageButton  
-       Style="{StaticResource IconButtonStyle}"  
-       Grid.Column="1"  
-       HorizontalOptions="Center" 
-               Margin="10"
-       Source="home.png"  
-       Clicked="OnLogoClicked"/>  
+            <ImageButton Grid.Column="1"
+                   Source="home.png"
+                   Background="Transparent"
+                   HorizontalOptions="Center"
+                   Clicked="OnLogoClicked"/>
 
-           <ImageButton  
-       Style="{StaticResource IconButtonStyle}"  
-       Grid.Column="2"  
-               Margin="10"
-       Source="ruedaajustes.png"    
-       Clicked="OnSettingsClicked"/>  
-       </Grid>  
+            <ImageButton Grid.Column="2"
+                   Source="ruedaajustes.png"
+                   Background="Transparent"
+                   Clicked="OnSettingsClicked"/>
+        </Grid>
 
-       <!-- 1.2 Barra de búsqueda -->  
-       <Border Grid.Row="1" Style="{StaticResource SearchBorderStyle}">  
-           <Grid ColumnDefinitions="Auto,*">
-                <Image  
-         Source="lupabusqueda.png"  
-         WidthRequest="20"  
-         HeightRequest="20"  
-         Margin="10,0"  
-         VerticalOptions="Center"  
-         BackgroundColor="{DynamicResource TextSecondaryOnSurface}"/>
-         <Entry  
-         Grid.Column="1" 
-         Placeholder="Busca lo que necesites"  
-         Margin="0,0,10,0"  
-         BackgroundColor="Transparent"  
-         VerticalOptions="Center"  
-         TextColor="{DynamicResource TextPrimaryOnSurface}"  
-         PlaceholderColor="{DynamicResource TextSecondaryOnSurface}"/>  
-           </Grid>  
-       </Border>  
+        <!-- 1.2) Barra de búsqueda (fila 1) -->
+        <Border Grid.Row="1"
+            Margin="20,10"
+            StrokeShape="RoundRectangle 25"
+            BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceColorLight}, Dark={StaticResource SurfaceColorDark}}"
+            StrokeThickness="0">
+            <Grid ColumnDefinitions="Auto,*">
+                <Image Source="lupabusqueda.png"
+               WidthRequest="24"
+               HeightRequest="24"
+               Margin="10,0"
+               VerticalOptions="Center"
+               Opacity="0.6"/>
 
-       <!-- 1.3 Grid de productos -->  
-       <CollectionView  
-     Grid.Row="2"  
-     x:Name="ProductosCollectionView"  
-     ItemsSource="{Binding Productos}"  
-     SelectionMode="None"  
-     ItemsLayout="VerticalGrid,2"  
-     RemainingItemsThreshold="2"  
-     RemainingItemsThresholdReached="OnRemainingItemsThresholdReached"  
-     Margin="0,0,0,10">  
+                <Entry Grid.Column="1"
+               Placeholder="Busca lo que necesites"
+               Margin="0,0,10,0"
+               BackgroundColor="Transparent"
+               VerticalOptions="Center"
+               TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}"/>
+            </Grid>
+        </Border>
 
-           <CollectionView.ItemTemplate>  
-               <DataTemplate>  
-                   <Border Style="{StaticResource ProductCardStyle}">  
-                       <Border.GestureRecognizers>  
-                           <TapGestureRecognizer  
-               Tapped="OnItemTapped"  
-               NumberOfTapsRequired="1"/>  
-                       </Border.GestureRecognizers>  
+        <!-- 1.3) Grid de productos con paginación infinita (fila 2) -->
+        <CollectionView Grid.Row="2"
+                    x:Name="ProductosCollectionView"
+                    ItemsSource="{Binding Productos}"
+                    Margin="10,0"
+                    SelectionMode="None"
+                    ItemsLayout="VerticalGrid,2"
+                    RemainingItemsThreshold="2"
+                    RemainingItemsThresholdReached="OnRemainingItemsThresholdReached">
 
-                       <VerticalStackLayout Spacing="8">  
-                           <Image  
-               Source="{Binding ImagenUrl}"  
-               Aspect="AspectFit"  
-               HeightRequest="120"  
-               HorizontalOptions="Center"/>  
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <!-- Sustituido Frame por Border con CardBorderStyle -->
+                    <Border Style="{StaticResource CardBorderStyle}">
 
-                           <Label  
-               Text="{Binding Nombre}"  
-               Style="{StaticResource ProductNameStyle}"/>  
+                        <Grid RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="4">
+                            <!-- 1) Imagen -->
+                            <Image Source="{Binding ImagenUrl}"
+                     Aspect="AspectFit"
+                     HeightRequest="120" />
 
-                           <Label  
-               Text="{Binding Descripcion}"  
-               Style="{StaticResource ProductDescStyle}"  
-               LineBreakMode="TailTruncation"/>  
+                            <!-- 2) Nombre -->
+                            <Label Grid.Row="1"
+                     Text="{Binding Nombre}"
+                     Style="{StaticResource SubtitleLabelStyle}"
+                     LineBreakMode="TailTruncation"/>
 
-                           <Label  
-               Text="{Binding Precio, StringFormat='Precio: {0:C}'}"  
-               Style="{StaticResource ProductPriceStyle}"/>  
-                       </VerticalStackLayout>  
-                   </Border>  
-               </DataTemplate>  
-           </CollectionView.ItemTemplate>  
-       </CollectionView>  
+                            <!-- 3) Descripción -->
+                            <Label Grid.Row="2"
+                     Text="{Binding Descripcion}"
+                     Style="{StaticResource BodyLabelStyle}"
+                     FontSize="12"
+                     LineBreakMode="TailTruncation"/>
 
-       <!-- 1.4 Botón del carrito -->  
-       <Grid Grid.Row="3"  
-         BackgroundColor="{DynamicResource Secondary}"  
-         Padding="10"  
-         ColumnDefinitions="*,Auto"  
-         RowDefinitions="Auto">  
-           <BoxView  
-       Grid.ColumnSpan="2"  
-       HeightRequest="1"  
-       Color="{DynamicResource Tertiary}"  
-       VerticalOptions="Start"/>  
+                            <!-- 4) Precio -->
+                            <Label Grid.Row="3"
+                     Text="{Binding Precio, StringFormat='Precio: {0:C}'}"
+                     Style="{StaticResource SubtitleLabelStyle}"
+                     FontSize="16"/>
+                        </Grid>
 
-           <Button  
-       Grid.Column="0"  
-       Text="Accede a tu carrito"  
-       ImageSource="carritocompra.png"  
-       ContentLayout="Left,10"  
-       BackgroundColor="Transparent"  
-       TextColor="{DynamicResource Primary}"  
-       CornerRadius="0"  
-       VerticalOptions="Center"  
-       Clicked="OnCartClicked"/>  
-       </Grid>  
+                        <!-- Tocar para ir a detalles -->
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer 
+                Tapped="OnItemTapped" 
+                NumberOfTapsRequired="1" />
+                        </Border.GestureRecognizers>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
 
-   </Grid>  
+        </CollectionView>
+
+        <!-- 1.4) Botón fijo “Accede a tu carrito” (fila 3) -->
+        <Border Grid.Row="3"
+            StrokeShape="RoundRectangle 20,20,0,0"
+            StrokeThickness="1"
+            BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceColorLight}, Dark={StaticResource SurfaceColorDark}}"
+            Padding="10,0">
+            <Button Text="Accede a tu carrito"
+              ImageSource="carritocompra.png"
+              ContentLayout="Left,10"
+              Style="{StaticResource PrimaryButtonStyle}"
+              TextColor="White"
+              Clicked="OnCartClicked"/>
+        </Border>
+
+    </Grid>
 </ContentPage>

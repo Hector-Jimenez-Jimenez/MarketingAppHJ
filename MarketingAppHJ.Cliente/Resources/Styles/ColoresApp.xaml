@@ -3,19 +3,33 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-    <!-- Paleta estática -->
-    <Color x:Key="Primary">#757DF2</Color>
-    <Color x:Key="PrimaryDark">#5A5BD3</Color>
-    <Color x:Key="PrimaryLight">#A29BF8</Color>
+    <!-- Primary / Secondary / Tertiary -->
+    <Color x:Key="PrimaryColorLight">#4A90E2</Color>
+    <Color x:Key="PrimaryColorDark">#357ABD</Color>
+    <Color x:Key="SecondaryColorLight">#50E3C2</Color>
+    <Color x:Key="SecondaryColorDark">#3AC0A0</Color>
+    <Color x:Key="TertiaryColorLight">#9013FE</Color>
+    <Color x:Key="TertiaryColorDark">#6F0ED2</Color>
 
-    <Color x:Key="Secondary">#FFFFFF</Color>
-    <Color x:Key="SecondaryDark">#F5F5F5</Color>
-    <Color x:Key="Tertiary">#E0E0E0</Color>
+    <!-- Background / Surface -->
+    <Color x:Key="BackgroundColorLight">#F2F2F2</Color>
+    <Color x:Key="BackgroundColorDark">#121212</Color>
+    <Color x:Key="SurfaceColorLight">#FFFFFF</Color>
+    <Color x:Key="SurfaceColorDark">#1E1E1E</Color>
 
-    <Color x:Key="TextPrimary">#333333</Color>
-    <Color x:Key="TextSecondary">#666666</Color>
+    <!-- Text: primary / secondary -->
+    <Color x:Key="TextPrimaryColorLight">#212121</Color>
+    <Color x:Key="TextPrimaryColorDark">#EEEEEE</Color>
+    <Color x:Key="TextSecondaryColorLight">#666666</Color>
+    <Color x:Key="TextSecondaryColorDark">#AAAAAA</Color>
 
-    <Color x:Key="Quintiary">#666666</Color>
-    <Color x:Key="Forninary">#75BBF2</Color>
+    <!-- Border / Error / IconTint -->
+    <Color x:Key="BorderColorLight">#E0E0E0</Color>
+    <Color x:Key="BorderColorDark">#333333</Color>
+    <Color x:Key="ErrorColorLight">#D0021B</Color>
+    <Color x:Key="ErrorColorDark">#A00015</Color>
+    <Color x:Key="IconTintColorLight">#212121</Color>
+    <Color x:Key="IconTintColorDark">#EEEEEE</Color>
+
 
 </ResourceDictionary>

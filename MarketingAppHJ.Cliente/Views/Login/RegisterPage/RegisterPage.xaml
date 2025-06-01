@@ -3,71 +3,97 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel"
              x:Class="MarketingAppHJ.Cliente.Views.Login.RegisterPage.RegisterPage" >
-    
+
     <ContentPage.BindingContext>
         <vm:RegisterPageViewModel />
     </ContentPage.BindingContext>
 
-    <VerticalStackLayout Spacing="16">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="24">
 
-        <Entry
-      Placeholder="Nombre"
-      Text="{Binding Name}"
-      BackgroundColor="{DynamicResource Surface}"
-      TextColor="{DynamicResource TextPrimaryOnSurface}"
-      PlaceholderColor="{DynamicResource TextSecondaryOnSurface}"
-      HeightRequest="50"/>
+            <!-- Título -->
+            <Label Text="Registro"
+             Style="{StaticResource TitleLabelStyle}"
+             HorizontalOptions="Center" />
 
-        <Entry
-Placeholder="Apellidos"
-Text="{Binding Apellidos}"
-BackgroundColor="{DynamicResource Secondary}"
-TextColor="{DynamicResource TextPrimary}"
-PlaceholderColor="{DynamicResource TextSecondary}"
-HeightRequest="50"/>
+            <!-- Nombre de usuario -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Nombre completo"
+               Style="{StaticResource SubtitleLabelStyle}" />
+                <Border Style="{StaticResource RoundedEntryContainerStyle}">
+                    <Entry Placeholder="Tu nombre"
+               Text="{Binding Name}"
+               BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceColorLight}, Dark={StaticResource SurfaceColorDark}}"
+               TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}"
+               PlaceholderColor="{AppThemeBinding Light={StaticResource TextSecondaryColorLight}, Dark={StaticResource TextSecondaryColorDark}}"
+               HeightRequest="50" />
+                </Border>
+            </VerticalStackLayout>
 
-        <Entry
-      Placeholder="Correo"
-      Text="{Binding Email}"
-      Keyboard="Email"
-      BackgroundColor="{DynamicResource Surface}"
-      TextColor="{DynamicResource TextPrimaryOnSurface}"
-      PlaceholderColor="{DynamicResource TextSecondaryOnSurface}"
-      HeightRequest="50"/>
+            <!-- Correo -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Correo electrónico"
+               Style="{StaticResource SubtitleLabelStyle}" />
+                <Border Style="{StaticResource RoundedEntryContainerStyle}">
+                    <Entry Placeholder="usuario@ejemplo.com"
+               Text="{Binding Email}"
+               Keyboard="Email"
+               BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceColorLight}, Dark={StaticResource SurfaceColorDark}}"
+               TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}"
+               PlaceholderColor="{AppThemeBinding Light={StaticResource TextSecondaryColorLight}, Dark={StaticResource TextSecondaryColorDark}}"
+               HeightRequest="50" />
+                </Border>
+            </VerticalStackLayout>
 
-        <Entry
-      Placeholder="Contraseña"
-      Text="{Binding Password}"
-      IsPassword="True"
-      BackgroundColor="{DynamicResource Surface}"
-      TextColor="{DynamicResource TextPrimaryOnSurface}"
-      PlaceholderColor="{DynamicResource TextSecondaryOnSurface}"
-      HeightRequest="50"/>
-        
+            <!-- Contraseña -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Contraseña"
+               Style="{StaticResource SubtitleLabelStyle}" />
+                <Border Style="{StaticResource RoundedEntryContainerStyle}">
+                    <Entry Placeholder="••••••••"
+               IsPassword="True"
+               Text="{Binding Password}"
+               BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceColorLight}, Dark={StaticResource SurfaceColorDark}}"
+               TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}"
+               PlaceholderColor="{AppThemeBinding Light={StaticResource TextSecondaryColorLight}, Dark={StaticResource TextSecondaryColorDark}}"
+               HeightRequest="50"/>
+                </Border>
+            </VerticalStackLayout>
 
-        <Entry
-      Placeholder="Confirmar contraseña"
-      Text="{Binding ConfirmPassword}"
-      IsPassword="True"
-      BackgroundColor="{DynamicResource Surface}"
-      TextColor="{DynamicResource TextPrimaryOnSurface}"
-      PlaceholderColor="{DynamicResource TextSecondaryOnSurface}"
-      HeightRequest="50"/>
+            <!-- Confirmar Contraseña -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Confirmar contraseña"
+               Style="{StaticResource SubtitleLabelStyle}" />
+                <Border Style="{StaticResource RoundedEntryContainerStyle}">
+                    <Entry Placeholder="••••••••"
+               IsPassword="True"
+               Text="{Binding ConfirmPassword}"
+               BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceColorLight}, Dark={StaticResource SurfaceColorDark}}"
+               TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}"
+               PlaceholderColor="{AppThemeBinding Light={StaticResource TextSecondaryColorLight}, Dark={StaticResource TextSecondaryColorDark}}"
+               HeightRequest="50"/>
+                </Border>
+            </VerticalStackLayout>
 
-        <Button
-      Text="Crear cuenta"
-      Command="{Binding RegisterCommand}"
-      BackgroundColor="{DynamicResource Primary}"
-      TextColor="{DynamicResource Secondary}"
-      CornerRadius="10"
-      HeightRequest="50"/>
+            <!-- Botón Registrar -->
+            <Button Text="Crear Cuenta"
+              Command="{Binding RegisterCommand}"
+              Style="{StaticResource PrimaryButtonStyle}" />
 
-        <Button
-      Text="Volver al login"
-      Command="{Binding CancelCommand}"
-      BackgroundColor="Transparent"
-      TextColor="{DynamicResource Quintiary}"
-      FontAttributes="Italic"/>
+            <!-- Enlace para volver a Login -->
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Label Text="¿Ya tienes cuenta?"
+                       VerticalOptions="Center"
+               Style="{StaticResource BodyLabelStyle}" />
 
-    </VerticalStackLayout>
+                <Button Text="Iniciar Sesión"
+                        VerticalOptions="Center"
+                Command="{Binding CancelCommand}"
+                BackgroundColor="Transparent"
+                TextColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}"
+                FontAttributes="Bold" />
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

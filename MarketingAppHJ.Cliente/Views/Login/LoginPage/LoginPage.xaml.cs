@@ -11,4 +11,11 @@ public partial class LoginPage : ContentPage
         _vm = vm ?? throw new ArgumentNullException(nameof(vm));
         BindingContext = _vm;
     }
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        // Limpiar campos cuando se muestra
+        _vm.Email = string.Empty;
+        _vm.Password = string.Empty;
+    }
 }

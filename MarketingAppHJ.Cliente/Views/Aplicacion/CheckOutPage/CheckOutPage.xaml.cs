@@ -18,4 +18,8 @@ public partial class CheckOutPage : ContentPage
         base.OnAppearing();
         await _vm.LoadCartAsync();
     }
+    void OnBackClicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync("..");
+    }
 }
