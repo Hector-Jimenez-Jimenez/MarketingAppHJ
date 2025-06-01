@@ -1,145 +1,177 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Firebase.Database.Streaming;
-using Firebase.Database;
 using MarketingAppHJ.Aplicacion.Dtos;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerTodosProductos;
 using MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase;
-using MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.RealtimeDatabase;
+using Microsoft.Maui.Dispatching;
 
 namespace MarketingAppHJ.Cliente.ViewModels.MainPageViewModel
 {
-    /// <summary>
-    /// ViewModel para gestionar el catálogo de productos.
-    /// </summary>
     public partial class MainPageViewModel : ObservableObject, IDisposable
     {
-        #region Paginacion
-        private const int PageSize = 10;
-        private int _currentPage = 0;
-        #endregion
+        const int PageSize = 10;
+        int _currentPage = 0;
 
-        #region Interfaces y Firbase
-        private readonly IFirebaseRealtimeDatabase _firebaseClient;
-        private IDisposable _subscription;
-        private readonly IObtenerProductos _usecase;
-        private readonly List<ProductoDto> _allProductos = new ();
-        #endregion
+        readonly IFirebaseRealtimeDatabase _firebaseClient;
+        readonly IObtenerProductos _usecase;
+        IDisposable _subscription;
 
-        #region observablePropieties
-        public ObservableCollection<ProductoDto> Productos { get; } = new();
+        List<ProductoDto> _allProductos = new();
 
-        [ObservableProperty] bool isBusy;
-        #endregion
+        [ObservableProperty]
+        ObservableCollection<ProductoDto> productos = new();
 
-        #region Constructores
-        /// <summary>
-        /// Constructor de la clase MainPageViewModel.
-        /// </summary>
-        /// <param name="usecase">Caso de uso para obtener productos.</param>
-        public MainPageViewModel(IObtenerProductos usecase,IFirebaseRealtimeDatabase firebase)
+        [ObservableProperty]
+        string textoBusqueda = string.Empty;
+
+        [ObservableProperty]
+        bool isBusy;
+
+        public MainPageViewModel(IObtenerProductos usecase, IFirebaseRealtimeDatabase firebase)
         {
             _usecase = usecase;
             _firebaseClient = firebase;
-            CargarProductosAsync();
+            LoadInitialData();
         }
 
-        /// <summary>
-        /// Constructor por defecto para MainPageViewModel.
-        /// </summary>
         public MainPageViewModel() { }
-        #endregion
 
-        #region Metodos y Comandos
-        /// <summary>
-        /// Libera los recursos utilizados por el ViewModel.
-        /// </summary>
+        async void LoadInitialData()
+        {
+            await CargarProductosAsync();
+        }
+
+        [RelayCommand]
+        public async Task CargarProductosAsync()
+        {
+            if (IsBusy) return;
+            IsBusy = true;
+
+            var lista = await _usecase.ObtenerProductosAsync();
+            _allProductos = lista.ToList();
+
+            _currentPage = 0;
+            Productos = new ObservableCollection<ProductoDto>();
+            LoadNextPage();
+
+            IsBusy = false;
+
+            SubscribeToRealtimeUpdates();
+        }
+
+        partial void OnTextoBusquedaChanged(string value)
+        {
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                _currentPage = 0;
+                FiltrarYActualizarProductos();
+            });
+        }
+
+        void FiltrarYActualizarProductos()
+        {
+            if (string.IsNullOrWhiteSpace(TextoBusqueda))
+            {
+                Productos.Clear();
+                _currentPage = 0;
+                LoadNextPage();
+                return;
+            }
+
+            var filtro = TextoBusqueda.Trim().ToLowerInvariant();
+            var filtrados = _allProductos
+                .Where(p => !string.IsNullOrEmpty(p.Nombre)
+                            && p.Nombre.Trim().ToLowerInvariant().StartsWith(filtro))
+                .ToList();
+
+            Productos = new ObservableCollection<ProductoDto>(filtrados);
+        }
+
+        public void LoadNextPage()
+        {
+            if (!string.IsNullOrWhiteSpace(TextoBusqueda))
+                return;
+
+            var inicio = _currentPage * PageSize;
+            if (inicio >= _allProductos.Count) return;
+
+            var pagina = _allProductos
+                .Skip(inicio)
+                .Take(PageSize)
+                .ToList();
+
+            foreach (var prod in pagina)
+            {
+                if (!Productos.Any(p => p.Id == prod.Id))
+                    Productos.Add(prod);
+            }
+
+            _currentPage++;
+        }
+
+        void SubscribeToRealtimeUpdates()
+        {
+            _subscription?.Dispose();
+
+            _subscription = _firebaseClient.Instance
+                .Child("productos")
+                .AsObservable<ProductoDto>()
+                .Subscribe(evt =>
+                {
+                    var key = evt.Key;
+                    var dto = evt.Object;
+                    if (string.IsNullOrEmpty(key) || dto is null)
+                        return;
+
+                    dto.Id = key;
+
+                    MainThread.BeginInvokeOnMainThread(() =>
+                    {
+                        lock (_allProductos)
+                        {
+                            var existente = _allProductos.FirstOrDefault(p => p.Id == key);
+
+                            if (evt.EventType == FirebaseEventType.Delete)
+                            {
+                                if (existente != null)
+                                    _allProductos.Remove(existente);
+
+                                var enVista = Productos.FirstOrDefault(p => p.Id == key);
+                                if (enVista != null)
+                                    Productos.Remove(enVista);
+                            }
+                            else
+                            {
+                                if (existente != null)
+                                {
+                                    existente.Nombre = dto.Nombre;
+                                    existente.Descripcion = dto.Descripcion;
+                                    existente.ImagenUrl = dto.ImagenUrl;
+                                    existente.Stock = dto.Stock;
+                                    existente.CategoriaId = dto.CategoriaId;
+                                    existente.Precio = dto.Precio;
+                                }
+                                else
+                                {
+                                    _allProductos.Add(dto);
+                                }
+                            }
+                        }
+
+                        FiltrarYActualizarProductos();
+                    });
+                });
+        }
+
         public void Dispose()
         {
             _subscription?.Dispose();
             _firebaseClient.Instance.Dispose();
             GC.SuppressFinalize(this);
         }
-
-        /// <summary>
-        /// Carga los productos desde el caso de uso y los agrega a la colección observable.
-        /// </summary>
-        [RelayCommand]
-        public async Task CargarProductosAsync()
-        {
-            if (IsBusy) return;
-            IsBusy = true;
-            var list = await _usecase.ObtenerProductosAsync();
-            _allProductos.Clear();
-            _allProductos.AddRange(list);
-            foreach (var p in list) Productos.Add(p);
-            IsBusy = false;
-
-            SubscribeToRealtimeUpdates();
-        }
-
-        /// <summary>
-        /// Carga la siguiente página de productos en la colección observable.
-        /// </summary>
-        public void LoadNextPage()
-        {
-            var inicio = _currentPage * PageSize;
-            if (inicio >= _allProductos.Count) return;
-
-            var productosPagina = _allProductos.Skip(inicio).Take(PageSize).ToList();
-            foreach (var producto in productosPagina)
-            {
-                if (!Productos.Any(p => p.Id == producto.Id))
-                {
-                    Productos.Add(producto);
-                }
-            }
-            _currentPage++;
-        }
-
-        /// <summary>
-        /// Suscribe a actualizaciones en tiempo real de los productos desde Firebase.
-        /// </summary>
-        private void SubscribeToRealtimeUpdates()
-        {
-            _subscription = _firebaseClient.Instance
-                .Child("productos")
-                .AsObservable<ProductoDto>()
-                .Subscribe(e =>
-                {
-                    var key = e.Key;
-                    var dto = e.Object;
-                    dto.Id = key;
-                    lock (_allProductos)
-                    {
-                        var existing = _allProductos.FirstOrDefault(p => p.Id == key);
-                        if(e.EventType == FirebaseEventType.Delete)
-                        {
-                            if(existing != null) _allProductos.Remove(existing);
-                            var borrados = Productos.FirstOrDefault(p => p.Id == key);
-                            if (borrados != null) Productos.Remove(borrados);
-                        }
-                        else if (e.EventType == FirebaseEventType.InsertOrUpdate)
-                        {
-                            if (existing != null)
-                            {
-                                existing.Nombre = dto.Nombre;
-                                existing.Descripcion = dto.Descripcion;
-                                existing.ImagenUrl = dto.ImagenUrl;
-                                existing.Stock = dto.Stock;
-                                existing.CategoriaId = dto.CategoriaId;
-                                existing.Precio = dto.Precio;
-                            }
-                            else
-                            {
-                                _allProductos.Add(dto);
-                            }
-                        }
-                    }
-                }
-            );
-        }
-        #endregion
     }
 }

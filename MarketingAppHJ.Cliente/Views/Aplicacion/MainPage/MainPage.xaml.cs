@@ -79,11 +79,5 @@ namespace MarketingAppHJ.Cliente.Views.Aplicacion.MainPage
             if (Shell.Current.FlyoutBehavior != FlyoutBehavior.Disabled)
                 Shell.Current.FlyoutIsPresented = true;
         }
-
-        void OnSearchCompleted(object sender, EventArgs e)
-        {
-            //if (_vm.BuscarCommand.CanExecute(null))
-            //    _vm.BuscarCommand.Execute(null);
-        }
     }
 }

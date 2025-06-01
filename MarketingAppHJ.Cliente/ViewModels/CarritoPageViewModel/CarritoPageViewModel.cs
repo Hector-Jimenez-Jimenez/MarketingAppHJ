@@ -118,5 +118,26 @@ namespace MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel
         }
 
         public void Dispose() => _subs.Dispose();
+
+        [RelayCommand]
+        public async Task IncrementarCantidadAsync(CarritoItemDto dto)
+        {
+            var nueva = dto.Cantidad + 1;
+            await _modificarCantidadCarrito.ModificarCantidadCarritoAsync(UserId, dto.ProductoId, nueva);
+        }
+
+        [RelayCommand]
+        public async Task DecrementarCantidadAsync(CarritoItemDto dto)
+        {
+            if (dto.Cantidad > 1)
+            {
+                var nueva = dto.Cantidad - 1;
+                await _modificarCantidadCarrito.ModificarCantidadCarritoAsync(UserId, dto.ProductoId, nueva);
+            }
+            else
+            {
+                await _borrarProductoCarrito.BorrarProductoCarritoAsync(UserId, dto.ProductoId);
+            }
+        }
     }
 }
