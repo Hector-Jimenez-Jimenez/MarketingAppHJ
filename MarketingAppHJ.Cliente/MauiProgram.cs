@@ -17,6 +17,8 @@ using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.LogOut;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.ObtenerUsuario;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.Registro;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.ResetConstraseña;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Pedidos.ObservarCambiosPedidos;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Pedidos.ObtenerPedidos;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerNombreCategoria;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerProductosPorId;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerTodosProductos;
@@ -54,6 +56,8 @@ using MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.LogOut;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.ObtenerUsuario;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.Registro;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.ResetearContrasena;
+using MarketingAppHJ.Infraestructura.Datos.Repositorios.Pedidos.ObservarCambiosPedidos;
+using MarketingAppHJ.Infraestructura.Datos.Repositorios.Pedidos.ObtenerPedidos;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerNombreCategoria;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductoPorId;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductos;
@@ -136,6 +140,8 @@ namespace MarketingAppHJ.Cliente
             services.AddScoped<IObtenerUsuario, ObtenerUsuario>();
             services.AddScoped<IObtenerPerfilUsuario, ObtenerPerfilUsuario>();
             services.AddScoped<IActualizarUsuario, ActualizarUsuario>();
+            services.AddScoped<IObtenerPedidos, ObtenerPedidos>();
+            services.AddScoped<IObservarCambiosPedido, ObservarCambiosPedidos>();
         }
 
         /// <summary>
