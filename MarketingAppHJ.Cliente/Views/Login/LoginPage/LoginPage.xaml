@@ -3,10 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MarketingAppHJ.Cliente.Views.Login.LoginPage.LoginPage"
              xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel"
+				     x:DataType="vm:LoginPageViewModel">
              BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}">
-    <ContentPage.BindingContext>
-        <vm:LoginPageViewModel />
-    </ContentPage.BindingContext>
 
 
     <ScrollView>
