@@ -17,5 +17,9 @@
   <ItemGroup>
     <ProjectReference Include="..\MarketingAppHJ.Dominio\MarketingAppHJ.Dominio.csproj" />
   </ItemGroup>
+	
+  <ItemGroup>
+    <Folder Include="Interfaces\UseCases\NewFolder\" />
+  </ItemGroup>
 
 </Project>

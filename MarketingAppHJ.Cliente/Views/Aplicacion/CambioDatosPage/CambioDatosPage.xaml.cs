@@ -11,4 +11,14 @@ public partial class CambioDatosPage : ContentPage
         InitializeComponent();
         BindingContext = _viewModel;
     }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+
+        if (BindingContext is CambioDatosPageViewModel vm)
+        {
+            await vm.CargarDatosUsuarioAsync();
+        }
+    }
 }

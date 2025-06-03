@@ -41,6 +41,6 @@ namespace MarketingAppHJ.Aplicacion.Dtos
         /// </summary>
         public List<ItemPedidoDto> Items { get; set; } = new List<ItemPedidoDto>();
 
-        public decimal Total { get; set; }
+        public decimal Total => Items != null ? Items.Sum(i => i.Total) : 0m;
     }
 }
