@@ -60,9 +60,9 @@ namespace MarketingAppHJ.Cliente.Views.Aplicacion.MainPage
             await Shell.Current.GoToAsync("carrito");
         }
 
-        void OnAvatarClicked(object sender, EventArgs e)
+        private async void OnAvatarClicked(object sender, EventArgs e)
         {
-            // Navegar a perfil...
+            await Shell.Current.GoToAsync("profile");
         }
 
         private async void OnLogoClicked(object sender, EventArgs e)

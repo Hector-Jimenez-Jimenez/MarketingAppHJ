@@ -9,7 +9,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel
     {
         private readonly IRegistro _registro;
         [ObservableProperty]
-        private string name = string.Empty;
+        private string nombre = string.Empty;
         [ObservableProperty]
         private string apellidos = string.Empty;
         [ObservableProperty]
@@ -18,6 +18,10 @@ namespace MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel
         private string password = string.Empty;
         [ObservableProperty]
         private string confirmPassword = string.Empty;
+        [ObservableProperty]
+        private string telefono = string.Empty;
+        [ObservableProperty]
+        private string direccion = string.Empty;
 
         public RegisterPageViewModel(IRegistro registro)
         {
@@ -29,7 +33,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel
         {
             if (string.IsNullOrWhiteSpace(Email) || string.IsNullOrWhiteSpace(Password) || string.IsNullOrWhiteSpace(ConfirmPassword))
             {
-                await Shell.Current.DisplayAlert("Error", "Rellena todos los cambios", "OK");
+                await Shell.Current.DisplayAlert("Error", "Rellena todos los cambios requeridos", "OK");
                 return;
             }
             if (Password != ConfirmPassword)
@@ -39,7 +43,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel
             }
             try
             {
-                await _registro.RegistrarUsuarioAsync(Email, Password,Name,Apellidos);
+                await _registro.RegistrarUsuarioAsync(Email,Password,Nombre,Apellidos,Direccion,Telefono);
                 await Shell.Current.DisplayAlert("Éxito", "Registro Completado!", "OK");
                 await Shell.Current.GoToAsync("main");
             }

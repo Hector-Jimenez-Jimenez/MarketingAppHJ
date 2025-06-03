@@ -109,8 +109,8 @@
                         <!-- Tocar para ir a detalles -->
                         <Border.GestureRecognizers>
                             <TapGestureRecognizer 
-                Tapped="OnItemTapped" 
-                NumberOfTapsRequired="1" />
+                                Tapped="OnItemTapped" 
+                                   NumberOfTapsRequired="1" />
                         </Border.GestureRecognizers>
                     </Border>
                 </DataTemplate>

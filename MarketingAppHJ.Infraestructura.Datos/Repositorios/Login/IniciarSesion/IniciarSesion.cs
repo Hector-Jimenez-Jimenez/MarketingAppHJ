@@ -35,7 +35,7 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.IniciarSesion
                  {
                      if (task.IsFaulted)
                      {
-                         throw new Exception("Error al iniciar sesión: " + task.Exception?.Message);
+                         Console.WriteLine("Error al iniciar sesión: " + task.Exception?.Message);
                      }
                      else if (task.IsCompletedSuccessfully)
                      {

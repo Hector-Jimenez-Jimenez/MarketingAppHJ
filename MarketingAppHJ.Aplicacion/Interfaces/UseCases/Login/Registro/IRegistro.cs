@@ -17,10 +17,12 @@ namespace MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.Registro
         /// </summary>  
         /// <param name="email">Correo electrónico del usuario.</param>  
         /// <param name="password">Contraseña del usuario.</param>  
-        /// <param name="name">Nombre del usuario.</param>  
-        /// <param name="surname">Apellidos del usuario.</param>  
+        /// <param name="nombre">Nombre del usuario.</param>  
+        /// <param name="apellidos">Apellidos del usuario.</param>  
+        /// <param name="direccion"> Direccion de envio</param>
+        /// <param name="telefono"> Teléfono del Usuario </param>
         /// <returns>Una tarea que representa la operación asincrónica.</returns>  
-        Task RegistrarUsuarioAsync(string email, string password, string name, string surname);
+        Task RegistrarUsuarioAsync(string email, string password, string nombre, string apellidos, string direccion, string telefono);
 
         /// <summary>  
         /// Guarda la información de un usuario en el sistema.  

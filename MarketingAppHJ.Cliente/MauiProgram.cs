@@ -20,18 +20,24 @@ using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.ResetConstraseña;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerNombreCategoria;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerProductosPorId;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerTodosProductos;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.ActualizarUsuario;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.IObtenerPerfilUsuario;
+using MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.MainPageViewModel;
+using MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.ResetPageViewModel;
 using MarketingAppHJ.Cliente.Views.Aplicacion;
+using MarketingAppHJ.Cliente.Views.Aplicacion.CambioDatosPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.CarritoPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.CheckOutPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.DetailsPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.MainPage;
+using MarketingAppHJ.Cliente.Views.Aplicacion.ProfilePage;
 using MarketingAppHJ.Cliente.Views.Login.LoginPage;
 using MarketingAppHJ.Cliente.Views.Login.RegisterPage;
 using MarketingAppHJ.Cliente.Views.Login.ResetPage;
@@ -51,6 +57,7 @@ using MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.ResetearContrasena
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerNombreCategoria;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductoPorId;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductos;
+using MarketingAppHJ.Infraestructura.Datos.Repositorios.Usuarios;
 using MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication;
 using MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.RealtimeDatabase;
 using Microsoft.Extensions.Logging;
@@ -127,6 +134,8 @@ namespace MarketingAppHJ.Cliente
             services.AddScoped<IIniciarSesion, IniciarSesion>();
             services.AddScoped<IRegistro, Registro>();
             services.AddScoped<IObtenerUsuario, ObtenerUsuario>();
+            services.AddScoped<IObtenerPerfilUsuario, ObtenerPerfilUsuario>();
+            services.AddScoped<IActualizarUsuario, ActualizarUsuario>();
         }
 
         /// <summary>
@@ -141,6 +150,8 @@ namespace MarketingAppHJ.Cliente
             services.AddTransient<RegisterPageViewModel>();
             services.AddTransient<LoginPageViewModel>();
             services.AddTransient<ResetPageViewModel>();
+            services.AddTransient<ProfilePageViewModel>();
+            services.AddTransient<CambioDatosPageViewModel>();
         }
 
         /// <summary>
@@ -156,6 +167,8 @@ namespace MarketingAppHJ.Cliente
             services.AddSingleton<LoginPage>();
             services.AddSingleton<RegisterPage>();
             services.AddSingleton<ResetPage>();
+            services.AddSingleton<ProfilePage>();
+            services.AddSingleton<CambioDatosPage>();
         }
     }
 }

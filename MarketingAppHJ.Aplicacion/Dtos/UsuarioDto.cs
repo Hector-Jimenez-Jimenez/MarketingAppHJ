@@ -45,5 +45,20 @@ namespace MarketingAppHJ.Aplicacion.Dtos
         /// Fecha de nacimiento del usuario.  
         /// </summary>  
         public DateTime FechaNacimiento { get; set; }
+
+        /// <summary>  
+        /// Número de teléfono del usuario.  
+        /// </summary>  
+        public string Telefono { get; set; } = string.Empty;
+
+        /// <summary>  
+        /// Dirección del usuario.  
+        /// </summary>  
+        public string Direccion { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Nombre de usuario del usuario.
+        /// </summary>
+        public string Username { get; set; } = string.Empty;
     }
 }

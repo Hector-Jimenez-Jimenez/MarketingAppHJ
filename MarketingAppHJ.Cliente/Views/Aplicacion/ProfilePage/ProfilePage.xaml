@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.ProfilePage.ProfilePage"
+             xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel"
+             Shell.NavBarIsVisible="True"
+             x:DataType="vm:ProfilePageViewModel"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
+    <ScrollView>
+        <VerticalStackLayout Spacing="24" Padding="20">
+
+            <!--Foto de perfil-->
+            <Grid HorizontalOptions="Center">
+                <Border WidthRequest="120"
+                        HeightRequest="120"
+                        Stroke="{DynamicResource BorderColor}"
+                        StrokeShape="Ellipse"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}">
+                    <Grid>
+                        <Image  Source="{Binding FotoPerfil}"
+                                Aspect="AspectFit"/>
+                        <Label Text="{Binding Iniciales}"
+                               Style="{StaticResource TitleLabelStyle}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!-- Nombre y apellidos -->
+            <Label Text="Nombre"
+                   Style="{StaticResource SubtitleLabelStyle}"/>
+            <HorizontalStackLayout Spacing="4" VerticalOptions="Center">
+                <Label Text="{Binding Nombre}"
+                   Style="{StaticResource BodyLabelStyle}" />
+                <Label Text="{Binding Apellido}"
+                   Style="{StaticResource BodyLabelStyle}"
+                       TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight},Dark={StaticResource TertiaryColorDark}}"
+                   HorizontalOptions="Center" />
+            </HorizontalStackLayout>
+            
+
+            <!-- Email -->
+            <Label Text="Email"
+                   Style="{StaticResource SubtitleLabelStyle}"/>
+            <Label Text="{Binding Email}"
+                   Style="{StaticResource BodyLabelStyle}"
+                   HorizontalOptions="Start" />
+
+            <!--Direccion envio -->
+            <Label Text="Dirección de envío"
+                   Style="{StaticResource SubtitleLabelStyle}" />
+            <Label Text="{Binding Direccion}"
+                   Style="{StaticResource BodyLabelStyle}">
+            <Label.Triggers>
+                    <DataTrigger TargetType="Label"
+                                 Binding="{Binding Direccion}"
+                                 Value="">
+                        <Setter Property="Text" Value="No definida" />
+                        <Setter Property="TextColor" Value="{DynamicResource Tertiary}" />
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+
+            <!-- Teléfono -->
+            <Label Text="Teléfono"
+                   Style="{StaticResource SubtitleLabelStyle}"/>
+            <Label Text="{Binding Telefono}"
+                   Style="{StaticResource BodyLabelStyle}"
+                   HorizontalOptions="Start" />
+            <!-- Botones de Ver Pediodos y Editar Perfil -->
+            <VerticalStackLayout Spacing="12">
+                <Button Text="Mis Pedidos"
+                        Command="{Binding VerPedidosCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}" />
+                <Button Text="Editar Datos"
+                        Command="{Binding CambiarDatosCommand}"
+                        Style="{StaticResource SecondaryButtonStyle}" />
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

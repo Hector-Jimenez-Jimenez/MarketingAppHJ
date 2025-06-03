@@ -43,9 +43,11 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.Registro
         /// <param name="email">Correo electrónico del usuario.</param>  
         /// <param name="password">Contraseña del usuario.</param>  
         /// <param name="nombre">Nombre del usuario.</param>
-        /// <param name="surname">Apellidos del usuario.</param>
+        /// <param name="apellidos">Apellidos del usuario.</param>
+        /// <param name="direccion">Direccion de envio por defecto </param>
+        /// <param name="telefono">Telefono del usuario </param>
         /// <returns>Una tarea que representa la operación asincrónica de registro.</returns>  
-        public async Task RegistrarUsuarioAsync(string email, string password, string nombre, string surname)
+        public async Task RegistrarUsuarioAsync(string email, string password, string nombre, string apellidos, string direccion, string telefono)
         {
             var AuthToken = await _firebaseAuthentication.GetInstance().CreateUserWithEmailAndPasswordAsync(email, password);
 
@@ -54,8 +56,10 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.Registro
                 Id_Usuario = AuthToken.User.Uid,
                 Email = email,
                 FechaRegistro = DateTime.Now,
-                Nombre = nombre, // Puedes establecer valores predeterminados o dejarlos vacíos
-                Apellidos = surname // Puedes establecer valores predeterminados o dejarlos vacíos
+                Nombre = nombre,
+                Apellidos = apellidos,
+                Telefono = telefono,
+                Direccion = direccion
             };
 
             await GuardarUsuarioAsync(usuario);

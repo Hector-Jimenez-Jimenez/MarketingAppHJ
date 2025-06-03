@@ -2,8 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MarketingAppHJ.Cliente.Views.Login.LoginPage.LoginPage"
-             xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel"
-             BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}">
+             xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel">
     <ContentPage.BindingContext>
         <vm:LoginPageViewModel />
     </ContentPage.BindingContext>

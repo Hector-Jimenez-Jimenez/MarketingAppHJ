@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+            x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.CambioDatosPage.CambioDatosPage"  
+            xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel"  
+            x:DataType="vm:CambioDatosPageViewModel"  
+            BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}"  
+            Shell.NavBarIsVisible="True"  
+            Title="CambioDatosPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+
+            <!-- 1) Avatar o imagen -->
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Border WidthRequest="100"  
+                       HeightRequest="100"  
+                       Stroke="{AppThemeBinding Light={StaticResource BorderColorLight},Dark={StaticResource BorderColorDark}}"  
+                       StrokeThickness="2"  
+                       StrokeShape="RoundRectangle 50"  
+                       BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight},Dark={StaticResource BackgroundColorDark}}">
+                    <Image  
+                       Source="{Binding ImagenUrl}"  
+                       Aspect="AspectFit"  
+                       HorizontalOptions="Center"  
+                       VerticalOptions="Center" />
+                </Border>
+            </HorizontalStackLayout>
+
+            <!-- 2) Nombre y Apellidos -->
+            <Label Text="Nombre"  
+                  Style="{StaticResource SubtitleLabelStyle}" />
+            <Entry  Text="{Binding Nombre}"  
+                   Placeholder="Nombre" />
+
+            <Label  Text="Apellidos"  
+                   Style="{StaticResource SubtitleLabelStyle}" />
+            <Entry  Text="{Binding Apellidos}"  
+                   Placeholder="Tus apellidos" />
+
+            <!-- 3) Usuario y Email -->
+            <Label Text="Usuario"  
+                  Style="{StaticResource SubtitleLabelStyle}" />
+            <Entry  Text="{Binding Username}"  
+                   Placeholder="Nombre de usuario" />
+
+            <Label  Text="Correo electrónico"  
+                   Style="{StaticResource SubtitleLabelStyle}" />
+            <Entry  Text="{Binding Email}"  
+                   Placeholder="ejemplo@dominio.com"  
+                   Keyboard="Email" />
+
+            <!-- 4) Fecha de nacimiento -->
+            <Label Text="Fecha de nacimiento"  
+               Style="{StaticResource SubtitleLabelStyle}" />
+            <DatePicker Date="{Binding FechaNacimiento}"/>
+
+            <!-- 5) Dirección -->
+            <Label   
+               Text="Dirección"  
+               Style="{StaticResource SubtitleLabelStyle}" />
+            <Editor  
+               Text="{Binding Direccion}"  
+               Placeholder="Calle, ciudad, CP..."  
+               AutoSize="TextChanges" />
+
+            <!-- 6) Teléfono -->
+            <Label   
+               Text="Teléfono"  
+               Style="{StaticResource SubtitleLabelStyle}" />
+            <Entry   
+               Text="{Binding Telefono}"  
+               Placeholder="Sólo dígitos"  
+               Keyboard="Telephone" />
+
+            <!-- 7) Botones de acción -->
+            <Grid ColumnDefinitions="*,*" Padding="0,20,0,0">
+                <Button  
+                   Text="Cancelar"  
+                   Style="{StaticResource SecondaryButtonStyle}"  
+                   Command="{Binding CancelarCommand}"  
+                   Grid.Column="0" />
+
+                <Button  
+                   Text="Guardar"  
+                   Style="{StaticResource PrimaryButtonStyle}"  
+                   Command="{Binding GuardarCambiosCommand}"  
+                   Grid.Column="1" />
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

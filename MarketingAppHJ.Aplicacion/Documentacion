@@ -226,6 +226,21 @@
             Fecha de nacimiento del usuario.  
             </summary>  
         </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto.Telefono">
+            <summary>  
+            Número de teléfono del usuario.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto.Direccion">
+            <summary>  
+            Dirección del usuario.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto.Username">
+            <summary>
+            Nombre de usuario del usuario.
+            </summary>
+        </member>
         <member name="T:MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication">
             <summary>
             Interfaz para la autenticación de Firebase.
@@ -383,14 +398,16 @@
             Interface para el registro de usuarios.  
             </summary>  
         </member>
-        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.Registro.IRegistro.RegistrarUsuarioAsync(System.String,System.String,System.String,System.String)">
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.Registro.IRegistro.RegistrarUsuarioAsync(System.String,System.String,System.String,System.String,System.String,System.String)">
             <summary>  
             Registra un nuevo usuario en el sistema.  
             </summary>  
             <param name="email">Correo electrónico del usuario.</param>  
             <param name="password">Contraseña del usuario.</param>  
-            <param name="name">Nombre del usuario.</param>  
-            <param name="surname">Apellidos del usuario.</param>  
+            <param name="nombre">Nombre del usuario.</param>  
+            <param name="apellidos">Apellidos del usuario.</param>  
+            <param name="direccion"> Direccion de envio</param>
+            <param name="telefono"> Teléfono del Usuario </param>
             <returns>Una tarea que representa la operación asincrónica.</returns>  
         </member>
         <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.Registro.IRegistro.GuardarUsuarioAsync(MarketingAppHJ.Aplicacion.Dtos.UsuarioDto)">
@@ -446,6 +463,30 @@
             Obtiene una lista de productos de forma asíncrona.
             </summary>
             <returns>Una tarea que representa la operación asíncrona. El resultado contiene una colección de objetos <see cref="T:MarketingAppHJ.Aplicacion.Dtos.ProductoDto"/>.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.ActualizarUsuario.IActualizarUsuario">
+            <summary>  
+            Interfaz para actualizar la información de un usuario.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.ActualizarUsuario.IActualizarUsuario.ActualizarUsuarioAsync(MarketingAppHJ.Aplicacion.Dtos.UsuarioDto)">
+            <summary>  
+            Actualiza la información de un usuario en el sistema.  
+            </summary>  
+            <param name="usuario">Objeto de tipo <see cref="T:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto"/> que contiene la información actualizada del usuario.</param>  
+            <returns>Una tarea que representa la operación asincrónica.</returns>  
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.IObtenerPerfilUsuario.IObtenerPerfilUsuario">
+            <summary>  
+            Interfaz para obtener el perfil de un usuario.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.IObtenerPerfilUsuario.IObtenerPerfilUsuario.ObtenerPerfilUsuarioAsync(System.String)">
+            <summary>  
+            Obtiene el perfil de un usuario por su identificador.  
+            </summary>  
+            <param name="usuarioId">El identificador único del usuario.</param>  
+            <returns>Un objeto <see cref="T:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto"/> que contiene la información del perfil del usuario.</returns>  
         </member>
         <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
             <summary>

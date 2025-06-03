@@ -5,7 +5,7 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
   xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel"  
   Title="Checkout"  
-  BackgroundColor="{AppThemeBinding Light={StaticResource SecondaryColorLight}, Dark={StaticResource SecondaryColorDark}}"  
+  BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}"  
   Padding="20">  
 
    <ContentPage.BindingContext>  

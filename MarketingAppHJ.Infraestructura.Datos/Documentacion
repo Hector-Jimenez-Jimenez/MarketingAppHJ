@@ -238,14 +238,16 @@
             <param name="usuario">Objeto <see cref="T:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto"/> que contiene la información del usuario.</param>  
             <returns>Una tarea que representa la operación asincrónica de guardar el usuario.</returns>  
         </member>
-        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.Registro.Registro.RegistrarUsuarioAsync(System.String,System.String,System.String,System.String)">
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.Registro.Registro.RegistrarUsuarioAsync(System.String,System.String,System.String,System.String,System.String,System.String)">
             <summary>  
             Registra un nuevo usuario en Firebase Authentication con el correo electrónico y la contraseña proporcionados.  
             </summary>  
             <param name="email">Correo electrónico del usuario.</param>  
             <param name="password">Contraseña del usuario.</param>  
             <param name="nombre">Nombre del usuario.</param>
-            <param name="surname">Apellidos del usuario.</param>
+            <param name="apellidos">Apellidos del usuario.</param>
+            <param name="direccion">Direccion de envio por defecto </param>
+            <param name="telefono">Telefono del usuario </param>
             <returns>Una tarea que representa la operación asincrónica de registro.</returns>  
         </member>
         <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.ResetearContrasena.ResetearContrasena">
@@ -309,6 +311,42 @@
             <summary>
             Repositorio para gestionar productos en Firebase.
             </summary>
+        </member>
+        <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Usuarios.ActualizarUsuario">
+            <summary>  
+            Clase que implementa la funcionalidad para actualizar un usuario en la base de datos Firebase.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Usuarios.ActualizarUsuario.#ctor(MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.RealtimeDatabase.FirebaseRealTimeDatabase)">
+            <summary>  
+            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Usuarios.ActualizarUsuario"/> con la base de datos Firebase proporcionada.  
+            </summary>  
+            <param name="firebaseDatabase">Instancia de la base de datos Firebase.</param>  
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Usuarios.ActualizarUsuario.ActualizarUsuarioAsync(MarketingAppHJ.Aplicacion.Dtos.UsuarioDto)">
+            <summary>  
+            Actualiza la información de un usuario en la base de datos Firebase.  
+            </summary>  
+            <param name="usuario">Objeto <see cref="T:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto"/> que contiene la información del usuario a actualizar.</param>  
+            <returns>Una tarea que representa la operación asincrónica.</returns>  
+        </member>
+        <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Usuarios.ObtenerPerfilUsuario">
+            <summary>  
+            Clase que implementa la funcionalidad para obtener el perfil de un usuario desde Firebase Realtime Database.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Usuarios.ObtenerPerfilUsuario.#ctor(MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase.IFirebaseRealtimeDatabase)">
+            <summary>  
+            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Usuarios.ObtenerPerfilUsuario"/>.  
+            </summary>  
+            <param name="firebaseRealtimeDatabase">Instancia de la base de datos Firebase Realtime Database.</param>  
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Usuarios.ObtenerPerfilUsuario.ObtenerPerfilUsuarioAsync(System.String)">
+            <summary>  
+            Obtiene el perfil de un usuario por su identificador.  
+            </summary>  
+            <param name="usuarioId">El identificador único del usuario.</param>  
+            <returns>Una tarea que representa la operación asincrónica. El resultado contiene los datos del usuario.</returns>  
         </member>
     </members>
 </doc>
