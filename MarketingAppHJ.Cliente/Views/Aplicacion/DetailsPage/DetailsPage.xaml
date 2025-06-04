@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
-           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
-           x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.DetailsPage.DetailsPage"  
-           xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel"
-           BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}"
-           Padding="0">
-    <ContentPage.BindingContext>
-        <vm:DetallesProductoPageViewModel />
-    </ContentPage.BindingContext>
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+             x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.DetailsPage.DetailsPage"  
+             xmlns:dtos="clr-namespace:MarketingAppHJ.Aplicacion.Dtos;assembly=MarketingAppHJ.Aplicacion"
+             x:DataType="vm:DetallesProductoPageViewModel"
+             xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}"
+             Padding="0">
 
     <ScrollView>
         <VerticalStackLayout Spacing="0" VerticalOptions="Start">

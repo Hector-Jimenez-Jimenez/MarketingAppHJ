@@ -21,22 +21,33 @@ namespace MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel
         private readonly IFirebaseAuthentication _firebaseAuthentication;
         #endregion
 
-        #region variables
+        #region Variables
         private string UserId => _firebaseAuthentication.UserId;
 
-        [ObservableProperty] private string id;
-        [ObservableProperty] private string nombre;
-        [ObservableProperty] private string descripcion;
+        [ObservableProperty] private string id = string.Empty;
+        [ObservableProperty] private string nombre = string.Empty;
+        [ObservableProperty] private string descripcion = string.Empty;
         [ObservableProperty] private decimal precio;
-        [ObservableProperty] private string imagenUrl;
+        [ObservableProperty] private string imagenUrl = string.Empty;
         [ObservableProperty] private int stock;
-        [ObservableProperty] private string categoriaId;
-        [ObservableProperty] private string nombreCategoria;
+        [ObservableProperty] private string categoriaId = string.Empty;
+        [ObservableProperty] private string nombreCategoria = string.Empty;
         [ObservableProperty] private int cantidad = 1;
         #endregion
 
         #region Constructor
-        public DetallesProductoPageViewModel(IObtenerProductoPorId usecaseObtenerProductoPorId, IAgregarProductoAlCarrito agregarProductoAlCarrito, IObtenerNombreCategoria obtenerNombreCategoria, IFirebaseAuthentication firebaseAuthentication)
+        /// <summary>
+        /// Constructor para inicializar el ViewModel de detalles del producto.
+        /// </summary>
+        /// <param name="usecaseObtenerProductoPorId">Caso de uso para obtener producto por ID.</param>
+        /// <param name="agregarProductoAlCarrito">Caso de uso para agregar producto al carrito.</param>
+        /// <param name="obtenerNombreCategoria">Caso de uso para obtener el nombre de la categoría.</param>
+        /// <param name="firebaseAuthentication">Servicio de autenticación Firebase.</param>
+        public DetallesProductoPageViewModel(
+            IObtenerProductoPorId usecaseObtenerProductoPorId,
+            IAgregarProductoAlCarrito agregarProductoAlCarrito,
+            IObtenerNombreCategoria obtenerNombreCategoria,
+            IFirebaseAuthentication firebaseAuthentication)
         {
             _ObtenerNombreCategoria = obtenerNombreCategoria ?? throw new ArgumentNullException(nameof(obtenerNombreCategoria));
             _ObtenerProductoPorId = usecaseObtenerProductoPorId ?? throw new ArgumentNullException(nameof(usecaseObtenerProductoPorId));
@@ -47,9 +58,9 @@ namespace MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel
 
         #region Métodos
         /// <summary>
-        /// Carga el producto seleccionado
+        /// Carga el producto seleccionado.
         /// </summary>
-        /// <param name="id">Id del producto a cargar</param>
+        /// <param name="id">Id del producto a cargar.</param>
         public async void LoadProductById(string id)
         {
             var dto = await _ObtenerProductoPorId.ObtenerProductoPorIdAsync(id);
@@ -66,17 +77,15 @@ namespace MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel
                 var categoriaDto = await _ObtenerNombreCategoria.ObtenerCategoria(dto.CategoriaId);
                 NombreCategoria = categoriaDto.Nombre ?? "Sin categoria";
             }
-
         }
 
         /// <summary>
-        /// Agrega el objeto seleccionado al carrtio
+        /// Agrega el objeto seleccionado al carrito.
         /// </summary>
-        /// <returns> La operación de agregación completada</returns>
+        /// <returns>La operación de agregación completada.</returns>
         [RelayCommand]
         public async Task AgregarAlCarritoAsync()
-        { 
-
+        {
             var item = new CarritoItemDto
             {
                 ProductoId = Id,
@@ -93,12 +102,22 @@ namespace MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel
             await Shell.Current.GoToAsync("main");
         }
 
+        /// <summary>
+        /// Realiza la operación de compra inmediata del producto seleccionado.
+        /// </summary>
+        /// <returns>Una tarea que representa la operación asincrónica.</returns>
         [RelayCommand]
         public async Task ComprarAhoraAsync()
         {
-            //En un futuro
+            
+            await Task.CompletedTask;
+
+            await Shell.Current.DisplayAlert("Información", "Funcionalidad de compra aún no implementada.", "OK");
         }
 
+        /// <summary>
+        /// Incrementa la cantidad del producto seleccionado en 1, siempre que no exceda el stock disponible.
+        /// </summary>
         [RelayCommand]
         public void Incrementar()
         {
@@ -106,6 +125,9 @@ namespace MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel
                 Cantidad++;
         }
 
+        /// <summary>
+        /// Decrementa la cantidad del producto seleccionado en 1, siempre que no sea menor que 1.
+        /// </summary>
         [RelayCommand]
         public void Decrementar()
         {

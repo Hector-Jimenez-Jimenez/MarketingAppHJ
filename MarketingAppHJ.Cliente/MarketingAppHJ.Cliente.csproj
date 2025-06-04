@@ -19,6 +19,7 @@
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<DocumentationFile>True</DocumentationFile>
 
 		<!-- Display name -->
 		<ApplicationTitle>MarketingAppHJ.Cliente</ApplicationTitle>

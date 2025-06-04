@@ -1,0 +1,828 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MarketingAppHJ.Cliente</name>
+    </assembly>
+    <members>
+        <member name="T:MarketingAppHJ.Cliente.App">
+            <summary>
+            Representa la clase principal de la aplicación.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.App.#ctor(MarketingAppHJ.Cliente.AppShell)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Cliente.App"/>.
+            </summary>
+            <param name="shell">El contenedor principal de la aplicación.</param>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.App.CreateWindow(Microsoft.Maui.IActivationState)">
+            <summary>
+            Crea una nueva ventana para la aplicación.
+            </summary>
+            <param name="activationState">El estado de activación de la aplicación.</param>
+            <returns>Una nueva instancia de <see cref="T:Microsoft.Maui.Controls.Window"/>.</returns>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.MauiProgram.AddUseCases(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds use case services to the service collection.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.MauiProgram.AddViewModels(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds view model services to the service collection.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.MauiProgram.AddViews(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds view services to the service collection.
+            </summary>
+        </member>
+        <member name="T:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.CargarDatosUsuarioAsync">
+            <summary>
+            Método que carga los datos del Usuario
+            </summary>
+            <returns>Si se ha podido realizar la accion o no</returns>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.GetMainPage">
+            <summary>
+            Metodo para llamar a la página actual
+            </summary>
+            <returns>Estructura básica para usar en este caso los displayalerts</returns>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.MostrarAlertaAsync(System.String,System.String,System.String)">
+            <summary>
+            Método para Mostrar la alerta o el DisplayAlert
+            </summary>
+            <param name="titulo"> titulo de la ventana </param>
+            <param name="mensaje"> mensaje a mostrar</param>
+            <param name="boton"> mensaje del botón para cerrarla</param>
+            <returns></returns>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.GuardarCambiosAsync">
+            <summary>
+            Método que te guarda los cambios realizados en el Cambio de Datos
+            </summary>
+            <returns> La resolucion del si se han podido guardar los cambios</returns>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.CancelarModificacionAsync">
+            <summary>
+            Método para cancelar la modificacion
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.NombreOriginal">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.nombreOriginal"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.ApelliodosOrignales">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.apelliodosOrignales"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.UsernameOriginal">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.usernameOriginal"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.EmailOriginal">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.emailOriginal"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.DireccionOriginal">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.direccionOriginal"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.TelefonoOriginal">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.telefonoOriginal"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.FechaNacimientoOrignal">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.fechaNacimientoOrignal"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.ImagenOriginal">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.imagenOriginal"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.NuevoNombre">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.nuevoNombre"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.NuevosApellidos">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.nuevosApellidos"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.NuevoUsername">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.nuevoUsername"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.NuevoEmail">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.nuevoEmail"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.NuevaDireccion">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.nuevaDireccion"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.NuevoTelefono">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.nuevoTelefono"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.NuevaFechaNacimiento">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.nuevaFechaNacimiento"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.NuevaImagen">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.nuevaImagen"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.IsBusy">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.isBusy"/>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.guardarCambiosCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.GuardarCambiosCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.GuardarCambiosCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.GuardarCambiosAsync"/>.</summary>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.cancelarModificacionCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.CancelarModificacionCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.CancelarModificacionCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.CancelarModificacionAsync"/>.</summary>
+        </member>
+        <member name="T:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.OnCartChanged(Firebase.Database.Streaming.FirebaseEvent{MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto})">
+            <summary>
+            Maneja las acciones en el carrito de compras.
+            </summary>
+            <param name="evt"> Accion Realizada</param>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.LoadCartAsync">
+            <summary>
+            Carga el carrito de compras del usuario actual desde Firebase.
+            </summary>
+            <returns> La carga de datos del carrito de compras </returns>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.RemoveItemAsync(System.String)">
+            <summary>
+            Elimina un producto del carrito de compras del usuario actual.
+            </summary>
+            <param name="productId"> Id del producto a eliminar</param>
+            <returns> La eliminación del producto en el carrito </returns>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.ClearCartAsync">
+            <summary>
+            Elimina todos los productos del carrito de compras del usuario actual.
+            </summary>
+            <returns> La limpieza del carrito</returns>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.CheckoutAsync">
+            <summary>
+            Navega a la página de checkout para procesar el pedido.
+            </summary>
+            <returns> El envio a la pagina de Checkout </returns>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.Dispose">
+            <summary>
+            Libera los recursos utilizados por el ViewModel.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.IncrementarCantidadAsync(MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto)">
+            <summary>
+            Incrementa la cantidad de un producto en el carrito de compras del usuario actual.
+            </summary>
+            <param name="dto"> Item al que se le va a aumentar la cantidad</param>
+            <returns></returns>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.DecrementarCantidadAsync(MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto)">
+            <summary>
+            Decrementa la cantidad de un producto en el carrito de compras del usuario actual.
+            </summary>
+            <param name="item"> Carrito al que se le va a quitar la cantidad </param>
+            <returns></returns>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.Items">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.items"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.TotalPrice">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.totalPrice"/>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.loadCartCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.LoadCartCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.LoadCartCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.LoadCartAsync"/>.</summary>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.removeItemCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.RemoveItemCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.RemoveItemCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.RemoveItemAsync(System.String)"/>.</summary>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.clearCartCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.ClearCartCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.ClearCartCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.ClearCartAsync"/>.</summary>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.checkoutCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.CheckoutCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.CheckoutCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.CheckoutAsync"/>.</summary>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.incrementarCantidadCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.IncrementarCantidadCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.IncrementarCantidadCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.IncrementarCantidadAsync(MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto)"/>.</summary>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.decrementarCantidadCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.DecrementarCantidadCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.DecrementarCantidadCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.DecrementarCantidadAsync(MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto)"/>.</summary>
+        </member>
+        <member name="T:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.LoadCartAsync">
+            <summary>
+            Carga los productos del carrito
+            </summary>
+            <returns>La carga terminada</returns>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.RealizarPedidoAsync">
+            <summary>
+            Realiza el pedido
+            </summary>
+            <returns> El pedido realizado</returns>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.Items">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.items"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.Total">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.total"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.DireccionEnvio">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.direccionEnvio"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.MetodoPago">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.metodoPago"/>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.loadCartCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.LoadCartCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.LoadCartCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.LoadCartAsync"/>.</summary>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.realizarPedidoCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.RealizarPedidoCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.RealizarPedidoCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.RealizarPedidoAsync"/>.</summary>
+        </member>
+        <member name="T:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel">
+            <summary>
+            ViewModel para la página de detalles del producto.
+            </summary>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.LoadProductById(System.String)">
+            <summary>
+            Carga el producto seleccionado
+            </summary>
+            <param name="id">Id del producto a cargar</param>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.AgregarAlCarritoAsync">
+            <summary>
+            Agrega el objeto seleccionado al carrtio
+            </summary>
+            <returns> La operación de agregación completada</returns>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.Id">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.id"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.Nombre">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.nombre"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.Descripcion">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.descripcion"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.Precio">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.precio"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.ImagenUrl">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.imagenUrl"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.Stock">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.stock"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.CategoriaId">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.categoriaId"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.NombreCategoria">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.nombreCategoria"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.Cantidad">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.cantidad"/>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.agregarAlCarritoCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.AgregarAlCarritoCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.AgregarAlCarritoCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.AgregarAlCarritoAsync"/>.</summary>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.comprarAhoraCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.ComprarAhoraCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.ComprarAhoraCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.ComprarAhoraAsync"/>.</summary>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.incrementarCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.IncrementarCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.IncrementarCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.Incrementar"/>.</summary>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.decrementarCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.DecrementarCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.DecrementarCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.Decrementar"/>.</summary>
+        </member>
+        <member name="T:MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel.LoginPageViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel.LoginPageViewModel.Email">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel.LoginPageViewModel.email"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel.LoginPageViewModel.Password">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel.LoginPageViewModel.password"/>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel.LoginPageViewModel.loginCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel.LoginPageViewModel.LoginCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel.LoginPageViewModel.LoginCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel.LoginPageViewModel.LoginAsync"/>.</summary>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel.LoginPageViewModel.resetPasswordCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel.LoginPageViewModel.ResetPasswordCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel.LoginPageViewModel.ResetPasswordCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel.LoginPageViewModel.ResetPasswordAsync"/>.</summary>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel.LoginPageViewModel.navigateToRegisterPageCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel.LoginPageViewModel.NavigateToRegisterPageCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel.LoginPageViewModel.NavigateToRegisterPageCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel.LoginPageViewModel.NavigateToRegisterPageAsync"/>.</summary>
+        </member>
+        <member name="T:MarketingAppHJ.Cliente.ViewModels.MainPageViewModel.MainPageViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.MainPageViewModel.MainPageViewModel.Productos">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.MainPageViewModel.MainPageViewModel.productos"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.MainPageViewModel.MainPageViewModel.TextoBusqueda">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.MainPageViewModel.MainPageViewModel.textoBusqueda"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.MainPageViewModel.MainPageViewModel.IsBusy">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.MainPageViewModel.MainPageViewModel.isBusy"/>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.MainPageViewModel.MainPageViewModel.OnTextoBusquedaChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:MarketingAppHJ.Cliente.ViewModels.MainPageViewModel.MainPageViewModel.TextoBusqueda"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MarketingAppHJ.Cliente.ViewModels.MainPageViewModel.MainPageViewModel.TextoBusqueda"/> is changed.</remarks>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.MainPageViewModel.MainPageViewModel.cargarProductosCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.MainPageViewModel.MainPageViewModel.CargarProductosCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.MainPageViewModel.MainPageViewModel.CargarProductosCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.MainPageViewModel.MainPageViewModel.CargarProductosAsync"/>.</summary>
+        </member>
+        <member name="T:MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel.PedidosPageViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel.PedidosPageViewModel.Pedidos">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel.PedidosPageViewModel.pedidos"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel.PedidosPageViewModel.IsBusy">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel.PedidosPageViewModel.isBusy"/>
+        </member>
+        <member name="T:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.Nombre">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.nombre"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.Apellido">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.apellido"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.Email">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.email"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.Direccion">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.direccion"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.Telefono">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.telefono"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.FotoPerfil">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.fotoPerfil"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.Iniciales">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.iniciales"/>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.cargarPerfilCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.CargarPerfilCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.CargarPerfilCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.CargarPerfilAsync"/>.</summary>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.verPedidosCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.VerPedidosCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.VerPedidosCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.VerPedidosAsync"/>.</summary>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.cambiarDatosCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.CambiarDatosCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.CambiarDatosCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.CambiarDatos"/>.</summary>
+        </member>
+        <member name="T:MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel.RegisterPageViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel.RegisterPageViewModel.Nombre">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel.RegisterPageViewModel.nombre"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel.RegisterPageViewModel.Apellidos">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel.RegisterPageViewModel.apellidos"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel.RegisterPageViewModel.Email">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel.RegisterPageViewModel.email"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel.RegisterPageViewModel.Password">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel.RegisterPageViewModel.password"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel.RegisterPageViewModel.ConfirmPassword">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel.RegisterPageViewModel.confirmPassword"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel.RegisterPageViewModel.Telefono">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel.RegisterPageViewModel.telefono"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel.RegisterPageViewModel.Direccion">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel.RegisterPageViewModel.direccion"/>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel.RegisterPageViewModel.registerCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel.RegisterPageViewModel.RegisterCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel.RegisterPageViewModel.RegisterCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel.RegisterPageViewModel.RegisterAsync"/>.</summary>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel.RegisterPageViewModel.cancelCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel.RegisterPageViewModel.CancelCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel.RegisterPageViewModel.CancelCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel.RegisterPageViewModel.CancelAsync"/>.</summary>
+        </member>
+        <member name="T:MarketingAppHJ.Cliente.ViewModels.ResetPageViewModel.ResetPageViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.ResetPageViewModel.ResetPageViewModel.Email">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.ResetPageViewModel.ResetPageViewModel.email"/>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.ResetPageViewModel.ResetPageViewModel.resetPasswordCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.ResetPageViewModel.ResetPageViewModel.ResetPasswordCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.ResetPageViewModel.ResetPageViewModel.ResetPasswordCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.ResetPageViewModel.ResetPageViewModel.ResetPasswordAsync"/>.</summary>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.ResetPageViewModel.ResetPageViewModel.cancelCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.ResetPageViewModel.ResetPageViewModel.CancelCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.ResetPageViewModel.ResetPageViewModel.CancelCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.ResetPageViewModel.ResetPageViewModel.CancelAsync"/>.</summary>
+        </member>
+        <member name="T:MarketingAppHJ.Cliente.Views.Aplicacion.DetailsPage.DetailsPage">
+            <summary>
+            Represents the details page in the application.
+            </summary>
+            
+        </member>
+        <member name="T:MarketingAppHJ.Cliente.Views.Aplicacion.MainPage.MainPage">
+            <summary>
+            Representa la página de catálogo con paginación infinita
+            y un botón para desplegar el carrito.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.Views.Aplicacion.MainPage.MainPage.OnRemainingItemsThresholdReached(System.Object,System.EventArgs)">
+            <summary>
+            Se dispara cuando quedan 2 ítems por visualizar,
+            para cargar la siguiente página.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.Views.Aplicacion.MainPage.MainPage.OnItemTapped(System.Object,System.EventArgs)">
+            <summary>
+            Navega a la página de detalle del producto seleccionado.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.Views.Aplicacion.MainPage.MainPage.OnCartClicked(System.Object,System.EventArgs)">
+            <summary>
+            Handler del botón “Despliega tu carrito”
+            (aún implementa la navegación a la página de carrito).
+            </summary>
+        </member>
+        <member name="T:MarketingAppHJ.Cliente.Resource">
+            <summary>
+            Android Resource Designer class.
+            Exposes the Android Resource designer assembly into the project Namespace.
+            </summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.NombreOriginal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "NombreOriginal" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ApelliodosOrignales">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ApelliodosOrignales" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.UsernameOriginal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "UsernameOriginal" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.EmailOriginal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "EmailOriginal" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DireccionOriginal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DireccionOriginal" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TelefonoOriginal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TelefonoOriginal" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FechaNacimientoOrignal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FechaNacimientoOrignal" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ImagenOriginal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ImagenOriginal" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.NuevoNombre">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "NuevoNombre" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.NuevosApellidos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "NuevosApellidos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.NuevoUsername">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "NuevoUsername" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.NuevoEmail">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "NuevoEmail" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.NuevaDireccion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "NuevaDireccion" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.NuevoTelefono">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "NuevoTelefono" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.NuevaFechaNacimiento">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "NuevaFechaNacimiento" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.NuevaImagen">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "NuevaImagen" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsBusy">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsBusy" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Items">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Items" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TotalPrice">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TotalPrice" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Total">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Total" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DireccionEnvio">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DireccionEnvio" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.MetodoPago">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "MetodoPago" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Id">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Id" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Nombre">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Nombre" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Descripcion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Descripcion" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Precio">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Precio" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ImagenUrl">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ImagenUrl" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Stock">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Stock" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CategoriaId">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CategoriaId" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.NombreCategoria">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "NombreCategoria" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Cantidad">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Cantidad" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Email">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Email" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Password">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Password" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Productos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Productos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TextoBusqueda">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TextoBusqueda" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Pedidos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Pedidos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Apellido">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Apellido" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Direccion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Direccion" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Telefono">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Telefono" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FotoPerfil">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FotoPerfil" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Iniciales">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Iniciales" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Apellidos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Apellidos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ConfirmPassword">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ConfirmPassword" generated properties.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.NombreOriginal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "NombreOriginal" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ApelliodosOrignales">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ApelliodosOrignales" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.UsernameOriginal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "UsernameOriginal" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.EmailOriginal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "EmailOriginal" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DireccionOriginal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DireccionOriginal" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TelefonoOriginal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TelefonoOriginal" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FechaNacimientoOrignal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FechaNacimientoOrignal" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ImagenOriginal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ImagenOriginal" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.NuevoNombre">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "NuevoNombre" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.NuevosApellidos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "NuevosApellidos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.NuevoUsername">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "NuevoUsername" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.NuevoEmail">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "NuevoEmail" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.NuevaDireccion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "NuevaDireccion" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.NuevoTelefono">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "NuevoTelefono" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.NuevaFechaNacimiento">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "NuevaFechaNacimiento" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.NuevaImagen">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "NuevaImagen" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsBusy">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsBusy" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Items">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Items" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TotalPrice">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TotalPrice" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Total">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Total" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DireccionEnvio">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DireccionEnvio" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.MetodoPago">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "MetodoPago" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Id">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Id" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Nombre">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Nombre" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Descripcion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Descripcion" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Precio">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Precio" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ImagenUrl">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ImagenUrl" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Stock">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Stock" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CategoriaId">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CategoriaId" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.NombreCategoria">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "NombreCategoria" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Cantidad">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Cantidad" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Email">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Email" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Password">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Password" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Productos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Productos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TextoBusqueda">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TextoBusqueda" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Pedidos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Pedidos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Apellido">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Apellido" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Direccion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Direccion" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Telefono">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Telefono" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FotoPerfil">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FotoPerfil" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Iniciales">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Iniciales" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Apellidos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Apellidos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ConfirmPassword">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ConfirmPassword" generated properties.</summary>
+        </member>
+    </members>
+</doc>

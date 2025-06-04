@@ -35,11 +35,25 @@ namespace MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel
         decimal totalPrice;
 
         private string UserId => _authentication.UserId;
-        #endregion
-
-        #region Constructor
-        public CarritoPageViewModel(IFirebaseAuthentication firebase, IBorrarProductoCarrito borrarProductoCarrito, IBorrarProductosCarrito borrarProductosCarrito, IModificarCantidadCarrito modificarCantidadCarrito, 
-                                    IObservarCambiosCarrito observarCambiosCarrito, IObtenerCarrito obtenerCarrito, ICrearPedido crearPedido)
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="CarritoPageViewModel"/>.
+        /// </summary>
+        /// <param name="firebase">Servicio de autenticación de Firebase.</param>
+        /// <param name="borrarProductoCarrito">Servicio para borrar un producto del carrito.</param>
+        /// <param name="borrarProductosCarrito">Servicio para borrar todos los productos del carrito.</param>
+        /// <param name="modificarCantidadCarrito">Servicio para modificar la cantidad de un producto en el carrito.</param>
+        /// <param name="observarCambiosCarrito">Servicio para observar cambios en el carrito.</param>
+        /// <param name="obtenerCarrito">Servicio para obtener el carrito del usuario.</param>
+        /// <param name="crearPedido">Servicio para crear un pedido.</param>
+        /// <exception cref="ArgumentNullException">Se lanza si algún parámetro es nulo.</exception>
+        public CarritoPageViewModel(
+            IFirebaseAuthentication firebase,
+            IBorrarProductoCarrito borrarProductoCarrito,
+            IBorrarProductosCarrito borrarProductosCarrito,
+            IModificarCantidadCarrito modificarCantidadCarrito,
+            IObservarCambiosCarrito observarCambiosCarrito,
+            IObtenerCarrito obtenerCarrito,
+            ICrearPedido crearPedido)
         {
             _authentication = firebase ?? throw new ArgumentNullException(nameof(firebase));
             _borrarProductoCarrito = borrarProductoCarrito ?? throw new ArgumentNullException(nameof(borrarProductoCarrito));
@@ -148,7 +162,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel
         /// <summary>
         /// Incrementa la cantidad de un producto en el carrito de compras del usuario actual.
         /// </summary>
-        /// <param name="dto"> Item al que se le va a aumentar la cantidad</param>
+        /// <param name="item"> Item al que se le va a aumentar la cantidad</param>
         /// <returns></returns>
         [RelayCommand]
         public async Task IncrementarCantidadAsync(CarritoItemDto item)
