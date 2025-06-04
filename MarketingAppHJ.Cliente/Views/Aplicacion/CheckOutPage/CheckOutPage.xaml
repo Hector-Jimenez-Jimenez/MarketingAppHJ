@@ -7,14 +7,14 @@
              xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel"
              Shell.NavBarIsVisible="True"
              BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}"  
-             Padding="20">  
+             Padding="10">  
 
     <ScrollView>
-        <VerticalStackLayout Padding="20">
+        <VerticalStackLayout>
 
             <!-- Título -->
             <Label Text="Resumen de tu pedido"
-                   HorizontalOptions="Start"
+                   HorizontalOptions="Center"
                    Style="{StaticResource TitleLabelStyle}" />
 
             <!-- Lista de ítems -->
@@ -24,14 +24,20 @@
                                 EmptyView="No hay artículos en el pedido.">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="dto:CarritoItemDto">
-                        <Grid ColumnDefinitions="20*,20*,20*,20*,20*" Padding="10">
-                            <Image Grid.Column="0"
-                                   HeightRequest="100"
-                                   WidthRequest="100"
+                        <Grid ColumnDefinitions="25*,25*,25*,25*">
+                            <HorizontalStackLayout Grid.Column="0" HorizontalOptions="Start">
+                                <Image 
+                                   HeightRequest="40"
+                                   WidthRequest="40"
                                    VerticalOptions="Center"
-                                   HorizontalOptions="Start"
                                    Source="{Binding ImagenUrl}"
                                    Aspect="AspectFit"/>
+                                <Label 
+                                   VerticalOptions="Center"
+                                   Text="{Binding Cantidad, StringFormat='x{0}'}"
+                                   Style="{StaticResource BodyLabelStyle}" />
+                            </HorizontalStackLayout>
+                            
 
                             <Label Grid.Column="1"
                                    VerticalOptions="Center"
@@ -45,13 +51,8 @@
                                    Text="{Binding Precio, StringFormat='{}{0:C}'}"
                                    Style="{StaticResource BodyLabelStyle}" />
                             
-                            <Label Grid.Column="3"
-                                   VerticalOptions="Center"
-                                   HorizontalOptions="End"
-                                   Text="{Binding Cantidad, StringFormat='Cantidad: {0}'}"
-                                   Style="{StaticResource BodyLabelStyle}" />
 
-                            <Label Grid.Column="4"
+                            <Label Grid.Column="3"
                                    VerticalOptions="Center"
                                    HorizontalOptions="End"
                                    Text="{Binding Total, StringFormat='{}{0:C}'}"
@@ -64,23 +65,24 @@
 
             <!-- Total general -->
             <Label Text="{Binding Total, StringFormat='Total: {0:C}'}"
+                   Padding="20"
                    Style="{StaticResource SubtitleLabelStyle}"
-                   HorizontalOptions="End" />
+                   HorizontalOptions="Center" />
 
             <!-- Dirección de envío -->
             <Label Text="Dirección de envío"
-             Style="{StaticResource SubtitleLabelStyle}" />
+                   Margin="10"
+                   Style="{StaticResource SubtitleLabelStyle}" />
             <Editor Text="{Binding DireccionEnvio}"
-              HeightRequest="80"
-              BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceColorLight}, Dark={StaticResource SurfaceColorDark}}"
-              TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}"/>
+                    BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceColorLight}, Dark={StaticResource SurfaceColorDark}}"
+                    TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}"/>
 
             <!-- Método de pago -->
             <Label Text="Método de pago"
-             Style="{StaticResource SubtitleLabelStyle}" />
+                   Style="{StaticResource SubtitleLabelStyle}" />
             <Picker SelectedItem="{Binding MetodoPago}"
-              BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceColorLight}, Dark={StaticResource SurfaceColorDark}}"
-              TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}">
+                    BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceColorLight}, Dark={StaticResource SurfaceColorDark}}"
+                    TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}">
                 <Picker.Items>
                     <x:String>Tarjeta</x:String>
                     <x:String>PayPal</x:String>
@@ -90,9 +92,9 @@
 
             <!-- Botón de confirmación -->
             <Button Text="Confirmar Pedido"
-              Command="{Binding RealizarPedidoCommand}"
-              Style="{StaticResource PrimaryButtonStyle}"
-              Margin="0,10"/>
+                    Command="{Binding RealizarPedidoCommand}"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Margin="0,10"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

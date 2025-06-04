@@ -17,10 +17,14 @@ namespace MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel
 {
     public partial class CheckOutPageViewModel : ObservableObject
     {
+        #region Interfaces
         readonly IObtenerCarrito _obtenerCarrito;
         readonly ICrearPedido _realizarPedido;
         readonly IFirebaseAuthentication _authentication;
         readonly IBorrarProductoCarrito _borrarProductoCarrito;
+        #endregion
+
+        #region Variables
         private string UserId => _authentication.UserId;
         [ObservableProperty]
         ObservableCollection<CarritoItemDto> items = new();
@@ -33,6 +37,9 @@ namespace MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel
 
         [ObservableProperty]
         private string metodoPago = "Tarjeta";
+        #endregion
+
+        #region Constructor
         public CheckOutPageViewModel(
             IObtenerCarrito obtenerCarrito,
             ICrearPedido realizarPedido,
@@ -42,7 +49,14 @@ namespace MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel
             _realizarPedido = realizarPedido ?? throw new ArgumentNullException(nameof(realizarPedido));
             _authentication = authentication ?? throw new ArgumentNullException(nameof(authentication));
         }
+        #endregion
 
+        #region Métodos
+
+        /// <summary>
+        /// Carga los productos del carrito
+        /// </summary>
+        /// <returns>La carga terminada</returns>
         [RelayCommand]
         public async Task LoadCartAsync()
         {
@@ -52,13 +66,17 @@ namespace MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel
             Total = Items.Sum(i => i.Total);
         }
 
+        /// <summary>
+        /// Realiza el pedido
+        /// </summary>
+        /// <returns> El pedido realizado</returns>
         [RelayCommand]
         public async Task RealizarPedidoAsync()
         {
             try
             {
                 // Ejecuta tu use case, que internamente salvará el pedido y borrará el carrito
-                await _realizarPedido.RealizarPedido(UserId,direccionEnvio, MetodoPago);
+                await _realizarPedido.RealizarPedido(UserId,DireccionEnvio, MetodoPago);
                 await Shell.Current.DisplayAlert("Éxito", "Pedido realizado", "OK");
                 await Shell.Current.GoToAsync("main");
             }
@@ -67,5 +85,6 @@ namespace MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel
                 await Shell.Current.DisplayAlert("Error", ex.Message, "OK");
             }
         }
+        #endregion
     }
 }

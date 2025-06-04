@@ -3,110 +3,101 @@
            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
            x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.DetailsPage.DetailsPage"  
            xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel"
-           BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}"
+           BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}"
            Padding="0">
     <ContentPage.BindingContext>
         <vm:DetallesProductoPageViewModel />
     </ContentPage.BindingContext>
 
     <ScrollView>
-        <VerticalStackLayout Spacing="0">
-
+        <VerticalStackLayout Spacing="0" VerticalOptions="Start">
             <!-- 1) Banner con imagen completa + título -->
             <Grid HeightRequest="300">
                 <Image Source="{Binding ImagenUrl}"
-               Aspect="AspectFit"
-               HorizontalOptions="Fill"
-               VerticalOptions="Fill" />
+                       Aspect="AspectFit"
+                       HorizontalOptions="Fill"
+                       VerticalOptions="Fill" />
 
-                <!-- Título sobre la imagen, con fondo semitransparente -->
                 <Label Text="{Binding Nombre}"
-               FontSize="24"
-               FontAttributes="Bold"
-               TextColor="White"
-               HorizontalOptions="Center"
-               VerticalOptions="End"
-               Margin="20"
-               BackgroundColor="Black"
-               Opacity="0.6"
-               Padding="10,5"/>
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalOptions="Center"
+                       VerticalOptions="End"
+                       Margin="20"
+                       BackgroundColor="Black"
+                       Opacity="0.6"
+                       Padding="10,5"/>
             </Grid>
 
             <!-- 2) Contenedor de detalles -->
-            <VerticalStackLayout Padding="20" Spacing="18"
-                          BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceColorLight}, Dark={StaticResource SurfaceColorDark}}">
+            <VerticalStackLayout Padding="20" Spacing="18" BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceColorLight}, Dark={StaticResource SurfaceColorDark}}">
 
-                <!-- 2.1) Precio y categoría -->
                 <HorizontalStackLayout Spacing="12">
                     <Label Text="{Binding Precio, StringFormat='{}{0:C}'}"
-                 Style="{StaticResource TitleLabelStyle}" />
+                           Style="{StaticResource TitleLabelStyle}" />
 
                     <Label Text="{Binding NombreCategoria}"
-                 FontSize="16"
-                 VerticalOptions="Center"
-                 TextColor="{StaticResource SecondaryColorLight}" />
+                           FontSize="16"
+                           VerticalOptions="Center"
+                           TextColor="{AppThemeBinding Light={StaticResource SecondaryColorLight},Dark={StaticResource SecondaryColorDark}}" />
                 </HorizontalStackLayout>
 
-                <!-- 2.2) Estado de stock (cambia a “Agotado” si Stock == 0) -->
                 <Label x:Name="StockLabel"
-               Text="{Binding Stock, StringFormat='Stock disponible: {0}'}"
-               Style="{StaticResource BodyLabelStyle}">
+                       Text="{Binding Stock, StringFormat='Stock disponible: {0}'}"
+                       Style="{StaticResource BodyLabelStyle}">
                     <Label.Triggers>
                         <DataTrigger TargetType="Label"
-                         Binding="{Binding Stock}"
-                         Value="0">
+                                     Binding="{Binding Stock}"
+                                     Value="0">
                             <Setter Property="Text" Value="Agotado" />
-                            <Setter Property="TextColor" Value="{StaticResource TertiaryColorDark}" />
+                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource TertiaryColorLight},Dark={StaticResource TertiaryColorDark}}" />
                         </DataTrigger>
                     </Label.Triggers>
                 </Label>
 
-                <!-- 2.3) Descripción -->
                 <Label Text="Descripción"
-               Style="{StaticResource SubtitleLabelStyle}" />
+                       Style="{StaticResource SubtitleLabelStyle}" />
                 <Label Text="{Binding Descripcion}"
-               Style="{StaticResource BodyLabelStyle}"
-               LineBreakMode="WordWrap"/>
+                       Style="{StaticResource BodyLabelStyle}"
+                       LineBreakMode="WordWrap"/>
 
-                <!-- 2.4) Selector de cantidad -->
                 <HorizontalStackLayout Spacing="20"
-                               Padding="0,10"
-                               HorizontalOptions="Center"
-                               VerticalOptions="Center">
+                                       Padding="0,10"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center">
                     <Button Text="−"
-                  Command="{Binding DecrementarCommand}"
-                  Style="{StaticResource SecondaryButtonStyle}"
-                  WidthRequest="48"
-                  HeightRequest="48"
-                  FontSize="24" />
+                            Command="{Binding DecrementarCommand}"
+                            Style="{StaticResource SecondaryButtonStyle}"
+                            WidthRequest="48"
+                            HeightRequest="48"
+                            FontSize="24" />
 
                     <Label Text="{Binding Cantidad}"
-                 FontSize="20"
-                 FontAttributes="Bold"
-                 VerticalOptions="Center"
-                 HorizontalOptions="Center"
-                 TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}"/>
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}"/>
 
                     <Button Text="+"
-                  Command="{Binding IncrementarCommand}"
-                  Style="{StaticResource SecondaryButtonStyle}"
-                  WidthRequest="48"
-                  HeightRequest="48"
-                  FontSize="24" />
+                            Command="{Binding IncrementarCommand}"
+                            Style="{StaticResource SecondaryButtonStyle}"
+                            WidthRequest="48"
+                            HeightRequest="48"
+                            FontSize="24" />
                 </HorizontalStackLayout>
 
-                <!-- 3) Botones de acción -->
                 <Button Text="Añadir al carrito"
                 Command="{Binding AgregarAlCarritoCommand}"
                 Style="{StaticResource PrimaryButtonStyle}"
                 Margin="0,5"/>
 
-                <Button Text="Comprar ahora"
+                <!--<Button Text="Comprar ahora"
                 Command="{Binding ComprarAhoraCommand}"
                 Style="{StaticResource SecondaryButtonStyle}"
-                Margin="0,5"/>
+                Margin="0,5"/>-->
             </VerticalStackLayout>
-
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
