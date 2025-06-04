@@ -43,11 +43,13 @@ namespace MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel
         public CheckOutPageViewModel(
             IObtenerCarrito obtenerCarrito,
             ICrearPedido realizarPedido,
+            IBorrarProductoCarrito borrarProductoCarrito,
             IFirebaseAuthentication authentication)
         {
             _obtenerCarrito = obtenerCarrito ?? throw new ArgumentNullException(nameof(obtenerCarrito));
             _realizarPedido = realizarPedido ?? throw new ArgumentNullException(nameof(realizarPedido));
             _authentication = authentication ?? throw new ArgumentNullException(nameof(authentication));
+            _borrarProductoCarrito = borrarProductoCarrito ?? throw new ArgumentNullException(nameof(borrarProductoCarrito));
         }
         #endregion
 
@@ -75,7 +77,6 @@ namespace MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel
         {
             try
             {
-                // Ejecuta tu use case, que internamente salvará el pedido y borrará el carrito
                 await _realizarPedido.RealizarPedido(UserId,DireccionEnvio, MetodoPago);
                 await Shell.Current.DisplayAlert("Éxito", "Pedido realizado", "OK");
                 await Shell.Current.GoToAsync("main");
@@ -84,6 +85,16 @@ namespace MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel
             {
                 await Shell.Current.DisplayAlert("Error", ex.Message, "OK");
             }
+        }
+
+        /// <summary>
+        /// Navega a la página anterior.
+        /// </summary>
+        /// <returns>Una tarea que representa la operación asincrónica de navegación.</returns>
+        [RelayCommand]
+        public static async Task Volver()
+        {
+            await Shell.Current.GoToAsync("..");
         }
         #endregion
     }

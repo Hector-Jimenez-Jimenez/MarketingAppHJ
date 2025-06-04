@@ -147,6 +147,19 @@
             <inheritdoc/>
             <inheritdoc/>
         </member>
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.#ctor(MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.BorrarProductoCarrito.IBorrarProductoCarrito,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.BorrarProductosCarrito.IBorrarProductosCarrito,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ModificarCantidadCarrito.IModificarCantidadCarrito,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObservarCambiosCarrito.IObservarCambiosCarrito,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObtenerCarrito.IObtenerCarrito,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Checkout.CrearPedido.ICrearPedido)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel"/>.
+            </summary>
+            <param name="firebase">Servicio de autenticación de Firebase.</param>
+            <param name="borrarProductoCarrito">Servicio para borrar un producto del carrito.</param>
+            <param name="borrarProductosCarrito">Servicio para borrar todos los productos del carrito.</param>
+            <param name="modificarCantidadCarrito">Servicio para modificar la cantidad de un producto en el carrito.</param>
+            <param name="observarCambiosCarrito">Servicio para observar cambios en el carrito.</param>
+            <param name="obtenerCarrito">Servicio para obtener el carrito del usuario.</param>
+            <param name="crearPedido">Servicio para crear un pedido.</param>
+            <exception cref="T:System.ArgumentNullException">Se lanza si algún parámetro es nulo.</exception>
+        </member>
         <member name="M:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.OnCartChanged(Firebase.Database.Streaming.FirebaseEvent{MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto})">
             <summary>
             Maneja las acciones en el carrito de compras.
@@ -187,7 +200,7 @@
             <summary>
             Incrementa la cantidad de un producto en el carrito de compras del usuario actual.
             </summary>
-            <param name="dto"> Item al que se le va a aumentar la cantidad</param>
+            <param name="item"> Item al que se le va a aumentar la cantidad</param>
             <returns></returns>
         </member>
         <member name="M:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel.DecrementarCantidadAsync(MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto)">
@@ -243,6 +256,7 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="M:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.LoadCartAsync">
             <summary>
@@ -255,6 +269,12 @@
             Realiza el pedido
             </summary>
             <returns> El pedido realizado</returns>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.Volver">
+            <summary>
+            Navega a la página anterior.
+            </summary>
+            <returns>Una tarea que representa la operación asincrónica de navegación.</returns>
         </member>
         <member name="P:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.Items">
             <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.items"/>
@@ -280,6 +300,12 @@
         <member name="P:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.RealizarPedidoCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.RealizarPedidoAsync"/>.</summary>
         </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.volverCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.VolverCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.VolverCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.Volver"/>.</summary>
+        </member>
         <member name="T:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel">
             <summary>
             ViewModel para la página de detalles del producto.
@@ -290,17 +316,42 @@
             <inheritdoc/>
             <inheritdoc/>
         </member>
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.#ctor(MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerProductosPorId.IObtenerProductoPorId,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.AgregarProductoAlCarrito.IAgregarProductoAlCarrito,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerNombreCategoria.IObtenerNombreCategoria,MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication)">
+            <summary>
+            Constructor para inicializar el ViewModel de detalles del producto.
+            </summary>
+            <param name="usecaseObtenerProductoPorId">Caso de uso para obtener producto por ID.</param>
+            <param name="agregarProductoAlCarrito">Caso de uso para agregar producto al carrito.</param>
+            <param name="obtenerNombreCategoria">Caso de uso para obtener el nombre de la categoría.</param>
+            <param name="firebaseAuthentication">Servicio de autenticación Firebase.</param>
+        </member>
         <member name="M:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.LoadProductById(System.String)">
             <summary>
-            Carga el producto seleccionado
+            Carga el producto seleccionado.
             </summary>
-            <param name="id">Id del producto a cargar</param>
+            <param name="id">Id del producto a cargar.</param>
         </member>
         <member name="M:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.AgregarAlCarritoAsync">
             <summary>
-            Agrega el objeto seleccionado al carrtio
+            Agrega el objeto seleccionado al carrito.
             </summary>
-            <returns> La operación de agregación completada</returns>
+            <returns>La operación de agregación completada.</returns>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.ComprarAhoraAsync">
+            <summary>
+            Realiza la operación de compra inmediata del producto seleccionado.
+            </summary>
+            <returns>Una tarea que representa la operación asincrónica.</returns>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.Incrementar">
+            <summary>
+            Incrementa la cantidad del producto seleccionado en 1, siempre que no exceda el stock disponible.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.Decrementar">
+            <summary>
+            Decrementa la cantidad del producto seleccionado en 1, siempre que no sea menor que 1.
+            </summary>
         </member>
         <member name="P:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.Id">
             <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.id"/>
