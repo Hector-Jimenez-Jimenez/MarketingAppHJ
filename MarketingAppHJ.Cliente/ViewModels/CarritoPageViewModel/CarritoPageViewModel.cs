@@ -16,6 +16,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel
 {
     public partial class CarritoPageViewModel : ObservableObject
     {
+        #region Interfaces
         readonly IFirebaseAuthentication _authentication;
         readonly IBorrarProductosCarrito _borrarProductosCarrito;
         readonly IBorrarProductoCarrito _borrarProductoCarrito;
@@ -24,7 +25,9 @@ namespace MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel
         readonly IObtenerCarrito _obtenerCarrito;
         readonly ICrearPedido _crearPedido;
         readonly CompositeDisposable _subs = new();
+        #endregion
 
+        #region Variables
         [ObservableProperty]
         ObservableCollection<CarritoItemDto> items = new();
 
@@ -32,11 +35,9 @@ namespace MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel
         decimal totalPrice;
 
         private string UserId => _authentication.UserId;
+        #endregion
 
-        public CarritoPageViewModel()
-        {
-            // Constructor vacío para permitir la inyección de dependencias
-        }
+        #region Constructor
         public CarritoPageViewModel(IFirebaseAuthentication firebase, IBorrarProductoCarrito borrarProductoCarrito, IBorrarProductosCarrito borrarProductosCarrito, IModificarCantidadCarrito modificarCantidadCarrito, 
                                     IObservarCambiosCarrito observarCambiosCarrito, IObtenerCarrito obtenerCarrito, ICrearPedido crearPedido)
         {
@@ -54,7 +55,13 @@ namespace MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel
                 .Subscribe(evt => OnCartChanged(evt));
             _subs.Add(sub);
         }
+        #endregion
 
+        #region Métodos
+        /// <summary>
+        /// Maneja las acciones en el carrito de compras.
+        /// </summary>
+        /// <param name="evt"> Accion Realizada</param>
         public void OnCartChanged(FirebaseEvent<CarritoItemDto> evt)
         {
             MainThread.BeginInvokeOnMainThread(() =>
@@ -90,6 +97,10 @@ namespace MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel
             });
         }
 
+        /// <summary>
+        /// Carga el carrito de compras del usuario actual desde Firebase.
+        /// </summary>
+        /// <returns> La carga de datos del carrito de compras </returns>
         [RelayCommand]
         public async Task LoadCartAsync()
         {
@@ -99,10 +110,19 @@ namespace MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel
             TotalPrice = Items.Sum(i => i.Total);
         }
 
+        /// <summary>
+        /// Elimina un producto del carrito de compras del usuario actual.
+        /// </summary>
+        /// <param name="productId"> Id del producto a eliminar</param>
+        /// <returns> La eliminación del producto en el carrito </returns>
         [RelayCommand]
         public async Task RemoveItemAsync(string productId)
             => await _borrarProductoCarrito.BorrarProductoCarritoAsync(UserId,productId);
 
+        /// <summary>
+        /// Elimina todos los productos del carrito de compras del usuario actual.
+        /// </summary>
+        /// <returns> La limpieza del carrito</returns>
         [RelayCommand]
         public async Task ClearCartAsync()
         {
@@ -110,34 +130,51 @@ namespace MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel
             Items.Clear();
             TotalPrice = 0m;
         }
-
+        /// <summary>
+        /// Navega a la página de checkout para procesar el pedido.
+        /// </summary>
+        /// <returns> El envio a la pagina de Checkout </returns>
         [RelayCommand]
         public async Task CheckoutAsync()
         {
             await Shell.Current.GoToAsync("checkout");
         }
 
+        /// <summary>
+        /// Libera los recursos utilizados por el ViewModel.
+        /// </summary>
         public void Dispose() => _subs.Dispose();
 
+        /// <summary>
+        /// Incrementa la cantidad de un producto en el carrito de compras del usuario actual.
+        /// </summary>
+        /// <param name="dto"> Item al que se le va a aumentar la cantidad</param>
+        /// <returns></returns>
         [RelayCommand]
-        public async Task IncrementarCantidadAsync(CarritoItemDto dto)
+        public async Task IncrementarCantidadAsync(CarritoItemDto item)
         {
-            var nueva = dto.Cantidad + 1;
-            await _modificarCantidadCarrito.ModificarCantidadCarritoAsync(UserId, dto.ProductoId, nueva);
+            var nueva = item.Cantidad + 1;
+            await _modificarCantidadCarrito.ModificarCantidadCarritoAsync(UserId, item.ProductoId, nueva);
         }
 
+        /// <summary>
+        /// Decrementa la cantidad de un producto en el carrito de compras del usuario actual.
+        /// </summary>
+        /// <param name="item"> Carrito al que se le va a quitar la cantidad </param>
+        /// <returns></returns>
         [RelayCommand]
-        public async Task DecrementarCantidadAsync(CarritoItemDto dto)
+        public async Task DecrementarCantidadAsync(CarritoItemDto item)
         {
-            if (dto.Cantidad > 1)
+            if (item.Cantidad > 1)
             {
-                var nueva = dto.Cantidad - 1;
-                await _modificarCantidadCarrito.ModificarCantidadCarritoAsync(UserId, dto.ProductoId, nueva);
+                var nueva = item.Cantidad - 1;
+                await _modificarCantidadCarrito.ModificarCantidadCarritoAsync(UserId, item.ProductoId, nueva);
             }
             else
             {
-                await _borrarProductoCarrito.BorrarProductoCarritoAsync(UserId, dto.ProductoId);
+                await _borrarProductoCarrito.BorrarProductoCarritoAsync(UserId, item.ProductoId);
             }
         }
+        #endregion
     }
 }

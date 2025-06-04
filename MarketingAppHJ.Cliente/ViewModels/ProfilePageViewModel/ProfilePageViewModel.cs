@@ -75,8 +75,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel
         [RelayCommand]
         private async Task VerPedidosAsync()
         {
-            //await Shell.Current.GoToAsync("//PedidosPage");
-            Console.WriteLine("Navegando a la página de pedidos...");
+            await Shell.Current.GoToAsync("pedidos");
         }
 
         [RelayCommand]

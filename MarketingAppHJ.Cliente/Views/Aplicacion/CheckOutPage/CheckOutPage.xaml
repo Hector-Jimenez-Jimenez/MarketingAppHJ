@@ -1,47 +1,71 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage  
-  x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.CheckOutPage.CheckOutPage"  
-  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
-  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
-  xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel"  
-  Title="Checkout"  
-  BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}"  
-  Padding="20">  
-
-   <ContentPage.BindingContext>  
-       <vm:CheckOutPageViewModel />  
-   </ContentPage.BindingContext>
+<ContentPage x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.CheckOutPage.CheckOutPage"  
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+             xmlns:dto="clr-namespace:MarketingAppHJ.Aplicacion.Dtos;assembly=MarketingAppHJ.Aplicacion"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+             x:DataType="vm:CheckOutPageViewModel"
+             xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel"
+             Shell.NavBarIsVisible="True"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}"  
+             Padding="20">  
 
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="16">
+        <VerticalStackLayout Padding="20">
 
             <!-- Título -->
             <Label Text="Resumen de tu pedido"
-             Style="{StaticResource TitleLabelStyle}" />
+                   HorizontalOptions="Start"
+                   Style="{StaticResource TitleLabelStyle}" />
 
             <!-- Lista de ítems -->
             <CollectionView ItemsSource="{Binding Items}"
-                      SelectionMode="None"
-                      HeightRequest="200"
-                      EmptyView="No hay artículos en el pedido.">
+                                SelectionMode="None"
+                                BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}"
+                                EmptyView="No hay artículos en el pedido.">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid ColumnDefinitions="*,Auto" Padding="5">
-                            <Label Text="{Binding Nombre}"
-                     Style="{StaticResource BodyLabelStyle}" />
+                    <DataTemplate x:DataType="dto:CarritoItemDto">
+                        <Grid ColumnDefinitions="20*,20*,20*,20*,20*" Padding="10">
+                            <Image Grid.Column="0"
+                                   HeightRequest="100"
+                                   WidthRequest="100"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Start"
+                                   Source="{Binding ImagenUrl}"
+                                   Aspect="AspectFit"/>
 
                             <Label Grid.Column="1"
-                     Text="{Binding Total, StringFormat='{}{0:C}'}"
-                     Style="{StaticResource BodyLabelStyle}" />
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Start"
+                                   Text="{Binding Nombre, StringFormat='{0}'}"
+                                   Style="{StaticResource BodyLabelStyle}" />
+                            
+                            <Label Grid.Column="2"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"
+                                   Text="{Binding Precio, StringFormat='{}{0:C}'}"
+                                   Style="{StaticResource BodyLabelStyle}" />
+                            
+                            <Label Grid.Column="3"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="End"
+                                   Text="{Binding Cantidad, StringFormat='Cantidad: {0}'}"
+                                   Style="{StaticResource BodyLabelStyle}" />
+
+                            <Label Grid.Column="4"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="End"
+                                   Text="{Binding Total, StringFormat='{}{0:C}'}"
+                                   Style="{StaticResource BodyLabelStyle}" />
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
+
             <!-- Total general -->
             <Label Text="{Binding Total, StringFormat='Total: {0:C}'}"
-             Style="{StaticResource SubtitleLabelStyle}"
-             HorizontalOptions="End" />
+                   Style="{StaticResource SubtitleLabelStyle}"
+                   HorizontalOptions="End" />
 
             <!-- Dirección de envío -->
             <Label Text="Dirección de envío"

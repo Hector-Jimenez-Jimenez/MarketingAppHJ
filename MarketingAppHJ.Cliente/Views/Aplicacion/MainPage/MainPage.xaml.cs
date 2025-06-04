@@ -14,14 +14,11 @@ namespace MarketingAppHJ.Cliente.Views.Aplicacion.MainPage
     {
         readonly MainPageViewModel _viewModel;
 
-        public MainPage()
+        public MainPage(MainPageViewModel viewModel)
         {
             InitializeComponent();
 
-            _viewModel = IPlatformApplication.Current
-                            .Services
-                            .GetService<MainPageViewModel>()
-                        ?? throw new InvalidOperationException("MainPageViewModel no disponible.");
+            _viewModel = viewModel;
 
             BindingContext = _viewModel;
         }
@@ -29,7 +26,6 @@ namespace MarketingAppHJ.Cliente.Views.Aplicacion.MainPage
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            // Carga inicial: página 1
             _viewModel.LoadNextPage();
         }
 

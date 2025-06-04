@@ -53,8 +53,7 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Checkout.CrearPedido
                     Nombre = item.Nombre,
                     Cantidad = item.Cantidad,
                     Precio = item.Precio
-                }).ToList(),
-                Total = carrito.Sum(item => item.Total)
+                }).ToList()
             };
 
             await _guardarPedido.GuardarPedidoAsync(pedido);

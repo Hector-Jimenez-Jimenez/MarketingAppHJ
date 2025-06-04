@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage  
-   x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.MainPage.MainPage"  
-   xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
-   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
-   xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.MainPageViewModel"  
+    x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.MainPage.MainPage"  
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+    xmlns:dtos="clr-namespace:MarketingAppHJ.Aplicacion.Dtos;assembly=MarketingAppHJ.Aplicacion"
+    xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.MainPageViewModel"  
+    x:DataType="vm:MainPageViewModel"
     Shell.NavBarIsVisible="False"
     
    BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">  
 
-   <!-- 0) VM -->  
-   <ContentPage.BindingContext>  
-       <vm:MainPageViewModel />  
-   </ContentPage.BindingContext>
 
     <!-- 1) Layout principal: 4 filas -->
     <Grid RowDefinitions="Auto,Auto,*,Auto" Padding="0">
@@ -76,7 +74,7 @@
                     RemainingItemsThresholdReached="OnRemainingItemsThresholdReached">
 
             <CollectionView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate >
                     <!-- Sustituido Frame por Border con CardBorderStyle -->
                     <Border Style="{StaticResource CardBorderStyle}">
 

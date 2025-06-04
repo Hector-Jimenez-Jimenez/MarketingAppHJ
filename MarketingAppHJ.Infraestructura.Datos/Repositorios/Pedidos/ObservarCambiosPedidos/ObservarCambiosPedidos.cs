@@ -30,7 +30,7 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Pedidos.ObservarCamb
         IObservable<FirebaseEvent<PedidoDto>> IObservarCambiosPedido.ObservarPedidos(string userId)
         {
             return _firebaseDatabase.Instance
-                .Child($"pedidos/{userId}")
+                .Child($"pedidos/{userId}/pedidos")
                 .AsObservable<PedidoDto>();
         }
     }

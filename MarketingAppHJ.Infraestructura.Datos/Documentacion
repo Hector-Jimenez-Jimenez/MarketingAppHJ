@@ -270,6 +270,42 @@
             <returns>Una tarea que representa la operación asincrónica.</returns>  
             <exception cref="T:System.Exception">Se lanza si ocurre un error al enviar el correo de restablecimiento.</exception>  
         </member>
+        <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Pedidos.ObservarCambiosPedidos.ObservarCambiosPedidos">
+            <summary>
+            Clase que implementa la interfaz para observar cambios en los pedidos de un usuario.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Pedidos.ObservarCambiosPedidos.ObservarCambiosPedidos.#ctor(MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.RealtimeDatabase.FirebaseRealTimeDatabase)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Pedidos.ObservarCambiosPedidos.ObservarCambiosPedidos"/>.
+            </summary>
+            <param name="firebaseDatabase">Instancia de la base de datos en tiempo real de Firebase.</param>
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Pedidos.ObservarCambiosPedidos.ObservarCambiosPedidos.MarketingAppHJ#Aplicacion#Interfaces#UseCases#Pedidos#ObservarCambiosPedidos#IObservarCambiosPedido#ObservarPedidos(System.String)">
+            <summary>
+            Observa los cambios en los pedidos de un usuario específico.
+            </summary>
+            <param name="userId">El identificador del usuario cuyos pedidos se van a observar.</param>
+            <returns>Un observable que emite eventos de Firebase con los datos de los pedidos.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Pedidos.ObtenerPedidos.ObtenerPedidos">
+            <summary>
+            Clase que implementa la funcionalidad para obtener pedidos desde la base de datos Firebase.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Pedidos.ObtenerPedidos.ObtenerPedidos.#ctor(MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.RealtimeDatabase.FirebaseRealTimeDatabase)">
+            <summary>
+            Constructor de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Pedidos.ObtenerPedidos.ObtenerPedidos"/>.
+            </summary>
+            <param name="firebaseDatabase">Instancia de la base de datos Firebase.</param>
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Pedidos.ObtenerPedidos.ObtenerPedidos.ObtenerPedidosAsync(System.String)">
+            <summary>
+            Obtiene una lista de pedidos para un usuario específico.
+            </summary>
+            <param name="userId">El identificador del usuario.</param>
+            <returns>Una tarea que representa la operación asincrónica. El resultado contiene una lista de <see cref="T:MarketingAppHJ.Aplicacion.Dtos.PedidoDto"/>.</returns>
+        </member>
         <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerNombreCategoria.ObtenerNombreCategoria">
             <summary>
             Clase que implementa la interfaz para obtener el nombre de una categoría desde Firebase.

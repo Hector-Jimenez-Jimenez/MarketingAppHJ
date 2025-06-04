@@ -33,7 +33,7 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Pedidos.ObtenerPedid
         public async Task<IEnumerable<PedidoDto>> ObtenerPedidosAsync(string userId)
         {
             var pedidos = await _firebaseDatabase.Instance
-                .Child($"pedidos/{userId}")
+                .Child($"pedidos/{userId}/pedidos")
                 .OnceAsync<PedidoDto>();
 
             return pedidos.Select(p =>

@@ -15,11 +15,14 @@ namespace MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel
 {
     public partial class CambioDatosPageViewModel : ObservableObject
     {
+        #region Interfaces
         private readonly IActualizarUsuario _actualizarUsuario;
         private readonly IObtenerPerfilUsuario _obtenerPerfilUsuario;
         private readonly IFirebaseAuthentication _firebaseAuthentication;
         private readonly IFirebaseRealtimeDatabase _firebaseRealtimeDatabase;
+        #endregion
 
+        #region Constructor
         public CambioDatosPageViewModel(
             IActualizarUsuario actualizarUsuario,
             IObtenerPerfilUsuario obtenerPerfilUsuario,
@@ -33,31 +36,56 @@ namespace MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel
 
             _ = CargarDatosUsuarioAsync();
         }
+        #endregion
 
-        private string userId => _firebaseAuthentication.UserId;
+        #region Variables
+        private string UserId => _firebaseAuthentication.UserId;
 
         //Propiedades Orignales
-        [ObservableProperty] private string nombreOriginal = string.Empty;
-        [ObservableProperty] private string apelliodosOrignales = string.Empty;
-        [ObservableProperty] private string usernameOriginal = string.Empty;
-        [ObservableProperty] private string emailOriginal = string.Empty;
-        [ObservableProperty] private string direccionOriginal = string.Empty;
-        [ObservableProperty] private string telefonoOriginal = string.Empty;
-        [ObservableProperty] private DateTime fechaNacimientoOrignal = DateTime.Today;
-        [ObservableProperty] private string imagenOriginal = string.Empty;
+        [ObservableProperty] 
+        private string nombreOriginal = string.Empty;
+        [ObservableProperty] 
+        private string apelliodosOrignales = string.Empty;
+        [ObservableProperty] 
+        private string usernameOriginal = string.Empty;
+        [ObservableProperty] 
+        private string emailOriginal = string.Empty;
+        [ObservableProperty]
+        private string direccionOriginal = string.Empty;
+        [ObservableProperty] 
+        private string telefonoOriginal = string.Empty;
+        [ObservableProperty] 
+        private DateTime fechaNacimientoOrignal = DateTime.Today;
+        [ObservableProperty] 
+        private string imagenOriginal = string.Empty;
 
         // Propiedades Nuevas 
-        [ObservableProperty] private string nuevoNombre = string.Empty;
-        [ObservableProperty] private string nuevosApellidos = string.Empty;
-        [ObservableProperty] private string nuevoUsername = string.Empty;
-        [ObservableProperty] private string nuevoEmail = string.Empty;
-        [ObservableProperty] private string nuevaDireccion = string.Empty;
-        [ObservableProperty] private string nuevoTelefono = string.Empty;
-        [ObservableProperty] private DateTime nuevaFechaNacimiento = DateTime.Today;
-        [ObservableProperty] private string nuevaImagen = string.Empty;
+        [ObservableProperty] 
+        private string nuevoNombre = string.Empty;
+        [ObservableProperty] 
+        private string nuevosApellidos = string.Empty;
+        [ObservableProperty] 
+        private string nuevoUsername = string.Empty;
+        [ObservableProperty] 
+        private string nuevoEmail = string.Empty;
+        [ObservableProperty] 
+        private string nuevaDireccion = string.Empty;
+        [ObservableProperty] 
+        private string nuevoTelefono = string.Empty;
+        [ObservableProperty] 
+        private DateTime nuevaFechaNacimiento = DateTime.Today;
+        [ObservableProperty] 
+        private string nuevaImagen = string.Empty;
+        [ObservableProperty] 
+        private bool isBusy;
+        #endregion
 
-        [ObservableProperty] private bool isBusy;
+        #region Métodos
 
+        /// <summary>
+        /// Método que carga los datos del Usuario
+        /// </summary>
+        /// <returns>Si se ha podido realizar la accion o no</returns>
         public async Task CargarDatosUsuarioAsync()
         {
             if (IsBusy) return;
@@ -65,7 +93,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel
 
             try
             {
-                var dto = await _obtenerPerfilUsuario.ObtenerPerfilUsuarioAsync(userId);
+                var dto = await _obtenerPerfilUsuario.ObtenerPerfilUsuarioAsync(UserId);
                 if (dto != null)
                 {
                     NombreOriginal = dto.Nombre;
@@ -78,8 +106,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel
                         ? DateTime.Today
                         : dto.FechaNacimiento;
                     ImagenOriginal = dto.AvatarUrl ?? string.Empty;
-
-                    // Reiniciamos los campos para que permanezcan vacíos
+                    
                     NuevoNombre = string.Empty;
                     NuevosApellidos = string.Empty;
                     NuevoUsername = string.Empty;
@@ -100,9 +127,20 @@ namespace MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel
             }
         }
 
+        /// <summary>
+        /// Metodo para llamar a la página actual
+        /// </summary>
+        /// <returns>Estructura básica para usar en este caso los displayalerts</returns>
         private static Page? GetMainPage() =>
             Application.Current?.Windows.FirstOrDefault()?.Page;
 
+        /// <summary>
+        /// Método para Mostrar la alerta o el DisplayAlert
+        /// </summary>
+        /// <param name="titulo"> titulo de la ventana </param>
+        /// <param name="mensaje"> mensaje a mostrar</param>
+        /// <param name="boton"> mensaje del botón para cerrarla</param>
+        /// <returns></returns>
         private static async Task MostrarAlertaAsync(string titulo, string mensaje, string boton)
         {
             var page = GetMainPage();
@@ -110,6 +148,10 @@ namespace MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel
                 await page.DisplayAlert(titulo, mensaje, boton);
         }
 
+        /// <summary>
+        /// Método que te guarda los cambios realizados en el Cambio de Datos
+        /// </summary>
+        /// <returns> La resolucion del si se han podido guardar los cambios</returns>
         [RelayCommand]
         public async Task GuardarCambiosAsync()
         {
@@ -182,7 +224,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel
             }
             var actualizadoDto = new UsuarioDto
             {
-                Id_Usuario = userId,
+                Id_Usuario = UserId,
                 Nombre = nombreFinal,
                 Apellidos = apellidosFinal,
                 Username = usernameFinal,
@@ -209,7 +251,6 @@ namespace MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel
 
                     try
                     {
-                        // Actualizamos email en FirebaseAuth
                         firebaseUser.User.Info.Email = (emailFinal);
                     }
                     catch (FirebaseAuthException faEx) when (faEx.Reason == AuthErrorReason.LoginCredentialsTooOld)
@@ -234,12 +275,11 @@ namespace MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel
                 if (!emailFinal.Equals(EmailOriginal, StringComparison.OrdinalIgnoreCase))
                 {
                     await _firebaseRealtimeDatabase.Instance
-                        .Child($"usuarios/{userId}")
+                        .Child($"usuarios/{UserId}")
                         .PatchAsync(new { email = emailFinal });
 
                     await MostrarAlertaAsync("Éxito", "Tus datos se han guardado correctamente.", "OK");
 
-                    // 2.7) Reasignar “originales” con el resultado
                     NombreOriginal = actualizadoDto.Nombre;
                     ApelliodosOrignales = actualizadoDto.Apellidos;
                     UsernameOriginal = actualizadoDto.Username;
@@ -249,7 +289,6 @@ namespace MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel
                     FechaNacimientoOrignal = actualizadoDto.FechaNacimiento;
                     ImagenOriginal = actualizadoDto.AvatarUrl;
 
-                    // 2.8) Limpiar los campos nuevos para resetear placeholders
                     NuevoNombre = string.Empty;
                     NuevosApellidos = string.Empty;
                     NuevoUsername = string.Empty;
@@ -259,7 +298,6 @@ namespace MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel
                     NuevaFechaNacimiento = FechaNacimientoOrignal;
                     NuevaImagen = string.Empty;
 
-                    // 2.9) Volver atrás (página de perfil)
                     await Shell.Current.GoToAsync("..");
                 }
             }
@@ -273,10 +311,15 @@ namespace MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel
             }
         }
 
+        /// <summary>
+        /// Método para cancelar la modificacion
+        /// </summary>
+        /// <returns></returns>
         [RelayCommand]
-        public async Task CancelarAsync()
+        public async Task CancelarModificacionAsync()
         {
             await Shell.Current.GoToAsync("..");
         }
+        #endregion
     }
 }

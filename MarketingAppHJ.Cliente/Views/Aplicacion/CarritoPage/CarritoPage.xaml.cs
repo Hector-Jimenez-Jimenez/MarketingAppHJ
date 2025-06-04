@@ -34,7 +34,7 @@ namespace MarketingAppHJ.Cliente.Views.Aplicacion.CarritoPage
 
         async void OnRemoveClicked(object sender, EventArgs e)
         {
-            if (sender is Button btn
+            if (sender is ImageButton btn
                 && btn.CommandParameter is string idProducto)
             {
                 await _vm.RemoveItemAsync(idProducto);

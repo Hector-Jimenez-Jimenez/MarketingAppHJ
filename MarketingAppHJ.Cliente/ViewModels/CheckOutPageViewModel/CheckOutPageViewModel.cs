@@ -8,6 +8,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MarketingAppHJ.Aplicacion.Dtos;
 using MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.BorrarProductoCarrito;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObtenerCarrito;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Checkout.CrearPedido;
 using MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication;
@@ -19,6 +20,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel
         readonly IObtenerCarrito _obtenerCarrito;
         readonly ICrearPedido _realizarPedido;
         readonly IFirebaseAuthentication _authentication;
+        readonly IBorrarProductoCarrito _borrarProductoCarrito;
         private string UserId => _authentication.UserId;
         [ObservableProperty]
         ObservableCollection<CarritoItemDto> items = new();
@@ -31,11 +33,6 @@ namespace MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel
 
         [ObservableProperty]
         private string metodoPago = "Tarjeta";
-
-        public CheckOutPageViewModel()
-        {
-            // Constructor vacío para el uso de inyección de dependencias
-        }
         public CheckOutPageViewModel(
             IObtenerCarrito obtenerCarrito,
             ICrearPedido realizarPedido,
