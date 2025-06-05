@@ -41,6 +41,9 @@ namespace MarketingAppHJ.Aplicacion.Dtos
         /// </summary>
         public List<ItemPedidoDto> Items { get; set; } = new List<ItemPedidoDto>();
 
+        /// <summary>
+        /// Total del costo del pedido, calculado como la suma de los totales de los ítems.
+        /// </summary>
         public decimal Total => Items != null ? Items.Sum(i => i.Total) : 0m;
     }
 }

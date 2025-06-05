@@ -23,11 +23,19 @@ namespace MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel
         [ObservableProperty]
         private string direccion = string.Empty;
 
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="RegisterPageViewModel"/> con la dependencia especificada.
+        /// </summary>
+        /// <param name="registro">Instancia de <see cref="IRegistro"/> utilizada para manejar el registro de usuarios.</param>
         public RegisterPageViewModel(IRegistro registro)
         {
             _registro = registro;
         }
-        public RegisterPageViewModel() { }
+
+        /// <summary>
+        /// Registra un nuevo usuario de forma asíncrona.
+        /// </summary>
+        /// <returns>Una tarea que representa la operación de registro.</returns>
         [RelayCommand]
         public async Task RegisterAsync()
         {
@@ -43,7 +51,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel
             }
             try
             {
-                await _registro.RegistrarUsuarioAsync(Email,Password,Nombre,Apellidos,Direccion,Telefono);
+                await _registro.RegistrarUsuarioAsync(Email, Password, Nombre, Apellidos, Direccion, Telefono);
                 await Shell.Current.DisplayAlert("Éxito", "Registro Completado!", "OK");
                 await Shell.Current.GoToAsync("main");
             }
@@ -53,8 +61,12 @@ namespace MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel
             }
         }
 
+        /// <summary>
+        /// Cancela el registro y navega a la página de inicio de sesión.
+        /// </summary>
+        /// <returns>Una tarea que representa la operación de cancelación.</returns>
         [RelayCommand]
-        public async Task CancelAsync()
+        public static async Task CancelAsync()
         {
             await Shell.Current.GoToAsync("login");
         }

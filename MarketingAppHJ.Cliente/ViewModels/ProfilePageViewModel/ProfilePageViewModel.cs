@@ -5,26 +5,40 @@ using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.IObtenerPerfilUsuar
 
 namespace MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel
 {
+    /// <summary>
+    /// ViewModel para la página de perfil del usuario.
+    /// </summary>
     public partial class ProfilePageViewModel : ObservableObject
     {
         private readonly IObtenerPerfilUsuario _obtenerPerfilUsuario;
         private readonly IFirebaseAuthentication _firebaseAuthentication;
 
         [ObservableProperty]
-        string nombre = string.Empty;
+        private string nombre = string.Empty;
+
         [ObservableProperty]
-        string apellido = string.Empty;
+        private string apellido = string.Empty;
+
         [ObservableProperty]
-        string email = string.Empty;
+        private string email = string.Empty;
+
         [ObservableProperty]
-        string direccion = string.Empty;
+        private string direccion = string.Empty;
+
         [ObservableProperty]
-        string telefono = string.Empty;
+        private string telefono = string.Empty;
+
         [ObservableProperty]
-        string fotoPerfil = string.Empty;
+        private string fotoPerfil = string.Empty;
+
         [ObservableProperty]
-         string iniciales = string.Empty;
-        public ProfilePageViewModel() { }
+        private string iniciales = string.Empty;
+
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="ProfilePageViewModel"/>.
+        /// </summary>
+        /// <param name="obtenerPerfilUsuario">Servicio para obtener el perfil del usuario.</param>
+        /// <param name="firebaseAuthentication">Servicio de autenticación de Firebase.</param>
         public ProfilePageViewModel(
             IObtenerPerfilUsuario obtenerPerfilUsuario,
             IFirebaseAuthentication firebaseAuthentication)
@@ -32,8 +46,13 @@ namespace MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel
             _obtenerPerfilUsuario = obtenerPerfilUsuario ?? throw new ArgumentNullException(nameof(obtenerPerfilUsuario));
             _firebaseAuthentication = firebaseAuthentication ?? throw new ArgumentNullException(nameof(firebaseAuthentication));
         }
+
         private string UserId => _firebaseAuthentication.UserId;
 
+        /// <summary>
+        /// Carga el perfil del usuario autenticado.
+        /// </summary>
+        /// <returns>Una tarea que representa la operación asincrónica.</returns>
         [RelayCommand]
         public async Task CargarPerfilAsync()
         {

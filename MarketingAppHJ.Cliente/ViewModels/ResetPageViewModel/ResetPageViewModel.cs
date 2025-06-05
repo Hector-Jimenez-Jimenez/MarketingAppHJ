@@ -4,6 +4,9 @@ using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.ResetConstraseña;
 
 namespace MarketingAppHJ.Cliente.ViewModels.ResetPageViewModel
 {
+    /// <summary>
+    /// ViewModel para la página de restablecimiento de contraseña.
+    /// </summary>
     public partial class ResetPageViewModel : ObservableObject
     {
         private readonly IResetContrasena _resetContrasena;
@@ -11,13 +14,17 @@ namespace MarketingAppHJ.Cliente.ViewModels.ResetPageViewModel
         [ObservableProperty]
         private string email = string.Empty;
 
-        public ResetPageViewModel(IResetContrasena resetContrasena)
-        {
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="ResetPageViewModel"/>.
+        /// </summary>
+        /// <param name="resetContrasena">Instancia del caso de uso para restablecer contraseñas.</param>
+        public ResetPageViewModel(IResetContrasena resetContrasena) =>
             _resetContrasena = resetContrasena ?? throw new ArgumentNullException(nameof(resetContrasena));
-        }
 
-        public ResetPageViewModel() { }
-
+        /// <summary>
+        /// Comando para restablecer la contraseña.
+        /// </summary>
+        /// <returns>Una tarea que representa la operación asincrónica.</returns>
         [RelayCommand]
         public async Task ResetPasswordAsync()
         {
@@ -38,11 +45,14 @@ namespace MarketingAppHJ.Cliente.ViewModels.ResetPageViewModel
             }
         }
 
+        /// <summary>
+        /// Comando para cancelar y regresar a la página de inicio de sesión.
+        /// </summary>
+        /// <returns>Una tarea que representa la operación asincrónica.</returns>
         [RelayCommand]
         public async Task CancelAsync()
         {
             await Shell.Current.GoToAsync("login");
-
         }
     }
 }

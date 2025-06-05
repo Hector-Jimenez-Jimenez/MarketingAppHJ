@@ -36,6 +36,12 @@
             </summary>  
             <returns>Instancia de <see cref="T:Firebase.Auth.FirebaseAuthClient"/>.</returns>  
         </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication.FirebaseAuthentication.GetTokenAsync">
+            <summary>  
+            Obtiene el token de autenticación del usuario actual.  
+            </summary>  
+            <returns>El token de autenticación como una cadena, o una cadena vacía si no hay un usuario autenticado.</returns>  
+        </member>
         <member name="T:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.RealtimeDatabase.FirebaseRealTimeDatabase">
             <summary>  
             Proporciona una implementación para interactuar con Firebase Realtime Database.  

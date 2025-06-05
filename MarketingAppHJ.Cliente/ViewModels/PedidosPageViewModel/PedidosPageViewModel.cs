@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Linq;
+﻿using System.Collections.ObjectModel;
 using System.Reactive.Disposables;
-using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 using Firebase.Database.Streaming;
 using MarketingAppHJ.Aplicacion.Dtos;
 using MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Pedidos.ObtenerPedidos;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Pedidos.ObservarCambiosPedidos;
-using Microsoft.Maui.Dispatching;
 
 namespace MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel
 {
+    /// <summary>
+    /// ViewModel para gestionar la página de pedidos.
+    /// </summary>
     public partial class PedidosPageViewModel : ObservableObject, IDisposable
     {
         private readonly IObtenerPedidos _obtenerPedidos;
@@ -21,6 +19,12 @@ namespace MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel
         private readonly IFirebaseAuthentication _firebaseAuth;
         private readonly CompositeDisposable _subs = new();
 
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="PedidosPageViewModel"/>.
+        /// </summary>
+        /// <param name="obtenerPedidos">Servicio para obtener pedidos.</param>
+        /// <param name="observarCambios">Servicio para observar cambios en los pedidos.</param>
+        /// <param name="firebaseAuth">Servicio de autenticación de Firebase.</param>
         public PedidosPageViewModel(
             IObtenerPedidos obtenerPedidos,
             IObservarCambiosPedido observarCambios,
@@ -32,14 +36,18 @@ namespace MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel
         }
 
         // Capturamos el UserId del usuario autenticado
-        string UserId => _firebaseAuth.UserId;
+        private string UserId => _firebaseAuth.UserId;
 
         [ObservableProperty]
-        ObservableCollection<PedidoDto> pedidos = new();
+        private ObservableCollection<PedidoDto> pedidos = new();
 
         [ObservableProperty]
-        bool isBusy;
+        private bool isBusy;
 
+        /// <summary>
+        /// Carga los pedidos del usuario autenticado y se suscribe a los cambios en tiempo real.
+        /// </summary>
+        /// <returns>Una tarea que representa la operación asincrónica.</returns>
         public async Task LoadPedidosAsync()
         {
             if (IsBusy)
@@ -47,11 +55,9 @@ namespace MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel
 
             IsBusy = true;
 
-            // 1) Carga inicial de todos los pedidos del usuario
             var lista = await _obtenerPedidos.ObtenerPedidosAsync(UserId);
             Pedidos = new ObservableCollection<PedidoDto>(lista);
 
-            // 2) Suscripción a cambios en tiempo real en "pedidos/{UserId}"
             var subscription = _observarCambios
                 .ObservarPedidos(UserId)
                 .Subscribe(OnPedidoCambiado);
@@ -61,7 +67,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel
             IsBusy = false;
         }
 
-        void OnPedidoCambiado(FirebaseEvent<PedidoDto> evt)
+        private void OnPedidoCambiado(FirebaseEvent<PedidoDto> evt)
         {
             // Actualizar UI en hilo principal
             MainThread.BeginInvokeOnMainThread(() =>
@@ -91,7 +97,6 @@ namespace MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel
                             }
                             else
                             {
-                           
                                 Pedidos.Insert(0, dto);
                             }
                         }
@@ -100,9 +105,13 @@ namespace MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel
             });
         }
 
+        /// <summary>
+        /// Libera los recursos utilizados por la instancia de <see cref="PedidosPageViewModel"/>.
+        /// </summary>
         public void Dispose()
         {
             _subs.Dispose();
+            GC.SuppressFinalize(this);
         }
     }
 }

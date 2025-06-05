@@ -12,21 +12,28 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerPro
     {
         private readonly IFirebaseRealtimeDatabase _firebaseClient;
 
-        public ObtenerProductosCatalogo(IFirebaseRealtimeDatabase firebaseClient)
-        {
-            _firebaseClient = firebaseClient;
-        }
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="ObtenerProductosCatalogo"/>.
+        /// </summary>
+        /// <param name="firebaseClient">Cliente de Firebase Realtime Database.</param>
+        public ObtenerProductosCatalogo(IFirebaseRealtimeDatabase firebaseClient) => _firebaseClient = firebaseClient;
 
+        /// <summary>
+        /// Obtiene todos los productos del catálogo desde Firebase.
+        /// </summary>
+        /// <returns>Una colección de objetos <see cref="ProductoDto"/>.</returns>
         public async Task<IEnumerable<ProductoDto>> ObtenerProductosAsync()
         {
             var results = await _firebaseClient.Instance
                 .Child("productos")
                 .OnceAsync<ProductoDto>();
 
-            return results.Select(s => 
-            { var p = s.Object;  
-                p.Id = s.Key; 
-                return p; }).ToList();
+            return results.Select(s =>
+            {
+                var p = s.Object;
+                p.Id = s.Key;
+                return p;
+            }).ToList();
         }
     }
 }

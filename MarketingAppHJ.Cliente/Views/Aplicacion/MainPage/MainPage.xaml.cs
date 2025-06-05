@@ -14,6 +14,10 @@ namespace MarketingAppHJ.Cliente.Views.Aplicacion.MainPage
     {
         readonly MainPageViewModel _viewModel;
 
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="MainPage"/>.
+        /// </summary>
+        /// <param name="viewModel">El ViewModel asociado a esta página.</param>
         public MainPage(MainPageViewModel viewModel)
         {
             InitializeComponent();
@@ -23,7 +27,11 @@ namespace MarketingAppHJ.Cliente.Views.Aplicacion.MainPage
             BindingContext = _viewModel;
         }
 
-        protected override async void OnAppearing()
+        /// <summary>
+        /// Se ejecuta cuando la página aparece en pantalla.
+        /// Carga la siguiente página de productos.
+        /// </summary>
+        protected override void OnAppearing()
         {
             base.OnAppearing();
             _viewModel.LoadNextPage();

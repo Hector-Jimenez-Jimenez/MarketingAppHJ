@@ -1,5 +1,8 @@
 ﻿namespace MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.IniciarSesion
 {
+    /// <summary>
+    /// Define la funcionalidad para iniciar sesión en la aplicación.
+    /// </summary>
     public interface IIniciarSesion
     {
         /// <summary>

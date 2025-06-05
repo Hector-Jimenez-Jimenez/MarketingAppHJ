@@ -11,45 +11,85 @@ using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.ResetConstraseña;
 
 namespace MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel
 {
+    /// <summary>
+    /// ViewModel para la página de inicio de sesión.
+    /// </summary>
     public partial class LoginPageViewModel : ObservableObject
     {
+        #region Interfaces
         private readonly IIniciarSesion _iniciarSesion;
         private readonly IResetContrasena _resetContrasena;
+        private readonly IFirebaseAuthentication _firebaseAuthentication;
+        #endregion
 
+        #region Variables
         [ObservableProperty]
         private string email = string.Empty;
+
         [ObservableProperty]
         private string password = string.Empty;
-
-        public LoginPageViewModel(IIniciarSesion iniciarSesion, IResetContrasena resetContrasena)
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="LoginPageViewModel"/>.
+        /// </summary>
+        /// <param name="iniciarSesion">Servicio para iniciar sesión.</param>
+        /// <param name="resetContrasena">Servicio para restablecer la contraseña.</param>
+        /// <param name="firebaseAuthentication">Servicio de autenticación de Firebase.</param>
+        public LoginPageViewModel(IIniciarSesion iniciarSesion, IResetContrasena resetContrasena, IFirebaseAuthentication firebaseAuthentication)
         {
-            _resetContrasena = resetContrasena;
-            _iniciarSesion = iniciarSesion;
+            _iniciarSesion = iniciarSesion ?? throw new ArgumentNullException(nameof(iniciarSesion));
+            _resetContrasena = resetContrasena ?? throw new ArgumentNullException(nameof(resetContrasena));
+            _firebaseAuthentication = firebaseAuthentication ?? throw new ArgumentNullException(nameof(firebaseAuthentication));
         }
-
-        public LoginPageViewModel() { }
-
+        /// <summary>
+        /// Comando para iniciar sesión.
+        /// </summary>
         [RelayCommand]
         public async Task LoginAsync()
         {
-            try
+            if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password))
             {
-                await _iniciarSesion.IniciarSesionAsync(Email, Password);
-                await Shell.Current.DisplayAlert("Success", "Login successful!", "OK");
-                await Shell.Current.GoToAsync("main");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Login failed: {ex.Message}");
-                if (ex.Message.Contains("INVALID_LOGIN_CREDENTIALS"))
+                var mainPage = Application.Current?.Windows.FirstOrDefault()?.Page;
+                if (mainPage != null)
                 {
-                    await Shell.Current.DisplayAlert("Error", "No se han encontrado los credenciales", "Entendido");
+                    await mainPage.DisplayAlert("Error", "Por favor, complete todos los campos.", "OK");
+                }
+            }
+            else
+            {
+                try
+                {
+                    await _iniciarSesion.IniciarSesionAsync(Email, Password);
+                    await Shell.Current.GoToAsync("main");
+
+                    var mainPage = Application.Current?.Windows.FirstOrDefault()?.Page;
+                    if (mainPage != null)
+                    {
+                        await mainPage.DisplayAlert("Success", "Bienvenido de nuevo", "OK");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Login failed: {ex.Message}");
+
+                    var mainPage = Application.Current?.Windows.FirstOrDefault()?.Page;
+                    if (mainPage != null)
+                    {
+                        await mainPage.DisplayAlert("Error", "Credenciales incorrectas. Por favor, intente nuevamente.", "OK");
+                    }
+                }
+                finally
+                {
+                    Email = string.Empty;
+                    Password = string.Empty;
                 }
             }
         }
 
+        /// <summary>
+        /// Comando para restablecer la contraseña.
+        /// </summary>
         [RelayCommand]
-        public async Task ResetPasswordAsync()
+        public static async Task ResetPasswordAsync()
         {
             try
             {
@@ -61,8 +101,11 @@ namespace MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel
             }
         }
 
+        /// <summary>
+        /// Comando para navegar a la página de registro.
+        /// </summary>
         [RelayCommand]
-        public async Task NavigateToRegisterPageAsync()
+        public static async Task NavigateToRegisterPageAsync()
         {
             try
             {
@@ -73,5 +116,6 @@ namespace MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel
                 Console.WriteLine($"Navigation to register page failed: {ex.Message}");
             }
         }
+        #endregion
     }
 }

@@ -20,9 +20,13 @@ namespace MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel
         private readonly IObtenerPerfilUsuario _obtenerPerfilUsuario;
         private readonly IFirebaseAuthentication _firebaseAuthentication;
         private readonly IFirebaseRealtimeDatabase _firebaseRealtimeDatabase;
-        #endregion
-
-        #region Constructor
+        /// <summary>
+        /// Constructor de la clase CambioDatosPageViewModel.
+        /// </summary>
+        /// <param name="actualizarUsuario">Interfaz para actualizar los datos del usuario.</param>
+        /// <param name="obtenerPerfilUsuario">Interfaz para obtener el perfil del usuario.</param>
+        /// <param name="firebaseAuthentication">Interfaz para la autenticación de Firebase.</param>
+        /// <param name="firebaseRealtimeDatabase">Interfaz para la base de datos en tiempo real de Firebase.</param>
         public CambioDatosPageViewModel(
             IActualizarUsuario actualizarUsuario,
             IObtenerPerfilUsuario obtenerPerfilUsuario,
@@ -187,19 +191,6 @@ namespace MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel
                 ? FechaNacimientoOrignal
                 : NuevaFechaNacimiento;
 
-            if (string.IsNullOrWhiteSpace(nombreFinal)
-                || string.IsNullOrWhiteSpace(apellidosFinal)
-                || string.IsNullOrWhiteSpace(usernameFinal)
-                || string.IsNullOrWhiteSpace(emailFinal))
-            {
-                await MostrarAlertaAsync(
-                    "Atención",
-                    "Los campos Nombre, Apellidos, Usuario y Email son obligatorios.",
-                    "OK");
-                IsBusy = false;
-                return;
-            }
-
             if (!emailFinal.Contains("@") || !emailFinal.Contains("."))
             {
                 await MostrarAlertaAsync(
@@ -239,38 +230,8 @@ namespace MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel
 
             try
             {
-                if (!emailFinal.Equals(EmailOriginal, StringComparison.OrdinalIgnoreCase))
-                {
-                    var firebaseUser = _firebaseAuthentication.GetInstance();
-                    if (firebaseUser == null)
-                    {
-                        await MostrarAlertaAsync("Error", "Usuario no autenticado.", "OK");
-                        IsBusy = false;
-                        return;
-                    }
-
-                    try
-                    {
-                        firebaseUser.User.Info.Email = (emailFinal);
-                    }
-                    catch (FirebaseAuthException faEx) when (faEx.Reason == AuthErrorReason.LoginCredentialsTooOld)
-                    {
-                        await MostrarAlertaAsync(
-                            "Error",
-                            "Por razones de seguridad debes volver a iniciar sesión para cambiar el correo.",
-                            "OK");
-                        IsBusy = false;
-                        return;
-                    }
-                    catch (Exception exAuth)
-                    {
-                        await MostrarAlertaAsync("Error", $"No se pudo cambiar el correo: {exAuth.Message}", "OK");
-                        IsBusy = false;
-                        return;
-                    }
-                }
-
                 await _actualizarUsuario.ActualizarUsuarioAsync(actualizadoDto);
+                await Shell.Current.GoToAsync("..");
 
                 if (!emailFinal.Equals(EmailOriginal, StringComparison.OrdinalIgnoreCase))
                 {
@@ -298,7 +259,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel
                     NuevaFechaNacimiento = FechaNacimientoOrignal;
                     NuevaImagen = string.Empty;
 
-                    await Shell.Current.GoToAsync("..");
+                    await Shell.Current.GoToAsync("profile");
                 }
             }
             catch (Exception ex)

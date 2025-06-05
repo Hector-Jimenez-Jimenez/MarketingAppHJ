@@ -5,15 +5,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
              x:DataType="vm:CheckOutPageViewModel"
              xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel"
-             Shell.NavBarIsVisible="True"
-             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}"  
-             Padding="10">  
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
 
     <ScrollView>
-        <VerticalStackLayout>
+        <VerticalStackLayout VerticalOptions="FillAndExpand">
+            <Grid Grid.Row="0" 
+                  HeightRequest="40"
+                  Padding="10"
+                  ColumnDefinitions="Auto,*,Auto"
+                  BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}">
 
+                <ImageButton Grid.Column="0"
+                             Source="iconousuario.png"
+                             Background="Transparent"
+                             HorizontalOptions="End"
+                             Clicked="OnProfileClicked"/>
+
+                <ImageButton Grid.Column="1"
+                             Source="home.png"
+                             HorizontalOptions="Center"
+                             Background="Transparent"
+                             Clicked="OnLogoClicked"/>
+
+                <ImageButton Grid.Column="2"
+                             Source="ruedaajustes.png"
+                             HorizontalOptions="End"
+                             Background="Transparent"
+                             Clicked="SettingsClicked"/>
+            </Grid>
             <!-- Título -->
             <Label Text="Resumen de tu pedido"
+                   Padding="20"
                    HorizontalOptions="Center"
                    Style="{StaticResource TitleLabelStyle}" />
 
@@ -36,7 +58,6 @@
                                        Style="{StaticResource BodyLabelStyle}" />
                             </HorizontalStackLayout>
                             
-
                             <Label Grid.Column="1"
                                    VerticalOptions="Center"
                                    HorizontalOptions="Start"
@@ -71,9 +92,10 @@
             <Label Text="Dirección de envío"
                    Margin="10"
                    Style="{StaticResource SubtitleLabelStyle}" />
-            <Editor Text="{Binding DireccionEnvio}"
-                    BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceColorLight}, Dark={StaticResource SurfaceColorDark}}"
-                    TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}"/>
+            <Entry Text="{Binding NuevaDireccionEnvio}"
+                   Placeholder="{Binding DireccionEnvioAntigua}"
+                   BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceColorLight}, Dark={StaticResource SurfaceColorDark}}"
+                   TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}"/>
 
             <!-- Método de pago -->
             <Label Text="Método de pago"

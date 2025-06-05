@@ -19,6 +19,10 @@ namespace MarketingAppHJ.Cliente.WinUI
             this.InitializeComponent();
         }
 
+        /// <summary>
+        /// Creates the Maui application.
+        /// </summary>
+        /// <returns>A new instance of <see cref="MauiApp"/>.</returns>
         protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
     }
 

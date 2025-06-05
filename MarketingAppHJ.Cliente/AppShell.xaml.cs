@@ -11,8 +11,14 @@ using MarketingAppHJ.Cliente.Views.Login.ResetPage;
 
 namespace MarketingAppHJ.Cliente
 {
+    /// <summary>
+    /// Representa la clase principal de la aplicación que define las rutas de navegación.
+    /// </summary>
     public partial class AppShell : Shell
     {
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="AppShell"/>.
+        /// </summary>
         public AppShell()
         {
             InitializeComponent();

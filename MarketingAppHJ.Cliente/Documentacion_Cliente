@@ -67,48 +67,6 @@
             </summary>
             <param name="services">La colección de servicios.</param>
         </member>
-        <member name="T:MarketingAppHJ.Cliente.WinUI.App">
-            <summary>
-            Provides application-specific behavior to supplement the default Application class.
-            </summary>
-        </member>
-        <member name="M:MarketingAppHJ.Cliente.WinUI.App.#ctor">
-            <summary>
-            Initializes the singleton application object.  This is the first line of authored code
-            executed, and as such is the logical equivalent of main() or WinMain().
-            </summary>
-        </member>
-        <member name="M:MarketingAppHJ.Cliente.WinUI.App.CreateMauiApp">
-            <summary>
-            Creates the Maui application.
-            </summary>
-            <returns>A new instance of <see cref="T:Microsoft.Maui.Hosting.MauiApp"/>.</returns>
-        </member>
-        <member name="M:MarketingAppHJ.Cliente.WinUI.App.InitializeComponent">
-            <summary>
-            InitializeComponent()
-            </summary>
-        </member>
-        <member name="M:MarketingAppHJ.Cliente.WinUI.App.GetXamlType(System.Type)">
-            <summary>
-            GetXamlType(Type)
-            </summary>
-        </member>
-        <member name="M:MarketingAppHJ.Cliente.WinUI.App.GetXamlType(System.String)">
-            <summary>
-            GetXamlType(String)
-            </summary>
-        </member>
-        <member name="M:MarketingAppHJ.Cliente.WinUI.App.GetXmlnsDefinitions">
-            <summary>
-            GetXmlnsDefinitions()
-            </summary>
-        </member>
-        <member name="T:MarketingAppHJ.Cliente.WinUI.Program">
-            <summary>
-            Program class
-            </summary>
-        </member>
         <member name="T:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel">
             <inheritdoc/>
             <inheritdoc/>
@@ -339,14 +297,26 @@
             <inheritdoc/>
             <inheritdoc/>
         </member>
-        <member name="M:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.#ctor(MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObtenerCarrito.IObtenerCarrito,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Checkout.CrearPedido.ICrearPedido,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.BorrarProductoCarrito.IBorrarProductoCarrito,MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication)">
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.#ctor(MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObtenerCarrito.IObtenerCarrito,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Checkout.CrearPedido.ICrearPedido,MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.IObtenerPerfilUsuario.IObtenerPerfilUsuario,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.ActualizarUsuario.IActualizarUsuario)">
             <summary>
             Constructor principal para inicializar las dependencias.
             </summary>
         </member>
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.CargaDireccion">
+            <summary>
+            Obitene la direccion del usuario en base a su perfil
+            </summary>
+            <returns>Una tarea que representa la operación asincrónica de la obtencion de la dirección.</returns>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.ActualizacionDireccion">
+            <summary>
+            Actualiza la dirección de envío del usuario en su perfil.
+            </summary>
+            <returns>Una tarea que representa la operación asincrónica de actualización de la dirección.</returns>
+        </member>
         <member name="M:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.LoadCartAsync">
             <summary>
-            Carga los productos del carrito
+            Carga los productos del carrito y el usuario
             </summary>
             <returns>La carga terminada</returns>
         </member>
@@ -368,8 +338,11 @@
         <member name="P:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.Total">
             <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.total"/>
         </member>
-        <member name="P:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.DireccionEnvio">
-            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.direccionEnvio"/>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.NuevaDireccionEnvio">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.nuevaDireccionEnvio"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.DireccionEnvioAntigua">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.direccionEnvioAntigua"/>
         </member>
         <member name="P:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.MetodoPago">
             <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.metodoPago"/>
@@ -1009,24 +982,10 @@
             <param name="vm">The view model for the ResetPage.</param>
             <exception cref="T:System.ArgumentNullException">Thrown when the view model is null.</exception>
         </member>
-        <member name="T:MarketingAppHJ.Cliente.MarketingAppHJ_Cliente_XamlTypeInfo.XamlMetaDataProvider">
+        <member name="T:MarketingAppHJ.Cliente.Resource">
             <summary>
-            Main class for providing metadata for the app or library
-            </summary>
-        </member>
-        <member name="M:MarketingAppHJ.Cliente.MarketingAppHJ_Cliente_XamlTypeInfo.XamlMetaDataProvider.GetXamlType(System.Type)">
-            <summary>
-            GetXamlType(Type)
-            </summary>
-        </member>
-        <member name="M:MarketingAppHJ.Cliente.MarketingAppHJ_Cliente_XamlTypeInfo.XamlMetaDataProvider.GetXamlType(System.String)">
-            <summary>
-            GetXamlType(String)
-            </summary>
-        </member>
-        <member name="M:MarketingAppHJ.Cliente.MarketingAppHJ_Cliente_XamlTypeInfo.XamlMetaDataProvider.GetXmlnsDefinitions">
-            <summary>
-            GetXmlnsDefinitions()
+            Android Resource Designer class.
+            Exposes the Android Resource designer assembly into the project Namespace.
             </summary>
         </member>
         <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
@@ -1095,8 +1054,11 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Total">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Total" generated properties.</summary>
         </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DireccionEnvio">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DireccionEnvio" generated properties.</summary>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.NuevaDireccionEnvio">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "NuevaDireccionEnvio" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DireccionEnvioAntigua">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DireccionEnvioAntigua" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.MetodoPago">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "MetodoPago" generated properties.</summary>
@@ -1230,8 +1192,11 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Total">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Total" generated properties.</summary>
         </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DireccionEnvio">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DireccionEnvio" generated properties.</summary>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.NuevaDireccionEnvio">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "NuevaDireccionEnvio" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DireccionEnvioAntigua">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DireccionEnvioAntigua" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.MetodoPago">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "MetodoPago" generated properties.</summary>
@@ -1298,17 +1263,6 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ConfirmPassword">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ConfirmPassword" generated properties.</summary>
-        </member>
-        <member name="T:WinRT.RcwFallbackInitializer">
-            <summary>
-            Roots RCW types for assemblies referencing old projections.
-            It is recommended to update those, to get binary size savings.
-            </summary>
-        </member>
-        <member name="M:WinRT.RcwFallbackInitializer.InitializeRcwFallback">
-            <summary>
-            Roots all dependent RCW types.
-            </summary>
         </member>
     </members>
 </doc>

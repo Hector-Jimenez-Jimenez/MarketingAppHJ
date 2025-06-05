@@ -1,4 +1,5 @@
-﻿using MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication;
+﻿using Firebase.Database;
+using MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.IniciarSesion;
 
 namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.IniciarSesion
@@ -30,20 +31,7 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.IniciarSesion
         public async Task IniciarSesionAsync(string email, string password)
         {
             await _firebaseAuthentication.GetInstance()
-                 .SignInWithEmailAndPasswordAsync(email, password)
-                 .ContinueWith(task =>
-                 {
-                     if (task.IsFaulted)
-                     {
-                         Console.WriteLine("Error al iniciar sesión: " + task.Exception?.Message);
-                     }
-                     else if (task.IsCompletedSuccessfully)
-                     {
-                         // Aquí puedes manejar el token de autenticación si es necesario  
-                         var user = task.Result;
-                         Console.WriteLine($"Usuario autenticado: {user.User.Uid}");
-                     }
-                 });
+                        .SignInWithEmailAndPasswordAsync(email, password);
         }
     }
 }

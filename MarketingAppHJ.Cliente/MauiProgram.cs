@@ -71,15 +71,22 @@ using TheMarketingApp.Infraestructura.Negocio.Servicios;
 
 namespace MarketingAppHJ.Cliente
 {
+    /// <summary>
+    /// Clase estática que configura y crea la aplicación Maui.
+    /// </summary>
     public static class MauiProgram
     {
+        /// <summary>
+        /// Crea y configura la aplicación Maui.
+        /// </summary>
+        /// <returns>Una instancia de <see cref="MauiApp"/> configurada.</returns>
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
             builder.Services.AddInfraestructuraBusiness();
             builder.Services.AddSingleton<AppShell>();
             builder.Services.AddUseCases();
-            builder.Services.AddViewModels();  
+            builder.Services.AddViewModels();
             builder.Services.AddViews();
             builder.Services.AddSingleton(sp =>
             {
@@ -106,12 +113,17 @@ namespace MarketingAppHJ.Cliente
                 });
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("es-ES");
             CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("es-ES");
             return builder.Build();
         }
+
+        /// <summary>
+        /// Agrega servicios a la colección de servicios.
+        /// </summary>
+        /// <param name="services">La colección de servicios.</param>
         public static void AddServices(this IServiceCollection services)
         {
             // Firebase auth and realtime database clients
@@ -120,8 +132,9 @@ namespace MarketingAppHJ.Cliente
         }
 
         /// <summary>
-        /// Adds use case services to the service collection.
+        /// Agrega servicios de casos de uso a la colección de servicios.
         /// </summary>
+        /// <param name="services">La colección de servicios.</param>
         public static void AddUseCases(this IServiceCollection services)
         {
             services.AddScoped<IObtenerProductos, ObtenerProductosCatalogo>();
@@ -129,7 +142,7 @@ namespace MarketingAppHJ.Cliente
             services.AddScoped<IAgregarProductoAlCarrito, AgregarProdcutoAlCarrito>();
             services.AddScoped<IObtenerCarrito, ObtenerProductosCarrito>();
             services.AddScoped<IObtenerNombreCategoria, ObtenerNombreCategoria>();
-            services.AddScoped<IBorrarProductoCarrito,  BorrarProductoCarrito>();
+            services.AddScoped<IBorrarProductoCarrito, BorrarProductoCarrito>();
             services.AddScoped<IBorrarProductosCarrito, BorrarProductosCarrito>();
             services.AddScoped<IObservarCambiosCarrito, ObservarCambiosCarrito>();
             services.AddScoped<IModificarCantidadCarrito, ModificarCantidadCarrito>();
@@ -147,8 +160,9 @@ namespace MarketingAppHJ.Cliente
         }
 
         /// <summary>
-        /// Adds view model services to the service collection.
+        /// Agrega servicios de modelos de vista a la colección de servicios.
         /// </summary>
+        /// <param name="services">La colección de servicios.</param>
         public static void AddViewModels(this IServiceCollection services)
         {
             services.AddTransient<MainPageViewModel>();
@@ -164,8 +178,9 @@ namespace MarketingAppHJ.Cliente
         }
 
         /// <summary>
-        /// Adds view services to the service collection.
+        /// Agrega servicios de vistas a la colección de servicios.
         /// </summary>
+        /// <param name="services">La colección de servicios.</param>
         public static void AddViews(this IServiceCollection services)
         {
             services.AddSingleton<MainPage>();

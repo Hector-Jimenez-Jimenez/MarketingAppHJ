@@ -29,7 +29,7 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.AgregarProdu
         /// <returns>Una tarea que representa la operación asincrónica. El resultado contiene la lista de productos en el carrito.</returns>
         public async Task<IEnumerable<CarritoItemDto>> AgregarAlCarritoAsync(string usuarioId, CarritoItemDto item)
         {
-            CarritoItemDto existente = null;
+            CarritoItemDto? existente = null;
             try
             {
                 existente = await _firebaseClient.Instance

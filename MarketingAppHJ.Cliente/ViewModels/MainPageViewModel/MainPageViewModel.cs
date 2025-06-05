@@ -11,15 +11,20 @@ using Microsoft.Maui.Dispatching;
 
 namespace MarketingAppHJ.Cliente.ViewModels.MainPageViewModel
 {
+    /// <summary>
+    /// ViewModel principal para la página principal de la aplicación.
+    /// </summary>
     public partial class MainPageViewModel : ObservableObject, IDisposable
     {
-        const int PageSize = 10;
-        int _currentPage = 0;
-
+        #region Intefaces
         readonly IFirebaseRealtimeDatabase _firebaseClient;
         readonly IObtenerProductos _usecase;
-        IDisposable _subscription;
+        #endregion
 
+        #region Variables
+        IDisposable? _subscription = null;
+        const int PageSize = 10;
+        int _currentPage = 0;
         List<ProductoDto> _allProductos = new();
 
         [ObservableProperty]
@@ -30,21 +35,32 @@ namespace MarketingAppHJ.Cliente.ViewModels.MainPageViewModel
 
         [ObservableProperty]
         bool isBusy;
+        #endregion
 
+        #region Constructor
+        /// <summary>
+        /// Constructor de la clase MainPageViewModel.
+        /// </summary>
+        /// <param name="usecase">Caso de uso para obtener productos.</param>
+        /// <param name="firebase">Cliente de Firebase Realtime Database.</param>
         public MainPageViewModel(IObtenerProductos usecase, IFirebaseRealtimeDatabase firebase)
         {
             _usecase = usecase;
             _firebaseClient = firebase;
             LoadInitialData();
         }
+        #endregion
 
-        public MainPageViewModel() { }
-
+        #region Métodos
         async void LoadInitialData()
         {
             await CargarProductosAsync();
         }
 
+        /// <summary>
+        /// Carga los productos de forma asíncrona desde el caso de uso y los actualiza en la vista.
+        /// </summary>
+        /// <returns>Una tarea que representa la operación asíncrona.</returns>
         [RelayCommand]
         public async Task CargarProductosAsync()
         {
@@ -91,6 +107,9 @@ namespace MarketingAppHJ.Cliente.ViewModels.MainPageViewModel
             Productos = new ObservableCollection<ProductoDto>(filtrados);
         }
 
+        /// <summary>
+        /// Carga la siguiente página de productos en la colección observable.
+        /// </summary>
         public void LoadNextPage()
         {
             if (!string.IsNullOrWhiteSpace(TextoBusqueda))
@@ -167,11 +186,15 @@ namespace MarketingAppHJ.Cliente.ViewModels.MainPageViewModel
                 });
         }
 
+        /// <summary>
+        /// Libera los recursos utilizados por la instancia de MainPageViewModel.
+        /// </summary>
         public void Dispose()
         {
             _subscription?.Dispose();
             _firebaseClient.Instance.Dispose();
             GC.SuppressFinalize(this);
         }
+        #endregion
     }
 }

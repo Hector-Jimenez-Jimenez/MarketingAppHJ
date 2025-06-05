@@ -1,0 +1,597 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MarketingAppHJ.Aplicacion</name>
+    </assembly>
+    <members>
+        <member name="T:MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto">
+            <summary>
+            Representa un item dentro del carrito de compras.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto.ProductoId">
+            <summary>
+            Identificador único del producto.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto.Nombre">
+            <summary>
+            Nombre del producto.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto.ImagenUrl">
+            <summary>
+            URL de la imagen del producto.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto.Precio">
+            <summary>
+            Precio unitario del producto.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto.Cantidad">
+            <summary>
+            Cantidad del producto en el carrito.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto.Total">
+            <summary>
+            Total calculado como el precio unitario multiplicado por la cantidad.
+            </summary>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Dtos.CategoriaDto">
+            <summary>  
+            Representa una categoría en el sistema.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.CategoriaDto.Id_Categoria">
+            <summary>  
+            Identificador único de la categoría.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.CategoriaDto.Nombre">
+            <summary>  
+            Nombre de la categoría.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.CategoriaDto.Descripcion">
+            <summary>  
+            Descripción de la categoría.  
+            </summary>  
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Dtos.ItemPedidoDto">
+            <summary>
+            Representa un elemento de un pedido, incluyendo información del producto, cantidad y precio.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.ItemPedidoDto.ProductoId">
+            <summary>
+            Identificador único del producto.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.ItemPedidoDto.Nombre">
+            <summary>
+            Nombre del producto.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.ItemPedidoDto.Precio">
+            <summary>
+            Precio unitario del producto.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.ItemPedidoDto.Cantidad">
+            <summary>
+            Cantidad del producto solicitada.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.ItemPedidoDto.Total">
+            <summary>
+            Total calculado como el producto del precio y la cantidad.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.ItemPedidoDto.ImagenUrl">
+            <summary>
+            URL de la imagen del producto.
+            </summary>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Dtos.PedidoDto">
+            <summary>
+            Representa un pedido realizado por un usuario.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.PedidoDto.OrderId">
+            <summary>
+            Identificador único del pedido.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.PedidoDto.UserId">
+            <summary>
+            Identificador único del usuario que realizó el pedido.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.PedidoDto.Fecha">
+            <summary>
+            Fecha en la que se realizó el pedido.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.PedidoDto.DireccionEnvio">
+            <summary>
+            Dirección de envío del pedido.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.PedidoDto.MetodoPago">
+            <summary>
+            Método de pago utilizado para el pedido.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.PedidoDto.Items">
+            <summary>
+            Lista de los ítems incluidos en el pedido.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.PedidoDto.Total">
+            <summary>
+            Total del costo del pedido, calculado como la suma de los totales de los ítems.
+            </summary>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Dtos.ProductoDto">
+            <summary>
+            Representa un producto con sus propiedades principales.
+            </summary>
+            <inheritdoc/>
+        </member>
+        <member name="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.id">
+            <summary>
+            Identificador único del producto.
+            </summary>
+        </member>
+        <member name="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.nombre">
+            <summary>
+            Nombre del producto.
+            </summary>
+        </member>
+        <member name="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.descripcion">
+            <summary>
+            Descripción del producto.
+            </summary>
+        </member>
+        <member name="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.precio">
+            <summary>
+            Precio del producto.
+            </summary>
+        </member>
+        <member name="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.imagenUrl">
+            <summary>
+            URL de la imagen del producto.
+            </summary>
+        </member>
+        <member name="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.stock">
+            <summary>
+            Cantidad de producto disponible en stock.
+            </summary>
+        </member>
+        <member name="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.categoriaId">
+            <summary>
+            Identificador de la categoría a la que pertenece el producto.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.Id">
+            <inheritdoc cref="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.id"/>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.Nombre">
+            <inheritdoc cref="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.nombre"/>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.Descripcion">
+            <inheritdoc cref="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.descripcion"/>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.Precio">
+            <inheritdoc cref="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.precio"/>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.ImagenUrl">
+            <inheritdoc cref="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.imagenUrl"/>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.Stock">
+            <inheritdoc cref="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.stock"/>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.CategoriaId">
+            <inheritdoc cref="F:MarketingAppHJ.Aplicacion.Dtos.ProductoDto.categoriaId"/>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto">
+            <summary>  
+            Representa un usuario en el sistema.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto.Id_Usuario">
+            <summary>  
+            Identificador único del usuario.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto.Nombre">
+            <summary>  
+            Nombre del usuario.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto.Apellidos">
+            <summary>  
+            Apellidos del usuario.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto.Email">
+            <summary>  
+            Correo electrónico del usuario.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto.AvatarUrl">
+            <summary>  
+            URL del avatar del usuario.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto.FechaRegistro">
+            <summary>  
+            Fecha en la que el usuario se registró en el sistema.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto.FechaNacimiento">
+            <summary>  
+            Fecha de nacimiento del usuario.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto.Telefono">
+            <summary>  
+            Número de teléfono del usuario.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto.Direccion">
+            <summary>  
+            Dirección del usuario.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto.Username">
+            <summary>
+            Nombre de usuario del usuario.
+            </summary>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication">
+            <summary>
+            Interfaz para la autenticación de Firebase.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication.GetInstance">
+            <summary>
+            Obtiene el cliente de autenticación de Firebase.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication.GetTokenAsync">
+            <summary>
+            Obtiene el token de autenticación de Firebase de forma asíncrona.
+            </summary>
+            <returns>Una tarea que representa la operación asíncrona. El resultado contiene el token de autenticación.</returns>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication.UserId">
+            <summary>
+            Obtiene el identificador único del usuario autenticado.
+            </summary>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase.IFirebaseRealtimeDatabase">
+            <summary>  
+            Interface para interactuar con la base de datos en tiempo real de Firebase.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase.IFirebaseRealtimeDatabase.Instance">
+            <summary>  
+            Obtiene la instancia del cliente de Firebase.  
+            </summary>  
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.AgregarProductoAlCarrito.IAgregarProductoAlCarrito">
+            <summary>
+            Define un caso de uso para agregar un producto al carrito de compras de un usuario.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.AgregarProductoAlCarrito.IAgregarProductoAlCarrito.AgregarAlCarritoAsync(System.String,MarketingAppHJ.Aplicacion.Dtos.CarritoItemDto)">
+            <summary>
+            Agrega un producto al carrito de compras de un usuario.
+            </summary>
+            <param name="usuarioId">El identificador único del usuario.</param>
+            <param name="item">El producto que se desea agregar al carrito.</param>
+            <returns>Una lista de elementos actualizada en el carrito del usuario.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.BorrarProductoCarrito.IBorrarProductoCarrito">
+            <summary>
+            Define la funcionalidad para eliminar un producto del carrito de un usuario.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.BorrarProductoCarrito.IBorrarProductoCarrito.BorrarProductoCarritoAsync(System.String,System.String)">
+            <summary>
+            Elimina un producto del carrito de un usuario.
+            </summary>
+            <param name="userId">El identificador del usuario.</param>
+            <param name="IdProducto">El identificador del producto a eliminar.</param>
+            <returns>Una tarea que representa la operación asincrónica.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.BorrarProductosCarrito.IBorrarProductosCarrito">
+            <summary>
+            Define la funcionalidad para eliminar todos los productos del carrito de un usuario.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.BorrarProductosCarrito.IBorrarProductosCarrito.BorrarProductosCarritoAsync(System.String)">
+            <summary>
+            Elimina todos los productos del carrito de un usuario.
+            </summary>
+            <param name="userId">El identificador del usuario.</param>
+            <returns>Una tarea que representa la operación asincrónica.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ModificarCantidadCarrito.IModificarCantidadCarrito">
+            <summary>
+            Define un contrato para modificar la cantidad de un producto en el carrito de un usuario.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ModificarCantidadCarrito.IModificarCantidadCarrito.ModificarCantidadCarritoAsync(System.String,System.String,System.Int32)">
+            <summary>
+            Modifica la cantidad de un producto en el carrito de un usuario.
+            </summary>
+            <param name="userId">El identificador del usuario.</param>
+            <param name="productId">El identificador del producto.</param>
+            <param name="cantidad">La nueva cantidad del producto.</param>
+            <returns>Una tarea que representa la operación asincrónica.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObservarCambiosCarrito.IObservarCambiosCarrito">
+            <summary>
+            Interfaz para observar los cambios en el carrito de un usuario.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObservarCambiosCarrito.IObservarCambiosCarrito.ObservarCambios(System.String)">
+            <summary>
+            Observa los cambios en el carrito de un usuario específico.
+            </summary>
+            <param name="userId">El identificador único del usuario.</param>
+            <returns>Un observable que emite eventos de Firebase relacionados con los cambios en el carrito.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObtenerCarrito.IObtenerCarrito">
+            <summary>
+            Interfaz para obtener los elementos de un carrito.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObtenerCarrito.IObtenerCarrito.ObtenerCarritoAsync(System.String)">
+            <summary>
+            Obtiene los elementos del carrito de compras para un usuario específico.
+            </summary>
+            <param name="id">El identificador del usuario.</param>
+            <returns>Una tarea que representa una colección de elementos del carrito.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Checkout.CrearPedido.ICrearPedido">
+            <summary>
+            Define la operación para crear un pedido.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Checkout.CrearPedido.ICrearPedido.RealizarPedido(System.String,System.String,System.String)">
+            <summary>
+            Crea un pedido para un usuario específico.
+            </summary>
+            <param name="userId">El identificador del usuario que realiza el pedido.</param>
+            <param name="direccionEnvio">La dirección de envío del pedido.</param>
+            <param name="metodoPago">El método de pago utilizado para el pedido.</param>
+            <returns>Un objeto <see cref="T:MarketingAppHJ.Aplicacion.Dtos.PedidoDto"/> que representa el pedido creado.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Checkout.GuardarPedido.IGuardarPedido">
+            <summary>
+            Define la funcionalidad para guardar un pedido en el sistema.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Checkout.GuardarPedido.IGuardarPedido.GuardarPedidoAsync(MarketingAppHJ.Aplicacion.Dtos.PedidoDto)">
+            <summary>
+            Guarda un pedido de forma asíncrona.
+            </summary>
+            <param name="pedido">El objeto <see cref="T:MarketingAppHJ.Aplicacion.Dtos.PedidoDto"/> que contiene los detalles del pedido a guardar.</param>
+            <returns>Una tarea que representa la operación asíncrona.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.IniciarSesion.IIniciarSesion">
+            <summary>
+            Define la funcionalidad para iniciar sesión en la aplicación.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.IniciarSesion.IIniciarSesion.IniciarSesionAsync(System.String,System.String)">
+            <summary>
+            Inicia sesión con el correo electrónico y la contraseña proporcionados.
+            </summary>
+            <param name="email">El correo electrónico del usuario.</param>
+            <param name="password">La contraseña del usuario.</param>
+            <returns>Un token de autenticación si el inicio de sesión es exitoso; de lo contrario, un mensaje de error.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.LogOut.ILogOut">
+            <summary>  
+            Define una interfaz para cerrar la sesión del usuario actual.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.LogOut.ILogOut.CerrarSesionAsync">
+            <summary>  
+            Cierra la sesión del usuario actual.  
+            </summary>  
+            <returns>Una tarea que representa la operación asincrónica.</returns>  
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.ObtenerUsuario.IObtenerUsuario">
+            <summary>  
+            Interfaz para obtener información de un usuario específico.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.ObtenerUsuario.IObtenerUsuario.ObtenerUsuarioAsync(System.String)">
+            <summary>  
+            Obtiene los detalles de un usuario por su identificador.  
+            </summary>  
+            <param name="idUsuario">El identificador único del usuario.</param>  
+            <returns>Un objeto <see cref="T:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto"/> que contiene los detalles del usuario.</returns>  
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.Registro.IRegistro">
+            <summary>  
+            Interface para el registro de usuarios.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.Registro.IRegistro.RegistrarUsuarioAsync(System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>  
+            Registra un nuevo usuario en el sistema.  
+            </summary>  
+            <param name="email">Correo electrónico del usuario.</param>  
+            <param name="password">Contraseña del usuario.</param>  
+            <param name="nombre">Nombre del usuario.</param>  
+            <param name="apellidos">Apellidos del usuario.</param>  
+            <param name="direccion"> Direccion de envio</param>
+            <param name="telefono"> Teléfono del Usuario </param>
+            <returns>Una tarea que representa la operación asincrónica.</returns>  
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.Registro.IRegistro.GuardarUsuarioAsync(MarketingAppHJ.Aplicacion.Dtos.UsuarioDto)">
+            <summary>  
+            Guarda la información de un usuario en el sistema.  
+            </summary>  
+            <param name="usuario">Objeto que contiene los datos del usuario.</param>  
+            <returns>Una tarea que representa la operación asincrónica.</returns>  
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.ResetConstraseña.IResetContrasena">
+            <summary>  
+            Interfaz para el caso de uso de restablecimiento de contraseña.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.ResetConstraseña.IResetContrasena.ResetearContrasenaAsync(System.String)">
+            <summary>  
+            Envía un correo electrónico para restablecer la contraseña del usuario.  
+            </summary>  
+            <param name="email">El correo electrónico del usuario.</param>  
+            <returns>Una tarea que representa la operación asíncrona.</returns>  
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Pedidos.ObservarCambiosPedidos.IObservarCambiosPedido">
+            <summary>
+            Interfaz para observar los cambios en los pedidos de un usuario específico.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Pedidos.ObservarCambiosPedidos.IObservarCambiosPedido.ObservarPedidos(System.String)">
+            <summary>
+            Observa los cambios en los pedidos asociados a un usuario.
+            </summary>
+            <param name="userId">El identificador del usuario cuyos pedidos se desean observar.</param>
+            <returns>Un observable que emite eventos de Firebase relacionados con los pedidos.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Pedidos.ObtenerPedidos.IObtenerPedidos">
+            <summary>
+            Interfaz para obtener los pedidos de un usuario.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Pedidos.ObtenerPedidos.IObtenerPedidos.ObtenerPedidosAsync(System.String)">
+            <summary>
+            Obtiene una lista de pedidos asociados a un usuario específico.
+            </summary>
+            <param name="userId">El identificador del usuario.</param>
+            <returns>Una tarea que representa la operación asincrónica. El resultado contiene una colección de objetos PedidoDto.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerNombreCategoria.IObtenerNombreCategoria">
+            <summary>
+            Interfaz para obtener el nombre de una categoría basada en su identificador.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerNombreCategoria.IObtenerNombreCategoria.ObtenerCategoria(System.String)">
+            <summary>
+            Obtiene el nombre de una categoría dado su identificador.
+            </summary>
+            <param name="IdCategoria">El identificador único de la categoría.</param>
+            <returns>Un objeto <see cref="T:MarketingAppHJ.Aplicacion.Dtos.CategoriaDto"/> que contiene los detalles de la categoría.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerProductosPorId.IObtenerProductoPorId">
+            <summary>
+            Define un caso de uso para obtener un producto por su identificador único.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerProductosPorId.IObtenerProductoPorId.ObtenerProductoPorIdAsync(System.String)">
+            <summary>
+            Obtiene un producto por su identificador único.
+            </summary>
+            <param name="id">El identificador único del producto.</param>
+            <returns>Un objeto <see cref="T:MarketingAppHJ.Aplicacion.Dtos.ProductoDto"/> que representa el producto.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerTodosProductos.IObtenerProductos">
+            <summary>
+            Define un caso de uso para obtener una lista de productos.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerTodosProductos.IObtenerProductos.ObtenerProductosAsync">
+            <summary>
+            Obtiene una lista de productos de forma asíncrona.
+            </summary>
+            <returns>Una tarea que representa la operación asíncrona. El resultado contiene una colección de objetos <see cref="T:MarketingAppHJ.Aplicacion.Dtos.ProductoDto"/>.</returns>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.ActualizarUsuario.IActualizarUsuario">
+            <summary>  
+            Interfaz para actualizar la información de un usuario.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.ActualizarUsuario.IActualizarUsuario.ActualizarUsuarioAsync(MarketingAppHJ.Aplicacion.Dtos.UsuarioDto)">
+            <summary>  
+            Actualiza la información de un usuario en el sistema.  
+            </summary>  
+            <param name="usuario">Objeto de tipo <see cref="T:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto"/> que contiene la información actualizada del usuario.</param>  
+            <returns>Una tarea que representa la operación asincrónica.</returns>  
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.IObtenerPerfilUsuario.IObtenerPerfilUsuario">
+            <summary>  
+            Interfaz para obtener el perfil de un usuario.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.IObtenerPerfilUsuario.IObtenerPerfilUsuario.ObtenerPerfilUsuarioAsync(System.String)">
+            <summary>  
+            Obtiene el perfil de un usuario por su identificador.  
+            </summary>  
+            <param name="usuarioId">El identificador único del usuario.</param>  
+            <returns>Un objeto <see cref="T:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto"/> que contiene la información del perfil del usuario.</returns>  
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Id">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Id" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Nombre">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Nombre" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Descripcion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Descripcion" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Precio">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Precio" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ImagenUrl">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ImagenUrl" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Stock">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Stock" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CategoriaId">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CategoriaId" generated properties.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Id">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Id" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Nombre">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Nombre" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Descripcion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Descripcion" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Precio">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Precio" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ImagenUrl">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ImagenUrl" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Stock">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Stock" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CategoriaId">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CategoriaId" generated properties.</summary>
+        </member>
+    </members>
+</doc>

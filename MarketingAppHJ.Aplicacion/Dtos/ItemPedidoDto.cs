@@ -36,6 +36,9 @@ namespace MarketingAppHJ.Aplicacion.Dtos
         /// </summary>
         public decimal Total => Precio * Cantidad;
 
+        /// <summary>
+        /// URL de la imagen del producto.
+        /// </summary>
         public string ImagenUrl { get; set; } = string.Empty;
     }
 }

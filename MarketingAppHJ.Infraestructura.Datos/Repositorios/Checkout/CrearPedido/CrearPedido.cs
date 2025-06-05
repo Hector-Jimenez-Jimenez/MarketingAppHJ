@@ -49,6 +49,7 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Checkout.CrearPedido
                 Fecha = DateTime.UtcNow,
                 Items = carrito.Select(item => new ItemPedidoDto
                 {
+                    ImagenUrl = item.ImagenUrl,
                     ProductoId = item.ProductoId,
                     Nombre = item.Nombre,
                     Cantidad = item.Cantidad,
