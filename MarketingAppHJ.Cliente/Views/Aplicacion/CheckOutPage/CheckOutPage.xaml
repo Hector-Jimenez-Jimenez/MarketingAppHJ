@@ -7,13 +7,14 @@
              xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel"
              BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
 
-    <ScrollView>
-        <VerticalStackLayout VerticalOptions="FillAndExpand">
-            <Grid Grid.Row="0" 
+    <Grid RowDefinitions="Auto,*,Auto,Auto">
+        <VerticalStackLayout>
+            <Border Style="{StaticResource CardBorderStyle}"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}">
+                <Grid Grid.Row="0" 
                   HeightRequest="40"
                   Padding="10"
-                  ColumnDefinitions="Auto,*,Auto"
-                  BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}">
+                  ColumnDefinitions="Auto,*,Auto">
 
                 <ImageButton Grid.Column="0"
                              Source="iconousuario.png"
@@ -33,55 +34,55 @@
                              Background="Transparent"
                              Clicked="SettingsClicked"/>
             </Grid>
+            </Border>
             <!-- Título -->
             <Label Text="Resumen de tu pedido"
                    Padding="20"
                    HorizontalOptions="Center"
                    Style="{StaticResource TitleLabelStyle}" />
-
-            <!-- Lista de ítems -->
-            <CollectionView ItemsSource="{Binding Items}"
-                                SelectionMode="None"
-                                BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}"
-                                EmptyView="No hay artículos en el pedido.">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="dto:CarritoItemDto">
-                        <Grid ColumnDefinitions="25*,25*,25*,25*">
-                            <HorizontalStackLayout Grid.Column="0" HorizontalOptions="Start">
-                                <Image HeightRequest="40"
-                                       WidthRequest="40"
-                                       VerticalOptions="Center"
-                                       Source="{Binding ImagenUrl}"
-                                       Aspect="AspectFit"/>
-                                <Label VerticalOptions="Center"
-                                       Text="{Binding Cantidad, StringFormat='x{0}'}"
-                                       Style="{StaticResource BodyLabelStyle}" />
-                            </HorizontalStackLayout>
-                            
-                            <Label Grid.Column="1"
+        </VerticalStackLayout>
+        
+        <!-- Lista de ítems -->
+        <CollectionView ItemsSource="{Binding Items}"
+                        Grid.Row="1"
+                        SelectionMode="None"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}"
+                        EmptyView="No hay artículos en el pedido.">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="dto:CarritoItemDto">
+                    <Grid ColumnDefinitions="25*,25*,25*,25*">
+                        <HorizontalStackLayout Grid.Column="0" HorizontalOptions="Start">
+                            <Image HeightRequest="40"
+                                   WidthRequest="40"
                                    VerticalOptions="Center"
-                                   HorizontalOptions="Start"
-                                   Text="{Binding Nombre, StringFormat='{0}'}"
+                                   Source="{Binding ImagenUrl}"
+                                   Aspect="AspectFit"/>
+                            <Label VerticalOptions="Center"
+                                   Text="{Binding Cantidad, StringFormat='x{0}'}"
                                    Style="{StaticResource BodyLabelStyle}" />
-                            
-                            <Label Grid.Column="2"
+                        </HorizontalStackLayout>
+                        <Label Grid.Column="1"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Start"
+                               Text="{Binding Nombre, StringFormat='{0}'}"
+                               Style="{StaticResource BodyLabelStyle}" />
+
+                        <Label Grid.Column="2"
                                    VerticalOptions="Center"
                                    HorizontalOptions="Center"
                                    Text="{Binding Precio, StringFormat='{}{0:C}'}"
                                    Style="{StaticResource BodyLabelStyle}" />
-                            
-
-                            <Label Grid.Column="3"
+                        <Label Grid.Column="3"
                                    VerticalOptions="Center"
-                                   HorizontalOptions="End"
+                                   HorizontalOptions="Center"
                                    Text="{Binding Total, StringFormat='{}{0:C}'}"
                                    Style="{StaticResource BodyLabelStyle}" />
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-
-
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+         
+        <VerticalStackLayout Grid.Row="2">
             <!-- Total general -->
             <Label Text="{Binding Total, StringFormat='Total: {0:C}'}"
                    Padding="20"
@@ -109,17 +110,19 @@
                     <x:String>Contra Reembolso</x:String>
                 </Picker.Items>
             </Picker>
+        </VerticalStackLayout>
 
+        <VerticalStackLayout Grid.Row="3">
             <!-- Botón de confirmación -->
             <Button Text="Confirmar Pedido"
                     Command="{Binding RealizarPedidoCommand}"
                     Style="{StaticResource PrimaryButtonStyle}"
-                    Margin="0,20"/>
+                    Margin="5,10,5,5"/>
             <!-- Botón de volver -->
             <Button Text="Volver"
                     Command="{Binding VolverCommand}"
                     Style="{StaticResource SecondaryButtonStyle}"
-                    Margin="0"/>
+                    Margin="5,0,5,10"/>
         </VerticalStackLayout>
-    </ScrollView>
+    </Grid>
 </ContentPage>

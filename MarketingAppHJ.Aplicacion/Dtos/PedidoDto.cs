@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,7 +40,7 @@ namespace MarketingAppHJ.Aplicacion.Dtos
         /// <summary>
         /// Lista de los ítems incluidos en el pedido.
         /// </summary>
-        public List<ItemPedidoDto> Items { get; set; } = new List<ItemPedidoDto>();
+        public ObservableCollection<ItemPedidoDto> Items { get; set; } = new ObservableCollection<ItemPedidoDto>();
 
         /// <summary>
         /// Total del costo del pedido, calculado como la suma de los totales de los ítems.

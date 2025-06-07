@@ -4,16 +4,26 @@
         <name>MarketingAppHJ.Infraestructura.Negocio</name>
     </assembly>
     <members>
-        <member name="T:TheMarketingApp.Infraestructura.Negocio.Servicios.DependencyInjection">
+        <member name="T:MarketingAppHJ.Infraestructura.Negocio.Servicios.CloudinaryService.CloudinaryService">
             <summary>
-            Proporciona métodos de extensión para registrar servicios de infraestructura de negocio en el contenedor de dependencias.
+            Servicio para interactuar con la API de Cloudinary.
             </summary>
         </member>
-        <member name="M:TheMarketingApp.Infraestructura.Negocio.Servicios.DependencyInjection.AddInfraestructuraBusiness(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+        <member name="M:MarketingAppHJ.Infraestructura.Negocio.Servicios.CloudinaryService.CloudinaryService.#ctor(Microsoft.Extensions.Options.IOptions{MarketingAppHJ.Aplicacion.Interfaces.Cloudinary.CloudinarySettings})">
             <summary>
-            Agrega los servicios de infraestructura de negocio al contenedor de dependencias.
+            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Negocio.Servicios.CloudinaryService.CloudinaryService"/>.
             </summary>
-            <param name="services">El contenedor de dependencias <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
+            <param name="options">Configuración de Cloudinary.</param>
+            <exception cref="T:System.ArgumentException">Se lanza si los parámetros de configuración son inválidos.</exception>
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Negocio.Servicios.CloudinaryService.CloudinaryService.SubirImagenAsync(System.IO.Stream,System.String)">
+            <summary>
+            Sube una imagen a Cloudinary de forma asíncrona.
+            </summary>
+            <param name="flujoImagen">El flujo de datos de la imagen a subir.</param>
+            <param name="nombreArchivo">El nombre del archivo de la imagen.</param>
+            <returns>La URL segura de la imagen subida.</returns>
+            <exception cref="T:System.Exception">Se lanza si ocurre un error al subir la imagen.</exception>
         </member>
         <member name="T:MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication.FirebaseAuthentication">
             <summary>  
@@ -65,6 +75,17 @@
             </summary>  
             <param name="url">La URL de la base de datos en tiempo real de Firebase.</param>  
             <returns>Una nueva instancia de <see cref="T:Firebase.Database.FirebaseClient"/>.</returns>  
+        </member>
+        <member name="T:TheMarketingApp.Infraestructura.Negocio.Servicios.DependencyInjection">
+            <summary>
+            Proporciona métodos de extensión para registrar servicios de infraestructura de negocio en el contenedor de dependencias.
+            </summary>
+        </member>
+        <member name="M:TheMarketingApp.Infraestructura.Negocio.Servicios.DependencyInjection.AddInfraestructuraBusiness(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Agrega los servicios de infraestructura de negocio al contenedor de dependencias.
+            </summary>
+            <param name="services">El contenedor de dependencias <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
         </member>
     </members>
 </doc>

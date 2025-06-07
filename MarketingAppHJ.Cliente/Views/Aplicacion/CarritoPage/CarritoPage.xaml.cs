@@ -93,7 +93,7 @@ namespace MarketingAppHJ.Cliente.Views.Aplicacion.CarritoPage
 
         private void OnProfileClicked(object sender, EventArgs e)
         {
-            Shell.Current.GoToAsync("perfil");
+            Shell.Current.GoToAsync("profile");
         }
     }
 }

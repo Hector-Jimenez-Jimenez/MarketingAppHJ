@@ -4,16 +4,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
              xmlns:dtos="clr-namespace:MarketingAppHJ.Aplicacion.Dtos;assembly=MarketingAppHJ.Aplicacion"
              xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.MainPageViewModel"  
+             Shell.NavBarIsVisible="False"
              x:DataType="vm:MainPageViewModel"
              BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">  
 
-    <Grid RowDefinitions="Auto,Auto,*,Auto" Padding="0">
+    <Grid RowDefinitions="Auto,Auto,*" Padding="0">
         <!-- 1.1) Header con los Iconos-->
-        <Grid Grid.Row="0" 
-              HeightRequest="50"
+        <Border Style="{StaticResource CardBorderStyle}"
+                BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}">
+            <Grid Grid.Row="0" 
+              HeightRequest="40"
               Padding="10"
-              ColumnDefinitions="Auto,*,Auto"
-              BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}">
+              ColumnDefinitions="Auto,*,Auto">
 
             <ImageButton Grid.Column="0"
                          Source="iconousuario.png"
@@ -31,6 +33,7 @@
                          Background="Transparent"
                          Clicked="OnSettingsClicked"/>
         </Grid>
+        </Border>
 
         <!-- 1.2) Barra de búsqueda -->
         <Border Grid.Row="1"
@@ -57,67 +60,64 @@
             </Grid>
         </Border>
 
-        <!-- 1.3) Grid de productos con paginación infinita -->
-        <CollectionView Grid.Row="2"
-                        x:Name="ProductosCollectionView"
-                        ItemsSource="{Binding Productos}"
-                        Margin="10,0"
-                        SelectionMode="None"
-                        ItemsLayout="VerticalGrid,2"
-                        RemainingItemsThreshold="2"
-                        RemainingItemsThresholdReached="OnRemainingItemsThresholdReached">
+        <!-- 1.3) Grid de productos con paginación infinita y botón flotante -->
+        <Grid Grid.Row="2">
+            <CollectionView x:Name="ProductosCollectionView"
+                            ItemsSource="{Binding Productos}"
+                            Margin="10,0"
+                            SelectionMode="None"
+                            ItemsLayout="VerticalGrid,2"
+                            RemainingItemsThreshold="2"
+                            RemainingItemsThresholdReached="OnRemainingItemsThresholdReached">
 
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="dtos:ProductoDto">
-                    <Border Style="{StaticResource CardBorderStyle}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="dtos:ProductoDto">
+                        <Border Style="{StaticResource CardBorderStyle}">
+                            <Grid RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="4">
+                                <!-- 1) Imagen -->
+                                <Image Source="{Binding ImagenUrl}"
+                                       Aspect="AspectFit"
+                                       HeightRequest="120" />
 
-                        <Grid RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="4">
-                            <!-- 1) Imagen -->
-                            <Image Source="{Binding ImagenUrl}"
-                                   Aspect="AspectFit"
-                                   HeightRequest="120" />
+                                <!-- 2) Nombre -->
+                                <Label Grid.Row="1"
+                                       Text="{Binding Nombre}"
+                                       Style="{StaticResource SubtitleLabelStyle}"
+                                       LineBreakMode="TailTruncation"/>
 
-                            <!-- 2) Nombre -->
-                            <Label Grid.Row="1"
-                                   Text="{Binding Nombre}"
-                                   Style="{StaticResource SubtitleLabelStyle}"
-                                   LineBreakMode="TailTruncation"/>
+                                <!-- 3) Descripción -->
+                                <Label Grid.Row="2"
+                                       Text="{Binding Descripcion}"
+                                       Style="{StaticResource BodyLabelStyle}"
+                                       FontSize="12"
+                                       LineBreakMode="TailTruncation"/>
 
-                            <!-- 3) Descripción -->
-                            <Label Grid.Row="2"
-                                   Text="{Binding Descripcion}"
-                                   Style="{StaticResource BodyLabelStyle}"
-                                   FontSize="12"
-                                   LineBreakMode="TailTruncation"/>
+                                <!-- 4) Precio -->
+                                <Label Grid.Row="3"
+                                       Text="{Binding Precio, StringFormat='Precio: {0:C}'}"
+                                       Style="{StaticResource SubtitleLabelStyle}"
+                                       FontSize="16"/>
+                            </Grid>
 
-                            <!-- 4) Precio -->
-                            <Label Grid.Row="3"
-                                   Text="{Binding Precio, StringFormat='Precio: {0:C}'}"
-                                   Style="{StaticResource SubtitleLabelStyle}"
-                                   FontSize="16"/>
-                        </Grid>
+                            <!-- Tocar para ir a detalles -->
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnItemTapped" 
+                                                      NumberOfTapsRequired="1" />
+                            </Border.GestureRecognizers>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
-                        <!-- Tocar para ir a detalles -->
-                        <Border.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnItemTapped" 
-                                                  NumberOfTapsRequired="1" />
-                        </Border.GestureRecognizers>
-                    </Border>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-
-        <!-- 1.4) Botón fijo “Accede a tu carrito” (fila 3) -->
-        <Border Grid.Row="3"
-                StrokeShape="RoundRectangle 20,20,0,0"
-                StrokeThickness="1"
-                BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceColorLight}, Dark={StaticResource SurfaceColorDark}}"
-                Padding="10,0">
+            <!-- Botón flotante en la parte inferior derecha -->
             <Button Text="Accede a tu carrito"
                     ImageSource="carritocompra.png"
-                    ContentLayout="Left,10"
                     Style="{StaticResource PrimaryButtonStyle}"
-                    Clicked="OnCartClicked"/>
-        </Border>
+                    Clicked="OnCartClicked"
+                    HorizontalOptions="Center"
+                    VerticalOptions="End"
+                    Margin="20"
+                    />
+        </Grid>
     </Grid>
 </ContentPage>

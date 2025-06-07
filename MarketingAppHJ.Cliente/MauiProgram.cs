@@ -2,6 +2,7 @@
 using Firebase.Auth;
 using Firebase.Auth.Providers;
 using Firebase.Database;
+using MarketingAppHJ.Aplicacion.Interfaces.Cloudinary;
 using MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication;
 using MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.AgregarProductoAlCarrito;
@@ -18,11 +19,13 @@ using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.ObtenerUsuario;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.Registro;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.ResetConstraseña;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Pedidos.ObservarCambiosPedidos;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Pedidos.ObtenerPedidoPorId;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Pedidos.ObtenerPedidos;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerNombreCategoria;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerProductosPorId;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerTodosProductos;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.ActualizarUsuario;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.GuardarFotoPerfil;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.IObtenerPerfilUsuario;
 using MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel;
@@ -59,11 +62,15 @@ using MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.ObtenerUsuario;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.Registro;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.ResetearContrasena;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Pedidos.ObservarCambiosPedidos;
+using MarketingAppHJ.Infraestructura.Datos.Repositorios.Pedidos.ObtenerPedidoPorId;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Pedidos.ObtenerPedidos;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerNombreCategoria;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductoPorId;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductos;
-using MarketingAppHJ.Infraestructura.Datos.Repositorios.Usuarios;
+using MarketingAppHJ.Infraestructura.Datos.Repositorios.Usuarios.ActualizarUsuario;
+using MarketingAppHJ.Infraestructura.Datos.Repositorios.Usuarios.GuardarImagenPerfil;
+using MarketingAppHJ.Infraestructura.Datos.Repositorios.Usuarios.ObtenerPerfilUsuario;
+using MarketingAppHJ.Infraestructura.Negocio.Servicios.CloudinaryService;
 using MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication;
 using MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.RealtimeDatabase;
 using Microsoft.Extensions.Logging;
@@ -96,6 +103,12 @@ namespace MarketingAppHJ.Cliente
                 {
                     AuthTokenAsyncFactory = async () => await auth.GetTokenAsync()
                 });
+            });
+            builder.Services.Configure<CloudinarySettings>(options =>
+            {
+                options.CloudName = "df4l4kyo7";
+                options.ApiKey = "727739372591495";
+                options.ApiSecret = "aWv8WSjgg9UZurB7itMyQgq34KU";
             });
 
             builder.Services.AddSingleton(sp =>
@@ -157,6 +170,9 @@ namespace MarketingAppHJ.Cliente
             services.AddScoped<IActualizarUsuario, ActualizarUsuario>();
             services.AddScoped<IObtenerPedidos, ObtenerPedidos>();
             services.AddScoped<IObservarCambiosPedido, ObservarCambiosPedidos>();
+            services.AddScoped<IGuardarImagenPefil, GuardadoImagenPerfil>();
+            services.AddScoped<ICloudinaryService, CloudinaryService>();
+            services.AddScoped<IObtenerPedidoPorId, ObtenerPedidoPorId>();
         }
 
         /// <summary>

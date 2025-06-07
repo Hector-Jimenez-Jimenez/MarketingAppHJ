@@ -42,7 +42,7 @@ namespace MarketingAppHJ.Cliente.Views.Aplicacion.PedidosPage
             if (sender is Button btn && btn.CommandParameter is string pedidoId)
             {
                 // Navegar a página de detalles de pedido, pasando el pedidoId
-                //Shell.Current.GoToAsync($"pedidoDetalle?pedidoId={pedidoId}");
+                //Shell.Current.GoToAsync($"detallespedido?pedidoId={pedidoId}");
             }
         }
     }

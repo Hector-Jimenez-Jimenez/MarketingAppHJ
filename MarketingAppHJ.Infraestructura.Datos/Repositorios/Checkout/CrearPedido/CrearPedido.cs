@@ -1,4 +1,5 @@
-﻿using MarketingAppHJ.Aplicacion.Dtos;
+﻿using System.Collections.ObjectModel;
+using MarketingAppHJ.Aplicacion.Dtos;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.BorrarProductosCarrito;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObtenerCarrito;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Checkout.CrearPedido;
@@ -47,14 +48,14 @@ namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Checkout.CrearPedido
                 DireccionEnvio = direccionEnvio,
                 MetodoPago = metodoPago,
                 Fecha = DateTime.UtcNow,
-                Items = carrito.Select(item => new ItemPedidoDto
+                Items = new ObservableCollection<ItemPedidoDto>(carrito.Select(item => new ItemPedidoDto
                 {
                     ImagenUrl = item.ImagenUrl,
                     ProductoId = item.ProductoId,
                     Nombre = item.Nombre,
                     Cantidad = item.Cantidad,
                     Precio = item.Precio
-                }).ToList()
+                }))
             };
 
             await _guardarPedido.GuardarPedidoAsync(pedido);

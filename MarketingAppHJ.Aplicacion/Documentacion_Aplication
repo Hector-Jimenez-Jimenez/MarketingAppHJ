@@ -251,6 +251,39 @@
             Nombre de usuario del usuario.
             </summary>
         </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.Cloudinary.CloudinarySettings">
+            <summary>
+            Representa la configuración necesaria para interactuar con el servicio de Cloudinary.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Interfaces.Cloudinary.CloudinarySettings.CloudName">
+            <summary>
+            Nombre de la nube asociado a la cuenta de Cloudinary.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Interfaces.Cloudinary.CloudinarySettings.ApiKey">
+            <summary>
+            Clave de API utilizada para autenticar las solicitudes a Cloudinary.
+            </summary>
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Interfaces.Cloudinary.CloudinarySettings.ApiSecret">
+            <summary>
+            Secreto de API utilizado para autenticar las solicitudes a Cloudinary.
+            </summary>
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.Cloudinary.ICloudinaryService">
+            <summary>
+            Proporciona métodos para interactuar con el servicio de Cloudinary.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.Cloudinary.ICloudinaryService.SubirImagenAsync(System.IO.Stream,System.String)">
+            <summary>
+            Sube una imagen al servicio de Cloudinary de forma asíncrona.
+            </summary>
+            <param name="flujoImagen">El flujo de datos de la imagen que se va a subir.</param>
+            <param name="nombreArchivo">El nombre del archivo de la imagen que se va a subir.</param>
+            <returns>Una tarea que representa la operación asíncrona. El resultado contiene la URL de la imagen subida.</returns>
+        </member>
         <member name="T:MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication">
             <summary>
             Interfaz para la autenticación de Firebase.
@@ -468,6 +501,19 @@
             <param name="userId">El identificador del usuario cuyos pedidos se desean observar.</param>
             <returns>Un observable que emite eventos de Firebase relacionados con los pedidos.</returns>
         </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Pedidos.ObtenerPedidoPorId.IObtenerPedidoPorId">
+            <summary>
+            Define la funcionalidad para obtener los detalles de un pedido por su identificador.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Pedidos.ObtenerPedidoPorId.IObtenerPedidoPorId.ObtenerDetallesPedidoAsync(System.String,System.String)">
+            <summary>
+            Obtiene un pedido por su identificador.
+            </summary>
+            <param name="orderId">El identificador del pedido.</param>
+            <param name="userId">El identificador del usuario que realizó el pedido.</param>
+            <returns>Una tarea que representa la operación asincrónica. El resultado contiene el pedido solicitado.</returns>
+        </member>
         <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Pedidos.ObtenerPedidos.IObtenerPedidos">
             <summary>
             Interfaz para obtener los pedidos de un usuario.
@@ -526,6 +572,19 @@
             </summary>  
             <param name="usuario">Objeto de tipo <see cref="T:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto"/> que contiene la información actualizada del usuario.</param>  
             <returns>Una tarea que representa la operación asincrónica.</returns>  
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.GuardarFotoPerfil.IGuardarImagenPefil">
+            <summary>
+            Define un contrato para guardar la imagen de perfil de un usuario.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.GuardarFotoPerfil.IGuardarImagenPefil.GuardarImagenPerfil(System.String,System.String)">
+            <summary>
+            Guarda la URL de la imagen de perfil de un usuario.
+            </summary>
+            <param name="userId">El identificador único del usuario.</param>
+            <param name="ImagenPerfilUrl">La URL de la imagen de perfil.</param>
+            <returns>Una tarea que representa la operación asincrónica.</returns>
         </member>
         <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.IObtenerPerfilUsuario.IObtenerPerfilUsuario">
             <summary>  

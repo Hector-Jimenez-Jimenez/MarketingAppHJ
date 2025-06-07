@@ -72,6 +72,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.MainPageViewModel
 
             _currentPage = 0;
             Productos = new ObservableCollection<ProductoDto>();
+            TextoBusqueda = string.Empty;
             LoadNextPage();
 
             IsBusy = false;

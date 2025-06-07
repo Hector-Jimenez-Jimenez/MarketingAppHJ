@@ -82,13 +82,12 @@
 
           <!-- 9) URL de nueva imagen (opcional) -->  
           <Label Text="URL de imagen (opcional)"  
-                 Style="{StaticResource SubtitleLabelStyle}" />  
-          <Entry Text="{Binding NuevaImagen, Mode=TwoWay}"  
-                 Placeholder="https://..."  
-                 Keyboard="Url"  
-                 Style="{StaticResource EntryStyle}" />  
+                 Style="{StaticResource SubtitleLabelStyle}" />
+            <Button Text="Seleccionar imagen"
+                    Style="{StaticResource SecondaryButtonStyle}"
+                    Command="{Binding SeleccionarYSubirImagenCommand}" />
 
-          <!-- 10) Botones “Cancelar” y “Guardar” -->  
+            <!-- 10) Botones “Cancelar” y “Guardar” -->  
           <Grid ColumnDefinitions="*,*" Padding="0,20,0,0">  
               <Button  
                   Text="Cancelar"  

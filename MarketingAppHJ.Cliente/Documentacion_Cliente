@@ -71,14 +71,17 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
         </member>
-        <member name="M:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.#ctor(MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.ActualizarUsuario.IActualizarUsuario,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.IObtenerPerfilUsuario.IObtenerPerfilUsuario,MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication,MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase.IFirebaseRealtimeDatabase)">
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.#ctor(MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.ActualizarUsuario.IActualizarUsuario,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.IObtenerPerfilUsuario.IObtenerPerfilUsuario,MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.GuardarFotoPerfil.IGuardarImagenPefil,MarketingAppHJ.Aplicacion.Interfaces.Cloudinary.ICloudinaryService,MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase.IFirebaseRealtimeDatabase)">
             <summary>
             Constructor de la clase CambioDatosPageViewModel.
             </summary>
             <param name="actualizarUsuario">Interfaz para actualizar los datos del usuario.</param>
             <param name="obtenerPerfilUsuario">Interfaz para obtener el perfil del usuario.</param>
             <param name="firebaseAuthentication">Interfaz para la autenticación de Firebase.</param>
+            <param name="guardarImagenPefil">Interfaz para guardar la imagen de perfil del usuario.</param>
+            <param name="cloudinaryService">Interfaz para el servicio de Cloudinary.</param> <!-- Se agregó esta línea -->
             <param name="firebaseRealtimeDatabase">Interfaz para la base de datos en tiempo real de Firebase.</param>
         </member>
         <member name="M:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.CargarDatosUsuarioAsync">
@@ -176,6 +179,12 @@
         </member>
         <member name="P:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.CancelarModificacionCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.CancelarModificacionAsync"/>.</summary>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.seleccionarYSubirImagenCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.SeleccionarYSubirImagenCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.SeleccionarYSubirImagenCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel.SeleccionarYSubirImagenAsync"/>.</summary>
         </member>
         <member name="T:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel.CarritoPageViewModel">
             <inheritdoc/>

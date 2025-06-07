@@ -10,6 +10,8 @@ using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.ActualizarUsuario;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.IObtenerPerfilUsuario;
 using Firebase.Auth;
 using Firebase.Database.Query;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.GuardarFotoPerfil;
+using MarketingAppHJ.Aplicacion.Interfaces.Cloudinary;
 
 namespace MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel
 {
@@ -20,23 +22,31 @@ namespace MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel
         private readonly IObtenerPerfilUsuario _obtenerPerfilUsuario;
         private readonly IFirebaseAuthentication _firebaseAuthentication;
         private readonly IFirebaseRealtimeDatabase _firebaseRealtimeDatabase;
+        private readonly IGuardarImagenPefil _guardarImagenPefil;
+        private readonly ICloudinaryService _cloudinaryService;
         /// <summary>
         /// Constructor de la clase CambioDatosPageViewModel.
         /// </summary>
         /// <param name="actualizarUsuario">Interfaz para actualizar los datos del usuario.</param>
         /// <param name="obtenerPerfilUsuario">Interfaz para obtener el perfil del usuario.</param>
         /// <param name="firebaseAuthentication">Interfaz para la autenticación de Firebase.</param>
+        /// <param name="guardarImagenPefil">Interfaz para guardar la imagen de perfil del usuario.</param>
+        /// <param name="cloudinaryService">Interfaz para el servicio de Cloudinary.</param> <!-- Se agregó esta línea -->
         /// <param name="firebaseRealtimeDatabase">Interfaz para la base de datos en tiempo real de Firebase.</param>
         public CambioDatosPageViewModel(
             IActualizarUsuario actualizarUsuario,
             IObtenerPerfilUsuario obtenerPerfilUsuario,
             IFirebaseAuthentication firebaseAuthentication,
+            IGuardarImagenPefil guardarImagenPefil,
+            ICloudinaryService cloudinaryService,
             IFirebaseRealtimeDatabase firebaseRealtimeDatabase)
         {
             _actualizarUsuario = actualizarUsuario;
             _obtenerPerfilUsuario = obtenerPerfilUsuario;
             _firebaseAuthentication = firebaseAuthentication;
             _firebaseRealtimeDatabase = firebaseRealtimeDatabase;
+            _guardarImagenPefil = guardarImagenPefil;
+            _cloudinaryService = cloudinaryService; // Se agregó esta asignación
 
             _ = CargarDatosUsuarioAsync();
         }
@@ -46,41 +56,41 @@ namespace MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel
         private string UserId => _firebaseAuthentication.UserId;
 
         //Propiedades Orignales
-        [ObservableProperty] 
+        [ObservableProperty]
         private string nombreOriginal = string.Empty;
-        [ObservableProperty] 
+        [ObservableProperty]
         private string apelliodosOrignales = string.Empty;
-        [ObservableProperty] 
+        [ObservableProperty]
         private string usernameOriginal = string.Empty;
-        [ObservableProperty] 
+        [ObservableProperty]
         private string emailOriginal = string.Empty;
         [ObservableProperty]
         private string direccionOriginal = string.Empty;
-        [ObservableProperty] 
+        [ObservableProperty]
         private string telefonoOriginal = string.Empty;
-        [ObservableProperty] 
+        [ObservableProperty]
         private DateTime fechaNacimientoOrignal = DateTime.Today;
-        [ObservableProperty] 
+        [ObservableProperty]
         private string imagenOriginal = string.Empty;
 
         // Propiedades Nuevas 
-        [ObservableProperty] 
+        [ObservableProperty]
         private string nuevoNombre = string.Empty;
-        [ObservableProperty] 
+        [ObservableProperty]
         private string nuevosApellidos = string.Empty;
-        [ObservableProperty] 
+        [ObservableProperty]
         private string nuevoUsername = string.Empty;
-        [ObservableProperty] 
+        [ObservableProperty]
         private string nuevoEmail = string.Empty;
-        [ObservableProperty] 
+        [ObservableProperty]
         private string nuevaDireccion = string.Empty;
-        [ObservableProperty] 
+        [ObservableProperty]
         private string nuevoTelefono = string.Empty;
-        [ObservableProperty] 
+        [ObservableProperty]
         private DateTime nuevaFechaNacimiento = DateTime.Today;
-        [ObservableProperty] 
+        [ObservableProperty]
         private string nuevaImagen = string.Empty;
-        [ObservableProperty] 
+        [ObservableProperty]
         private bool isBusy;
         #endregion
 
@@ -110,7 +120,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel
                         ? DateTime.Today
                         : dto.FechaNacimiento;
                     ImagenOriginal = dto.AvatarUrl ?? string.Empty;
-                    
+
                     NuevoNombre = string.Empty;
                     NuevosApellidos = string.Empty;
                     NuevoUsername = string.Empty;
@@ -281,6 +291,48 @@ namespace MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel
         {
             await Shell.Current.GoToAsync("..");
         }
-        #endregion
+
+        [RelayCommand]
+        public async Task SeleccionarYSubirImagenAsync()
+        {
+            try
+            {
+                var resultado = await FilePicker.PickAsync(new PickOptions
+                {
+                    PickerTitle = "Selecciona tu imagen de perfil",
+                    FileTypes = FilePickerFileType.Images
+                });
+
+                if (resultado == null)
+                {
+                    await MostrarAlertaAsync("Aviso", "No se seleccionó ninguna imagen.", "OK");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(resultado.FullPath))
+                {
+                    await MostrarAlertaAsync("Error", "La ruta del archivo está vacía.", "OK");
+                    return;
+                }
+
+                await MostrarAlertaAsync("Éxito", $"Archivo seleccionado:\n{resultado.FullPath}", "OK");
+
+                using var flujo = await resultado.OpenReadAsync();
+                if (flujo == null)
+                {
+                    await MostrarAlertaAsync("Error", "No se pudo abrir el archivo.", "OK");
+                    return;
+                }
+
+                var imagenUrl = await _cloudinaryService.SubirImagenAsync(flujo, resultado.FileName);
+                NuevaImagen = imagenUrl;
+                await _guardarImagenPefil.GuardarImagenPerfil(UserId, imagenUrl);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"error {ex.Message}");
+            }
+            #endregion
+        }
     }
 }

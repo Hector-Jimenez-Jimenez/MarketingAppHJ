@@ -84,20 +84,41 @@ namespace MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel
             var perfil = await _obtenerPerfilUsuario.ObtenerPerfilUsuarioAsync(UserId);
             if (perfil != null)
             {
-                var dto = new UsuarioDto
+                if (!string.IsNullOrWhiteSpace(NuevaDireccionEnvio))
                 {
-                    Id_Usuario = UserId,
-                    Direccion = NuevaDireccionEnvio,
-                    Apellidos = perfil.Apellidos,
-                    Nombre = perfil.Nombre,
-                    AvatarUrl = perfil.AvatarUrl,
-                    Email = perfil.Email,
-                    FechaNacimiento = perfil.FechaNacimiento,
-                    FechaRegistro = perfil.FechaRegistro,
-                    Telefono = perfil.Telefono,
-                    Username = perfil.Username,
-                };
-                await _actualizarUsuario.ActualizarUsuarioAsync(dto);
+                    var dto = new UsuarioDto
+                    {
+                        Id_Usuario = UserId,
+                        Direccion = NuevaDireccionEnvio,
+                        Apellidos = perfil.Apellidos,
+                        Nombre = perfil.Nombre,
+                        AvatarUrl = perfil.AvatarUrl,
+                        Email = perfil.Email,
+                        FechaNacimiento = perfil.FechaNacimiento,
+                        FechaRegistro = perfil.FechaRegistro,
+                        Telefono = perfil.Telefono,
+                        Username = perfil.Username,
+                    };
+                    await _actualizarUsuario.ActualizarUsuarioAsync(dto);
+                }
+                else
+                {
+                    var dto = new UsuarioDto
+                    {
+                        Id_Usuario = UserId,
+                        Direccion = perfil.Direccion,
+                        Apellidos = perfil.Apellidos,
+                        Nombre = perfil.Nombre,
+                        AvatarUrl = perfil.AvatarUrl,
+                        Email = perfil.Email,
+                        FechaNacimiento = perfil.FechaNacimiento,
+                        FechaRegistro = perfil.FechaRegistro,
+                        Telefono = perfil.Telefono,
+                        Username = perfil.Username,
+                    };
+                    await _actualizarUsuario.ActualizarUsuarioAsync(dto);
+                }
+                
             }
         }
         /// <summary>

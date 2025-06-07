@@ -3,7 +3,7 @@ using MarketingAppHJ.Aplicacion.Dtos;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.ActualizarUsuario;
 using MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.RealtimeDatabase;
 
-namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Usuarios
+namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Usuarios.ActualizarUsuario
 {
     /// <summary>  
     /// Clase que implementa la funcionalidad para actualizar un usuario en la base de datos Firebase.  

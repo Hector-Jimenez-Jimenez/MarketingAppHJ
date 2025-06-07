@@ -2,7 +2,7 @@
 using MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.IObtenerPerfilUsuario;
 
-namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Usuarios
+namespace MarketingAppHJ.Infraestructura.Datos.Repositorios.Usuarios.ObtenerPerfilUsuario
 {
     /// <summary>  
     /// Clase que implementa la funcionalidad para obtener el perfil de un usuario desde Firebase Realtime Database.  
