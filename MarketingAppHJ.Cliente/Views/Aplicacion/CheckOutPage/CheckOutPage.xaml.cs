@@ -42,7 +42,7 @@ public partial class CheckOutPage : ContentPage
 
     private void SettingsClicked(object sender, EventArgs e)
     {
-        //Shell.Current.GoToAsync("ajustes");
+        Shell.Current.GoToAsync("ajustes");
     }
 
     private void OnLogoClicked(object sender, EventArgs e)

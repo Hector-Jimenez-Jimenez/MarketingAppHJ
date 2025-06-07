@@ -74,9 +74,9 @@ namespace MarketingAppHJ.Cliente.Views.Aplicacion.MainPage
             await Shell.Current.GoToAsync("main");
         }
 
-        void OnSettingsClicked(object sender, EventArgs e)
+        public async void OnSettingsClicked(object sender, EventArgs e)
         {
-            // Ir a ajustes...
+            await Shell.Current.GoToAsync("ajustes");
         }
         void OnMenuClicked(object sender, EventArgs e)
         {

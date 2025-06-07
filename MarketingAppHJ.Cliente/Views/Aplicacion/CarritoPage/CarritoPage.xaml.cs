@@ -83,7 +83,7 @@ namespace MarketingAppHJ.Cliente.Views.Aplicacion.CarritoPage
 
         private void SettingsClicked(object sender, EventArgs e)
         {
-            //Shell.Current.GoToAsync("ajustes");
+            Shell.Current.GoToAsync("ajustes");
         }
 
         private void OnLogoClicked(object sender, EventArgs e)

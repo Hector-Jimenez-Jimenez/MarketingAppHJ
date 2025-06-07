@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel"
+             x:DataType="vm:SettingsPageViewModel"
+             x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.SettingsPage.SettingsPage"
+             Title="SettingsPage">
+    <VerticalStackLayout Padding="20" Spacing="20">
+
+        <!-- Encabezado -->
+        <Label Text="Configuración"
+               Style="{StaticResource TitleLabelStyle}"
+               HorizontalOptions="Center" />
+
+        <!-- Botón cambiar datos -->
+        <Button Text="Editar Perfil"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Command="{Binding NavegarACambiarDatosCommand}" />
+
+        <!-- Cambiar tema -->
+        <Label Text="Modo de la Aplicación"
+               Style="{StaticResource SubtitleLabelStyle}" />
+        <Picker SelectedIndexChanged="OnThemeChanged"
+                SelectedIndex="{Binding TemaSeleccionadoIndex, Mode=TwoWay}">
+            <Picker.Items>
+                <x:String>Sistema</x:String>
+                <x:String>Claro</x:String>
+                <x:String>Oscuro</x:String>
+            </Picker.Items>
+        </Picker>
+
+        <!-- Cerrar sesión -->
+        <Button Text="Cerrar Sesión"
+                Style="{StaticResource SecondaryButtonStyle}"
+                Command="{Binding CerrarSesionCommand}" />
+
+    </VerticalStackLayout>
+</ContentPage>

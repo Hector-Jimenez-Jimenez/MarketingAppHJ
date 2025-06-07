@@ -767,6 +767,26 @@
         <member name="P:MarketingAppHJ.Cliente.ViewModels.ResetPageViewModel.ResetPageViewModel.CancelCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.ResetPageViewModel.ResetPageViewModel.CancelAsync"/>.</summary>
         </member>
+        <member name="T:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.TemaSeleccionadoIndex">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.temaSeleccionadoIndex"/>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.navegarACambiarDatosCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.NavegarACambiarDatosCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.NavegarACambiarDatosCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.NavegarACambiarDatosAsync"/>.</summary>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.cerrarSesionCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.CerrarSesionCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.CerrarSesionCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.CerrarSesionAsync"/>.</summary>
+        </member>
         <member name="T:MarketingAppHJ.Cliente.Views.Aplicacion.CambioDatosPage.CambioDatosPage">
             <summary>
             Representa la página para cambiar los datos del usuario.
@@ -1135,6 +1155,9 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ConfirmPassword">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ConfirmPassword" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TemaSeleccionadoIndex">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TemaSeleccionadoIndex" generated properties.</summary>
+        </member>
         <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
             <summary>
             A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
@@ -1272,6 +1295,9 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ConfirmPassword">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ConfirmPassword" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TemaSeleccionadoIndex">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TemaSeleccionadoIndex" generated properties.</summary>
         </member>
     </members>
 </doc>

@@ -5,6 +5,7 @@ using MarketingAppHJ.Cliente.Views.Aplicacion.DetailsPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.MainPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.PedidosPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.ProfilePage;
+using MarketingAppHJ.Cliente.Views.Aplicacion.SettingsPage;
 using MarketingAppHJ.Cliente.Views.Login.LoginPage;
 using MarketingAppHJ.Cliente.Views.Login.RegisterPage;
 using MarketingAppHJ.Cliente.Views.Login.ResetPage;
@@ -32,6 +33,7 @@ namespace MarketingAppHJ.Cliente
             Routing.RegisterRoute("profile", typeof(ProfilePage));
             Routing.RegisterRoute("changedata", typeof(CambioDatosPage));
             Routing.RegisterRoute("pedidos", typeof(PedidosPage));
+            Routing.RegisterRoute("ajustes", typeof(SettingsPage));
         }
     }
 }
