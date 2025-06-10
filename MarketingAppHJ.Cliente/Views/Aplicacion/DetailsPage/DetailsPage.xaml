@@ -2,9 +2,11 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
              x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.DetailsPage.DetailsPage"  
+             Shell.NavBarIsVisible="True"
              xmlns:dtos="clr-namespace:MarketingAppHJ.Aplicacion.Dtos;assembly=MarketingAppHJ.Aplicacion"
-             x:DataType="vm:DetallesProductoPageViewModel"
              xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel"
+             xmlns:helper="clr-namespace:MarketingAppHJ.Cliente.Helper"
+             x:DataType="vm:DetallesProductoPageViewModel"
              BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}"
              Padding="0">
 
@@ -33,7 +35,7 @@
             <VerticalStackLayout Padding="20" Spacing="18" BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceColorLight}, Dark={StaticResource SurfaceColorDark}}">
 
                 <HorizontalStackLayout Spacing="12">
-                    <Label Text="{Binding Precio, StringFormat='{}{0:C}'}"
+                    <Label Text="{Binding Precio, StringFormat='{0}€'}"
                            Style="{StaticResource TitleLabelStyle}" />
 
                     <Label Text="{Binding NombreCategoria}"
@@ -41,21 +43,25 @@
                            VerticalOptions="Center"
                            TextColor="{AppThemeBinding Light={StaticResource SecondaryColorLight},Dark={StaticResource SecondaryColorDark}}" />
                 </HorizontalStackLayout>
-
+                <HorizontalStackLayout>
+                    <Label Text="Unidades restantes: "
+                           Style="{StaticResource BodyLabelStyle}"/>
                 <Label x:Name="StockLabel"
-                       Text="{Binding Stock, StringFormat='Stock disponible: {0}'}"
+                       Text="{Binding Stock, StringFormat='{0}'}"
                        Style="{StaticResource BodyLabelStyle}">
                     <Label.Triggers>
                         <DataTrigger TargetType="Label"
                                      Binding="{Binding Stock}"
                                      Value="0">
-                            <Setter Property="Text" Value="Agotado" />
+                            <Setter Property="Text" Value="{helper:Translate Agotado}" />
                             <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource TertiaryColorLight},Dark={StaticResource TertiaryColorDark}}" />
                         </DataTrigger>
                     </Label.Triggers>
                 </Label>
+                </HorizontalStackLayout>
+                
 
-                <Label Text="Descripción"
+                <Label Text="{helper:Translate Descripcion}"
                        Style="{StaticResource SubtitleLabelStyle}" />
                 <Label Text="{Binding Descripcion}"
                        Style="{StaticResource BodyLabelStyle}"
@@ -87,15 +93,15 @@
                             FontSize="24" />
                 </HorizontalStackLayout>
 
-                <Button Text="Añadir al carrito"
-                Command="{Binding AgregarAlCarritoCommand}"
-                Style="{StaticResource PrimaryButtonStyle}"
-                Margin="0,5"/>
+                <Button Text="{helper:Translate BtnAnadirCarrito}"
+                        Command="{Binding AgregarAlCarritoCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Margin="0,5"/>
 
-                <!--<Button Text="Comprar ahora"
-                Command="{Binding ComprarAhoraCommand}"
-                Style="{StaticResource SecondaryButtonStyle}"
-                Margin="0,5"/>-->
+                <!--<Button Text="{helper:Translate ComprarAhora}"
+                        Command="{Binding ComprarAhoraCommand}"
+                        Style="{StaticResource SecondaryButtonStyle}"
+                        Margin="0,5"/>-->
             </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>

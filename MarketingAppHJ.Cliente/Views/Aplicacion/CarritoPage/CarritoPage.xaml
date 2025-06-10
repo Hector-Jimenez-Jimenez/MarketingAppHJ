@@ -4,12 +4,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dtos="clr-namespace:MarketingAppHJ.Aplicacion.Dtos;assembly=MarketingAppHJ.Aplicacion"
              Shell.NavBarIsVisible="False"
+             xmlns:helper="clr-namespace:MarketingAppHJ.Cliente.Helper"
              xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel"  
              x:DataType="vm:CarritoPageViewModel"
-             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight},Dark={StaticResource BackgroundColorDark}}" >  
-   
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight},Dark={StaticResource BackgroundColorDark}}" >
+
     <Grid RowDefinitions="Auto,Auto,*,Auto" Padding="0">
-      <!--1) Navegacion-->
+        <!--1) Navegacion-->
         <Border Style="{StaticResource CardBorderStyle}"
                 BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}">
             <Grid Grid.Row="0"
@@ -28,7 +29,7 @@
                              HorizontalOptions="Center"
                              Background="Transparent"
                              Clicked="OnGoToCatalogClicked"/>
-           
+
                 <ImageButton Grid.Column="2"
                              Source="ruedaajustes.png"
                              Background="Transparent"
@@ -37,78 +38,81 @@
         </Border>
         <!-- 2) Encabezado -->
         <Label Grid.Row="1" 
-               Text="Tu Carrito"
+               Text="{helper:Translate Carrito}"
                Style="{StaticResource TitleLabelStyle}"
-             HorizontalOptions="Center" />
+               HorizontalOptions="Center" />
         <!-- 3) Lista de ítems -->
         <CollectionView x:Name="Collecion"
                         Grid.Row="2"
                         ItemsSource="{Binding Items}"
                         SelectionMode="None"
                         Margin="0,10"
-                        EmptyView="Tu carrito está vacío.">
+                        EmptyView="{helper:Translate CarritoVacio}">
 
-        <CollectionView.ItemTemplate>
-            <DataTemplate x:DataType="dtos:CarritoItemDto">
-                <Border Style="{StaticResource CardBorderStyle}">
-                    <Grid ColumnDefinitions="20*,30*,30*,10*" Padding="0" Margin="0,0,0,0">
-                        <HorizontalStackLayout Grid.Column="0">
-                            <Image Source="{Binding ImagenUrl}"
-                                   Aspect="AspectFit"
-                                   WidthRequest="40"
-                                   HeightRequest="40" 
-                                   VerticalOptions="Center"
-                                   HorizontalOptions="Start"/>
-                            <Label Text="{Binding Cantidad, StringFormat='x{0}'}"
-                                   VerticalOptions="Center"
-                                   Style="{StaticResource SubtitleLabelStyle}"/>
-                        </HorizontalStackLayout>
-                        <VerticalStackLayout Grid.Column="1" Padding="10,0" HorizontalOptions="Center" VerticalOptions="Center">
-                             <Label Text="{Binding Nombre}"
-                                    Style="{StaticResource SubtitleLabelStyle}"/>
-                             <Label Text="{Binding Precio, StringFormat='PU: {0:C}'}"
-                                    Style="{StaticResource BodyLabelStyle}" />
-                        </VerticalStackLayout>
-                        <Label Grid.Column="2"
-                               Text="{Binding Total, StringFormat='{}{0:C}'}"
-                               Style="{StaticResource SubtitleLabelStyle}"
-                               HorizontalOptions="End"
-                               VerticalOptions="Center" />
-                        <ImageButton Grid.Column="3"
-                                     Source="papelera.png"
-                                     Background="Transparent"
-                                     HorizontalOptions="End"
-                                     VerticalOptions="Center"
-                                     Clicked="OnRemoveClicked"
-                                     CommandParameter="{Binding ProductoId}"/>
-                    </Grid>
-                </Border>
-            </DataTemplate>
-          </CollectionView.ItemTemplate>
-      </CollectionView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="dtos:CarritoItemDto">
+                    <Border Style="{StaticResource CardBorderStyle}">
+                        <Grid ColumnDefinitions="20*,30*,30*,10*" Padding="0" Margin="0,0,0,0">
+                            <HorizontalStackLayout Grid.Column="0">
+                                <Image Source="{Binding ImagenUrl}"
+                                       Aspect="AspectFit"
+                                       WidthRequest="40"
+                                       HeightRequest="40" 
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Start"/>
+                                <Label Text="{Binding Cantidad, StringFormat='x{0}'}"
+                                       VerticalOptions="Center"
+                                       Style="{StaticResource SubtitleLabelStyle}"/>
+                            </HorizontalStackLayout>
+                            <VerticalStackLayout Grid.Column="1" Padding="10,0" HorizontalOptions="Center" VerticalOptions="Center">
+                                <Label Text="{Binding Nombre}"
+                                       Style="{StaticResource SubtitleLabelStyle}"/>
+                                <Label Text="{Binding Precio, StringFormat='PU: {0} €'}" Style="{StaticResource BodyLabelStyle}" />
+                            </VerticalStackLayout>
+                            <Label Grid.Column="2"
+                                   Text="{Binding Total, StringFormat='{0}'}"
+                                   Style="{StaticResource SubtitleLabelStyle}"
+                                   HorizontalOptions="End"
+                                   VerticalOptions="Center" />
+                            <ImageButton Grid.Column="3"
+                                         Source="papelera.png"
+                                         Background="Transparent"
+                                         HorizontalOptions="End"
+                                         VerticalOptions="Center"
+                                         Clicked="OnRemoveClicked"
+                                         CommandParameter="{Binding ProductoId}"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
 
-      <!-- 4) Pie: total general + vaciar carrito + realizar pedido -->
-       <VerticalStackLayout Grid.Row="3" Spacing="12">
+        <!-- 4) Pie: total general + vaciar carrito + realizar pedido -->
+        <VerticalStackLayout Grid.Row="3" Spacing="12">
             <BoxView HeightRequest="1" 
                      Color="{AppThemeBinding Light={StaticResource BorderColorLight}, Dark={StaticResource BorderColorDark}}" />
             <Grid ColumnDefinitions="Auto,Auto" HorizontalOptions="End">
                 <Label Grid.Column="0"
-                       Text="Total:"
+                       Text="{helper:Translate Key=Total}"
                        Style="{StaticResource SubtitleLabelStyle}" />
                 <Label x:Name="Total"
                        Grid.Column="1"
-                       Text="{Binding TotalPrice, StringFormat='{}{0:C}'}"
+                       Text="{Binding TotalPrice, StringFormat='{0}€'}"
                        Style="{StaticResource SubtitleLabelStyle}"
                        Margin="10,0,0,0" />
             </Grid>
-            <Button Text="Vaciar carrito"
+            <Button Text="{helper:Translate BtnVaciarCarrito}"
                     Clicked="OnClearClicked"
                     Margin="5,10,5,0"
                     Style="{StaticResource SecondaryButtonStyle}"/>
-            <Button Text="Realizar pedido"
+            <Button Text="{helper:Translate BtnRealizarPedido}"
                     Clicked="OnCheckoutClicked"
                     Style="{StaticResource PrimaryButtonStyle}"
-                    Margin="5,0,5,20"/>
-       </VerticalStackLayout>
+                    Margin="5,0,5,0"/>
+            <Button Text="{helper:Translate BtnVolver}"
+                    Clicked="OnBackClicked"
+                    Style="{StaticResource TertiaryButtonStyle}"
+                    Margin="5,0,5,10" />
+        </VerticalStackLayout>
     </Grid>
 </ContentPage>

@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.ProfilePage.ProfilePage"
-             xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel"
-             Shell.NavBarIsVisible="True"
-             x:DataType="vm:ProfilePageViewModel"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+             xmlns:helper="clr-namespace:MarketingAppHJ.Cliente.Helper"  
+             xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel"  
+             x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.ProfilePage.ProfilePage"  
+             x:DataType="vm:ProfilePageViewModel"  
+             Shell.NavBarIsVisible="True"  
              BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
+
     <ScrollView>
         <VerticalStackLayout Spacing="24" Padding="20">
 
-            <!--Foto de perfil-->
+            <!-- Foto de perfil -->
             <Grid HorizontalOptions="Center">
                 <Border WidthRequest="120"
                         HeightRequest="120"
@@ -17,68 +19,66 @@
                         StrokeShape="Ellipse"
                         BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}">
                     <Grid>
-                        <Image  Source="{Binding FotoPerfil}"
-                                Aspect="AspectFit"/>
+                        <Image Source="{Binding FotoPerfil}" Aspect="AspectFit" />
                         <Label Text="{Binding Iniciales}"
                                Style="{StaticResource TitleLabelStyle}"
                                HorizontalOptions="Center"
-                               VerticalOptions="Center"/>
+                               VerticalOptions="Center" />
                     </Grid>
                 </Border>
             </Grid>
+
             <Label Text="{Binding Username}"
                    Style="{StaticResource TitleLabelStyle}"
-                   HorizontalOptions="Center"/>
+                   HorizontalOptions="Center" />
+
             <!-- Nombre y apellidos -->
-            <Label Text="Nombre"
-                   Style="{StaticResource SubtitleLabelStyle}"/>
+            <Label Text="{helper:Translate Nombre}"
+                   Style="{StaticResource SubtitleLabelStyle}" />
             <HorizontalStackLayout Spacing="4" VerticalOptions="Center">
-                <Label Text="{Binding Nombre}"
-                       Style="{StaticResource BodyLabelStyle}" />
-                <Label Text="{Binding Apellido}"
-                       Style="{StaticResource BodyLabelStyle}"
-                       TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight},Dark={StaticResource TextPrimaryColorDark}}"
-                       HorizontalOptions="Center" />
+                <Label Text="{Binding Nombre}" Style="{StaticResource BodyLabelStyle}" />
+                <Label Text="{Binding Apellido}" Style="{StaticResource BodyLabelStyle}" />
             </HorizontalStackLayout>
-            
 
             <!-- Email -->
-            <Label Text="Email"
-                   Style="{StaticResource SubtitleLabelStyle}"/>
+            <Label Text="{helper:Translate CorreoElectronico}"
+                   Style="{StaticResource SubtitleLabelStyle}" />
             <Label Text="{Binding Email}"
                    Style="{StaticResource BodyLabelStyle}"
                    HorizontalOptions="Start" />
 
-            <!--Direccion envio -->
-            <Label Text="Dirección de envío"
+            <!-- Dirección de envío -->
+            <Label Text="{helper:Translate Direccion}"
                    Style="{StaticResource SubtitleLabelStyle}" />
             <Label Text="{Binding Direccion}"
                    Style="{StaticResource BodyLabelStyle}">
-            <Label.Triggers>
+                <Label.Triggers>
                     <DataTrigger TargetType="Label"
                                  Binding="{Binding Direccion}"
                                  Value="">
-                        <Setter Property="Text" Value="No definida" />
+                        <Setter Property="Text" Value="{helper:Translate NoDefinida}" />
                         <Setter Property="TextColor" Value="{DynamicResource Tertiary}" />
                     </DataTrigger>
                 </Label.Triggers>
             </Label>
 
             <!-- Teléfono -->
-            <Label Text="Teléfono"
-                   Style="{StaticResource SubtitleLabelStyle}"/>
+            <Label Text="{helper:Translate Telefono}"
+                   Style="{StaticResource SubtitleLabelStyle}" />
             <Label Text="{Binding Telefono}"
                    Style="{StaticResource BodyLabelStyle}"
                    HorizontalOptions="Start" />
-            <!-- Botones de Ver Pediodos y Editar Perfil -->
+
+            <!-- Botones -->
             <VerticalStackLayout Spacing="12">
-                <Button Text="Mis Pedidos"
+                <Button Text="{helper:Translate BtnMisPedidos}"
                         Command="{Binding VerPedidosCommand}"
                         Style="{StaticResource PrimaryButtonStyle}" />
-                <Button Text="Editar Datos"
+                <Button Text="{helper:Translate CambiarDatos}"
                         Command="{Binding CambiarDatosCommand}"
                         Style="{StaticResource SecondaryButtonStyle}" />
             </VerticalStackLayout>
+
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

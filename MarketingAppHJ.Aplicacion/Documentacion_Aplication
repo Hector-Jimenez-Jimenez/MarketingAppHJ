@@ -315,6 +315,17 @@
             Obtiene la instancia del cliente de Firebase.  
             </summary>  
         </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.Idiomas.IIdiomaService">
+            <summary>  
+            Proporciona métodos para gestionar el idioma de la aplicación.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.Idiomas.IIdiomaService.CambiarIdioma(System.String)">
+            <summary>  
+            Cambia el idioma de la aplicación.  
+            </summary>  
+            <param name="idioma">El código del idioma al que se desea cambiar.</param>  
+        </member>
         <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.AgregarProductoAlCarrito.IAgregarProductoAlCarrito">
             <summary>
             Define un caso de uso para agregar un producto al carrito de compras de un usuario.

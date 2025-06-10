@@ -39,7 +39,6 @@ using MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.ResetPageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel;
-using MarketingAppHJ.Cliente.Views.Aplicacion;
 using MarketingAppHJ.Cliente.Views.Aplicacion.CambioDatosPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.CarritoPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.CheckOutPage;
@@ -132,8 +131,9 @@ namespace MarketingAppHJ.Cliente
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
-            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("es-ES");
-            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("es-ES");
+            var idiomaGuardado = Preferences.Get("Idioma", "es");
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo(idiomaGuardado);
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo(idiomaGuardado);
             return builder.Build();
         }
 

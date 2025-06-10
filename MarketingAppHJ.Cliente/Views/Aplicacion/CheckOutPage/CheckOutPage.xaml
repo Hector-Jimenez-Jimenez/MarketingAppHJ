@@ -3,6 +3,7 @@
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
              xmlns:dto="clr-namespace:MarketingAppHJ.Aplicacion.Dtos;assembly=MarketingAppHJ.Aplicacion"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+             xmlns:helper="clr-namespace:MarketingAppHJ.Cliente.Helper"
              x:DataType="vm:CheckOutPageViewModel"
              xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel"
              BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
@@ -12,42 +13,43 @@
             <Border Style="{StaticResource CardBorderStyle}"
                     BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}">
                 <Grid Grid.Row="0" 
-                  HeightRequest="40"
-                  Padding="10"
-                  ColumnDefinitions="Auto,*,Auto">
+                      HeightRequest="40"
+                      Padding="10"
+                      ColumnDefinitions="Auto,*,Auto">
 
-                <ImageButton Grid.Column="0"
-                             Source="iconousuario.png"
-                             Background="Transparent"
-                             HorizontalOptions="End"
-                             Clicked="OnProfileClicked"/>
+                    <ImageButton Grid.Column="0"
+                                 Source="iconousuario.png"
+                                 Background="Transparent"
+                                 HorizontalOptions="End"
+                                 Clicked="OnProfileClicked"/>
 
-                <ImageButton Grid.Column="1"
-                             Source="home.png"
-                             HorizontalOptions="Center"
-                             Background="Transparent"
-                             Clicked="OnLogoClicked"/>
+                    <ImageButton Grid.Column="1"
+                                 Source="home.png"
+                                 HorizontalOptions="Center"
+                                 Background="Transparent"
+                                 Clicked="OnLogoClicked"/>
 
-                <ImageButton Grid.Column="2"
-                             Source="ruedaajustes.png"
-                             HorizontalOptions="End"
-                             Background="Transparent"
-                             Clicked="SettingsClicked"/>
-            </Grid>
+                    <ImageButton Grid.Column="2"
+                                 Source="ruedaajustes.png"
+                                 HorizontalOptions="End"
+                                 Background="Transparent"
+                                 Clicked="SettingsClicked"/>
+                </Grid>
             </Border>
+
             <!-- Título -->
-            <Label Text="Resumen de tu pedido"
+            <Label Text="{helper:Translate ResumenPedido}"
                    Padding="20"
                    HorizontalOptions="Center"
                    Style="{StaticResource TitleLabelStyle}" />
         </VerticalStackLayout>
-        
+
         <!-- Lista de ítems -->
         <CollectionView ItemsSource="{Binding Items}"
                         Grid.Row="1"
                         SelectionMode="None"
                         BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}"
-                        EmptyView="No hay artículos en el pedido.">
+                        EmptyView="{helper:Translate PedidoSinArticulos}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="dto:CarritoItemDto">
                     <Grid ColumnDefinitions="25*,25*,25*,25*">
@@ -61,37 +63,40 @@
                                    Text="{Binding Cantidad, StringFormat='x{0}'}"
                                    Style="{StaticResource BodyLabelStyle}" />
                         </HorizontalStackLayout>
+
                         <Label Grid.Column="1"
                                VerticalOptions="Center"
                                HorizontalOptions="Start"
-                               Text="{Binding Nombre, StringFormat='{0}'}"
+                               Text="{Binding Nombre}"
                                Style="{StaticResource BodyLabelStyle}" />
 
                         <Label Grid.Column="2"
-                                   VerticalOptions="Center"
-                                   HorizontalOptions="Center"
-                                   Text="{Binding Precio, StringFormat='{}{0:C}'}"
-                                   Style="{StaticResource BodyLabelStyle}" />
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Text="{Binding Precio, StringFormat='{0}€'}"
+                               Style="{StaticResource BodyLabelStyle}" />
+
                         <Label Grid.Column="3"
-                                   VerticalOptions="Center"
-                                   HorizontalOptions="Center"
-                                   Text="{Binding Total, StringFormat='{}{0:C}'}"
-                                   Style="{StaticResource BodyLabelStyle}" />
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Text="{Binding Total, StringFormat='{0}€'}"
+                               Style="{StaticResource BodyLabelStyle}" />
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-         
+
         <VerticalStackLayout Grid.Row="2">
             <!-- Total general -->
-            <Label Text="{Binding Total, StringFormat='Total: {0:C}'}"
-                   Padding="20"
-                   Style="{StaticResource SubtitleLabelStyle}"
-                   HorizontalOptions="Center" />
-
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Label Text="{helper:Translate Total}"
+                       Style="{StaticResource SubtitleLabelStyle}" 
+                       VerticalOptions="Center"/>
+                <Label Text="{Binding Total, StringFormat=':  {0}€'}"
+                       Style="{StaticResource SubtitleLabelStyle}"/>
+            </HorizontalStackLayout>
             <!-- Dirección de envío -->
-            <Label Text="Dirección de envío"
-                   Margin="10"
+            <Label Text="{helper:Translate DireccionEnvio}"
                    Style="{StaticResource SubtitleLabelStyle}" />
             <Entry Text="{Binding NuevaDireccionEnvio}"
                    Placeholder="{Binding DireccionEnvioAntigua}"
@@ -99,7 +104,7 @@
                    TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}"/>
 
             <!-- Método de pago -->
-            <Label Text="Método de pago"
+            <Label Text="{helper:Translate MetodoPago}"
                    Style="{StaticResource SubtitleLabelStyle}" />
             <Picker SelectedItem="{Binding MetodoPago}"
                     BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceColorLight}, Dark={StaticResource SurfaceColorDark}}"
@@ -107,19 +112,19 @@
                 <Picker.Items>
                     <x:String>Tarjeta</x:String>
                     <x:String>PayPal</x:String>
-                    <x:String>Contra Reembolso</x:String>
+                    <x:String>ContraReembolso</x:String>
                 </Picker.Items>
             </Picker>
         </VerticalStackLayout>
 
         <VerticalStackLayout Grid.Row="3">
             <!-- Botón de confirmación -->
-            <Button Text="Confirmar Pedido"
+            <Button Text="{helper:Translate BtnConfirmarPedido}"
                     Command="{Binding RealizarPedidoCommand}"
                     Style="{StaticResource PrimaryButtonStyle}"
                     Margin="5,10,5,5"/>
             <!-- Botón de volver -->
-            <Button Text="Volver"
+            <Button Text="{helper:Translate BtnVolver}"
                     Command="{Binding VolverCommand}"
                     Style="{StaticResource SecondaryButtonStyle}"
                     Margin="5,0,5,10"/>

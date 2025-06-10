@@ -9,18 +9,16 @@
             Representa la clase principal de la aplicación.
             </summary>
         </member>
-        <member name="M:MarketingAppHJ.Cliente.App.#ctor(MarketingAppHJ.Cliente.AppShell)">
+        <member name="M:MarketingAppHJ.Cliente.App.#ctor">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Cliente.App"/>.
             </summary>
-            <param name="shell">El contenedor principal de la aplicación.</param>
         </member>
         <member name="M:MarketingAppHJ.Cliente.App.CreateWindow(Microsoft.Maui.IActivationState)">
             <summary>
-            Crea una nueva ventana para la aplicación.
+            Crea la ventana principal de la aplicación.
             </summary>
-            <param name="activationState">El estado de activación de la aplicación.</param>
-            <returns>Una nueva instancia de <see cref="T:Microsoft.Maui.Controls.Window"/>.</returns>
+            <returns>La ventana principal.</returns>
         </member>
         <member name="T:MarketingAppHJ.Cliente.AppShell">
             <summary>
@@ -31,6 +29,23 @@
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Cliente.AppShell"/>.
             </summary>
+        </member>
+        <member name="T:MarketingAppHJ.Cliente.Helper.LanguageHelper">
+            <summary>  
+            Proporciona métodos para la traducción de cadenas utilizando recursos.  
+            </summary>  
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.Helper.LanguageHelper.ResourceManager">
+            <summary>  
+            Administrador de recursos para acceder a las cadenas de recursos.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.Helper.LanguageHelper.Traducir(System.String)">
+            <summary>  
+            Traduce una clave de recurso al idioma actual de la interfaz de usuario.  
+            </summary>  
+            <param name="clave">La clave de recurso que se desea traducir.</param>  
+            <returns>La cadena traducida si se encuentra; de lo contrario, devuelve la clave original.</returns>  
         </member>
         <member name="M:MarketingAppHJ.Cliente.Helper.PerformanceHelper.AplicarTemaPersistido">
             <summary>
@@ -56,6 +71,40 @@
             <summary>
             Configuraciones de rendimiento globales.
             </summary>
+        </member>
+        <member name="T:MarketingAppHJ.Cliente.Helper.TranslateExtension">
+            <summary>  
+            Proporciona una extensión de marcado para traducir claves de recursos a cadenas localizadas.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.Helper.TranslateExtension.Key">
+            <summary>  
+            Obtiene o establece la clave del recurso que se traducirá.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.Helper.TranslateExtension.ProvideValue(System.IServiceProvider)">
+            <summary>  
+            Proporciona el valor de la extensión de marcado.  
+            </summary>  
+            <param name="serviceProvider">Proveedor de servicios.</param>  
+            <returns>Un objeto BindingBase configurado para la traducción.</returns>  
+        </member>
+        <member name="T:MarketingAppHJ.Cliente.Helper.TranslateExtension.ResxLocalizationProvider">
+            <summary>  
+            Proveedor de localización basado en recursos Resx.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.Helper.TranslateExtension.ResxLocalizationProvider.Item(System.String)">
+            <summary>  
+            Obtiene el valor de cadena localizado para la clave especificada.  
+            </summary>  
+            <param name="key">Clave de recurso.</param>  
+            <returns>Cadena localizada o una cadena vacía si no se encuentra.</returns>  
+        </member>
+        <member name="E:MarketingAppHJ.Cliente.Helper.TranslateExtension.ResxLocalizationProvider.PropertyChanged">
+            <summary>  
+            Evento que se dispara cuando una propiedad cambia.  
+            </summary>  
         </member>
         <member name="T:MarketingAppHJ.Cliente.MauiProgram">
             <summary>

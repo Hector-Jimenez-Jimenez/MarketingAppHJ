@@ -2,20 +2,21 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.ResetPageViewModel"
+             xmlns:helper="clr-namespace:MarketingAppHJ.Cliente.Helper"
+             Shell.NavBarIsVisible="True"
              x:DataType="vm:ResetPageViewModel"
-             x:Class="MarketingAppHJ.Cliente.Views.Login.ResetPage.ResetPage"
-             Title="ResetPage">
+             x:Class="MarketingAppHJ.Cliente.Views.Login.ResetPage.ResetPage">
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="24">
 
             <!-- Título -->
-            <Label Text="Recuperar Contraseña"
+            <Label Text="{helper:Translate RecuperacionContraseña}"
                    Style="{StaticResource TitleLabelStyle}"
                    HorizontalOptions="Center" />
 
             <!-- Correo para recuperar -->
             <VerticalStackLayout Spacing="8">
-                <Label Text="Ingresa tu correo"
+                <Label Text="{helper:Translate CorreoElectronico}"
                        Style="{StaticResource SubtitleLabelStyle}" />
                 <Border Style="{StaticResource RoundedEntryContainerStyle}">
                     <Entry Placeholder="usuario@ejemplo.com"
@@ -29,17 +30,17 @@
             </VerticalStackLayout>
 
             <!-- Botón Enviar enlace -->
-            <Button Text="Enviar enlace de recuperación"
+            <Button Text="{helper:Translate EnlaceRecuperacion}"
                     Command="{Binding ResetPasswordCommand}"
                     Style="{StaticResource PrimaryButtonStyle}" />
 
             <!-- Enlace para volver a Login -->
             <HorizontalStackLayout HorizontalOptions="Center">
-                <Label Text="¿Recuerdas tu contraseña?"
+                <Label Text="{helper:Translate RecuerdoContraseña}"
                        Style="{StaticResource BodyLabelStyle}" 
                        VerticalOptions="Center"/>
 
-                <Button Text="Iniciar Sesión"
+                <Button Text="{helper:Translate IniciarSesion}"
                         VerticalOptions="Center"
                         Command="{Binding CancelCommand}"
                         BackgroundColor="Transparent"

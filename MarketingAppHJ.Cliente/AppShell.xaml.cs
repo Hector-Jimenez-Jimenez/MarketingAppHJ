@@ -34,6 +34,7 @@ namespace MarketingAppHJ.Cliente
             Routing.RegisterRoute("changedata", typeof(CambioDatosPage));
             Routing.RegisterRoute("pedidos", typeof(PedidosPage));
             Routing.RegisterRoute("ajustes", typeof(SettingsPage));
+            Routing.RegisterRoute("shell", typeof(AppShell));
         }
     }
 }

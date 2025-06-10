@@ -4,35 +4,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
              xmlns:dtos="clr-namespace:MarketingAppHJ.Aplicacion.Dtos;assembly=MarketingAppHJ.Aplicacion"
              xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.MainPageViewModel"  
+             xmlns:helper="clr-namespace:MarketingAppHJ.Cliente.Helper"
              Shell.NavBarIsVisible="False"
              x:DataType="vm:MainPageViewModel"
-             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">  
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
 
     <Grid RowDefinitions="Auto,Auto,*" Padding="0">
         <!-- 1.1) Header con los Iconos-->
         <Border Style="{StaticResource CardBorderStyle}"
                 BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}">
             <Grid Grid.Row="0" 
-              HeightRequest="40"
-              Padding="10"
-              ColumnDefinitions="Auto,*,Auto">
+                  HeightRequest="40"
+                  Padding="10"
+                  ColumnDefinitions="Auto,*,Auto">
 
-            <ImageButton Grid.Column="0"
-                         Source="iconousuario.png"
-                         Background="Transparent"
-                         Clicked="OnAvatarClicked"/>
+                <ImageButton Grid.Column="0"
+                             Source="iconousuario.png"
+                             Background="Transparent"
+                             Clicked="OnAvatarClicked"/>
 
-            <ImageButton Grid.Column="1"
-                         Source="home.png"
-                         Background="Transparent"
-                         HorizontalOptions="Center"
-                         Clicked="OnLogoClicked"/>
+                <ImageButton Grid.Column="1"
+                             Source="home.png"
+                             Background="Transparent"
+                             HorizontalOptions="Center"
+                             Clicked="OnLogoClicked"/>
 
-            <ImageButton Grid.Column="2"
-                         Source="ruedaajustes.png"
-                         Background="Transparent"
-                         Clicked="OnSettingsClicked"/>
-        </Grid>
+                <ImageButton Grid.Column="2"
+                             Source="ruedaajustes.png"
+                             Background="Transparent"
+                             Clicked="OnSettingsClicked"/>
+            </Grid>
         </Border>
 
         <!-- 1.2) Barra de búsqueda -->
@@ -50,7 +51,7 @@
                        Opacity="0.6"/>
 
                 <Entry Grid.Column="1"
-                       Placeholder="Busca lo que necesites"
+                       Placeholder="{helper:Translate PlaceholderBusqueda}"
                        Margin="0,0,10,0"
                        BackgroundColor="Transparent"
                        VerticalOptions="Center"
@@ -94,7 +95,7 @@
 
                                 <!-- 4) Precio -->
                                 <Label Grid.Row="3"
-                                       Text="{Binding Precio, StringFormat='Precio: {0:C}'}"
+                                       Text="{Binding Precio, StringFormat='{0} €'}"
                                        Style="{StaticResource SubtitleLabelStyle}"
                                        FontSize="16"/>
                             </Grid>
@@ -110,14 +111,13 @@
             </CollectionView>
 
             <!-- Botón flotante en la parte inferior derecha -->
-            <Button Text="Accede a tu carrito"
+            <Button Text="{helper:Translate Carrito}"
                     ImageSource="carritocompra.png"
                     Style="{StaticResource PrimaryButtonStyle}"
                     Clicked="OnCartClicked"
                     HorizontalOptions="Center"
                     VerticalOptions="End"
-                    Margin="20"
-                    />
+                    Margin="20"/>
         </Grid>
     </Grid>
 </ContentPage>

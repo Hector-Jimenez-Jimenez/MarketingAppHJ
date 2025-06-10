@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:DataType="vm:RegisterPageViewModel"
+             xmlns:helper="clr-namespace:MarketingAppHJ.Cliente.Helper"
              xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel"
+             Shell.NavBarIsVisible="True"
              x:Class="MarketingAppHJ.Cliente.Views.Login.RegisterPage.RegisterPage" >
 
     <ScrollView>
@@ -15,10 +17,10 @@
 
             <!-- Nombre de usuario -->
             <VerticalStackLayout Spacing="8">
-                <Label Text="Nombre"
+                <Label Text="{helper:Translate Nombre}"
                        Style="{StaticResource SubtitleLabelStyle}" />
                 <Border Style="{StaticResource RoundedEntryContainerStyle}">
-                <Entry Placeholder="Tu nombre"
+                <Entry Placeholder="{helper:Translate Nombre}"
                        Text="{Binding Nombre}"
                        BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceColorLight}, Dark={StaticResource SurfaceColorDark}}"
                        TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}"
@@ -29,10 +31,10 @@
             
             <!--Apellidos del usuario -->
             <VerticalStackLayout Spacing="8">
-                <Label Text="Apelldios"
+                <Label Text="{helper:Translate Apellidos}"
                        Style="{StaticResource SubtitleLabelStyle}" />
                 <Border Style="{StaticResource RoundedEntryContainerStyle}">
-                    <Entry Placeholder="Tus Apellidos"
+                    <Entry Placeholder="{helper:Translate Apellidos}"
                        Text="{Binding Apellidos}"
                        BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceColorLight}, Dark={StaticResource SurfaceColorDark}}"
                        TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}"
@@ -43,7 +45,7 @@
             
             <!-- Correo -->
             <VerticalStackLayout Spacing="8">
-                <Label Text="Correo electrónico"
+                <Label Text="{helper:Translate CorreoElectronico}"
                        Style="{StaticResource SubtitleLabelStyle}" />
                 <Border Style="{StaticResource RoundedEntryContainerStyle}">
                 <Entry Placeholder="usuario@ejemplo.com"
@@ -58,7 +60,7 @@
             
             <!-- Teléfono -->
             <VerticalStackLayout Spacing="8">
-                <Label Text="Teléfono"
+                <Label Text="{helper:Translate Telefono}"
                        Style="{StaticResource SubtitleLabelStyle}" />
                 <Border Style="{StaticResource RoundedEntryContainerStyle}">
                     <Entry Placeholder="+34 645987123"
@@ -73,10 +75,10 @@
 
             <!-- Direccion -->
             <VerticalStackLayout Spacing="8">
-                <Label Text="Direccion"
+                <Label Text="{helper:Translate Direccion}"
                        Style="{StaticResource SubtitleLabelStyle}" />
                 <Border Style="{StaticResource RoundedEntryContainerStyle}">
-                    <Entry Placeholder="Calle Jose 12"
+                    <Entry Placeholder="{helper:Translate Direccion}"
                        Text="{Binding Direccion}"
                        Keyboard="Chat"
                        BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceColorLight}, Dark={StaticResource SurfaceColorDark}}"
@@ -88,7 +90,7 @@
             
             <!-- Contraseña -->
             <VerticalStackLayout Spacing="8">
-                <Label Text="Contraseña"
+                <Label Text="{helper:Translate Contraseña}"
                        Style="{StaticResource SubtitleLabelStyle}" />
                 <Border Style="{StaticResource RoundedEntryContainerStyle}">
                 <Entry Placeholder="••••••••"
@@ -103,7 +105,7 @@
 
             <!-- Confirmar Contraseña -->
             <VerticalStackLayout Spacing="8">
-                <Label Text="Confirmar contraseña"
+                <Label Text="{helper:Translate ReEscribirContraseña}"
                        Style="{StaticResource SubtitleLabelStyle}" />
                 <Border Style="{StaticResource RoundedEntryContainerStyle}">
                 <Entry Placeholder="••••••••"
@@ -117,17 +119,17 @@
             </VerticalStackLayout>
 
             <!-- Botón Registrar -->
-            <Button Text="Crear Cuenta"
+            <Button Text="{helper:Translate CrearCuenta}"
                     Command="{Binding RegisterCommand}"
                     Style="{StaticResource PrimaryButtonStyle}" />
 
             <!-- Enlace para volver a Login -->
             <HorizontalStackLayout HorizontalOptions="Center">
-                <Label Text="¿Ya tienes cuenta?"
+                <Label Text="{helper:Translate YaCuenta}"
                        VerticalOptions="Center"
                        Style="{StaticResource BodyLabelStyle}" />
 
-                <Button Text="Iniciar Sesión"
+                <Button Text="{helper:Translate BtnVolver}"
                         VerticalOptions="Center"
                         Command="{Binding CancelCommand}"
                         BackgroundColor="Transparent"

@@ -10,18 +10,16 @@ namespace MarketingAppHJ.Cliente
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="App"/>.
         /// </summary>
-        /// <param name="shell">El contenedor principal de la aplicación.</param>
-        public App(AppShell shell)
+        public App()
         {
             InitializeComponent();
         }
 
         /// <summary>
-        /// Crea una nueva ventana para la aplicación.
+        /// Crea la ventana principal de la aplicación.
         /// </summary>
-        /// <param name="activationState">El estado de activación de la aplicación.</param>
-        /// <returns>Una nueva instancia de <see cref="Window"/>.</returns>
-        protected override Window CreateWindow(IActivationState? activationState)
+        /// <returns>La ventana principal.</returns>
+        protected override Window CreateWindow(IActivationState activationState)
         {
             return new Window(new AppShell());
         }

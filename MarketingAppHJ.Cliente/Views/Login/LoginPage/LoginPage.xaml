@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:MarketingAppHJ.Cliente.Helper"
              x:DataType="vm:LoginPageViewModel"
              x:Class="MarketingAppHJ.Cliente.Views.Login.LoginPage.LoginPage"
              xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel">
@@ -10,13 +11,13 @@
         <VerticalStackLayout Padding="20" Spacing="24">
 
             <!-- 1) Título principal -->
-            <Label Text="Bienvenido"
+            <Label Text="{helpers:Translate Bienvenida}"
                    Style="{StaticResource TitleLabelStyle}"
                    HorizontalOptions="Center" />
 
             <!-- 2) Campo de correo -->
             <VerticalStackLayout Spacing="8">
-                <Label Text="Correo electrónico"
+                <Label Text="{helpers:Translate CorreoElectronico}"
                         Style="{StaticResource SubtitleLabelStyle}" />
                 <Border Style="{StaticResource RoundedEntryContainerStyle}">
                     <Entry Placeholder="usuario@ejemplo.com"
@@ -31,7 +32,7 @@
 
             <!-- 3) Campo de contraseña -->
             <VerticalStackLayout Spacing="8">
-                <Label Text="Contraseña"
+                <Label Text="{helpers:Translate Contraseña}"
                        Style="{StaticResource SubtitleLabelStyle}" />
                 <Border Style="{StaticResource RoundedEntryContainerStyle}">
                     <Entry Placeholder="••••••••"
@@ -45,17 +46,17 @@
             </VerticalStackLayout>
 
             <!-- 4) Botón Iniciar sesión -->
-            <Button Text="Iniciar Sesión"
+            <Button Text="{helpers:Translate IniciarSesion}"
                     Command="{Binding LoginCommand}"
                     Style="{StaticResource PrimaryButtonStyle}" />
 
             <!-- 5) Enlaces para registrar o recuperar contraseña -->
             <HorizontalStackLayout HorizontalOptions="Center" Spacing="16">
-                <Label Text="¿No tienes cuenta?"
+                <Label Text="{helpers:Translate NoCuenta}"
                        Style="{StaticResource BodyLabelStyle}" 
                        VerticalOptions="Center"/>
 
-                <Button Text="Regístrate"
+                <Button Text="{helpers:Translate Registrate}"
                         VerticalOptions="Center"
                         Command="{Binding NavigateToRegisterPageCommand}"
                         BackgroundColor="Transparent"
@@ -64,7 +65,7 @@
             </HorizontalStackLayout>
 
             <HorizontalStackLayout HorizontalOptions="Center">
-                <Button Text="Recuperar contraseña"
+                <Button Text="{helpers:Translate RecuperaContraseña}"
                         Command="{Binding ResetPasswordCommand}"
                         BackgroundColor="Transparent"
                         TextColor="{AppThemeBinding Light={StaticResource SecondaryColorLight}, Dark={StaticResource SecondaryColorDark}}"

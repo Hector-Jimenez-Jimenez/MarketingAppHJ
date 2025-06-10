@@ -3,97 +3,98 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
              x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.CambioDatosPage.CambioDatosPage"  
              xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel"  
+             xmlns:helper="clr-namespace:MarketingAppHJ.Cliente.Helper"
              x:DataType="vm:CambioDatosPageViewModel"
              BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}"  
-             Shell.NavBarIsVisible="True">  
+             Shell.NavBarIsVisible="True">
 
-  <ScrollView>  
-      <VerticalStackLayout Padding="20" Spacing="16">  
-          <!-- 1) Avatar -->  
-          <HorizontalStackLayout HorizontalOptions="Center">  
-              <Border WidthRequest="100"  
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+            <!-- 1) Avatar -->
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Border WidthRequest="100"  
                       HeightRequest="100"  
                       Stroke="{AppThemeBinding Light={StaticResource BorderColorLight}, Dark={StaticResource BorderColorDark}}"  
                       StrokeThickness="2"  
                       StrokeShape="RoundRectangle 50"  
-                      BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">  
-                  <Image Source="{Binding ImagenOriginal}"  
+                      BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
+                    <Image Source="{Binding ImagenOriginal}"  
                          Aspect="AspectFit"  
                          HorizontalOptions="Center"  
-                         VerticalOptions="Center" />  
-              </Border>  
-          </HorizontalStackLayout>  
+                         VerticalOptions="Center" />
+                </Border>
+            </HorizontalStackLayout>
 
-          <!-- 2) Nombre -->  
-          <Label Text="Nombre"  
-                 Style="{StaticResource SubtitleLabelStyle}" />  
-          <Entry Text="{Binding NuevoNombre, Mode=TwoWay}"  
-                 Placeholder="{Binding NombreOriginal}"  />  
+            <!-- 2) Nombre -->
+            <Label Text="{helper:Translate Nombre}"  
+                 Style="{StaticResource SubtitleLabelStyle}" />
+            <Entry Text="{Binding NuevoNombre, Mode=TwoWay}"  
+                 Placeholder="{Binding NombreOriginal}"  />
 
-          <!-- 3) Apellidos -->  
-          <Label Text="Apellidos"  
-                 Style="{StaticResource SubtitleLabelStyle}" />  
-          <Entry Text="{Binding NuevosApellidos, Mode=TwoWay}"  
-                 Placeholder="{Binding ApelliodosOrignales}"  />  
+            <!-- 3) Apellidos -->
+            <Label Text="{helper:Translate Apellidos}"  
+                 Style="{StaticResource SubtitleLabelStyle}" />
+            <Entry Text="{Binding NuevosApellidos, Mode=TwoWay}"  
+                 Placeholder="{Binding ApelliodosOrignales}"  />
 
-          <!-- 4) Usuario -->  
-          <Label Text="Usuario"  
-                 Style="{StaticResource SubtitleLabelStyle}" />  
-          <Entry Text="{Binding NuevoUsername, Mode=TwoWay}"  
-                 Placeholder="{Binding UsernameOriginal}" />  
+            <!-- 4) Usuario -->
+            <Label Text="{helper:Translate Usuario}"  
+                 Style="{StaticResource SubtitleLabelStyle}" />
+            <Entry Text="{Binding NuevoUsername, Mode=TwoWay}"  
+                 Placeholder="{Binding UsernameOriginal}" />
 
-          <!-- 5) Correo electrónico -->  
-          <Label Text="Correo electrónico"  
-                 Style="{StaticResource SubtitleLabelStyle}" />  
-          <Entry Text="{Binding NuevoEmail, Mode=TwoWay}"  
+            <!-- 5) Correo electrónico -->
+            <Label Text="{helper:Translate CorreoElectronico}"  
+                 Style="{StaticResource SubtitleLabelStyle}" />
+            <Entry Text="{Binding NuevoEmail, Mode=TwoWay}"  
                  Placeholder="{Binding EmailOriginal}"  
-                 Keyboard="Email"  />  
+                 Keyboard="Email"  />
 
-          <!-- 6) Fecha de nacimiento -->  
-          <Label Text="Fecha de nacimiento"  
-                 Style="{StaticResource SubtitleLabelStyle}" />  
-          <Grid ColumnDefinitions="Auto,Auto">  
-              <DatePicker Date="{Binding NuevaFechaNacimiento, Mode=TwoWay}" 
+            <!-- 6) Fecha de nacimiento -->
+            <Label Text="{helper:Translate FechaNacimiento}"  
+                 Style="{StaticResource SubtitleLabelStyle}" />
+            <Grid ColumnDefinitions="Auto,Auto">
+                <DatePicker Date="{Binding NuevaFechaNacimiento, Mode=TwoWay}" 
                           BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight},Dark={StaticResource BackgroundColorDark}}"  
                           TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}"  
-                          Grid.Column="0" />  
-          </Grid>  
+                          Grid.Column="0" />
+            </Grid>
 
-          <!-- 7) Dirección -->  
-          <Label Text="Dirección"  
-                 Style="{StaticResource SubtitleLabelStyle}" />  
-          <Editor Text="{Binding NuevaDireccion, Mode=TwoWay}"  
-                  Placeholder="{Binding DireccionOriginal}"  
-                  AutoSize="TextChanges" />  
-
-          <!-- 8) Teléfono -->  
-          <Label Text="Teléfono"  
-                 Style="{StaticResource SubtitleLabelStyle}" />  
-          <Entry Text="{Binding NuevoTelefono, Mode=TwoWay}"  
-                 Placeholder="{Binding TelefonoOriginal}"  
-                 Keyboard="Telephone" />  
-
-          <!-- 9) Nueva Imagen -->  
-          <Label Text="URL de imagen (opcional)"  
+            <!-- 7) Dirección -->
+            <Label Text="{helper:Translate Direccion}"  
                  Style="{StaticResource SubtitleLabelStyle}" />
-            <Button Text="Seleccionar imagen"
-                    Style="{StaticResource SecondaryButtonStyle}"
-                    Command="{Binding SeleccionarYSubirImagenCommand}" />
+            <Editor Text="{Binding NuevaDireccion, Mode=TwoWay}"  
+                  Placeholder="{Binding DireccionOriginal}"  
+                  AutoSize="TextChanges" />
 
-            <!-- 10) Botones “Cancelar” y “Guardar” -->  
-          <Grid ColumnDefinitions="*,*" Padding="0,20,0,0" ColumnSpacing="5">  
-              <Button  
-                  Text="Cancelar"  
+            <!-- 8) Teléfono -->
+            <Label Text="{helper:Translate Telefono}"  
+                 Style="{StaticResource SubtitleLabelStyle}" />
+            <Entry Text="{Binding NuevoTelefono, Mode=TwoWay}"  
+                 Placeholder="{Binding TelefonoOriginal}"  
+                 Keyboard="Telephone" />
+
+            <!-- 9) Nueva Imagen -->
+            <Label Text="{helper:Translate URLImagen}"  
+                 Style="{StaticResource SubtitleLabelStyle}" />
+            <Button Text="{helper:Translate BtnSeleccionarImagen}"
+                  Style="{StaticResource SecondaryButtonStyle}"
+                  Command="{Binding SeleccionarYSubirImagenCommand}" />
+
+            <!-- 10) Botones “Cancelar” y “Guardar” -->
+            <Grid ColumnDefinitions="*,*" Padding="0,20,0,0" ColumnSpacing="5">
+                <Button  
+                  Text="{helper:Translate BtnCancelar}"  
                   Style="{StaticResource SecondaryButtonStyle}"  
                   Command="{Binding CancelarModificacionCommand}"  
-                  Grid.Column="0" />  
+                  Grid.Column="0" />
 
-              <Button  
-                  Text="Guardar"  
+                <Button  
+                  Text="{helper:Translate BtnGuardar}"  
                   Style="{StaticResource PrimaryButtonStyle}"  
                   Command="{Binding GuardarCambiosCommand}"  
-                  Grid.Column="1" />  
-          </Grid>  
-      </VerticalStackLayout>  
-  </ScrollView>  
+                  Grid.Column="1" />
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

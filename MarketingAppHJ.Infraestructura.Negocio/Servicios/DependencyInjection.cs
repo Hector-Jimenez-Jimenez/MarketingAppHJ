@@ -1,9 +1,11 @@
 ﻿using MarketingAppHJ.Aplicacion.Interfaces.Cloudinary;
 using MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication;
 using MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase;
+using MarketingAppHJ.Aplicacion.Interfaces.Idiomas;
 using MarketingAppHJ.Infraestructura.Negocio.Servicios.CloudinaryService;
 using MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication;
 using MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.RealtimeDatabase;
+using MarketingAppHJ.Infraestructura.Negocio.Servicios.LanguageService;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace TheMarketingApp.Infraestructura.Negocio.Servicios
@@ -22,6 +24,7 @@ namespace TheMarketingApp.Infraestructura.Negocio.Servicios
             services.AddScoped<IFirebaseAuthentication, FirebaseAuthentication>();
             services.AddScoped<IFirebaseRealtimeDatabase, FirebaseRealTimeDatabase>();
             services.AddScoped<ICloudinaryService, CloudinaryService>();
+            services.AddSingleton<IIdiomaService, LanguageService>();
         }
     }
 }
