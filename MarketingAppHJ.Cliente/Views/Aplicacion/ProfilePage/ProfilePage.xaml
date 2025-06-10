@@ -26,17 +26,19 @@
                     </Grid>
                 </Border>
             </Grid>
-
+            <Label Text="{Binding Username}"
+                   Style="{StaticResource TitleLabelStyle}"
+                   HorizontalOptions="Center"/>
             <!-- Nombre y apellidos -->
             <Label Text="Nombre"
                    Style="{StaticResource SubtitleLabelStyle}"/>
             <HorizontalStackLayout Spacing="4" VerticalOptions="Center">
                 <Label Text="{Binding Nombre}"
-                   Style="{StaticResource BodyLabelStyle}" />
+                       Style="{StaticResource BodyLabelStyle}" />
                 <Label Text="{Binding Apellido}"
-                   Style="{StaticResource BodyLabelStyle}"
-                       TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight},Dark={StaticResource TertiaryColorDark}}"
-                   HorizontalOptions="Center" />
+                       Style="{StaticResource BodyLabelStyle}"
+                       TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight},Dark={StaticResource TextPrimaryColorDark}}"
+                       HorizontalOptions="Center" />
             </HorizontalStackLayout>
             
 

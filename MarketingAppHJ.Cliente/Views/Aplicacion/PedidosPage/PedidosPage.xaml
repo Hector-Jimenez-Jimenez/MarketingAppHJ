@@ -5,8 +5,8 @@
     xmlns:dtos="clr-namespace:MarketingAppHJ.Aplicacion.Dtos;assembly=MarketingAppHJ.Aplicacion"
     xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel"
     x:DataType="vm:PedidosPageViewModel"
-    x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.PedidosPage.PedidosPage"
-    Title="Mis Pedidos">
+    Shell.NavBarIsVisible="True"
+    x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.PedidosPage.PedidosPage">
 
     <Grid RowDefinitions="Auto,*,Auto" Padding="20">
         <!-- 1) Título / Encabezado -->

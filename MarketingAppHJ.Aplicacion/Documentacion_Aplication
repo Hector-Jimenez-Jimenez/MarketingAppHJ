@@ -526,6 +526,18 @@
             <param name="userId">El identificador del usuario.</param>
             <returns>Una tarea que representa la operación asincrónica. El resultado contiene una colección de objetos PedidoDto.</returns>
         </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ActualizarProducto.IActualizarProducto">
+            <summary>
+            Define la funcionalidad para actualizar la información de un producto en el sistema.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ActualizarProducto.IActualizarProducto.ActualizarProductoAsync(MarketingAppHJ.Aplicacion.Dtos.ProductoDto)">
+            <summary>
+            Actualiza la información de un producto en el sistema.
+            </summary>
+            <param name="producto">Objeto DTO que contiene los datos del producto a actualizar. <see cref="T:MarketingAppHJ.Aplicacion.Dtos.ProductoDto"/></param>
+            <returns>Una tarea que representa la operación asincrónica.</returns>
+        </member>
         <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerNombreCategoria.IObtenerNombreCategoria">
             <summary>
             Interfaz para obtener el nombre de una categoría basada en su identificador.

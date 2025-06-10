@@ -306,6 +306,25 @@
             <param name="userId">El identificador del usuario.</param>
             <returns>Una tarea que representa la operación asincrónica. El resultado contiene una lista de <see cref="T:MarketingAppHJ.Aplicacion.Dtos.PedidoDto"/>.</returns>
         </member>
+        <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ActualizarProducto.ActualizarProducto">
+            <summary>
+            Clase que implementa la funcionalidad para actualizar un producto en la base de datos en tiempo real de Firebase.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ActualizarProducto.ActualizarProducto.#ctor(MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase.IFirebaseRealtimeDatabase)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ActualizarProducto.ActualizarProducto"/>.
+            </summary>
+            <param name="firebaseRealtimeDatabase">Instancia de la base de datos en tiempo real de Firebase.</param>
+            <exception cref="T:System.ArgumentNullException">Se lanza si <paramref name="firebaseRealtimeDatabase"/> es nulo.</exception>
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ActualizarProducto.ActualizarProducto.ActualizarProductoAsync(MarketingAppHJ.Aplicacion.Dtos.ProductoDto)">
+            <summary>
+            Actualiza un producto en la base de datos en tiempo real de Firebase.
+            </summary>
+            <param name="producto">El producto que se va a actualizar.</param>
+            <returns>Una tarea que representa la operación asincrónica.</returns>
+        </member>
         <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerNombreCategoria.ObtenerNombreCategoria">
             <summary>
             Clase que implementa la interfaz para obtener el nombre de una categoría desde Firebase.

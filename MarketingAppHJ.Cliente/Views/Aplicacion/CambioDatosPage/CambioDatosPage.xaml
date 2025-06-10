@@ -3,10 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
              x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.CambioDatosPage.CambioDatosPage"  
              xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel"  
-             x:DataType="vm:CambioDatosPageViewModel"  
+             x:DataType="vm:CambioDatosPageViewModel"
              BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}"  
-             Shell.NavBarIsVisible="True"  
-             Title="CambioDatosPage">  
+             Shell.NavBarIsVisible="True">  
 
   <ScrollView>  
       <VerticalStackLayout Padding="20" Spacing="16">  
@@ -29,30 +28,26 @@
           <Label Text="Nombre"  
                  Style="{StaticResource SubtitleLabelStyle}" />  
           <Entry Text="{Binding NuevoNombre, Mode=TwoWay}"  
-                 Placeholder="{Binding NombreOriginal}"  
-                 Style="{StaticResource EntryStyle}" />  
+                 Placeholder="{Binding NombreOriginal}"  />  
 
           <!-- 3) Apellidos -->  
           <Label Text="Apellidos"  
                  Style="{StaticResource SubtitleLabelStyle}" />  
           <Entry Text="{Binding NuevosApellidos, Mode=TwoWay}"  
-                 Placeholder="{Binding ApelliodosOrignales}"  
-                 Style="{StaticResource EntryStyle}" />  
+                 Placeholder="{Binding ApelliodosOrignales}"  />  
 
           <!-- 4) Usuario -->  
           <Label Text="Usuario"  
                  Style="{StaticResource SubtitleLabelStyle}" />  
           <Entry Text="{Binding NuevoUsername, Mode=TwoWay}"  
-                 Placeholder="{Binding UsernameOriginal}"  
-                 Style="{StaticResource EntryStyle}" />  
+                 Placeholder="{Binding UsernameOriginal}" />  
 
           <!-- 5) Correo electrónico -->  
           <Label Text="Correo electrónico"  
                  Style="{StaticResource SubtitleLabelStyle}" />  
           <Entry Text="{Binding NuevoEmail, Mode=TwoWay}"  
                  Placeholder="{Binding EmailOriginal}"  
-                 Keyboard="Email"  
-                 Style="{StaticResource EntryStyle}" />  
+                 Keyboard="Email"  />  
 
           <!-- 6) Fecha de nacimiento -->  
           <Label Text="Fecha de nacimiento"  
@@ -60,7 +55,7 @@
           <Grid ColumnDefinitions="Auto,Auto">  
               <DatePicker Date="{Binding NuevaFechaNacimiento, Mode=TwoWay}" 
                           BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight},Dark={StaticResource BackgroundColorDark}}"  
-                          TextColor="{StaticResource TextColor}"  
+                          TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}"  
                           Grid.Column="0" />  
           </Grid>  
 
@@ -69,7 +64,6 @@
                  Style="{StaticResource SubtitleLabelStyle}" />  
           <Editor Text="{Binding NuevaDireccion, Mode=TwoWay}"  
                   Placeholder="{Binding DireccionOriginal}"  
-                  Style="{StaticResource EntryStyle}"  
                   AutoSize="TextChanges" />  
 
           <!-- 8) Teléfono -->  
@@ -77,10 +71,9 @@
                  Style="{StaticResource SubtitleLabelStyle}" />  
           <Entry Text="{Binding NuevoTelefono, Mode=TwoWay}"  
                  Placeholder="{Binding TelefonoOriginal}"  
-                 Keyboard="Telephone"  
-                 Style="{StaticResource EntryStyle}" />  
+                 Keyboard="Telephone" />  
 
-          <!-- 9) URL de nueva imagen (opcional) -->  
+          <!-- 9) Nueva Imagen -->  
           <Label Text="URL de imagen (opcional)"  
                  Style="{StaticResource SubtitleLabelStyle}" />
             <Button Text="Seleccionar imagen"
@@ -88,7 +81,7 @@
                     Command="{Binding SeleccionarYSubirImagenCommand}" />
 
             <!-- 10) Botones “Cancelar” y “Guardar” -->  
-          <Grid ColumnDefinitions="*,*" Padding="0,20,0,0">  
+          <Grid ColumnDefinitions="*,*" Padding="0,20,0,0" ColumnSpacing="5">  
               <Button  
                   Text="Cancelar"  
                   Style="{StaticResource SecondaryButtonStyle}"  

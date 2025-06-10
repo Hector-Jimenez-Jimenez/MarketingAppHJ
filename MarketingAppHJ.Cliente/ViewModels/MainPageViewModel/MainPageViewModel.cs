@@ -102,7 +102,8 @@ namespace MarketingAppHJ.Cliente.ViewModels.MainPageViewModel
             var filtro = TextoBusqueda.Trim().ToLowerInvariant();
             var filtrados = _allProductos
                 .Where(p => !string.IsNullOrEmpty(p.Nombre)
-                            && p.Nombre.Trim().ToLowerInvariant().StartsWith(filtro))
+                            && p.Nombre.Trim().ToLowerInvariant().StartsWith(filtro)
+                            && p.Stock > 0) // Solo productos con stock > 0
                 .ToList();
 
             Productos = new ObservableCollection<ProductoDto>(filtrados);
@@ -120,6 +121,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.MainPageViewModel
             if (inicio >= _allProductos.Count) return;
 
             var pagina = _allProductos
+                .Where(p => p.Stock > 0) // Solo productos con stock > 0
                 .Skip(inicio)
                 .Take(PageSize)
                 .ToList();

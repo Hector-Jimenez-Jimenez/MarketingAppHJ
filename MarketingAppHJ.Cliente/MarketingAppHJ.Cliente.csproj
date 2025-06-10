@@ -61,6 +61,7 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-android|AnyCPU'">
 	  <IpaPackageName>TheMarketingApp</IpaPackageName>
+	  <AndroidEnableMultiDex>True</AndroidEnableMultiDex>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-maccatalyst|AnyCPU'">
@@ -73,6 +74,9 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-android|AnyCPU'">
 	  <IpaPackageName>TheMarketingApp</IpaPackageName>
+	  <AndroidEnableMultiDex>True</AndroidEnableMultiDex>
+	  <AndroidLinkTool>r8</AndroidLinkTool>
+	  <AndroidPackageFormat>apk</AndroidPackageFormat>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-maccatalyst|AnyCPU'">

@@ -21,6 +21,7 @@ using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Login.ResetConstraseña;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Pedidos.ObservarCambiosPedidos;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Pedidos.ObtenerPedidoPorId;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Pedidos.ObtenerPedidos;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ActualizarProducto;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerNombreCategoria;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerProductosPorId;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerTodosProductos;
@@ -66,6 +67,7 @@ using MarketingAppHJ.Infraestructura.Datos.Repositorios.Login.ResetearContrasena
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Pedidos.ObservarCambiosPedidos;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Pedidos.ObtenerPedidoPorId;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Pedidos.ObtenerPedidos;
+using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ActualizarProducto;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerNombreCategoria;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductoPorId;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductos;
@@ -175,6 +177,7 @@ namespace MarketingAppHJ.Cliente
             services.AddScoped<IGuardarImagenPefil, GuardadoImagenPerfil>();
             services.AddScoped<ICloudinaryService, CloudinaryService>();
             services.AddScoped<IObtenerPedidoPorId, ObtenerPedidoPorId>();
+            services.AddScoped<IActualizarProducto, ActualizarProducto>();
         }
 
         /// <summary>

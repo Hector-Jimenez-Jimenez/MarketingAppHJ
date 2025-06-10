@@ -34,6 +34,9 @@ namespace MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel
         [ObservableProperty]
         private string iniciales = string.Empty;
 
+        [ObservableProperty]
+        private string username = string.Empty;
+
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="ProfilePageViewModel"/>.
         /// </summary>
@@ -71,6 +74,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel
                     Direccion = usuario.Direccion;
                     Telefono = usuario.Telefono;
                     FotoPerfil = usuario.AvatarUrl;
+                    Username = usuario.Username;
                 }
                 if (string.IsNullOrEmpty(FotoPerfil))
                 {

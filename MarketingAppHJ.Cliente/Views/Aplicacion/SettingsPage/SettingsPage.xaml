@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel"
              x:DataType="vm:SettingsPageViewModel"
+             Shell.NavBarIsVisible="True"
              x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.SettingsPage.SettingsPage"
-             Title="SettingsPage">
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight},Dark={StaticResource BackgroundColorDark}}">
     <VerticalStackLayout Padding="20" Spacing="20">
 
         <!-- Encabezado -->
@@ -26,6 +27,17 @@
                 <x:String>Sistema</x:String>
                 <x:String>Claro</x:String>
                 <x:String>Oscuro</x:String>
+            </Picker.Items>
+        </Picker>
+
+        <!-- Cambiar idioma -->
+        <Label Text="Idioma de la Aplicación"
+               Style="{StaticResource SubtitleLabelStyle}" />
+        <Picker SelectedIndexChanged="OnIdiomaChanged"
+                SelectedIndex="{Binding IdiomaSeleccionadoIndex, Mode=TwoWay}">
+            <Picker.Items>
+                <x:String>Español</x:String>
+                <x:String>Inglés</x:String>
             </Picker.Items>
         </Picker>
 

@@ -32,6 +32,31 @@
             Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Cliente.AppShell"/>.
             </summary>
         </member>
+        <member name="M:MarketingAppHJ.Cliente.Helper.PerformanceHelper.AplicarTemaPersistido">
+            <summary>
+            Aplica el tema guardado al iniciar la aplicación.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.Helper.PerformanceHelper.GuardarTema(System.String)">
+            <summary>
+            Guarda la preferencia del tema del usuario.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.Helper.PerformanceHelper.GuardarIdioma(System.String)">
+            <summary>
+            Guarda y aplica el idioma preferido del usuario.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.Helper.PerformanceHelper.AplicarIdiomaPersistido">
+            <summary>
+            Aplica el idioma global de la aplicación.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.Helper.PerformanceHelper.ConfigurarOptimizaciónGlobal">
+            <summary>
+            Configuraciones de rendimiento globales.
+            </summary>
+        </member>
         <member name="T:MarketingAppHJ.Cliente.MauiProgram">
             <summary>
             Clase estática que configura y crea la aplicación Maui.
@@ -306,7 +331,7 @@
             <inheritdoc/>
             <inheritdoc/>
         </member>
-        <member name="M:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.#ctor(MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObtenerCarrito.IObtenerCarrito,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Checkout.CrearPedido.ICrearPedido,MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.IObtenerPerfilUsuario.IObtenerPerfilUsuario,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.ActualizarUsuario.IActualizarUsuario)">
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.#ctor(MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObtenerCarrito.IObtenerCarrito,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Checkout.CrearPedido.ICrearPedido,MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.IObtenerPerfilUsuario.IObtenerPerfilUsuario,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.ActualizarUsuario.IActualizarUsuario,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerProductosPorId.IObtenerProductoPorId,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ActualizarProducto.IActualizarProducto)">
             <summary>
             Constructor principal para inicializar las dependencias.
             </summary>
@@ -325,7 +350,7 @@
         </member>
         <member name="M:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.LoadCartAsync">
             <summary>
-            Carga los productos del carrito y el usuario
+            Carga los productos del carrito y el usuario, validando stock disponible.
             </summary>
             <returns>La carga terminada</returns>
         </member>
@@ -340,6 +365,12 @@
             Navega a la página anterior.
             </summary>
             <returns>Una tarea que representa la operación asincrónica de navegación.</returns>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.ActualizarStock">
+            <summary>
+            Actualiza el stock de los productos en la base de datos después de realizar un pedido.
+            Si el stock llega a 0, el producto seguirá existiendo en la BD pero no aparecerá en el catálogo.
+            </summary>
         </member>
         <member name="P:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.Items">
             <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.items"/>
@@ -652,6 +683,9 @@
         <member name="P:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.Iniciales">
             <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.iniciales"/>
         </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.Username">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.username"/>
+        </member>
         <member name="F:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.cargarPerfilCommand">
             <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.CargarPerfilCommand"/>.</summary>
         </member>
@@ -774,6 +808,9 @@
         </member>
         <member name="P:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.TemaSeleccionadoIndex">
             <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.temaSeleccionadoIndex"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.IdiomaSeleccionadoIndex">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.idiomaSeleccionadoIndex"/>
         </member>
         <member name="F:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.navegarACambiarDatosCommand">
             <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.NavegarACambiarDatosCommand"/>.</summary>
@@ -1149,6 +1186,9 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Iniciales">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Iniciales" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Username">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Username" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Apellidos">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Apellidos" generated properties.</summary>
         </member>
@@ -1157,6 +1197,9 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TemaSeleccionadoIndex">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TemaSeleccionadoIndex" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IdiomaSeleccionadoIndex">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IdiomaSeleccionadoIndex" generated properties.</summary>
         </member>
         <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
             <summary>
@@ -1290,6 +1333,9 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Iniciales">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Iniciales" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Username">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Username" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Apellidos">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Apellidos" generated properties.</summary>
         </member>
@@ -1298,6 +1344,9 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TemaSeleccionadoIndex">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TemaSeleccionadoIndex" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IdiomaSeleccionadoIndex">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IdiomaSeleccionadoIndex" generated properties.</summary>
         </member>
     </members>
 </doc>
