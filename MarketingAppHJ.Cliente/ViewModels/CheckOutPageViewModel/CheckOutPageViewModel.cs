@@ -167,9 +167,12 @@ namespace MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel
             {
                 try
                 {
-                    await _realizarPedido.RealizarPedido(UserId, NuevaDireccionEnvio, MetodoPago);
                     await ActualizacionDireccion();
                     await ActualizarStock();
+                    string direccionEnvio = string.IsNullOrWhiteSpace(NuevaDireccionEnvio)
+                        ? DireccionEnvioAntigua
+                        : NuevaDireccionEnvio;
+                    await _realizarPedido.RealizarPedido(UserId, direccionEnvio, MetodoPago);
                     await Shell.Current.DisplayAlert("Éxito", "Pedido realizado", "OK");
                     await Shell.Current.GoToAsync("main");
                 }
@@ -180,7 +183,6 @@ namespace MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel
             }
             else
                 await Shell.Current.DisplayAlert("Error", "No se puede añadir un pedido vacio", "Okey");
-            
         }
 
         /// <summary>

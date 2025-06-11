@@ -25,8 +25,17 @@ namespace MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel
             var idiomaGuardado = Preferences.Get("Idioma", CultureInfo.CurrentUICulture.TwoLetterISOLanguageName);
             _idiomaActual = idiomaGuardado;
             idiomaSeleccionadoIndex = idiomaGuardado == "en" ? 1 : 0;
-        }
 
+            // Lee el tema guardado y lo aplica al ViewModel y a la app
+            var temaGuardado = Preferences.Get("Tema", "sistema");
+            temaSeleccionadoIndex = temaGuardado switch
+            {
+                "claro" => 1,
+                "oscuro" => 2,
+                _ => 0
+            };
+            AplicarTema(temaSeleccionadoIndex);
+        }
 
         [ObservableProperty]
         private int temaSeleccionadoIndex = 0; // 0: sistema, 1: claro, 2: oscuro
@@ -71,6 +80,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel
                 _ => AppTheme.Unspecified
             };
 
+            Preferences.Set("Tema", tema);
             PerformanceHelper.GuardarTema(tema);
         }
 
