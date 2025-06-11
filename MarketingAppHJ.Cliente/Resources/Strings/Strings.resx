@@ -274,7 +274,7 @@
     <value>Elimina el pedido</value>
   </data>
   <data name="DetallesPedidos" xml:space="preserve">
-    <value>Detalles Pedidos</value>
+    <value>Detalles Pedido</value>
   </data>
   <data name="CerrarSesion" xml:space="preserve">
     <value>Cerrar Sesión</value>

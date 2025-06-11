@@ -29,11 +29,10 @@ public partial class SettingsPage : ContentPage
     {
         base.OnAppearing();
 
-        // Suponiendo que el BindingContext es tu ViewModel
         if (BindingContext is SettingsPageViewModel vm)
         {
-            var idiomaActual = System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
-            vm.IdiomaSeleccionadoIndex = idiomaActual == "en" ? 1 : 0;
+            var idiomaGuardado = Preferences.Get("Idioma", System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName);
+            vm.IdiomaSeleccionadoIndex = idiomaGuardado == "en" ? 1 : 0;
             TranslateExtension.RefreshTranslations();
         }
     }

@@ -21,8 +21,12 @@ namespace MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel
             _authService = authService;
             _idiomaService = idiomaService;
 
-            _idiomaActual = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+            // Lee el idioma guardado, si existe, si no usa la cultura actual
+            var idiomaGuardado = Preferences.Get("Idioma", CultureInfo.CurrentUICulture.TwoLetterISOLanguageName);
+            _idiomaActual = idiomaGuardado;
+            idiomaSeleccionadoIndex = idiomaGuardado == "en" ? 1 : 0;
         }
+
 
         [ObservableProperty]
         private int temaSeleccionadoIndex = 0; // 0: sistema, 1: claro, 2: oscuro

@@ -37,12 +37,11 @@ namespace MarketingAppHJ.Cliente.Views.Aplicacion.PedidosPage
         /// </summary>
         /// <param name="sender">El objeto que desencadenó el evento.</param>
         /// <param name="e">Los datos del evento.</param>
-        void OnVerDetallesClicked(object sender, EventArgs e)
+        public async void OnVerDetallesClicked(object sender, EventArgs e)
         {
-            if (sender is Button btn && btn.CommandParameter is string pedidoId)
+            if (sender is Button btn && btn.CommandParameter is string orderId)
             {
-                // Navegar a página de detalles de pedido, pasando el pedidoId
-                //Shell.Current.GoToAsync($"detallespedido?pedidoId={pedidoId}");
+                 //await Shell.Current.GoToAsync($"detallepedido?pedidoId={orderId}");
             }
         }
     }
