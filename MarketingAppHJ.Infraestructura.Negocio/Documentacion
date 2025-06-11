@@ -76,6 +76,28 @@
             <param name="url">La URL de la base de datos en tiempo real de Firebase.</param>  
             <returns>Una nueva instancia de <see cref="T:Firebase.Database.FirebaseClient"/>.</returns>  
         </member>
+        <member name="T:MarketingAppHJ.Infraestructura.Negocio.Servicios.LanguageService.LanguageService">
+            <summary>  
+            Servicio para gestionar el idioma de la aplicación.  
+            </summary>  
+        </member>
+        <member name="E:MarketingAppHJ.Infraestructura.Negocio.Servicios.LanguageService.LanguageService.IdiomaCambiado">
+            <summary>  
+            Evento que se dispara cuando el idioma ha sido cambiado.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Infraestructura.Negocio.Servicios.LanguageService.LanguageService.idiomaActual">
+            <summary>  
+            Obtiene el idioma actual en formato ISO de dos letras.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Negocio.Servicios.LanguageService.LanguageService.CambiarIdioma(System.String)">
+            <summary>  
+            Cambia el idioma de la aplicación.  
+            </summary>  
+            <param name="idioma">Código del idioma en formato ISO.</param>  
+            <exception cref="T:System.ArgumentException">Se lanza si el idioma es nulo o vacío.</exception>  
+        </member>
         <member name="T:TheMarketingApp.Infraestructura.Negocio.Servicios.DependencyInjection">
             <summary>
             Proporciona métodos de extensión para registrar servicios de infraestructura de negocio en el contenedor de dependencias.

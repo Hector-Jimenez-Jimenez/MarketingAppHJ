@@ -288,6 +288,27 @@
             <param name="userId">El identificador del usuario cuyos pedidos se van a observar.</param>
             <returns>Un observable que emite eventos de Firebase con los datos de los pedidos.</returns>
         </member>
+        <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Pedidos.ObtenerPedidoPorId.ObtenerPedidoPorId">
+            <summary>  
+            Clase que implementa la funcionalidad para obtener los detalles de un pedido por su ID.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Pedidos.ObtenerPedidoPorId.ObtenerPedidoPorId.#ctor(MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase.IFirebaseRealtimeDatabase)">
+            <summary>  
+            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Pedidos.ObtenerPedidoPorId.ObtenerPedidoPorId"/>.  
+            </summary>  
+            <param name="firebaseRealtimeDatabase">Instancia de la base de datos en tiempo real de Firebase.</param>  
+            <exception cref="T:System.ArgumentNullException">Se lanza si <paramref name="firebaseRealtimeDatabase"/> es nulo.</exception>  
+        </member>
+        <member name="M:MarketingAppHJ.Infraestructura.Datos.Repositorios.Pedidos.ObtenerPedidoPorId.ObtenerPedidoPorId.ObtenerDetallesPedidoAsync(System.String,System.String)">
+            <summary>  
+            Obtiene los detalles de un pedido específico para un usuario dado.  
+            </summary>  
+            <param name="userId">ID del usuario.</param>  
+            <param name="orderId">ID del pedido.</param>  
+            <returns>Una tarea que representa la operación asincrónica. El resultado contiene los detalles del pedido o <c>null</c> si no se encuentra.</returns>  
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">Se lanza si no se encuentra el pedido con el ID especificado.</exception>  
+        </member>
         <member name="T:MarketingAppHJ.Infraestructura.Datos.Repositorios.Pedidos.ObtenerPedidos.ObtenerPedidos">
             <summary>
             Clase que implementa la funcionalidad para obtener pedidos desde la base de datos Firebase.

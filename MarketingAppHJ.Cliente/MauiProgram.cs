@@ -128,11 +128,21 @@ namespace MarketingAppHJ.Cliente
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                })
+                .ConfigureMauiHandlers(handlers =>
+                {
+#if ANDROID
+                    Microsoft.Maui.Handlers.ImageHandler.Mapper.AppendToMapping("Splash", (handler, view) =>
+                    {
+                        handler.PlatformView.SetScaleType(Android.Widget.ImageView.ScaleType.CenterCrop);
+                    });
+#endif
                 });
 
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
+
             var idiomaGuardado = Preferences.Get("Idioma", "es");
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo(idiomaGuardado);
             CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo(idiomaGuardado);
