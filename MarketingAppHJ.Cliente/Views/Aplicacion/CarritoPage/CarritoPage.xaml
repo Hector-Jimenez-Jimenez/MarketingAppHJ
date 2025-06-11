@@ -21,17 +21,20 @@
                 <ImageButton Grid.Column="0"
                              Source="iconousuario.png"
                              Background="Transparent"
+                             Aspect="AspectFill"
                              HorizontalOptions="End"
                              Clicked="OnProfileClicked"/>
 
                 <ImageButton Grid.Column="1"
                              Source="home.png"
                              HorizontalOptions="Center"
+                             Aspect="AspectFill"
                              Background="Transparent"
                              Clicked="OnGoToCatalogClicked"/>
 
                 <ImageButton Grid.Column="2"
                              Source="ruedaajustes.png"
+                             Aspect="AspectFill"
                              Background="Transparent"
                              Clicked="SettingsClicked"/>
             </Grid>

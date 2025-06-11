@@ -454,6 +454,12 @@
         <member name="P:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.VolverCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel.CheckOutPageViewModel.Volver"/>.</summary>
         </member>
+        <member name="T:MarketingAppHJ.Cliente.ViewModels.DetallesPedidoPageViewModel.DetallesPedidoPageViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.DetallesPedidoPageViewModel.DetallesPedidoPageViewModel.Pedido">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.DetallesPedidoPageViewModel.DetallesPedidoPageViewModel.pedido"/>
+        </member>
         <member name="T:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel">
             <summary>
             ViewModel para la página de detalles del producto.
@@ -464,7 +470,7 @@
             <inheritdoc/>
             <inheritdoc/>
         </member>
-        <member name="M:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.#ctor(MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerProductosPorId.IObtenerProductoPorId,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.AgregarProductoAlCarrito.IAgregarProductoAlCarrito,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerNombreCategoria.IObtenerNombreCategoria,MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication)">
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel.DetallesProductoPageViewModel.#ctor(MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerProductosPorId.IObtenerProductoPorId,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.AgregarProductoAlCarrito.IAgregarProductoAlCarrito,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerNombreCategoria.IObtenerNombreCategoria,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObtenerCarrito.IObtenerCarrito,MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication)">
             <summary>
             Constructor para inicializar el ViewModel de detalles del producto.
             </summary>
@@ -660,27 +666,18 @@
         </member>
         <member name="T:MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel.PedidosPageViewModel">
             <summary>
-            ViewModel para gestionar la página de pedidos.
+            ViewModel para gestionar la página de pedidos con paginación.
             </summary>
             <inheritdoc/>
         </member>
-        <member name="M:MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel.PedidosPageViewModel.#ctor(MarketingAppHJ.Aplicacion.Interfaces.UseCases.Pedidos.ObtenerPedidos.IObtenerPedidos,MarketingAppHJ.Aplicacion.Interfaces.UseCases.Pedidos.ObservarCambiosPedidos.IObservarCambiosPedido,MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication.IFirebaseAuthentication)">
-            <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel.PedidosPageViewModel"/>.
-            </summary>
-            <param name="obtenerPedidos">Servicio para obtener pedidos.</param>
-            <param name="observarCambios">Servicio para observar cambios en los pedidos.</param>
-            <param name="firebaseAuth">Servicio de autenticación de Firebase.</param>
-        </member>
         <member name="M:MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel.PedidosPageViewModel.LoadPedidosAsync">
             <summary>
-            Carga los pedidos del usuario autenticado y se suscribe a los cambios en tiempo real.
+            Carga la primera página de pedidos y se suscribe a los cambios en tiempo real.
             </summary>
-            <returns>Una tarea que representa la operación asincrónica.</returns>
         </member>
-        <member name="M:MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel.PedidosPageViewModel.Dispose">
+        <member name="M:MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel.PedidosPageViewModel.LoadMoreAsync">
             <summary>
-            Libera los recursos utilizados por la instancia de <see cref="T:MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel.PedidosPageViewModel"/>.
+            Carga la siguiente página de pedidos.
             </summary>
         </member>
         <member name="P:MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel.PedidosPageViewModel.Pedidos">
@@ -689,10 +686,14 @@
         <member name="P:MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel.PedidosPageViewModel.IsBusy">
             <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel.PedidosPageViewModel.isBusy"/>
         </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel.PedidosPageViewModel.ShowLoadMore">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel.PedidosPageViewModel.showLoadMore"/>
+        </member>
         <member name="T:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel">
             <summary>
             ViewModel para la página de perfil del usuario.
             </summary>
+            <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
@@ -752,6 +753,12 @@
         </member>
         <member name="P:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.CambiarDatosCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.CambiarDatos"/>.</summary>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.volverCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.VolverCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.VolverCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel.ProfilePageViewModel.Volver"/>.</summary>
         </member>
         <member name="T:MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel.RegisterPageViewModel">
             <inheritdoc/>
@@ -1034,6 +1041,13 @@
             <param name="sender">El objeto que desencadenó el evento.</param>
             <param name="e">Los datos del evento.</param>
         </member>
+        <member name="M:MarketingAppHJ.Cliente.Views.Aplicacion.PedidosPage.PedidosPage.OnVolverClicked(System.Object,System.EventArgs)">
+            <summary>
+            Maneja el evento de clic en el botón para volver al perfil.
+            </summary>
+            <param name="sender">El objeto que desencadenó el evento.</param>
+            <param name="e">Los datos del evento.</param>
+        </member>
         <member name="T:MarketingAppHJ.Cliente.Views.Aplicacion.ProfilePage.ProfilePage">
             <summary>
             Representa la página de perfil del usuario.
@@ -1178,6 +1192,9 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.MetodoPago">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "MetodoPago" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Pedido">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Pedido" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Id">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Id" generated properties.</summary>
         </member>
@@ -1219,6 +1236,9 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Pedidos">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Pedidos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ShowLoadMore">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ShowLoadMore" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Apellido">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Apellido" generated properties.</summary>
@@ -1325,6 +1345,9 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.MetodoPago">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "MetodoPago" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Pedido">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Pedido" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Id">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Id" generated properties.</summary>
         </member>
@@ -1366,6 +1389,9 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Pedidos">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Pedidos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ShowLoadMore">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ShowLoadMore" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Apellido">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Apellido" generated properties.</summary>

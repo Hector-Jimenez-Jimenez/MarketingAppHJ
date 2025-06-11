@@ -192,7 +192,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel
         [RelayCommand]
         public static async Task Volver()
         {
-            await Shell.Current.GoToAsync("..");
+            await Shell.Current.GoToAsync("carrito");
         }
 
         /// <summary>

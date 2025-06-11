@@ -6,7 +6,6 @@
     xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel"
     xmlns:helper="clr-namespace:MarketingAppHJ.Cliente.Helper"
     x:DataType="vm:PedidosPageViewModel"
-    Shell.NavBarIsVisible="True"
     x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.PedidosPage.PedidosPage">
 
     <Grid RowDefinitions="Auto,*,Auto" Padding="20">
@@ -21,8 +20,10 @@
         <CollectionView Grid.Row="1"
                         ItemsSource="{Binding Pedidos}"
                         SelectionMode="None"
+                        RemainingItemsThreshold="2"
                         Margin="0,10"
-                        EmptyView="{helper:Translate PedidosVacios}">
+                        EmptyView="{helper:Translate PedidosVacios}"
+                        RemainingItemsThresholdReached="OnRemainingItemsThresholdReached">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="dtos:PedidoDto">
                     <Border Style="{StaticResource CardBorderStyle}"
@@ -81,16 +82,21 @@
 
                             <Button
                                 Text="{helper:Translate DetallesPedidos}"
-                                Style="{StaticResource TertiaryButtonStyle}"
+                                Style="{StaticResource SecondaryButtonStyle}"
                                 FontSize="14"
                                 CornerRadius="20"
                                 HeightRequest="40"
                                 CommandParameter="{Binding OrderId}"
                                 Clicked="OnVerDetallesClicked" />
+
                         </VerticalStackLayout>
                     </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        <Button Grid.Row="2"
+                Text="{helper:Translate BtnVolver}"
+                Style="{StaticResource TertiaryButtonStyle}"
+                Clicked="OnVolverClicked"/>
     </Grid>
 </ContentPage>

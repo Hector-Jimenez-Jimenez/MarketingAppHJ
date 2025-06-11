@@ -40,7 +40,7 @@ namespace MarketingAppHJ.Cliente.Views.Aplicacion.CarritoPage
         /// </summary>
         void OnBackClicked(object sender, EventArgs e)
         {
-            Shell.Current.GoToAsync("..");
+            Shell.Current.GoToAsync("main");
         }
 
         /// <summary>

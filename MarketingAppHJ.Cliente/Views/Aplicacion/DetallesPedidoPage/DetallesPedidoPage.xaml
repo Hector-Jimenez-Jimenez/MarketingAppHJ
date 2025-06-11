@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+             xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.DetallesPedidoPageViewModel"  
+             xmlns:helper="clr-namespace:MarketingAppHJ.Cliente.Helper"  
+             x:DataType="vm:DetallesPedidoPageViewModel"
+             xmlns:dto="clr-namespace:MarketingAppHJ.Aplicacion.Dtos;assembly=MarketingAppHJ.Aplicacion"  
+             x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.DetallesPedidoPage.DetallesPedidoPage">
+    <ScrollView>
+        <VerticalStackLayout Padding="20">
+            <Label Text="{helper:Translate DetallesPedidos}"
+                   Style="{StaticResource TitleLabelStyle}" 
+                   HorizontalOptions="Center"/>
+            <Label Text="{helper:Translate Fecha}" Style="{StaticResource SubtitleLabelStyle}" />
+            <Label Text="{Binding Pedido.Fecha, StringFormat='{0:dd/MM/yyyy}'}" Style="{StaticResource BodyLabelStyle}" />
+
+            <Label Text="{helper:Translate MetodoPago}" Style="{StaticResource SubtitleLabelStyle}" />
+            <Label Text="{Binding Pedido.MetodoPago}" Style="{StaticResource BodyLabelStyle}" />
+
+            <Label Text="{helper:Translate Total}" Style="{StaticResource SubtitleLabelStyle}" />
+            <Label Text="{Binding Pedido.Total, StringFormat='€{0:F2}'}" Style="{StaticResource BodyLabelStyle}" />
+
+            <Label Text="{helper:Translate DireccionEnvio}" Style="{StaticResource SubtitleLabelStyle}" />
+            <Label Text="{Binding Pedido.DireccionEnvio}" Style="{StaticResource BodyLabelStyle}" LineBreakMode="TailTruncation" />
+
+            <Label Text="{helper:Translate Productos}" Style="{StaticResource SubtitleLabelStyle}" Margin="0,10,0,0" />
+            <CollectionView ItemsSource="{Binding Pedido.Items}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="dto:ItemPedidoDto">
+                        <Border Style="{StaticResource CardBorderStyle}">
+                            <HorizontalStackLayout Spacing="100">
+                                <VerticalStackLayout HorizontalOptions="Start">
+                                    <Label Text="{Binding Nombre}" Style="{StaticResource SubtitleLabelStyle}" />
+                                    <Label Text="{Binding Cantidad, StringFormat='Cantidad: {0}'}" Style="{StaticResource BodyLabelStyle}" />
+                                    <Label Text="{Binding Precio, StringFormat='PU: €{0:F2}'}" Style="{StaticResource BodyLabelStyle}" />
+                                </VerticalStackLayout>
+                                <Image Source="{Binding ImagenUrl}"
+                                       HorizontalOptions="End"
+                                       WidthRequest="45"
+                                       Aspect="AspectFit"/>
+                            </HorizontalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button Text="{helper:Translate BtnVolver}"
+                    Clicked="OnVolverClicked"
+                    Style="{StaticResource PrimaryButtonStyle}"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

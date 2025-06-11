@@ -5,8 +5,7 @@
              xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel"  
              xmlns:helper="clr-namespace:MarketingAppHJ.Cliente.Helper"
              x:DataType="vm:CambioDatosPageViewModel"
-             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}"  
-             Shell.NavBarIsVisible="True">
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="16">

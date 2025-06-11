@@ -1,6 +1,8 @@
 using System;
+using System.Threading.Tasks;
 using MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel;
 using Microsoft.Maui.Controls;
+using TheMarketingApp.Dominio.Entidades;
 
 namespace MarketingAppHJ.Cliente.Views.Aplicacion.PedidosPage
 {
@@ -41,8 +43,23 @@ namespace MarketingAppHJ.Cliente.Views.Aplicacion.PedidosPage
         {
             if (sender is Button btn && btn.CommandParameter is string orderId)
             {
-                 //await Shell.Current.GoToAsync($"detallepedido?pedidoId={orderId}");
+                await Shell.Current.GoToAsync($"detallespedido?pedidoId={orderId}");
             }
+        }
+
+        /// <summary>
+        /// Maneja el evento de clic en el botón para volver al perfil.
+        /// </summary>
+        /// <param name="sender">El objeto que desencadenó el evento.</param>
+        /// <param name="e">Los datos del evento.</param>
+        public static async void OnVolverClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("profile");
+        }
+        private void OnRemainingItemsThresholdReached(object sender, EventArgs e)
+        {
+            if (BindingContext is PedidosPageViewModel vm)
+                vm.LoadMoreCommand.Execute(null);
         }
     }
 }

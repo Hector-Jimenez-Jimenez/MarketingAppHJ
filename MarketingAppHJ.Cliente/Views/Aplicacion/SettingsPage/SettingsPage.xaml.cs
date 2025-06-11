@@ -37,4 +37,8 @@ public partial class SettingsPage : ContentPage
         }
     }
 
+    private async void OnVolverClicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("main");
+    }
 }

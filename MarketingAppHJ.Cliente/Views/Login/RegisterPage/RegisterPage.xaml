@@ -4,14 +4,13 @@
              x:DataType="vm:RegisterPageViewModel"
              xmlns:helper="clr-namespace:MarketingAppHJ.Cliente.Helper"
              xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel"
-             Shell.NavBarIsVisible="True"
              x:Class="MarketingAppHJ.Cliente.Views.Login.RegisterPage.RegisterPage" >
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="24">
 
             <!-- Título -->
-            <Label Text="Registro"
+            <Label Text="{helper:Translate Registrate}"
                    Style="{StaticResource TitleLabelStyle}"
                    HorizontalOptions="Center" />
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Reactive.Disposables;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Firebase.Database.Streaming;
 using MarketingAppHJ.Aplicacion.Dtos;
 using MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication;
@@ -10,7 +11,7 @@ using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Pedidos.ObservarCambiosPedid
 namespace MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel
 {
     /// <summary>
-    /// ViewModel para gestionar la página de pedidos.
+    /// ViewModel para gestionar la página de pedidos con paginación.
     /// </summary>
     public partial class PedidosPageViewModel : ObservableObject, IDisposable
     {
@@ -19,23 +20,11 @@ namespace MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel
         private readonly IFirebaseAuthentication _firebaseAuth;
         private readonly CompositeDisposable _subs = new();
 
-        /// <summary>
-        /// Inicializa una nueva instancia de la clase <see cref="PedidosPageViewModel"/>.
-        /// </summary>
-        /// <param name="obtenerPedidos">Servicio para obtener pedidos.</param>
-        /// <param name="observarCambios">Servicio para observar cambios en los pedidos.</param>
-        /// <param name="firebaseAuth">Servicio de autenticación de Firebase.</param>
-        public PedidosPageViewModel(
-            IObtenerPedidos obtenerPedidos,
-            IObservarCambiosPedido observarCambios,
-            IFirebaseAuthentication firebaseAuth)
-        {
-            _obtenerPedidos = obtenerPedidos;
-            _observarCambios = observarCambios;
-            _firebaseAuth = firebaseAuth;
-        }
+        private const int PageSize = 10;
+        private int _currentPage = 0;
+        private bool _isLoading = false;
+        private bool _hasMore = true;
 
-        // Capturamos el UserId del usuario autenticado
         private string UserId => _firebaseAuth.UserId;
 
         [ObservableProperty]
@@ -44,32 +33,78 @@ namespace MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel
         [ObservableProperty]
         private bool isBusy;
 
+        [ObservableProperty]
+        private bool showLoadMore;
+
+        public IRelayCommand LoadPedidosCommand { get; }
+        public IRelayCommand LoadMoreCommand { get; }
+
+        public PedidosPageViewModel(
+            IObtenerPedidos obtenerPedidos,
+            IObservarCambiosPedido observarCambios,
+            IFirebaseAuthentication firebaseAuth)
+        {
+            _obtenerPedidos = obtenerPedidos;
+            _observarCambios = observarCambios;
+            _firebaseAuth = firebaseAuth;
+
+            LoadPedidosCommand = new AsyncRelayCommand(LoadPedidosAsync);
+            LoadMoreCommand = new AsyncRelayCommand(LoadMoreAsync);
+        }
+
         /// <summary>
-        /// Carga los pedidos del usuario autenticado y se suscribe a los cambios en tiempo real.
+        /// Carga la primera página de pedidos y se suscribe a los cambios en tiempo real.
         /// </summary>
-        /// <returns>Una tarea que representa la operación asincrónica.</returns>
         public async Task LoadPedidosAsync()
         {
             if (IsBusy)
                 return;
 
             IsBusy = true;
+            _currentPage = 0;
+            Pedidos.Clear();
+            _hasMore = true;
+            ShowLoadMore = false;
 
-            var lista = await _obtenerPedidos.ObtenerPedidosAsync(UserId);
-            Pedidos = new ObservableCollection<PedidoDto>(lista);
+            await LoadMoreAsync();
 
-            var subscription = _observarCambios
-                .ObservarPedidos(UserId)
-                .Subscribe(OnPedidoCambiado);
+            // Suscripción a cambios en tiempo real (solo una vez)
+            if (_subs.Count == 0)
+            {
+                var subscription = _observarCambios
+                    .ObservarPedidos(UserId)
+                    .Subscribe(OnPedidoCambiado);
 
-            _subs.Add(subscription);
+                _subs.Add(subscription);
+            }
 
             IsBusy = false;
         }
 
+        /// <summary>
+        /// Carga la siguiente página de pedidos.
+        /// </summary>
+        public async Task LoadMoreAsync()
+        {
+            if (_isLoading || !_hasMore)
+                return;
+
+            _isLoading = true;
+
+            // Cambia aquí por tu método paginado
+            var nuevosPedidos = await _obtenerPedidos.ObtenerPedidosAsync(UserId);
+
+            foreach (var pedido in nuevosPedidos)
+                Pedidos.Add(pedido);
+
+            _hasMore = nuevosPedidos.Count() == PageSize;
+            ShowLoadMore = _hasMore;
+            _currentPage++;
+            _isLoading = false;
+        }
+
         private void OnPedidoCambiado(FirebaseEvent<PedidoDto> evt)
         {
-            // Actualizar UI en hilo principal
             MainThread.BeginInvokeOnMainThread(() =>
             {
                 var key = evt.Key;
@@ -91,7 +126,6 @@ namespace MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel
                             var existente = Pedidos.FirstOrDefault(p => p.OrderId == key);
                             if (existente != null)
                             {
-                                // Si ya existía, lo reemplazamos en la misma posición:
                                 var idx = Pedidos.IndexOf(existente);
                                 Pedidos[idx] = dto;
                             }
@@ -105,9 +139,6 @@ namespace MarketingAppHJ.Cliente.ViewModels.PedidosPageViewModel
             });
         }
 
-        /// <summary>
-        /// Libera los recursos utilizados por la instancia de <see cref="PedidosPageViewModel"/>.
-        /// </summary>
         public void Dispose()
         {
             _subs.Dispose();

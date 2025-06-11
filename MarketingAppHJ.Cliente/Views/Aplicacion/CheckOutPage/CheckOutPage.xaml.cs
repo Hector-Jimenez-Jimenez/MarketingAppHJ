@@ -37,7 +37,7 @@ public partial class CheckOutPage : ContentPage
     /// <param name="e">Los datos del evento.</param>
     void OnBackClicked(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync("..");
+        Shell.Current.GoToAsync("carrito");
     }
 
     private void SettingsClicked(object sender, EventArgs e)

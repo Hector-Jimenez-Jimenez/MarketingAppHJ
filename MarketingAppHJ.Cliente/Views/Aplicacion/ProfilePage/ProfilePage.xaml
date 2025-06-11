@@ -4,8 +4,7 @@
              xmlns:helper="clr-namespace:MarketingAppHJ.Cliente.Helper"  
              xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel"  
              x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.ProfilePage.ProfilePage"  
-             x:DataType="vm:ProfilePageViewModel"  
-             Shell.NavBarIsVisible="True"  
+             x:DataType="vm:ProfilePageViewModel"
              BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
 
     <ScrollView>
@@ -77,6 +76,9 @@
                 <Button Text="{helper:Translate CambiarDatos}"
                         Command="{Binding CambiarDatosCommand}"
                         Style="{StaticResource SecondaryButtonStyle}" />
+                <Button Text="{helper:Translate BtnVolver}"
+                        Command="{Binding VolverCommand}"
+                        Style="{StaticResource TertiaryButtonStyle}" />
             </VerticalStackLayout>
 
         </VerticalStackLayout>

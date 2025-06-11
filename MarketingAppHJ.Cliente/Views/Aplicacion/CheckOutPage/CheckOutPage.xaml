@@ -7,127 +7,132 @@
              x:DataType="vm:CheckOutPageViewModel"
              xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel"
              BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
-
-    <Grid RowDefinitions="Auto,*,Auto,Auto">
-        <VerticalStackLayout>
-            <Border Style="{StaticResource CardBorderStyle}"
+    <ScrollView>
+        <Grid RowDefinitions="Auto,*,Auto,Auto">
+            <VerticalStackLayout>
+                <Border Style="{StaticResource CardBorderStyle}"
                     BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}">
-                <Grid Grid.Row="0" 
+                    <Grid Grid.Row="0" 
                       HeightRequest="40"
                       Padding="10"
                       ColumnDefinitions="Auto,*,Auto">
 
-                    <ImageButton Grid.Column="0"
-                                 Source="iconousuario.png"
-                                 Background="Transparent"
-                                 HorizontalOptions="End"
-                                 Clicked="OnProfileClicked"/>
+                        <ImageButton Grid.Column="0"
+                                     Source="iconousuario.png"
+                                     Aspect="AspectFill"
+                                     Background="Transparent"
+                                     HorizontalOptions="End"
+                                     Clicked="OnProfileClicked"/>
 
-                    <ImageButton Grid.Column="1"
-                                 Source="home.png"
-                                 HorizontalOptions="Center"
-                                 Background="Transparent"
-                                 Clicked="OnLogoClicked"/>
+                        <ImageButton Grid.Column="1"
+                                     Source="home.png"
+                                     Aspect="AspectFill"
+                                     HorizontalOptions="Center"
+                                     Background="Transparent"
+                                     Clicked="OnLogoClicked"/>
 
-                    <ImageButton Grid.Column="2"
-                                 Source="ruedaajustes.png"
-                                 HorizontalOptions="End"
-                                 Background="Transparent"
-                                 Clicked="SettingsClicked"/>
-                </Grid>
-            </Border>
-
-            <!-- Título -->
-            <Label Text="{helper:Translate ResumenPedido}"
-                   Padding="20"
-                   HorizontalOptions="Center"
-                   Style="{StaticResource TitleLabelStyle}" />
-        </VerticalStackLayout>
-
-        <!-- Lista de ítems -->
-        <CollectionView ItemsSource="{Binding Items}"
-                        Grid.Row="1"
-                        SelectionMode="None"
-                        BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}"
-                        EmptyView="{helper:Translate PedidoSinArticulos}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="dto:CarritoItemDto">
-                    <Grid ColumnDefinitions="25*,25*,25*,25*">
-                        <HorizontalStackLayout Grid.Column="0" HorizontalOptions="Start">
-                            <Image HeightRequest="40"
-                                   WidthRequest="40"
-                                   VerticalOptions="Center"
-                                   Source="{Binding ImagenUrl}"
-                                   Aspect="AspectFit"/>
-                            <Label VerticalOptions="Center"
-                                   Text="{Binding Cantidad, StringFormat='x{0}'}"
-                                   Style="{StaticResource BodyLabelStyle}" />
-                        </HorizontalStackLayout>
-
-                        <Label Grid.Column="1"
-                               VerticalOptions="Center"
-                               HorizontalOptions="Start"
-                               Text="{Binding Nombre}"
-                               Style="{StaticResource BodyLabelStyle}" />
-
-                        <Label Grid.Column="2"
-                               VerticalOptions="Center"
-                               HorizontalOptions="Center"
-                               Text="{Binding Precio, StringFormat='{0}€'}"
-                               Style="{StaticResource BodyLabelStyle}" />
-
-                        <Label Grid.Column="3"
-                               VerticalOptions="Center"
-                               HorizontalOptions="Center"
-                               Text="{Binding Total, StringFormat='{0}€'}"
-                               Style="{StaticResource BodyLabelStyle}" />
+                        <ImageButton Grid.Column="2"
+                                     Aspect="AspectFill"
+                                     Source="ruedaajustes.png"
+                                     HorizontalOptions="End"
+                                     Background="Transparent"
+                                     Clicked="SettingsClicked"/>
                     </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                </Border>
 
-        <VerticalStackLayout Grid.Row="2">
-            <!-- Total general -->
-            <HorizontalStackLayout HorizontalOptions="Center">
-                <Label Text="{helper:Translate Total}"
-                       Style="{StaticResource SubtitleLabelStyle}" 
-                       VerticalOptions="Center"/>
-                <Label Text="{Binding Total, StringFormat=':  {0}€'}"
-                       Style="{StaticResource SubtitleLabelStyle}"/>
-            </HorizontalStackLayout>
-            <!-- Dirección de envío -->
-            <Label Text="{helper:Translate DireccionEnvio}"
-                   Style="{StaticResource SubtitleLabelStyle}" />
-            <Entry Text="{Binding NuevaDireccionEnvio}"
-                   Placeholder="{Binding DireccionEnvioAntigua}"
-                   BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceColorLight}, Dark={StaticResource SurfaceColorDark}}"
-                   TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}"/>
+                <!-- Título -->
+                <Label Text="{helper:Translate ResumenPedido}"
+                       Padding="20"
+                       HorizontalOptions="Center"
+                       Style="{StaticResource TitleLabelStyle}" />
+            </VerticalStackLayout>
 
-            <!-- Método de pago -->
-            <Label Text="{helper:Translate MetodoPago}"
-                   Style="{StaticResource SubtitleLabelStyle}" />
-            <Picker SelectedItem="{Binding MetodoPago}"
-                    BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceColorLight}, Dark={StaticResource SurfaceColorDark}}"
-                    TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}">
-                <Picker.Items>
-                    <x:String>Tarjeta</x:String>
-                    <x:String>PayPal</x:String>
-                    <x:String>ContraReembolso</x:String>
-                </Picker.Items>
-            </Picker>
-        </VerticalStackLayout>
+            <!-- Lista de ítems -->
+            <CollectionView ItemsSource="{Binding Items}"
+                            Grid.Row="1"
+                            SelectionMode="None"
+                            BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}"
+                            EmptyView="{helper:Translate PedidoSinArticulos}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="dto:CarritoItemDto">
+                        <Grid ColumnDefinitions="25*,25*,25*,25*">
+                            <HorizontalStackLayout Grid.Column="0" HorizontalOptions="Start">
+                                <Image HeightRequest="40"
+                                       WidthRequest="40"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Center"
+                                       Source="{Binding ImagenUrl}"
+                                       Aspect="AspectFit"/>
+                                <Label VerticalOptions="Center"
+                                       Text="{Binding Cantidad, StringFormat='x{0}'}"
+                                       Style="{StaticResource BodyLabelStyle}" />
+                            </HorizontalStackLayout>
 
-        <VerticalStackLayout Grid.Row="3">
-            <!-- Botón de confirmación -->
-            <Button Text="{helper:Translate BtnConfirmarPedido}"
-                    Command="{Binding RealizarPedidoCommand}"
-                    Style="{StaticResource PrimaryButtonStyle}"
-                    Margin="5,10,5,5"/>
-            <!-- Botón de volver -->
-            <Button Text="{helper:Translate BtnVolver}"
-                    Command="{Binding VolverCommand}"
-                    Style="{StaticResource SecondaryButtonStyle}"
-                    Margin="5,0,5,10"/>
-        </VerticalStackLayout>
-    </Grid>
+                            <Label Grid.Column="1"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Start"
+                                   Text="{Binding Nombre}"
+                                   Style="{StaticResource BodyLabelStyle}" />
+
+                            <Label Grid.Column="2"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"
+                                   Text="{Binding Precio, StringFormat='{0}€'}"
+                                   Style="{StaticResource BodyLabelStyle}" />
+
+                            <Label Grid.Column="3"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"
+                                   Text="{Binding Total, StringFormat='{0}€'}"
+                                   Style="{StaticResource BodyLabelStyle}" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <VerticalStackLayout Grid.Row="2">
+                <!-- Total general -->
+                <HorizontalStackLayout HorizontalOptions="Center">
+                    <Label Text="{helper:Translate Total}"
+                           Style="{StaticResource SubtitleLabelStyle}" 
+                           VerticalOptions="Center"/>
+                    <Label Text="{Binding Total, StringFormat=':  {0}€'}"
+                           Style="{StaticResource SubtitleLabelStyle}"/>
+                </HorizontalStackLayout>
+                <!-- Dirección de envío -->
+                <Label Text="{helper:Translate DireccionEnvio}"
+                       Style="{StaticResource SubtitleLabelStyle}" />
+                <Entry Text="{Binding NuevaDireccionEnvio}"
+                       Placeholder="{Binding DireccionEnvioAntigua}"
+                       BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceColorLight}, Dark={StaticResource SurfaceColorDark}}"
+                       TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}"/>
+
+                <!-- Método de pago -->
+                <Label Text="{helper:Translate MetodoPago}"
+                       Style="{StaticResource SubtitleLabelStyle}" />
+                <Picker SelectedItem="{Binding MetodoPago}"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource SurfaceColorLight}, Dark={StaticResource SurfaceColorDark}}"
+                        TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}">
+                    <Picker.Items>
+                        <x:String>Tarjeta</x:String>
+                        <x:String>PayPal</x:String>
+                        <x:String>ContraReembolso</x:String>
+                    </Picker.Items>
+                </Picker>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Row="3">
+                <!-- Botón de confirmación -->
+                <Button Text="{helper:Translate BtnConfirmarPedido}"
+                        Command="{Binding RealizarPedidoCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Margin="5,10,5,5"/>
+                <!-- Botón de volver -->
+                <Button Text="{helper:Translate BtnVolver}"
+                        Command="{Binding VolverCommand}"
+                        Style="{StaticResource SecondaryButtonStyle}"
+                        Margin="5,0,5,10"/>
+            </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
 </ContentPage>

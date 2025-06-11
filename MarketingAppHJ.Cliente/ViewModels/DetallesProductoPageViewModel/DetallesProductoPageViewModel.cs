@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using MarketingAppHJ.Aplicacion.Dtos;
 using MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.AgregarProductoAlCarrito;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.ObtenerCarrito;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerNombreCategoria;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerProductosPorId;
 using TheMarketingApp.Dominio.Entidades;
@@ -19,6 +20,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel
         private readonly IAgregarProductoAlCarrito _AgregarProductoAlCarrito;
         private readonly IObtenerNombreCategoria _ObtenerNombreCategoria;
         private readonly IFirebaseAuthentication _firebaseAuthentication;
+        private readonly IObtenerCarrito _obtenerCarrito;
         #endregion
 
         #region Variables
@@ -47,12 +49,14 @@ namespace MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel
             IObtenerProductoPorId usecaseObtenerProductoPorId,
             IAgregarProductoAlCarrito agregarProductoAlCarrito,
             IObtenerNombreCategoria obtenerNombreCategoria,
+            IObtenerCarrito obtenerCarrito,
             IFirebaseAuthentication firebaseAuthentication)
         {
             _ObtenerNombreCategoria = obtenerNombreCategoria ?? throw new ArgumentNullException(nameof(obtenerNombreCategoria));
             _ObtenerProductoPorId = usecaseObtenerProductoPorId ?? throw new ArgumentNullException(nameof(usecaseObtenerProductoPorId));
             _AgregarProductoAlCarrito = agregarProductoAlCarrito ?? throw new ArgumentNullException(nameof(agregarProductoAlCarrito));
             _firebaseAuthentication = firebaseAuthentication ?? throw new ArgumentNullException(nameof(firebaseAuthentication));
+            _obtenerCarrito = obtenerCarrito ?? throw new ArgumentNullException(nameof(obtenerCarrito));
         }
         #endregion
 
@@ -86,6 +90,26 @@ namespace MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel
         [RelayCommand]
         public async Task AgregarAlCarritoAsync()
         {
+            // Obtener el carrito actual del usuario
+            var carritoActual = await _obtenerCarrito.ObtenerCarritoAsync(UserId);
+            int cantidadEnCarrito = carritoActual
+                .Where(i => i.ProductoId == Id)
+                .Sum(i => i.Cantidad);
+
+            // Validar si ya tiene el máximo permitido
+            if (cantidadEnCarrito >= Stock)
+            {
+                await Shell.Current.DisplayAlert("Aviso", "No puedes añadir más unidades, has alcanzado el stock disponible para este producto.", "OK");
+                return;
+            }
+
+            // Validar que la cantidad a añadir no supere el stock
+            if (cantidadEnCarrito + Cantidad > Stock)
+            {
+                await Shell.Current.DisplayAlert("Aviso", $"Solo puedes añadir {Stock - cantidadEnCarrito} unidad(es) más de este producto.", "OK");
+                return;
+            }
+
             var item = new CarritoItemDto
             {
                 ProductoId = Id,
@@ -109,9 +133,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel
         [RelayCommand]
         public async Task ComprarAhoraAsync()
         {
-            
             await Task.CompletedTask;
-
             await Shell.Current.DisplayAlert("Información", "Funcionalidad de compra aún no implementada.", "OK");
         }
 

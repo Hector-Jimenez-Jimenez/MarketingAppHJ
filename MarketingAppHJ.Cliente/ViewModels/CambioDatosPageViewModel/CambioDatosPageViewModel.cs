@@ -241,7 +241,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel
             try
             {
                 await _actualizarUsuario.ActualizarUsuarioAsync(actualizadoDto);
-                await Shell.Current.GoToAsync("..");
+                await Shell.Current.GoToAsync("profile");
 
                 if (!emailFinal.Equals(EmailOriginal, StringComparison.OrdinalIgnoreCase))
                 {
@@ -289,7 +289,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel
         [RelayCommand]
         public async Task CancelarModificacionAsync()
         {
-            await Shell.Current.GoToAsync("..");
+            await Shell.Current.GoToAsync("profile");
         }
 
         [RelayCommand]

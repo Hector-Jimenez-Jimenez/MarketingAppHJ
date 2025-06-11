@@ -106,5 +106,10 @@ namespace MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel
         {
             await Shell.Current.GoToAsync("changedata");
         }
+        [RelayCommand]
+        private async Task Volver()
+        {
+            await Shell.Current.GoToAsync("main");
+        }
     }
 }

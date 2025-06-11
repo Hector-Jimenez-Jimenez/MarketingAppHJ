@@ -31,6 +31,7 @@ using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.IObtenerPerfilUsuar
 using MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel;
+using MarketingAppHJ.Cliente.ViewModels.DetallesPedidoPageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.DetallesProductoPageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.MainPageViewModel;
@@ -43,6 +44,7 @@ using MarketingAppHJ.Cliente.Views.Aplicacion.CambioDatosPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.CarritoPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.CheckOutPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.DetailsPage;
+using MarketingAppHJ.Cliente.Views.Aplicacion.DetallesPedidoPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.MainPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.PedidosPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.ProfilePage;
@@ -197,6 +199,7 @@ namespace MarketingAppHJ.Cliente
             services.AddTransient<CambioDatosPageViewModel>();
             services.AddTransient<PedidosPageViewModel>();
             services.AddTransient<SettingsPageViewModel>();
+            services.AddTransient<DetallesPedidoPageViewModel>();
         }
 
         /// <summary>
@@ -217,6 +220,7 @@ namespace MarketingAppHJ.Cliente
             services.AddSingleton<CambioDatosPage>();
             services.AddSingleton<PedidosPage>();
             services.AddTransient<SettingsPage>();
+            services.AddTransient<DetallesPedidoPage>();
         }
     }
 }
