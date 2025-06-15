@@ -6,6 +6,7 @@ using MarketingAppHJ.Cliente.Helper;
 using System.Globalization;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Storage;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.IObtenerPerfilUsuario;
 
 namespace MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel
 {
@@ -13,20 +14,20 @@ namespace MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel
     {
         private readonly IFirebaseAuthentication _authService;
         private readonly IIdiomaService _idiomaService;
+        private readonly IObtenerPerfilUsuario _perfilUsuarioService;
 
         private string _idiomaActual;
 
-        public SettingsPageViewModel(IFirebaseAuthentication authService, IIdiomaService idiomaService)
+        public SettingsPageViewModel(IFirebaseAuthentication authService, IIdiomaService idiomaService,IObtenerPerfilUsuario obtenerPerfilUsuario)
         {
             _authService = authService;
             _idiomaService = idiomaService;
+            _perfilUsuarioService = obtenerPerfilUsuario;
 
-            // Lee el idioma guardado, si existe, si no usa la cultura actual
             var idiomaGuardado = Preferences.Get("Idioma", CultureInfo.CurrentUICulture.TwoLetterISOLanguageName);
             _idiomaActual = idiomaGuardado;
             idiomaSeleccionadoIndex = idiomaGuardado == "en" ? 1 : 0;
 
-            // Lee el tema guardado y lo aplica al ViewModel y a la app
             var temaGuardado = Preferences.Get("Tema", "sistema");
             temaSeleccionadoIndex = temaGuardado switch
             {
@@ -35,6 +36,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel
                 _ => 0
             };
             AplicarTema(temaSeleccionadoIndex);
+            CargarPermisosAsync();
         }
 
         [ObservableProperty]
@@ -42,6 +44,11 @@ namespace MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel
 
         [ObservableProperty]
         private int idiomaSeleccionadoIndex;
+
+        [ObservableProperty]
+        private bool esAdmin;
+
+        private string UserId => _authService.UserId;
 
         [RelayCommand]
         private async Task NavegarACambiarDatosAsync()
@@ -116,6 +123,18 @@ namespace MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel
 
             // Actualiza _idiomaActual después del cambio
             _idiomaActual = nuevoIdioma;
+        }
+
+        [RelayCommand]
+        private async Task IrAPaginaAdminAsync()
+        {
+            await Shell.Current.GoToAsync("admin");
+        }
+
+        private async Task CargarPermisosAsync()
+        {
+            var usuario = await _perfilUsuarioService.ObtenerPerfilUsuarioAsync(UserId);
+            EsAdmin = usuario.Rol == "admin";
         }
     }
 }

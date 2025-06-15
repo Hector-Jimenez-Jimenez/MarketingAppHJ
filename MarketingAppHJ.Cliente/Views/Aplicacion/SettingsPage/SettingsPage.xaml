@@ -48,6 +48,10 @@
         <Button Text="{helpers:Translate CerrarSesion}"
                 Style="{StaticResource SecondaryButtonStyle}"
                 Command="{Binding CerrarSesionCommand}" />
+        <Button Text="{helpers:Translate Administrar}" 
+                Style="{StaticResource PrimaryButtonStyle}" 
+                Command="{Binding IrAPaginaAdminCommand}"
+                IsVisible="{Binding EsAdmin}" />
         <Button Text="{helpers:Translate BtnVolver}"
                 Style="{StaticResource TertiaryButtonStyle}"
                 Clicked="OnVolverClicked" />

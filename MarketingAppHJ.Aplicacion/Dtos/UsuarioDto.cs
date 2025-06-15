@@ -56,9 +56,14 @@ namespace MarketingAppHJ.Aplicacion.Dtos
         /// </summary>  
         public string Direccion { get; set; } = string.Empty;
 
-        /// <summary>
-        /// Nombre de usuario del usuario.
-        /// </summary>
+        /// <summary>  
+        /// Nombre de usuario del usuario.  
+        /// </summary>  
         public string Username { get; set; } = string.Empty;
+
+        /// <summary>  
+        /// Rol del usuario en el sistema.  
+        /// </summary>  
+        public string Rol { get; set; } = string.Empty;
     }
 }

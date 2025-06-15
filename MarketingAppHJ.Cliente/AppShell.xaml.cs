@@ -1,4 +1,5 @@
-﻿using MarketingAppHJ.Cliente.Views.Aplicacion.CambioDatosPage;
+﻿using MarketingAppHJ.Cliente.Views.Aplicacion.AdminPage;
+using MarketingAppHJ.Cliente.Views.Aplicacion.CambioDatosPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.CarritoPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.CheckOutPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.DetailsPage;
@@ -37,6 +38,7 @@ namespace MarketingAppHJ.Cliente
             Routing.RegisterRoute("ajustes", typeof(SettingsPage));
             Routing.RegisterRoute("shell", typeof(AppShell));
             Routing.RegisterRoute("detallespedido", typeof(DetallesPedidoPage));
+            Routing.RegisterRoute("admin", typeof(AdminPage));
         }
     }
 }

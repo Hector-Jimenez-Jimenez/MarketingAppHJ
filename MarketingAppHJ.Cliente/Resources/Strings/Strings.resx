@@ -322,4 +322,16 @@
   <data name="Fecha" xml:space="preserve">
     <value>Fecha</value>
   </data>
+  <data name="Administrar" xml:space="preserve">
+    <value>Administrar</value>
+  </data>
+  <data name="AgregarProducto" xml:space="preserve">
+    <value>Agregar Producto</value>
+  </data>
+  <data name="VistaPrevia" xml:space="preserve">
+    <value>VistaPrevia</value>
+  </data>
+  <data name="Categoria" xml:space="preserve">
+    <value>Categoria</value>
+  </data>
 </root>

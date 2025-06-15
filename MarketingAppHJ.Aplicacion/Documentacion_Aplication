@@ -247,9 +247,14 @@
             </summary>  
         </member>
         <member name="P:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto.Username">
-            <summary>
-            Nombre de usuario del usuario.
-            </summary>
+            <summary>  
+            Nombre de usuario del usuario.  
+            </summary>  
+        </member>
+        <member name="P:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto.Rol">
+            <summary>  
+            Rol del usuario en el sistema.  
+            </summary>  
         </member>
         <member name="T:MarketingAppHJ.Aplicacion.Interfaces.Cloudinary.CloudinarySettings">
             <summary>
@@ -549,6 +554,30 @@
             <param name="producto">Objeto DTO que contiene los datos del producto a actualizar. <see cref="T:MarketingAppHJ.Aplicacion.Dtos.ProductoDto"/></param>
             <returns>Una tarea que representa la operación asincrónica.</returns>
         </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.AgregarProducto.IAgregarProducto">
+            <summary>  
+            Define la operación para agregar un producto.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.AgregarProducto.IAgregarProducto.AgregarProductoAsync(MarketingAppHJ.Aplicacion.Dtos.ProductoDto)">
+            <summary>  
+            Agrega un producto de manera asíncrona.  
+            </summary>  
+            <param name="producto">El producto a agregar.</param>  
+            <returns>Una tarea que representa la operación asíncrona.</returns>  
+        </member>
+        <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.EliminarProducto.IEliminarProducto">
+            <summary>  
+            Define la funcionalidad para eliminar un producto por su identificador.  
+            </summary>  
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.EliminarProducto.IEliminarProducto.EliminarProductoAsync(System.String)">
+            <summary>  
+            Elimina un producto de forma asíncrona utilizando su identificador único.  
+            </summary>  
+            <param name="productoID">El identificador único del producto que se desea eliminar.</param>  
+            <returns>Una tarea que representa la operación de eliminación.</returns>  
+        </member>
         <member name="T:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerNombreCategoria.IObtenerNombreCategoria">
             <summary>
             Interfaz para obtener el nombre de una categoría basada en su identificador.
@@ -620,6 +649,12 @@
             </summary>  
             <param name="usuarioId">El identificador único del usuario.</param>  
             <returns>Un objeto <see cref="T:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto"/> que contiene la información del perfil del usuario.</returns>  
+        </member>
+        <member name="M:MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.ObtenerUsuarios.IObtenerUsuarios.ObtenerUsuariosAsync">
+            <summary>
+            Obtiene una lista de usuarios de forma asíncrona.
+            </summary>
+            <returns>Una tarea que representa la operación asíncrona. El resultado contiene una colección de objetos <see cref="T:MarketingAppHJ.Aplicacion.Dtos.UsuarioDto"/>.</returns>
         </member>
         <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
             <summary>

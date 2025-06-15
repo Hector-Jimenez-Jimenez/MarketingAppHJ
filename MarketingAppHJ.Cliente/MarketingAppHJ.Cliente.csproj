@@ -147,6 +147,9 @@
 	  <MauiXaml Update="Resources\Styles\EstilosApp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Aplicacion\AdminPage\AdminPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Aplicacion\CambioDatosPage\CambioDatosPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

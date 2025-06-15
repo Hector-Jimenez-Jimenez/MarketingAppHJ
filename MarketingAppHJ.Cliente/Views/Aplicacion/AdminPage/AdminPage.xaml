@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MarketingAppHJ.Cliente.Views.Aplicacion.AdminPage.AdminPage"
+             xmlns:vm="clr-namespace:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel"
+             x:DataType="vm:AdminPageViewModel"
+             xmlns:helper="clr-namespace:MarketingAppHJ.Cliente.Helper"
+             xmlns:dtos="clr-namespace:MarketingAppHJ.Aplicacion.Dtos;assembly=MarketingAppHJ.Aplicacion">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <Label Text="Productos"
+                   Style="{StaticResource TitleLabelStyle}" />
+
+            <CollectionView ItemsSource="{Binding Productos}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="dtos:ProductoDto">
+                        <Border Style="{StaticResource CardBorderStyle}" Padding="10">
+                            <VerticalStackLayout Spacing="8">
+
+                                <Image Source="{Binding ImagenUrl}" HeightRequest="100" Aspect="AspectFit" />
+
+                                <Entry Text="{Binding Nombre}" Placeholder="Nombre"
+                                       TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}" />
+
+                                <Entry Text="{Binding Stock}" Keyboard="Numeric" Placeholder="Cantidad"
+                                       TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}" />
+
+                                <Entry Text="{Binding Precio}" Keyboard="Numeric" Placeholder="Precio (€)"
+                                       TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}" />
+
+                                <HorizontalStackLayout Spacing="10">
+                                    <Button Text="Guardar"
+                                            Style="{StaticResource PrimaryButtonStyle}"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AdminPageViewModel}}, Path=GuardarCambiosCommand}"
+                                            CommandParameter="{Binding}" />
+
+                                    <Button Text="Eliminar"
+                                            BackgroundColor="{StaticResource ErrorColorLight}"
+                                            TextColor="White"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AdminPageViewModel}}, Path=EliminarCommand}"
+                                            CommandParameter="{Binding}" />
+                                </HorizontalStackLayout>
+
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label Text="{helper:Translate AgregarProducto}"
+                   Style="{StaticResource TitleLabelStyle}" />
+
+            <Image Source="{Binding ImagenSeleccionada}" HeightRequest="150" Aspect="AspectFit" />
+
+            <Button Text="{helper:Translate BtnSeleccionarImagen}"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Command="{Binding SeleccionarImagenCommand}" />
+
+            <Entry Text="{Binding NuevoProducto.Nombre}" Placeholder="{helper:Translate Nombre}"
+                   TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}" />
+
+            <Entry Text="{Binding NuevoProducto.Stock}" Keyboard="Numeric" Placeholder="{helper:Translate Cantidad}"
+                   TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}" />
+
+            <Entry Text="{Binding NuevoProducto.Precio}" Keyboard="Numeric" Placeholder="{helper:Translate PrecioUnitario}"
+                   TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}" />
+
+            <Entry Text="{Binding NuevoProducto.CategoriaId}" Keyboard="Default" Placeholder="{helper:Translate Categoria}"
+                   TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}" />
+
+            <Entry Text="{Binding NuevoProducto.Descripcion}" Keyboard="Default" Placeholder="{helper:Translate Descripcion}"
+                   TextColor="{AppThemeBinding Light={StaticResource TextPrimaryColorLight}, Dark={StaticResource TextPrimaryColorDark}}" />
+
+            <Button Text="{helper:Translate AgregarProducto}"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Command="{Binding AgregarCommand}" />
+            <Button Text="{helper:Translate BtnVolver}"
+                    Command="{Binding VolverCommand}"
+                    Style="{StaticResource TertiaryButtonStyle}"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -22,12 +22,16 @@ using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Pedidos.ObservarCambiosPedid
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Pedidos.ObtenerPedidoPorId;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Pedidos.ObtenerPedidos;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ActualizarProducto;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.AgregarProducto;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.EliminarProducto;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerNombreCategoria;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerProductosPorId;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Productos.ObtenerTodosProductos;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.ActualizarUsuario;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.GuardarFotoPerfil;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.IObtenerPerfilUsuario;
+using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Usuarios.ObtenerUsuarios;
+using MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.CarritoPageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel;
@@ -40,6 +44,7 @@ using MarketingAppHJ.Cliente.ViewModels.ProfilePageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.ResetPageViewModel;
 using MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel;
+using MarketingAppHJ.Cliente.Views.Aplicacion.AdminPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.CambioDatosPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.CarritoPage;
 using MarketingAppHJ.Cliente.Views.Aplicacion.CheckOutPage;
@@ -69,12 +74,15 @@ using MarketingAppHJ.Infraestructura.Datos.Repositorios.Pedidos.ObservarCambiosP
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Pedidos.ObtenerPedidoPorId;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Pedidos.ObtenerPedidos;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ActualizarProducto;
+using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.AgregarProducto;
+using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.EliminarProducto;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerNombreCategoria;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductoPorId;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Productos.ObtenerProductos;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Usuarios.ActualizarUsuario;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Usuarios.GuardarImagenPerfil;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Usuarios.ObtenerPerfilUsuario;
+using MarketingAppHJ.Infraestructura.Datos.Repositorios.Usuarios.ObtenerUsuarios;
 using MarketingAppHJ.Infraestructura.Negocio.Servicios.CloudinaryService;
 using MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication;
 using MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.RealtimeDatabase;
@@ -190,6 +198,9 @@ namespace MarketingAppHJ.Cliente
             services.AddScoped<ICloudinaryService, CloudinaryService>();
             services.AddScoped<IObtenerPedidoPorId, ObtenerPedidoPorId>();
             services.AddScoped<IActualizarProducto, ActualizarProducto>();
+            services.AddScoped<IEliminarProducto, EliminarProducto>();
+            services.AddScoped<IAgregarProducto, AgregarProducto>();
+            services.AddScoped<IObtenerUsuarios, ObtenerUsuarios>();
         }
 
         /// <summary>
@@ -210,6 +221,7 @@ namespace MarketingAppHJ.Cliente
             services.AddTransient<PedidosPageViewModel>();
             services.AddTransient<SettingsPageViewModel>();
             services.AddTransient<DetallesPedidoPageViewModel>();
+            services.AddTransient<AdminPageViewModel>();
         }
 
         /// <summary>
@@ -231,6 +243,7 @@ namespace MarketingAppHJ.Cliente
             services.AddSingleton<PedidosPage>();
             services.AddTransient<SettingsPage>();
             services.AddTransient<DetallesPedidoPage>();
+            services.AddTransient<AdminPage>();
         }
     }
 }

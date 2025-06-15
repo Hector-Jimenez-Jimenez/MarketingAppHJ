@@ -141,6 +141,56 @@
             </summary>
             <param name="services">La colección de servicios.</param>
         </member>
+        <member name="T:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.Productos">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.productos"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.Usuarios">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.usuarios"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.NuevoProducto">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.nuevoProducto"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.ImagenSeleccionada">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.imagenSeleccionada"/>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.guardarCambiosCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.GuardarCambiosCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.GuardarCambiosCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.GuardarCambios(MarketingAppHJ.Aplicacion.Dtos.ProductoDto)"/>.</summary>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.eliminarCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.EliminarCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.EliminarCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.Eliminar(MarketingAppHJ.Aplicacion.Dtos.ProductoDto)"/>.</summary>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.agregarCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.AgregarCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.AgregarCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.Agregar"/>.</summary>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.seleccionarImagenCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.SeleccionarImagenCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.SeleccionarImagenCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.SeleccionarImagen"/>.</summary>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.volverCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.VolverCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.VolverCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel.Volver"/>.</summary>
+        </member>
         <member name="T:MarketingAppHJ.Cliente.ViewModels.CambioDatosPageViewModel.CambioDatosPageViewModel">
             <inheritdoc/>
             <inheritdoc/>
@@ -861,12 +911,16 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="P:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.TemaSeleccionadoIndex">
             <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.temaSeleccionadoIndex"/>
         </member>
         <member name="P:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.IdiomaSeleccionadoIndex">
             <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.idiomaSeleccionadoIndex"/>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.EsAdmin">
+            <inheritdoc cref="F:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.esAdmin"/>
         </member>
         <member name="F:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.navegarACambiarDatosCommand">
             <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.NavegarACambiarDatosCommand"/>.</summary>
@@ -879,6 +933,12 @@
         </member>
         <member name="P:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.CerrarSesionCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.CerrarSesionAsync"/>.</summary>
+        </member>
+        <member name="F:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.irAPaginaAdminCommand">
+            <summary>The backing field for <see cref="P:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.IrAPaginaAdminCommand"/>.</summary>
+        </member>
+        <member name="P:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.IrAPaginaAdminCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel.SettingsPageViewModel.IrAPaginaAdminAsync"/>.</summary>
         </member>
         <member name="T:MarketingAppHJ.Cliente.Views.Aplicacion.CambioDatosPage.CambioDatosPage">
             <summary>
@@ -1123,6 +1183,18 @@
             for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
             </summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Productos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Productos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Usuarios">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Usuarios" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.NuevoProducto">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "NuevoProducto" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ImagenSeleccionada">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ImagenSeleccionada" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.NombreOriginal">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "NombreOriginal" generated properties.</summary>
         </member>
@@ -1228,9 +1300,6 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Password">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Password" generated properties.</summary>
         </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Productos">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Productos" generated properties.</summary>
-        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TextoBusqueda">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TextoBusqueda" generated properties.</summary>
         </member>
@@ -1270,11 +1339,26 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IdiomaSeleccionadoIndex">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IdiomaSeleccionadoIndex" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.EsAdmin">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "EsAdmin" generated properties.</summary>
+        </member>
         <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
             <summary>
             A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
             for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
             </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Productos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Productos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Usuarios">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Usuarios" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.NuevoProducto">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "NuevoProducto" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ImagenSeleccionada">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ImagenSeleccionada" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.NombreOriginal">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "NombreOriginal" generated properties.</summary>
@@ -1381,9 +1465,6 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Password">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Password" generated properties.</summary>
         </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Productos">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Productos" generated properties.</summary>
-        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TextoBusqueda">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TextoBusqueda" generated properties.</summary>
         </member>
@@ -1422,6 +1503,9 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IdiomaSeleccionadoIndex">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IdiomaSeleccionadoIndex" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.EsAdmin">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "EsAdmin" generated properties.</summary>
         </member>
     </members>
 </doc>
