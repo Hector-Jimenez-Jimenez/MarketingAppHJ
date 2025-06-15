@@ -55,7 +55,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel
             _actualizarUsuario = actualizarUsuario ?? throw new ArgumentNullException(nameof(actualizarUsuario));
             _obtenerProductoPorId = obtenerProductoPorId ?? throw new ArgumentNullException(nameof(obtenerProductoPorId));
             _actualizarProducto = actualizarProducto ?? throw new ArgumentNullException(nameof(actualizarProducto));
-
+            Items.Clear();
             LoadCartAsync().ConfigureAwait(false);
         }
 
@@ -206,7 +206,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.CheckOutPageViewModel
                 var producto = await _obtenerProductoPorId.ObtenerProductoPorIdAsync(item.ProductoId);
                 if (producto != null)
                 {
-                    // Validar que el stock no sea negativo
+
                     producto.Stock = Math.Max(0, producto.Stock - item.Cantidad);
                     await _actualizarProducto.ActualizarProductoAsync(producto);
                 }

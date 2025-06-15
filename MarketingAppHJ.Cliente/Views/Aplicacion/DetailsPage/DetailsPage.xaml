@@ -15,9 +15,7 @@
             <!-- 1) Banner con imagen completa + título -->
             <Grid HeightRequest="300">
                 <Image Source="{Binding ImagenUrl}"
-                       Aspect="AspectFit"
-                       HorizontalOptions="Fill"
-                       VerticalOptions="Fill" />
+                       Aspect="AspectFit"/>
 
                 <Label Text="{Binding Nombre}"
                        FontSize="24"
