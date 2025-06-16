@@ -68,7 +68,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.RegisterPageViewModel
         [RelayCommand]
         public static async Task CancelAsync()
         {
-            await Shell.Current.GoToAsync("login");
+            await Shell.Current.GoToAsync("///login");
         }
     }
 }       

@@ -25,7 +25,6 @@ namespace MarketingAppHJ.Cliente
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute("login", typeof(LoginPage));
             Routing.RegisterRoute("main", typeof(MainPage));
             Routing.RegisterRoute("detalles", typeof(DetailsPage));
             Routing.RegisterRoute("carrito", typeof(CarritoPage));
@@ -36,7 +35,6 @@ namespace MarketingAppHJ.Cliente
             Routing.RegisterRoute("changedata", typeof(CambioDatosPage));
             Routing.RegisterRoute("pedidos", typeof(PedidosPage));
             Routing.RegisterRoute("ajustes", typeof(SettingsPage));
-            Routing.RegisterRoute("shell", typeof(AppShell));
             Routing.RegisterRoute("detallespedido", typeof(DetallesPedidoPage));
             Routing.RegisterRoute("admin", typeof(AdminPage));
         }

@@ -11,5 +11,5 @@
     Title="MarketingAppHJ.Cliente">
 
     <ShellContent
-    ContentTemplate="{DataTemplate login:LoginPage}" />
+    ContentTemplate="{DataTemplate login:LoginPage}" Route="login" />
 </Shell>

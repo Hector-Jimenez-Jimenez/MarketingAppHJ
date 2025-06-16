@@ -62,5 +62,17 @@ namespace MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authenticati
                 return string.Empty;
             }
         }
+        public async Task SignOutAsync()
+        {
+            try
+            {
+                Instance.SignOut();
+            }
+            catch (Exception ex)
+            {
+                // Log o manejo si quieres
+                Console.WriteLine("Error cerrando sesión: " + ex.Message);
+            }
+        }
     }
 }

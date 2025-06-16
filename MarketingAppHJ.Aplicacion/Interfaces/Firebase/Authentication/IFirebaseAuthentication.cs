@@ -22,5 +22,10 @@ namespace MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication
         /// Obtiene el identificador único del usuario autenticado.
         /// </summary>
         string UserId { get; }
+
+        /// <summary>
+        /// Cierra la sesión del usuario actual.
+        /// </summary>
+        Task SignOutAsync();
     }
 }

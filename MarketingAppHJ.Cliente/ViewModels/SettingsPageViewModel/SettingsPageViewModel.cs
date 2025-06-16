@@ -59,15 +59,15 @@ namespace MarketingAppHJ.Cliente.ViewModels.SettingsPageViewModel
         [RelayCommand]
         private async Task CerrarSesionAsync()
         {
-            var instance = _authService?.GetInstance();
-            if (instance != null)
+            try
             {
-                instance.SignOut();
-                await Shell.Current.GoToAsync("login");
+                await _authService.SignOutAsync();
+                Preferences.Clear();
+                await Shell.Current.GoToAsync("///login");
             }
-            else
+            catch (Exception ex)
             {
-                await Shell.Current.DisplayAlert("Error", "No se pudo cerrar sesión.", "OK");
+                await Shell.Current.DisplayAlert("Error", "No se pudo cerrar sesión: " + ex.Message, "OK");
             }
         }
 

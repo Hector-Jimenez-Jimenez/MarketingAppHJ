@@ -46,42 +46,26 @@ namespace MarketingAppHJ.Cliente.ViewModels.LoginPageViewModel
         [RelayCommand]
         public async Task LoginAsync()
         {
-            if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password))
+            if (string.IsNullOrWhiteSpace(Email) || string.IsNullOrWhiteSpace(Password))
             {
-                var mainPage = Application.Current?.Windows.FirstOrDefault()?.Page;
-                if (mainPage != null)
-                {
-                    await mainPage.DisplayAlert("Error", "Por favor, complete todos los campos.", "OK");
-                }
+                await Application.Current.MainPage.DisplayAlert("Error", "Por favor, complete todos los campos.", "OK");
+                return;
             }
-            else
+
+            try
             {
-                try
-                {
-                    await _iniciarSesion.IniciarSesionAsync(Email, Password);
-                    await Shell.Current.GoToAsync("main");
-
-                    var mainPage = Application.Current?.Windows.FirstOrDefault()?.Page;
-                    if (mainPage != null)
-                    {
-                        await mainPage.DisplayAlert("Success", "Bienvenido de nuevo", "OK");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Login failed: {ex.Message}");
-
-                    var mainPage = Application.Current?.Windows.FirstOrDefault()?.Page;
-                    if (mainPage != null)
-                    {
-                        await mainPage.DisplayAlert("Error", "Credenciales incorrectas. Por favor, intente nuevamente.", "OK");
-                    }
-                }
-                finally
-                {
-                    Email = string.Empty;
-                    Password = string.Empty;
-                }
+                await _iniciarSesion.IniciarSesionAsync(Email, Password);
+                await Shell.Current.GoToAsync("main");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Login failed: {ex.Message}");
+                await Application.Current.MainPage.DisplayAlert("Error", "Credenciales incorrectas o error en el servidor. Intente nuevamente.", "OK");
+            }
+            finally
+            {
+                Email = string.Empty;
+                Password = string.Empty;
             }
         }
 

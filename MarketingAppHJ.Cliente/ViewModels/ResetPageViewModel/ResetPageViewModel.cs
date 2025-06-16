@@ -52,7 +52,7 @@ namespace MarketingAppHJ.Cliente.ViewModels.ResetPageViewModel
         [RelayCommand]
         public async Task CancelAsync()
         {
-            await Shell.Current.GoToAsync("login");
+            await Shell.Current.GoToAsync("///login");
         }
     }
 }
