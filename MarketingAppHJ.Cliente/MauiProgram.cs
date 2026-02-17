@@ -1,10 +1,8 @@
 ﻿using System.Globalization;
 using Firebase.Auth;
 using Firebase.Auth.Providers;
-using Firebase.Database;
 using MarketingAppHJ.Aplicacion.Interfaces.Cloudinary;
 using MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication;
-using MarketingAppHJ.Aplicacion.Interfaces.Firebase.RealTimeDatabase;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.AgregarProductoAlCarrito;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.BorrarProductoCarrito;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.BorrarProductosCarrito;
@@ -85,7 +83,6 @@ using MarketingAppHJ.Infraestructura.Datos.Repositorios.Usuarios.ObtenerPerfilUs
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Usuarios.ObtenerUsuarios;
 using MarketingAppHJ.Infraestructura.Negocio.Servicios.CloudinaryService;
 using MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication;
-using MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.RealtimeDatabase;
 using Microsoft.Extensions.Logging;
 using TheMarketingApp.Infraestructura.Negocio.Servicios;
 
@@ -108,26 +105,12 @@ namespace MarketingAppHJ.Cliente
             builder.Services.AddUseCases();
             builder.Services.AddViewModels();
             builder.Services.AddViews();
-            builder.Services.AddSingleton(sp =>
-            {
-                var auth = sp.GetRequiredService<IFirebaseAuthentication>();
-                var firebaseUrl = "https://themarketingapp-15895-default-rtdb.firebaseio.com/";
-                return new FirebaseClient(firebaseUrl, new FirebaseOptions
-                {
-                    AuthTokenAsyncFactory = async () => await auth.GetTokenAsync()
-                });
-            });
+            
             builder.Services.Configure<CloudinarySettings>(options =>
             {
                 options.CloudName = "df4l4kyo7";
                 options.ApiKey = "727739372591495";
                 options.ApiSecret = "aWv8WSjgg9UZurB7itMyQgq34KU";
-            });
-
-            builder.Services.AddSingleton(sp =>
-            {
-                var client = sp.GetRequiredService<FirebaseClient>();
-                return new FirebaseRealTimeDatabase(client);
             });
 
             builder
@@ -165,7 +148,6 @@ namespace MarketingAppHJ.Cliente
         {
             // Firebase auth and realtime database clients
             services.AddSingleton<IFirebaseAuthentication, FirebaseAuthentication>();
-            services.AddSingleton<IFirebaseRealtimeDatabase, FirebaseRealTimeDatabase>();
         }
 
         /// <summary>

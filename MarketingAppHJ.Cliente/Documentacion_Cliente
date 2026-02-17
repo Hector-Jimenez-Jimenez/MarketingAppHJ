@@ -141,6 +141,48 @@
             </summary>
             <param name="services">La colección de servicios.</param>
         </member>
+        <member name="T:MarketingAppHJ.Cliente.WinUI.App">
+            <summary>
+            Provides application-specific behavior to supplement the default Application class.
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.WinUI.App.#ctor">
+            <summary>
+            Initializes the singleton application object.  This is the first line of authored code
+            executed, and as such is the logical equivalent of main() or WinMain().
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.WinUI.App.CreateMauiApp">
+            <summary>
+            Creates the Maui application.
+            </summary>
+            <returns>A new instance of <see cref="T:Microsoft.Maui.Hosting.MauiApp"/>.</returns>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.WinUI.App.InitializeComponent">
+            <summary>
+            InitializeComponent()
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.WinUI.App.GetXamlType(System.Type)">
+            <summary>
+            GetXamlType(Type)
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.WinUI.App.GetXamlType(System.String)">
+            <summary>
+            GetXamlType(String)
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.WinUI.App.GetXmlnsDefinitions">
+            <summary>
+            GetXmlnsDefinitions()
+            </summary>
+        </member>
+        <member name="T:MarketingAppHJ.Cliente.WinUI.Program">
+            <summary>
+            Program class
+            </summary>
+        </member>
         <member name="T:MarketingAppHJ.Cliente.ViewModels.AdminPageViewModel.AdminPageViewModel">
             <inheritdoc/>
             <inheritdoc/>
@@ -1171,10 +1213,24 @@
             <param name="vm">The view model for the ResetPage.</param>
             <exception cref="T:System.ArgumentNullException">Thrown when the view model is null.</exception>
         </member>
-        <member name="T:MarketingAppHJ.Cliente.Resource">
+        <member name="T:MarketingAppHJ.Cliente.MarketingAppHJ_Cliente_XamlTypeInfo.XamlMetaDataProvider">
             <summary>
-            Android Resource Designer class.
-            Exposes the Android Resource designer assembly into the project Namespace.
+            Main class for providing metadata for the app or library
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.MarketingAppHJ_Cliente_XamlTypeInfo.XamlMetaDataProvider.GetXamlType(System.Type)">
+            <summary>
+            GetXamlType(Type)
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.MarketingAppHJ_Cliente_XamlTypeInfo.XamlMetaDataProvider.GetXamlType(System.String)">
+            <summary>
+            GetXamlType(String)
+            </summary>
+        </member>
+        <member name="M:MarketingAppHJ.Cliente.MarketingAppHJ_Cliente_XamlTypeInfo.XamlMetaDataProvider.GetXmlnsDefinitions">
+            <summary>
+            GetXmlnsDefinitions()
             </summary>
         </member>
         <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
