@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TheMarketingApp.Dominio.Entidades
+namespace MarketingAppHJ.Dominio.Entidades
 {
     /// <summary>
     /// Representa un producto en el sistema.
@@ -14,6 +16,7 @@ namespace TheMarketingApp.Dominio.Entidades
         /// <summary>
         /// Identificador único del producto.
         /// </summary>
+        [Key] 
         public string Id_Producto { get; set; } = string.Empty;
 
         /// <summary>
@@ -83,5 +86,8 @@ namespace TheMarketingApp.Dominio.Entidades
         {
             return HashCode.Combine(Id_Producto, Nombre, Descripcion, Precio, ImagenUrl, Stock, CategoriaId);
         }
+
+        [ForeignKey("Id_Categoria")]
+        public virtual Categoria Categoria { get; set; }
     }
 }

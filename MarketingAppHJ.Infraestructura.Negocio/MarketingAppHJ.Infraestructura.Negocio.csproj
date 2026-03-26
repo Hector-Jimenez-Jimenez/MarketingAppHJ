@@ -10,8 +10,8 @@
 	<ItemGroup>
 		<PackageReference Include="CloudinaryDotNet" Version="1.28.0" />
 		<PackageReference Include="FirebaseAuthentication.net" Version="4.1.0" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.3" />
-		<PackageReference Include="Microsoft.Extensions.Options" Version="10.0.3" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.5" />
+		<PackageReference Include="Microsoft.Extensions.Options" Version="10.0.5" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\MarketingAppHJ.Aplicacion\MarketingAppHJ.Aplicacion.csproj" />

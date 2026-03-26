@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TheMarketingApp.Dominio.Entidades
+namespace MarketingAppHJ.Dominio.Entidades
 {
     /// <summary>
     /// Representa un pedido realizado por un usuario.
@@ -14,6 +16,7 @@ namespace TheMarketingApp.Dominio.Entidades
         /// <summary>
         /// Identificador único del pedido.
         /// </summary>
+        [Key]
         public string Id_Pedido { get; set; } = string.Empty;
 
         /// <summary>
@@ -71,5 +74,8 @@ namespace TheMarketingApp.Dominio.Entidades
         {
             return HashCode.Combine(Id_Pedido, UsuarioId, Fecha, Total, Estado);
         }
+
+        [ForeignKey("Usuario")]
+        public virtual Usuario Usuario { get; set; } = new Usuario();
     }
 }

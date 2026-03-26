@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace TheMarketingApp.Dominio.Entidades
+namespace MarketingAppHJ.Dominio.Entidades
 {
     /// <summary>
     /// Representa una categoría en el sistema.
     /// </summary>
-    public class Categoria : IEquatable<Categoria>
+    public class Categoria
     {
         /// <summary>
         /// Identificador único de la categoría.
         /// </summary>
+        [Key]
         public string Id_Categoria { get; set; } = string.Empty;
 
         /// <summary>

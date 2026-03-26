@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TheMarketingApp.Dominio.Entidades
+namespace MarketingAppHJ.Dominio.Entidades
 {
     /// <summary>  
     /// Representa el detalle de un pedido, incluyendo información sobre el producto, cantidad y precio.  
@@ -14,7 +11,8 @@ namespace TheMarketingApp.Dominio.Entidades
         /// <summary>  
         /// Identificador único del detalle del pedido.  
         /// </summary>  
-        public string Id_Detalle { get; set; } = string.Empty;
+        [Key]
+        string Id_Detalle { get; set; } = string.Empty;
 
         /// <summary>  
         /// Identificador único del pedido al que pertenece este detalle.  
@@ -35,5 +33,11 @@ namespace TheMarketingApp.Dominio.Entidades
         /// Precio unitario del producto.  
         /// </summary>  
         public decimal PrecioUnitario { get; set; }
+
+        [ForeignKey("Id_Pedido")]
+        public virtual Pedido Pedido { get; set; }
+
+        [ForeignKey("Id_Producto")]
+        public virtual Producto Producto { get; set; }
     }
 }

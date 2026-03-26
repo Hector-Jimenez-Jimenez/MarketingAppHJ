@@ -1,7 +1,7 @@
-﻿using System.Globalization;
-using Firebase.Auth;
+﻿using Firebase.Auth;
 using Firebase.Auth.Providers;
 using MarketingAppHJ.Aplicacion.Interfaces.Cloudinary;
+using MarketingAppHJ.Aplicacion.Interfaces.Context;
 using MarketingAppHJ.Aplicacion.Interfaces.Firebase.Authentication;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.AgregarProductoAlCarrito;
 using MarketingAppHJ.Aplicacion.Interfaces.UseCases.Carrito.BorrarProductoCarrito;
@@ -83,7 +83,9 @@ using MarketingAppHJ.Infraestructura.Datos.Repositorios.Usuarios.ObtenerPerfilUs
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Usuarios.ObtenerUsuarios;
 using MarketingAppHJ.Infraestructura.Negocio.Servicios.CloudinaryService;
 using MarketingAppHJ.Infraestructura.Negocio.Servicios.Firebase.Authentication;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System.Globalization;
 using TheMarketingApp.Infraestructura.Negocio.Servicios;
 
 namespace MarketingAppHJ.Cliente
@@ -112,7 +114,10 @@ namespace MarketingAppHJ.Cliente
                 options.ApiKey = "727739372591495";
                 options.ApiSecret = "aWv8WSjgg9UZurB7itMyQgq34KU";
             });
+            string connectionString = "Server=TU_IP;Database=MarketingDB;User Id=sa;Password=tu_pass;TrustServerCertificate=True";
 
+            builder.Services.AddDbContext<DBContext>(options =>
+                options.UseSqlServer(connectionString));
             builder
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>

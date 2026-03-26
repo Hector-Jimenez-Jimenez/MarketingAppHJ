@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace TheMarketingApp.Dominio.Entidades
+namespace MarketingAppHJ.Dominio.Entidades
 {
     /// <summary>  
     /// Representa un usuario en el sistema.  
@@ -14,6 +10,7 @@ namespace TheMarketingApp.Dominio.Entidades
         /// <summary>  
         /// Identificador único del usuario.  
         /// </summary>  
+        [Key] 
         public string Id_Usuario { get; set; } = string.Empty;
 
         /// <summary>  

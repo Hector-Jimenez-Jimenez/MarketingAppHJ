@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TheMarketingApp.Dominio.Entidades
+namespace MarketingAppHJ.Dominio.Entidades
 {
     /// <summary>
     /// Representa un ítem dentro del carrito de compras.
@@ -14,6 +11,7 @@ namespace TheMarketingApp.Dominio.Entidades
         /// <summary>
         /// Identificador único del item del carrito.
         /// </summary>
+        [Key]
         public string Id_Carrito { get; set; } = string.Empty;
 
         /// <summary>
@@ -25,5 +23,8 @@ namespace TheMarketingApp.Dominio.Entidades
         /// Cantidad del producto en el carrito.
         /// </summary>
         public int Cantidad { get; set; }
+
+        [ForeignKey("Id_Producto")]
+        public virtual Producto Producto { get; set; }
     }
 }
