@@ -16,6 +16,7 @@ namespace MarketingAppHJ.Dominio.Entidades
         /// <summary>  
         /// Nombre del usuario.  
         /// </summary>  
+        [Required]
         public string Nombre { get; set; } = string.Empty;
 
         /// <summary>  
@@ -26,6 +27,7 @@ namespace MarketingAppHJ.Dominio.Entidades
         /// <summary>  
         /// Correo electrónico del usuario.  
         /// </summary>  
+        [EmailAddress]
         public string Email { get; set; } = string.Empty;
 
         /// <summary>  
@@ -80,5 +82,10 @@ namespace MarketingAppHJ.Dominio.Entidades
         {
             return HashCode.Combine(Id_Usuario, Nombre, Email, AvatarUrl);
         }
+        /// <summary>
+        /// Pedidos asociados a este usuario
+        /// </summary>
+
+        public virtual ICollection<Pedido> Pedidos { get; set; } = new List<Pedido>();
     }
 }

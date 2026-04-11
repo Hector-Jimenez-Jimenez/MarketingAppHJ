@@ -22,6 +22,7 @@ namespace MarketingAppHJ.Dominio.Entidades
         /// <summary>
         /// Nombre del producto.
         /// </summary>
+        [Required]
         public string Nombre { get; set; } = string.Empty;
 
         /// <summary>
@@ -32,6 +33,7 @@ namespace MarketingAppHJ.Dominio.Entidades
         /// <summary>
         /// Precio del producto.
         /// </summary>
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Precio { get; set; }
 
         /// <summary>
@@ -87,7 +89,7 @@ namespace MarketingAppHJ.Dominio.Entidades
             return HashCode.Combine(Id_Producto, Nombre, Descripcion, Precio, ImagenUrl, Stock, CategoriaId);
         }
 
-        [ForeignKey("Id_Categoria")]
-        public virtual Categoria Categoria { get; set; }
+        [ForeignKey("Id_categoria")]
+        public virtual Categoria? Categoria { get; set; }
     }
 }

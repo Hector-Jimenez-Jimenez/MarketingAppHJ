@@ -55,6 +55,7 @@ using MarketingAppHJ.Cliente.Views.Aplicacion.SettingsPage;
 using MarketingAppHJ.Cliente.Views.Login.LoginPage;
 using MarketingAppHJ.Cliente.Views.Login.RegisterPage;
 using MarketingAppHJ.Cliente.Views.Login.ResetPage;
+using MarketingAppHJ.Infraestructura.Datos;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.AgregarProductoAlCarrito;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.BorrarProductoCarrito;
 using MarketingAppHJ.Infraestructura.Datos.Repositorios.Carrito.BorrarProductosCarrito;
@@ -108,7 +109,7 @@ namespace MarketingAppHJ.Cliente
             builder.Services.AddViewModels();
             builder.Services.AddViews();
             
-            builder.Services.Configure<CloudinarySettings>(options =>
+            builder.Services.Configure<CloudinarySettings>(options =>   
             {
                 options.CloudName = "df4l4kyo7";
                 options.ApiKey = "727739372591495";
@@ -116,7 +117,7 @@ namespace MarketingAppHJ.Cliente
             });
             string connectionString = "Server=TU_IP;Database=MarketingDB;User Id=sa;Password=tu_pass;TrustServerCertificate=True";
 
-            builder.Services.AddDbContext<DBContext>(options =>
+            builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(connectionString));
             builder
                 .UseMauiApp<App>()

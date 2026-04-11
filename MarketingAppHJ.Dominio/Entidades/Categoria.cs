@@ -16,6 +16,8 @@ namespace MarketingAppHJ.Dominio.Entidades
         /// <summary>
         /// Nombre de la categoría.
         /// </summary>
+        [Required]
+        [MaxLength(100)]
         public string Nombre { get; set; } = string.Empty;
 
         /// <summary>
@@ -59,5 +61,9 @@ namespace MarketingAppHJ.Dominio.Entidades
         {
             return HashCode.Combine(Id_Categoria, Nombre, Descripcion);
         }
+        /// <summary>
+        /// Collecoción de productos asociados a esta categoría.
+        /// </summary>
+        public virtual ICollection<Producto> Productos { get; set; } = new List<Producto>();
     }
 }

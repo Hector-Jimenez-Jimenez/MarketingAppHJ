@@ -17,12 +17,14 @@ namespace MarketingAppHJ.Dominio.Entidades
         /// <summary>  
         /// Identificador único del pedido al que pertenece este detalle.  
         /// </summary>  
-        public string PedidoId { get; set; } = string.Empty;
+        [ForeignKey("Id_Pedido")]
+        public string Id_Pedido { get; set; } = string.Empty;
 
         /// <summary>  
         /// Identificador único del producto.  
         /// </summary>  
-        public string ProductoId { get; set; } = string.Empty;
+        [ForeignKey("Id_Producto")]
+        public string Id_Producto { get; set; } = string.Empty;
 
         /// <summary>  
         /// Cantidad del producto en el pedido.  
@@ -32,12 +34,7 @@ namespace MarketingAppHJ.Dominio.Entidades
         /// <summary>  
         /// Precio unitario del producto.  
         /// </summary>  
+        [Column(TypeName = "decimal(18,2)")]
         public decimal PrecioUnitario { get; set; }
-
-        [ForeignKey("Id_Pedido")]
-        public virtual Pedido Pedido { get; set; }
-
-        [ForeignKey("Id_Producto")]
-        public virtual Producto Producto { get; set; }
     }
 }

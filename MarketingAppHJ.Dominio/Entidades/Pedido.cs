@@ -22,7 +22,8 @@ namespace MarketingAppHJ.Dominio.Entidades
         /// <summary>
         /// Identificador del usuario que realizó el pedido.
         /// </summary>
-        public string UsuarioId { get; set; } = string.Empty;
+        [ForeignKey("Id_Usuario")]
+        public string Id_Usuario { get; set; } = string.Empty;
 
         /// <summary>
         /// Fecha en la que se realizó el pedido.
@@ -32,6 +33,7 @@ namespace MarketingAppHJ.Dominio.Entidades
         /// <summary>
         /// Total del pedido.
         /// </summary>
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Total { get; set; }
 
         /// <summary>
@@ -50,7 +52,7 @@ namespace MarketingAppHJ.Dominio.Entidades
                 return false;
 
             return Id_Pedido == other.Id_Pedido &&
-                   UsuarioId == other.UsuarioId &&
+                   Id_Usuario == other.Id_Usuario &&
                    Fecha == other.Fecha &&
                    Total == other.Total &&
                    Estado == other.Estado;
@@ -72,10 +74,11 @@ namespace MarketingAppHJ.Dominio.Entidades
         /// <returns>El código hash del pedido.</returns>
         public override int GetHashCode()
         {
-            return HashCode.Combine(Id_Pedido, UsuarioId, Fecha, Total, Estado);
+            return HashCode.Combine(Id_Pedido, Id_Usuario, Fecha, Total, Estado);
         }
-
-        [ForeignKey("Usuario")]
-        public virtual Usuario Usuario { get; set; } = new Usuario();
+        /// <summary>
+        /// Colección de detalles del pedido asociados a este pedido.
+        /// </summary>
+        public virtual ICollection<DetallePedido> Detalles { get; set; } = new List<DetallePedido>();
     }
 }

@@ -17,7 +17,7 @@ namespace MarketingAppHJ.Dominio.Entidades
         /// <summary>
         /// Identificador único del producto.
         /// </summary>
-        public string ProductoId { get; set; } = string.Empty;
+        public string Id_Producto { get; set; } = string.Empty;
 
         /// <summary>
         /// Cantidad del producto en el carrito.
@@ -25,6 +25,6 @@ namespace MarketingAppHJ.Dominio.Entidades
         public int Cantidad { get; set; }
 
         [ForeignKey("Id_Producto")]
-        public virtual Producto Producto { get; set; }
+        public virtual Producto? Producto { get; set; }
     }
 }
